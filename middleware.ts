@@ -2,16 +2,22 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
-  let response = NextResponse.next({
-    request: {
-      headers: request.headers,
-    },
-  });
+  try {
+    let response = NextResponse.next({
+      request: {
+        headers: request.headers,
+      },
+    });
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.warn("Supabase environment variables are missing in middleware.");
+      return response;
+    }
+
+    const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
       cookies: {
         getAll() {
           return request.cookies.getAll();
@@ -28,24 +34,31 @@ export async function middleware(request: NextRequest) {
           );
         },
       },
-    },
-  );
+    });
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-  // Protect Admin Routes
-  if (request.nextUrl.pathname.startsWith("/admin") && !user) {
-    return NextResponse.redirect(new URL("/login", request.url));
+    // Protect Admin Routes
+    if (request.nextUrl.pathname.startsWith("/admin") && !user) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+
+    // Redirect if already logged in
+    if (request.nextUrl.pathname.startsWith("/login") && user) {
+      return NextResponse.redirect(new URL("/admin", request.url));
+    }
+
+    return response;
+  } catch (e) {
+    console.error("Middleware error:", e);
+    return NextResponse.next({
+      request: {
+        headers: request.headers,
+      },
+    });
   }
-
-  // Redirect if already logged in
-  if (request.nextUrl.pathname.startsWith("/login") && user) {
-    return NextResponse.redirect(new URL("/admin", request.url));
-  }
-
-  return response;
 }
 
 export const config = {
