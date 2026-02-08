@@ -22,7 +22,7 @@ export async function getAdminTeamMembers() {
 export async function upsertTeamMember(data: TeamMemberInsert) {
   const supabase = await createClient();
 
-  const { error } = await supabase.from("team_members").upsert(data);
+  const { error } = await supabase.from("team_members").upsert(data as any);
 
   if (error) {
     console.error("Upsert Error", error);

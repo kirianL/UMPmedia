@@ -47,7 +47,7 @@ export async function upsertNews(data: NewsInsert) {
 
   const { error } = await supabase
     .from("news")
-    .upsert(payload, { onConflict: "id" });
+    .upsert(payload as any, { onConflict: "id" });
 
   if (error) {
     console.error("Upsert Error", error);
