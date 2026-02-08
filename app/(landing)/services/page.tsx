@@ -10,6 +10,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Check, Info } from "lucide-react";
 import { DigitalSolutions } from "@/components/sections/digital-solutions";
+import { DigitalCombos } from "@/components/sections/digital-combos";
+import Link from "next/link";
 
 export default function ServicesPage() {
   return (
@@ -38,13 +40,13 @@ export default function ServicesPage() {
         <section>
           <div className="mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Videos Publicitarios y Corporativos
+              Videos publicitarios y corporativos
             </h2>
             <div className="h-1 w-20 bg-ump-accent"></div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <ServiceCard
-              title="Reel Publicitario"
+              title="Reel publicitario"
               price="Desde $100"
               subtitle="Duración 30 segundos"
               features={[
@@ -56,7 +58,7 @@ export default function ServicesPage() {
               imageSrc="/assets/placeholder.jpg"
             />
             <ServiceCard
-              title="Video Profesional"
+              title="Video profesional"
               price="Desde $250"
               subtitle="Calidad cinematográfica"
               features={[
@@ -77,7 +79,7 @@ export default function ServicesPage() {
         <section>
           <div className="mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Servicio de Podcast
+              Servicio de podcast
             </h2>
             <p className="text-ump-secondary mb-4">
               Ambas opciones incluyen soporte técnico durante la grabación y
@@ -85,10 +87,10 @@ export default function ServicesPage() {
             </p>
             <div className="h-1 w-20 bg-ump-accent"></div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <ServiceCard
-              title="Grabación a Domicilio"
-              price="₡250.000"
+              title="Grabación a domicilio"
+              price="$510"
               subtitle="Vamos donde estés"
               features={[
                 "Traslado de cámaras, trípodes, luces y micrófonos",
@@ -98,8 +100,8 @@ export default function ServicesPage() {
               imageSrc="/assets/placeholder.jpg"
             />
             <ServiceCard
-              title="Grabación en Estudio"
-              price="₡175.000"
+              title="Grabación en estudio"
+              price="$355"
               subtitle="Con pantalla verde"
               features={[
                 "Grabación en estudio profesional",
@@ -116,11 +118,11 @@ export default function ServicesPage() {
         <section>
           <div className="mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Cobertura de Eventos
+              Cobertura de eventos
             </h2>
             <div className="h-1 w-20 bg-ump-accent"></div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <ServiceCard
               title="Fotografía"
               price="$80"
@@ -130,7 +132,6 @@ export default function ServicesPage() {
                 "Equipo profesional de alta gama",
                 "Cobertura por hora",
                 "Selección y edición básica de las mejores imágenes",
-                "Entrega digital en alta resolución",
                 "Entrega digital en alta resolución",
               ]}
               imageSrc="/assets/placeholder.jpg"
@@ -146,12 +147,11 @@ export default function ServicesPage() {
                 "Encuadres cuidados",
                 "Edición básica",
                 "Entrega digital en alta resolución",
-                "Entrega digital en alta resolución",
               ]}
               imageSrc="/assets/placeholder.jpg"
             />
             <ServiceCard
-              title="Fotografía + Video"
+              title="Fotografía + video"
               price="$160"
               priceDetail="/ hora"
               subtitle="Cobertura completa con calidad premium."
@@ -172,56 +172,55 @@ export default function ServicesPage() {
         <section>
           <div className="mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Cobertura de Bodas
+              Cobertura de bodas
             </h2>
             <div className="h-1 w-20 bg-ump-accent"></div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <ServiceCard
               title="Pack 1"
-              price="₡55.000"
-              subtitle="Fotografía"
+              price="$140"
+              subtitle="Fotografía (ceremonia)"
               features={[
                 "Cobertura de ceremonia",
                 "Fotografías ilimitadas",
-                "Edición profesional incluida",
                 "Edición profesional incluida",
               ]}
               imageSrc="/assets/placeholder.jpg"
             />
             <ServiceCard
               title="Pack 2"
-              price="₡155.000"
-              subtitle="Fotografía"
+              price="$290"
+              subtitle="Fotografía + recepción"
               features={[
                 "Cobertura de ceremonia",
                 "3 horas de recepción",
                 "Fotografías ilimitadas",
-                "Edición profesional incluida",
                 "Edición profesional incluida",
               ]}
               imageSrc="/assets/placeholder.jpg"
             />
             <ServiceCard
               title="Pack 3"
-              price="₡105.000"
-              subtitle="Fotografía y Video"
+              price="$330"
+              subtitle="Foto y video (ceremonia)"
               features={[
                 "Cobertura de ceremonia",
                 "Fotografías ilimitadas",
-                "Edición profesional incluida",
+                "Video resumen cinemático",
                 "Edición profesional incluida",
               ]}
               imageSrc="/assets/placeholder.jpg"
             />
             <ServiceCard
               title="Pack 4"
-              price="₡250.000"
-              subtitle="Fotografía y Video"
+              price="$470"
+              subtitle="Completo + recepción"
               features={[
                 "Cobertura de ceremonia",
                 "3 horas de recepción",
                 "Fotografías ilimitadas",
+                "Video resumen cinemático",
                 "Edición profesional incluida",
               ]}
               imageSrc="/assets/placeholder.jpg"
@@ -234,13 +233,13 @@ export default function ServicesPage() {
         <section>
           <div className="mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Manejo de Redes Sociales
+              Manejo de redes sociales
             </h2>
             <div className="h-1 w-20 bg-ump-accent"></div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <ServiceCard
-              title="Pack PYME"
+              title="Pack pyme"
               price="$150"
               priceDetail=" mensuales"
               features={[
@@ -255,7 +254,7 @@ export default function ServicesPage() {
               imageSrc="/assets/placeholder.jpg"
             />
             <ServiceCard
-              title="Pack Corporativo"
+              title="Pack corporativo"
               price="$400"
               priceDetail=" mensuales"
               features={[
@@ -276,12 +275,13 @@ export default function ServicesPage() {
 
         {/* Sistemas y Soluciones Digitales */}
         <DigitalSolutions />
+        <DigitalCombos />
       </div>
 
       {/* 4. FAQs */}
       <section className="container mx-auto px-6 max-w-3xl mb-32">
         <h2 className="text-3xl font-bold text-white mb-12 text-center">
-          Preguntas Frecuentes
+          Preguntas frecuentes
         </h2>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
@@ -340,33 +340,30 @@ function ServiceCard({
 }) {
   return (
     <div
-      className={`group relative overflow-hidden rounded-xl border transition-all duration-300 flex flex-col h-full bg-ump-card/20 hover:bg-ump-card/40 ${
+      className={`relative overflow-hidden rounded-xl border flex flex-col md:flex-row h-full bg-ump-card/20 ${
         isHighlight
           ? "border-ump-accent shadow-lg shadow-ump-accent/10"
-          : "border-white/10 hover:border-white/20"
+          : "border-white/10"
       }`}
     >
-      {/* Image Container */}
-      <div className="relative h-32 md:h-48 w-full overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-ump-background to-transparent z-10" />
-        {/* Placeholder for actual image - using a colored div for now if src is placeholder */}
+      {/* Image Container - Horizontal on desktop, Aspect Video on mobile */}
+      <div className="relative w-full md:w-2/5 shrink-0 aspect-video md:aspect-auto md:h-full overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-ump-background/80 to-transparent z-10" />
+        {/* Placeholder for actual image */}
         <div
-          className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-full bg-cover bg-center"
           style={{
             backgroundImage: `url(${imageSrc})`,
             backgroundColor: "#1a1a1a",
           }}
         />
-        <div className="absolute bottom-2 left-4 z-20">
-          <h3 className="text-lg md:text-xl font-bold text-white shadow-black drop-shadow-md">
-            {title}
-          </h3>
-        </div>
       </div>
 
-      <div className="p-4 md:p-6 flex flex-col flex-1">
+      <div className="p-6 md:p-8 flex flex-col flex-1 relative">
+        {/* Title Overlay for Mobile (to save space) or Normal Title */}
         <div className="mb-4">
-          <div className="flex flex-wrap items-baseline gap-1 mb-1">
+          <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+          <div className="flex flex-wrap items-baseline gap-1 mb-2">
             <span className="text-2xl md:text-3xl font-bold text-ump-accent">
               {price}
             </span>
@@ -377,19 +374,19 @@ function ServiceCard({
             )}
           </div>
           {subtitle && (
-            <p className="text-xs md:text-sm text-ump-secondary italic leading-tight">
+            <p className="text-sm text-ump-secondary italic leading-tight">
               {subtitle}
             </p>
           )}
         </div>
 
-        <ul className="space-y-2 md:space-y-3 mb-6 flex-1">
+        <ul className="space-y-2 mb-6 flex-1">
           {features.map((feature, i) => (
             <li
               key={i}
-              className="flex items-start gap-2 text-xs md:text-sm text-white/80"
+              className="flex items-start gap-2 text-sm text-white/80"
             >
-              <Check size={14} className="text-ump-accent mt-0.5 shrink-0" />
+              <Check size={16} className="text-ump-accent mt-0.5 shrink-0" />
               <span className="leading-tight">{feature}</span>
             </li>
           ))}
@@ -401,16 +398,18 @@ function ServiceCard({
           )}
         </ul>
 
-        <Button
-          variant={isHighlight ? "default" : "outline"}
-          className={`w-full text-xs md:text-sm h-8 md:h-10 ${
-            isHighlight
-              ? "bg-ump-accent hover:bg-ump-accent/90 text-black"
-              : "border-white/20 text-white hover:bg-white hover:text-black"
-          }`}
-        >
-          Cotizar
-        </Button>
+        <Link href="/contact" className="mt-auto">
+          <Button
+            variant={isHighlight ? "default" : "outline"}
+            className={`w-full cursor-pointer ${
+              isHighlight
+                ? "bg-ump-accent hover:bg-ump-accent/90 text-black"
+                : "border-white/20 text-white hover:bg-white hover:text-black"
+            }`}
+          >
+            Cotizar
+          </Button>
+        </Link>
       </div>
     </div>
   );
