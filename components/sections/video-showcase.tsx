@@ -13,7 +13,7 @@ export function VideoShowcase() {
             Nuestra Calidad
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Producción Cinematográfica
+            Producción profesional
           </h2>
           <p className="text-ump-secondary max-w-2xl mx-auto">
             El resultado habla por sí mismo. Descubre el nivel de detalle y
