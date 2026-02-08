@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Check, Info } from "lucide-react";
+import { DigitalSolutions } from "@/components/sections/digital-solutions";
 
 export default function ServicesPage() {
   return (
@@ -272,6 +273,9 @@ export default function ServicesPage() {
             />
           </div>
         </section>
+
+        {/* Sistemas y Soluciones Digitales */}
+        <DigitalSolutions />
       </div>
 
       {/* 4. FAQs */}
