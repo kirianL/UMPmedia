@@ -13,20 +13,17 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const manifestoSection = document.getElementById("manifesto-section");
-      if (!manifestoSection) return;
+      // Check what's under the logo (approx 50px from left, 40px from top)
+      const x = 50;
+      const y = 40;
 
-      const rect = manifestoSection.getBoundingClientRect();
-      const headerHeight = 80; // Approx header height
+      const elements = document.elementsFromPoint(x, y);
+      const isOverManifesto = elements.some(
+        (el) =>
+          el.id === "manifesto-section" || el.closest("#manifesto-section"),
+      );
 
-      // Check if header is within the manifesto section
-      // rect.top <= headerHeight means the section has reached the header
-      // rect.bottom >= headerHeight means the section is still under the header
-      if (rect.top <= headerHeight && rect.bottom >= headerHeight) {
-        setIsDark(true);
-      } else {
-        setIsDark(false);
-      }
+      setIsDark(isOverManifesto);
     };
 
     window.addEventListener("scroll", handleScroll);
