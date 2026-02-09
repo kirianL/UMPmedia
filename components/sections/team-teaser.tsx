@@ -32,7 +32,7 @@ export function TeamTeaser() {
                 {/* Image Placeholder */}
               </div>
               <div>
-                <h4 className="text-white font-bold text-lg">Nombre {i}</h4>
+                <h3 className="text-white font-bold text-lg">Nombre {i}</h3>
                 <span className="text-ump-accent text-xs font-bold uppercase tracking-wide">
                   Rol {i}
                 </span>

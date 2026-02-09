@@ -9,23 +9,28 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "UMPmedia | Estudio Audiovisual - Limón, Costa Rica",
+  title: {
+    default: "UMPmedia | Estudio Audiovisual - Limón, Costa Rica",
+    template: "%s | UMPmedia",
+  },
   description:
-    "Creamos experiencias visuales que perduran. Estudio audiovisual independiente especializado en producción, fotografía y branding visual.",
+    "Desde Limón para el mundo. Estudio audiovisual especializado en producción de video, fotografía profesional y estrategias de contenido digital.",
   keywords: [
     "producción audiovisual",
-    "estudio audiovisual",
-    "Limón",
-    "Costa Rica",
-    "fotografía",
-    "video",
-    "branding",
+    "estudio de video Costa Rica",
+    "fotografía profesional Limón",
+    "creación de contenido",
+    "marketing digital",
+    "UMPmedia",
+    "video corporativo",
   ],
-
+  authors: [{ name: "UMPmedia Team", url: "https://umpmedia.vercel.app" }],
+  creator: "UMPmedia",
+  publisher: "UMPmedia",
   openGraph: {
     title: "UMPmedia | Estudio Audiovisual - Limón, Costa Rica",
     description:
-      "Creamos experiencias visuales que perduran. Estudio audiovisual independiente especializado en producción, fotografía y branding visual.",
+      "Desde Limón para el mundo. Estudio audiovisual especializado en producción de video, fotografía profesional y estrategias de contenido digital.",
     url: "https://umpmedia.vercel.app",
     siteName: "UMPmedia",
     images: [
@@ -42,10 +47,16 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "UMPmedia | Estudio Audiovisual",
-    description: "Creamos experiencias visuales que perduran.",
+    description:
+      "Desde Limón para el mundo. Producción audiovisual de alto nivel.",
     images: ["/assets/OpenGraph/og-social.jpg"],
+    creator: "@umpmedia",
   },
   metadataBase: new URL("https://umpmedia.vercel.app"),
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -53,9 +64,58 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "UMPmedia",
+    image: "https://umpmedia.vercel.app/assets/OpenGraph/og-social.jpg",
+    description: "Estudio audiovisual independiente desde Limón, Costa Rica.",
+    url: "https://umpmedia.vercel.app",
+    telephone: "+50600000000",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Limón Centro",
+      addressLocality: "Limón",
+      addressRegion: "Limón",
+      postalCode: "70101",
+      addressCountry: "CR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 9.9913,
+      longitude: -83.0415,
+    },
+    priceRange: "$$",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        opens: "08:00",
+        closes: "18:00",
+      },
+    ],
+    sameAs: [
+      "https://www.instagram.com/umpmediacr",
+      "https://www.youtube.com/@UltimateMediaProductions",
+    ],
+  };
+
   return (
     <html lang="es">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

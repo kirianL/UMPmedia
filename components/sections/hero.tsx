@@ -14,6 +14,7 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/60 z-10" /> {/* Overlay */}
         <video
+          src="/assets/videos/Presentacion1.mp4"
           autoPlay
           muted
           loop
