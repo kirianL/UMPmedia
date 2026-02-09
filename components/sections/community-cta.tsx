@@ -13,7 +13,7 @@ export function CommunityCTA() {
       <div className="container mx-auto max-w-7xl">
         {/* Tier 1: Massive Headline (Full Width) */}
         <div className="mb-12 md:mb-20">
-          <h2 className="text-6xl sm:text-8xl lg:text-[11rem] font-black text-black leading-[0.8] tracking-tighter uppercase text-balance text-left">
+          <h2 className="text-4xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black text-black leading-[0.9] tracking-tighter uppercase text-balance text-left break-words">
             Sigue el <br />
             <span className="opacity-40">movimiento.</span>
           </h2>
@@ -36,7 +36,7 @@ export function CommunityCTA() {
           {/* Right: Social Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 w-full">
             <Link
-              href="https://instagram.com"
+              href="https://www.instagram.com/umpmediacr?igsh=M3ByaDdlanhsa3Fv"
               target="_blank"
               className="group flex flex-col justify-between p-6 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#18943A] transition-all duration-700 ease-in-out"
             >
@@ -53,7 +53,7 @@ export function CommunityCTA() {
             </Link>
 
             <Link
-              href="https://youtube.com"
+              href="https://www.youtube.com/@UltimateMediaProductions"
               target="_blank"
               className="group flex flex-col justify-between p-6 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#18943A] transition-all duration-700 ease-in-out"
             >
@@ -70,9 +70,9 @@ export function CommunityCTA() {
             </Link>
 
             <Link
-              href="https://wa.me/something"
+              href="https://wa.me/506XXXXXXXX"
               target="_blank"
-              className="group col-span-2 flex items-center justify-between p-6 md:p-10 bg-black text-[#18943A] rounded-3xl hover:bg-neutral-900 transition-all duration-500"
+              className="group col-span-1 md:col-span-2 flex items-center justify-between p-6 md:p-10 bg-black text-[#18943A] rounded-3xl hover:bg-neutral-900 transition-all duration-500"
             >
               <div className="flex items-center gap-4 md:gap-8">
                 <SiWhatsapp size={32} className="md:w-16 md:h-16" />
