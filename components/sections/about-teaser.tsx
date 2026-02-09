@@ -86,11 +86,11 @@ export function AboutTeaser() {
           </div>
 
           {/* Photo Mosaic - Right 7 Cols */}
-          <div className="lg:col-span-7 grid grid-cols-5 gap-4 md:gap-6 order-1 lg:order-2 h-[500px] md:h-[700px] relative">
+          <div className="lg:col-span-7 grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-6 order-1 lg:order-2 h-[500px] md:h-[700px] relative">
             {/* Large Image - Main focus */}
             <motion.div
               style={{ y: y1 }}
-              className="col-span-3 h-full bg-[#18943A]/20 rounded-3xl overflow-hidden relative border border-white/5 group"
+              className="col-span-2 md:col-span-3 h-full bg-[#18943A]/20 rounded-3xl overflow-hidden relative border border-white/5 group"
             >
               <video
                 src="/assets/videos/Home-detrasdecamaras.mp4"
@@ -104,7 +104,7 @@ export function AboutTeaser() {
             </motion.div>
 
             {/* Top Small Image */}
-            <div className="col-span-2 grid grid-rows-2 gap-4 md:gap-6 h-full">
+            <div className="col-span-1 md:col-span-2 grid grid-rows-2 gap-4 md:gap-6 h-full">
               <motion.div
                 style={{ y: y2 }}
                 className="bg-ump-card rounded-3xl overflow-hidden relative border border-white/5 group"
