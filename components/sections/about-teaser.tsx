@@ -86,7 +86,7 @@ export function AboutTeaser() {
           </div>
 
           {/* Photo Mosaic - Right 7 Cols */}
-          <div className="lg:col-span-7 grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-6 order-1 lg:order-2 h-[500px] md:h-[700px] relative">
+          <div className="lg:col-span-7 grid grid-cols-3 md:grid-cols-5 gap-3 md:gap-6 order-1 lg:order-2 h-[400px] md:h-[700px] relative">
             {/* Large Image - Main focus */}
             <motion.div
               style={{ y: y1 }}
@@ -104,13 +104,13 @@ export function AboutTeaser() {
             </motion.div>
 
             {/* Top Small Image */}
-            <div className="col-span-1 md:col-span-2 grid grid-rows-2 gap-4 md:gap-6 h-full">
+            <div className="col-span-1 md:col-span-2 grid grid-rows-2 gap-3 md:gap-6 h-full">
               <motion.div
                 style={{ y: y2 }}
                 className="bg-ump-card rounded-3xl overflow-hidden relative border border-white/5 group"
               >
-                <div className="absolute inset-0 bg-ump-card/60 flex items-center justify-center p-4 text-center group-hover:bg-[#18943A]/20 transition-colors">
-                  <p className="text-white/20 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em]">
+                <div className="absolute inset-0 bg-ump-card/60 flex items-center justify-center p-2 text-center group-hover:bg-[#18943A]/20 transition-colors">
+                  <p className="text-white/20 font-mono text-[8px] md:text-[10px] uppercase tracking-[0.2em]">
                     [ FOTO: <br /> DETALLE TÉCNICO ]
                   </p>
                 </div>
@@ -120,15 +120,15 @@ export function AboutTeaser() {
               {/* Bottom Small Image - Solid Green Accent */}
               <motion.div
                 style={{ y: y3 }}
-                className="bg-[#18943A] rounded-3xl p-6 md:p-8 flex flex-col justify-end group overflow-hidden relative"
+                className="bg-[#18943A] rounded-3xl p-4 md:p-8 flex flex-col justify-end group overflow-hidden relative"
               >
-                <div className="absolute top-0 right-0 p-6 md:p-8 opacity-20 group-hover:opacity-100 transition-opacity">
+                <div className="absolute top-0 right-0 p-4 md:p-8 opacity-20 group-hover:opacity-100 transition-opacity">
                   <ArrowUpRight
-                    size={32}
+                    size={24}
                     className="md:w-10 md:h-10 text-black"
                   />
                 </div>
-                <p className="text-black font-black text-xl md:text-3xl leading-none uppercase tracking-tighter">
+                <p className="text-black font-black text-lg md:text-3xl leading-none uppercase tracking-tighter">
                   ESTO ES <br /> UMP.
                 </p>
                 <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
