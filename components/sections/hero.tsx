@@ -19,7 +19,10 @@ export function Hero() {
 
   const item = {
     hidden: { y: "100%" },
-    show: { y: "0%", transition: { duration: 0.8, ease: "circOut" } },
+    show: {
+      y: "0%",
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as any },
+    },
   };
 
   return (
