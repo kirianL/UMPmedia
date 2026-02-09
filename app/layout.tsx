@@ -21,9 +21,7 @@ export const metadata: Metadata = {
     "video",
     "branding",
   ],
-  icons: {
-    icon: "/LOGO-UMP.webp",
-  },
+
   openGraph: {
     title: "UMPmedia | Estudio Audiovisual - Limón, Costa Rica",
     description:
