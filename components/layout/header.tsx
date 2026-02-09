@@ -14,7 +14,7 @@ export function Header() {
     <>
       <header className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 py-6 mix-blend-difference text-white">
         {/* Logo */}
-        <Link href="/" className="z-50 relative w-40 h-12">
+        <Link href="/" className="z-50 relative w-28 h-9">
           <Image
             src="/LogoUMP-Transparente.webp"
             alt="UMP Media"
