@@ -30,6 +30,14 @@ export const metadata: Metadata = {
       "Creamos experiencias visuales que perduran. Estudio audiovisual independiente especializado en producción, fotografía y branding visual.",
     url: "https://umpmedia.vercel.app",
     siteName: "UMPmedia",
+    images: [
+      {
+        url: "/assets/OpenGraph/og-social.jpg",
+        width: 1200,
+        height: 630,
+        alt: "UMPmedia - Productora Audiovisual",
+      },
+    ],
     locale: "es_CR",
     type: "website",
   },
@@ -37,6 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "UMPmedia | Estudio Audiovisual",
     description: "Creamos experiencias visuales que perduran.",
+    images: ["/assets/OpenGraph/og-social.jpg"],
   },
   metadataBase: new URL("https://umpmedia.vercel.app"),
 };
