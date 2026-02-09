@@ -9,10 +9,10 @@ export function Footer() {
         <div className="flex flex-col gap-4">
           <Link href="/" className="relative w-40 h-12 block">
             <Image
-              src="/LOGO-UMP.webp"
+              src="/LogoUMP-Transparente.webp"
               alt="UMP Media"
               fill
-              className="object-contain object-left invert"
+              className="object-contain object-left"
             />
           </Link>
           <p className="text-ump-secondary text-sm max-w-xs">

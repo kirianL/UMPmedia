@@ -16,10 +16,10 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="z-50 relative w-40 h-12">
           <Image
-            src="/LOGO-UMP.webp"
+            src="/LogoUMP-Transparente.webp"
             alt="UMP Media"
             fill
-            className="object-contain object-left invert"
+            className="object-contain object-left"
             priority
           />
         </Link>
