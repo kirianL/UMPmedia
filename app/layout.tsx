@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     siteName: "UMPmedia",
     images: [
       {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
+        url: "/opengraph-image.png",
+        width: 1536,
+        height: 793,
         alt: "UMPmedia - Productora Audiovisual",
       },
     ],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "UMPmedia | Estudio Audiovisual",
     description: "Creamos experiencias visuales que perduran.",
-    images: ["/og.png"],
+    images: ["/opengraph-image.png"],
   },
   metadataBase: new URL("https://umpmedia.vercel.app"),
 };
