@@ -4,37 +4,42 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
 
-      // Determine visibility
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false); // Hide on scroll down
-      } else {
-        setIsVisible(true); // Show on scroll up
-      }
-      setLastScrollY(currentScrollY);
-    };
+    // Ignore small movements (hysteresis) to prevent jitter on mobile
+    if (Math.abs(latest - previous) < 15) return;
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+    if (latest > previous && latest > 50) {
+      setHidden(true); // Hide on scroll down
+    } else {
+      setHidden(false); // Show on scroll up
+    }
+  });
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 py-4 bg-black/90 backdrop-blur-md border-b border-white/10 text-white transition-all duration-500 transform ${
-          isVisible ? "translate-y-0" : "-translate-y-full"
-        }`}
+      <motion.header
+        variants={{
+          visible: { y: 0 },
+          hidden: { y: "-100%" },
+        }}
+        animate={hidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
+        className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 py-4 bg-black/90 backdrop-blur-md border-b border-white/10 text-white"
       >
         {/* Logo */}
         <Link href="/" className="z-50 relative w-20 h-9">
@@ -61,7 +66,7 @@ export function Header() {
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
