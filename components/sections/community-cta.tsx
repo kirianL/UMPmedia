@@ -34,11 +34,11 @@ export function CommunityCTA() {
           </div>
 
           {/* Right: Social Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 w-full">
+          <div className="grid grid-cols-2 gap-4 md:gap-8 w-full">
             <Link
               href="https://www.instagram.com/umpmediacr?igsh=M3ByaDdlanhsa3Fv"
               target="_blank"
-              className="group flex flex-col justify-between p-6 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#18943A] transition-all duration-700 ease-in-out"
+              className="group flex flex-col justify-between p-4 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#18943A] transition-all duration-700 ease-in-out"
             >
               <SiInstagram size={32} className="md:w-16 md:h-16" />
               <div className="flex justify-between items-end">
@@ -55,7 +55,7 @@ export function CommunityCTA() {
             <Link
               href="https://www.youtube.com/@UltimateMediaProductions"
               target="_blank"
-              className="group flex flex-col justify-between p-6 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#18943A] transition-all duration-700 ease-in-out"
+              className="group flex flex-col justify-between p-4 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#18943A] transition-all duration-700 ease-in-out"
             >
               <SiYoutube size={32} className="md:w-16 md:h-16" />
               <div className="flex justify-between items-end">
@@ -72,7 +72,7 @@ export function CommunityCTA() {
             <Link
               href="https://wa.me/506XXXXXXXX"
               target="_blank"
-              className="group col-span-1 md:col-span-2 flex items-center justify-between p-6 md:p-10 bg-black text-[#18943A] rounded-3xl hover:bg-neutral-900 transition-all duration-500"
+              className="group col-span-2 flex items-center justify-between p-4 md:p-10 bg-black text-[#18943A] rounded-3xl hover:bg-neutral-900 transition-all duration-500"
             >
               <div className="flex items-center gap-4 md:gap-8">
                 <SiWhatsapp size={32} className="md:w-16 md:h-16" />
