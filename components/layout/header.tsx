@@ -18,12 +18,13 @@ export function Header() {
       const y = 40;
 
       const elements = document.elementsFromPoint(x, y);
-      const isOverManifesto = elements.some(
+      const isOverCommunityCTA = elements.some(
         (el) =>
-          el.id === "manifesto-section" || el.closest("#manifesto-section"),
+          el.id === "community-cta-section" ||
+          el.closest("#community-cta-section"),
       );
 
-      setIsDark(isOverManifesto);
+      setIsDark(isOverCommunityCTA);
     };
 
     window.addEventListener("scroll", handleScroll);

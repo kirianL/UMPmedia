@@ -6,7 +6,10 @@ import { SiInstagram, SiYoutube, SiWhatsapp } from "react-icons/si";
 
 export function CommunityCTA() {
   return (
-    <section className="bg-[#18943A] py-16 px-4 md:py-32 lg:py-40 overflow-hidden relative border-t border-black/5 z-70 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section
+      id="community-cta-section"
+      className="bg-[#18943A] py-16 px-4 md:py-32 lg:py-40 overflow-hidden relative border-t border-black/5 z-70 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
+    >
       <div className="container mx-auto max-w-7xl">
         {/* Tier 1: Massive Headline (Full Width) */}
         <div className="mb-12 md:mb-20">
