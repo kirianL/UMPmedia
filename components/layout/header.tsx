@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -24,32 +23,18 @@ export function Header() {
         setIsVisible(true); // Show on scroll up
       }
       setLastScrollY(currentScrollY);
-
-      // Check what's under the logo (for dark mode)
-      const x = 50;
-      const y = 40;
-
-      const elements = document.elementsFromPoint(x, y);
-      const isOverCommunityCTA = elements.some(
-        (el) =>
-          el.id === "community-cta-section" ||
-          el.closest("#community-cta-section"),
-      );
-
-      setIsDark(isOverCommunityCTA);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 py-6 transition-all duration-500 transform ${
+        className={`fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 py-4 bg-black/90 backdrop-blur-md border-b border-white/10 text-white transition-all duration-500 transform ${
           isVisible ? "translate-y-0" : "-translate-y-full"
-        } ${isDark ? "text-black" : "mix-blend-difference text-white"}`}
+        }`}
       >
         {/* Logo */}
         <Link href="/" className="z-50 relative w-20 h-9">
@@ -57,9 +42,7 @@ export function Header() {
             src="/LogoUMP-Transparente.webp"
             alt="UMP Media"
             fill
-            className={`object-contain object-left transition-all duration-300 ${
-              isDark ? "invert" : ""
-            }`}
+            className="object-contain object-left"
             priority
           />
         </Link>

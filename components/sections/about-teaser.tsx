@@ -86,28 +86,31 @@ export function AboutTeaser() {
           </div>
 
           {/* Photo Mosaic - Right 7 Cols */}
-          <div className="lg:col-span-7 grid grid-cols-2 gap-4 md:gap-6 order-1 lg:order-2 h-[500px] md:h-[700px] relative">
+          <div className="lg:col-span-7 grid grid-cols-5 gap-4 md:gap-6 order-1 lg:order-2 h-[500px] md:h-[700px] relative">
             {/* Large Image - Main focus */}
             <motion.div
               style={{ y: y1 }}
-              className="col-span-1 h-full bg-[#18943A]/20 rounded-3xl overflow-hidden relative border border-white/5 group"
+              className="col-span-3 h-full bg-[#18943A]/20 rounded-3xl overflow-hidden relative border border-white/5 group"
             >
-              <div className="absolute inset-0 bg-ump-card/40 flex items-center justify-center p-6 text-center group-hover:bg-[#18943A]/10 transition-colors">
-                <p className="text-white/20 font-mono text-[10px] md:text-xs uppercase tracking-[0.3em] rotate-90 md:rotate-0">
-                  [ ESPACIO PARA FOTO: <br /> EL EQUIPO EN ACCIÓN ]
-                </p>
-              </div>
+              <video
+                src="/assets/videos/Home-detrasdecamaras.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+              />
               <div className="absolute inset-x-0 bottom-0 h-1 bg-[#18943A] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
             </motion.div>
 
             {/* Top Small Image */}
-            <div className="col-span-1 grid grid-rows-2 gap-4 md:gap-6 h-full">
+            <div className="col-span-2 grid grid-rows-2 gap-4 md:gap-6 h-full">
               <motion.div
                 style={{ y: y2 }}
                 className="bg-ump-card rounded-3xl overflow-hidden relative border border-white/5 group"
               >
                 <div className="absolute inset-0 bg-ump-card/60 flex items-center justify-center p-4 text-center group-hover:bg-[#18943A]/20 transition-colors">
-                  <p className="text-white/20 font-mono text-[10px] md:text-xs uppercase tracking-[0.2em]">
+                  <p className="text-white/20 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em]">
                     [ FOTO: <br /> DETALLE TÉCNICO ]
                   </p>
                 </div>
@@ -117,12 +120,15 @@ export function AboutTeaser() {
               {/* Bottom Small Image - Solid Green Accent */}
               <motion.div
                 style={{ y: y3 }}
-                className="bg-[#18943A] rounded-3xl p-8 flex flex-col justify-end group overflow-hidden relative"
+                className="bg-[#18943A] rounded-3xl p-6 md:p-8 flex flex-col justify-end group overflow-hidden relative"
               >
-                <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity">
-                  <ArrowUpRight size={48} className="text-black" />
+                <div className="absolute top-0 right-0 p-6 md:p-8 opacity-20 group-hover:opacity-100 transition-opacity">
+                  <ArrowUpRight
+                    size={32}
+                    className="md:w-10 md:h-10 text-black"
+                  />
                 </div>
-                <p className="text-black font-black text-2xl md:text-4xl leading-none uppercase tracking-tighter">
+                <p className="text-black font-black text-xl md:text-3xl leading-none uppercase tracking-tighter">
                   ESTO ES <br /> UMP.
                 </p>
                 <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
