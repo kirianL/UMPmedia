@@ -33,7 +33,10 @@ export function Manifesto() {
   };
 
   return (
-    <section className="py-40 md:py-80 bg-ump-background flex items-center justify-center text-center px-6 relative z-80 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 overflow-hidden border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section
+      id="manifesto-section"
+      className="py-40 md:py-80 bg-ump-background flex items-center justify-center text-center px-6 relative z-80 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 overflow-hidden border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
+    >
       {/* Background Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.02]">
         <span className="text-[20rem] md:text-[40rem] font-black leading-none uppercase select-none">

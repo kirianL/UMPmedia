@@ -9,22 +9,51 @@ import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const manifestoSection = document.getElementById("manifesto-section");
+      if (!manifestoSection) return;
+
+      const rect = manifestoSection.getBoundingClientRect();
+      const headerHeight = 80; // Approx header height
+
+      // Check if header is within the manifesto section
+      // rect.top <= headerHeight means the section has reached the header
+      // rect.bottom >= headerHeight means the section is still under the header
+      if (rect.top <= headerHeight && rect.bottom >= headerHeight) {
+        setIsDark(true);
+      } else {
+        setIsDark(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial state
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 py-6 mix-blend-difference text-white">
+      <header
+        className={`fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 py-6 transition-colors duration-300 ${
+          isDark ? "text-black" : "mix-blend-difference text-white"
+        }`}
+      >
         {/* Logo */}
-        <Link href="/" className="z-50 relative w-28 h-9">
+        <Link href="/" className="z-50 relative w-20 h-9">
           <Image
             src="/LogoUMP-Transparente.webp"
             alt="UMP Media"
             fill
-            className="object-contain object-left"
+            className={`object-contain object-left transition-all duration-300 ${
+              isDark ? "invert" : ""
+            }`}
             priority
           />
         </Link>
-
-        {/* Right Actions */}
         <div className="flex items-center gap-4 z-50">
           {/* Lang Switch (Static for now) */}
           <button className="text-sm font-medium hover:text-ump-accent transition-colors uppercase tracking-wider">
