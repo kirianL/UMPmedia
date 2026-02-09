@@ -35,10 +35,10 @@ export function AboutTeaser() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="inline-block px-4 py-1.5 rounded-full border border-[#18943A]/30 text-[#18943A] text-xs font-bold uppercase tracking-[0.2em] mb-6">
+              <span className="inline-block px-4 py-2 rounded-full bg-[#18943A]/10 border border-[#18943A]/20 text-[#18943A] text-xs font-bold uppercase tracking-[0.2em] mb-8 backdrop-blur-sm">
                 Nuestra Esencia
               </span>
-              <h2 className="text-4xl md:text-7xl font-bold text-white leading-[0.9] tracking-tighter mb-8 italic">
+              <h2 className="text-4xl md:text-7xl font-bold text-white leading-[1.05] tracking-tighter mb-8 italic">
                 CULTURA <br />
                 <span className="text-[#18943A] not-italic">
                   CARIBEÑA.
