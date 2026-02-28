@@ -32,17 +32,25 @@ const CTAFinal = dynamic(() =>
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen">
-      <Hero />
-      <AboutTeaser />
-      <VideoShowcase />
-      <ServicesTeaser />
-      <PortfolioPreview />
-      <TeamTeaser />
-      <NewsTeaser />
-      <CommunityCTA />
-      <Manifesto />
-      <CTAFinal />
-    </main>
+    <>
+      <link
+        rel="preload"
+        href="/assets/videos/Hero-sectionUMP.mp4"
+        as="video"
+        type="video/mp4"
+      />
+      <main className="flex flex-col min-h-screen">
+        <Hero />
+        <AboutTeaser />
+        <VideoShowcase />
+        <ServicesTeaser />
+        <PortfolioPreview />
+        <TeamTeaser />
+        <NewsTeaser />
+        <CommunityCTA />
+        <Manifesto />
+        <CTAFinal />
+      </main>
+    </>
   );
 }

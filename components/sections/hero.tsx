@@ -34,10 +34,12 @@ export function Hero() {
           loop
           muted
           playsInline
+          preload="auto"
+          // @ts-ignore
+          fetchpriority="high"
+          src="/assets/videos/Hero-sectionUMP.mp4"
           className="absolute inset-0 w-full h-full object-cover scale-105"
-        >
-          <source src="/assets/videos/Hero-sectionUMP.mp4" type="video/mp4" />
-        </video>
+        />
         {/* Overlays to ensure text readability and blend with the next section */}
         <div className="absolute inset-0 bg-black/75" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ump-background" />
