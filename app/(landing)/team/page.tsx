@@ -39,6 +39,13 @@ const team = [
     specialties: ["Contenido Digital", "Redes Sociales", "Storytelling"],
     image: "/assets/images/Team/Camila.jpg",
   },
+  {
+    name: "Kirian Luna Quirós",
+    role: "Ingeniero en Sistemas y Desarrollador Web",
+    bio: "Kirian Luna Quirós es ingeniero en sistemas y desarrollador web, especializado en la creación de sistemas y páginas web modernas. Cuenta con más de dos años de experiencia desarrollando soluciones digitales, combinando tecnología, diseño y creatividad para construir plataformas funcionales y visualmente atractivas.\n\nA lo largo de su trayectoria ha trabajado con restaurantes, empresas de exportación, instituciones públicas y distintos negocios que buscan fortalecer su presencia digital mediante herramientas tecnológicas bien estructuradas.\n\nSu enfoque se centra en el desarrollo de aplicaciones y sitios web optimizados para la experiencia del usuario, cuidando tanto la arquitectura del sistema como la parte visual y creativa de cada proyecto. Actualmente continúa desarrollando plataformas digitales y sistemas web, explorando nuevas tecnologías y tendencias de diseño para crear productos modernos, eficientes y con identidad propia.",
+    specialties: ["Desarrollo Web", "Sistemas", "UI/UX"],
+    image: "/assets/images/Team/Kirian.jpg",
+  },
 ];
 
 type TeamMember = (typeof team)[number];

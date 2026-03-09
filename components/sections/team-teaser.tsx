@@ -23,6 +23,12 @@ const teamMembers = [
     photo: "/assets/images/Team/Camila.jpg",
     bioLink: "/team",
   },
+  {
+    name: "Kirian Luna Quirós",
+    role: "Ingeniero en Sistemas y Desarrollador Web",
+    photo: "/assets/images/Team/Kirian.jpg",
+    bioLink: "/team",
+  },
 ];
 
 export function TeamTeaser() {
