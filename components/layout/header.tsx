@@ -43,17 +43,30 @@ export function Header() {
     setIsScrolled(latest > 60);
   });
 
-  const bgStyle = heroIsVisible
+  const bgStyle = isOpen
+    ? { background: "#0c0c0c" }
+    : heroIsVisible
     ? { background: "#32fb00" }
     : isScrolled
     ? { background: "rgba(10,10,10,0.92)", backdropFilter: "blur(12px)" }
     : { background: "transparent" };
 
-  const textColor = heroIsVisible ? "#0a0a0a" : "#ffffff";
-  const borderColor = heroIsVisible ? "#0a0a0a" : "#ffffff";
+  const textColor = isOpen
+    ? "#ffffff"
+    : heroIsVisible
+    ? "#0a0a0a"
+    : "#ffffff";
+
+  const borderColor = isOpen
+    ? "#ffffff"
+    : heroIsVisible
+    ? "#0a0a0a"
+    : "#ffffff";
 
   // Pick the right logo based on context
-  const logoSrc = heroIsVisible
+  const logoSrc = isOpen
+    ? "/assets/images/ump-logo-white.svg"
+    : heroIsVisible
     ? "/assets/images/ump-logo-dark.svg"
     : "/assets/images/ump-logo-white.svg";
 
@@ -65,7 +78,7 @@ export function Header() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         style={{
           ...bgStyle,
-          borderBottom: isScrolled
+          borderBottom: isScrolled && !isOpen
             ? "1px solid rgba(255,255,255,0.08)"
             : "none",
           transition: "background 0.35s ease, border-color 0.35s ease",
@@ -159,7 +172,7 @@ export function Header() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden z-[100000] p-2"
-          style={{ color: isOpen ? "#ffffff" : textColor, transition: "color 0.35s ease" }}
+          style={{ color: textColor, transition: "color 0.35s ease" }}
           aria-label="Toggle Menu"
         >
           {isOpen ? <X size={26} /> : <Menu size={26} />}
@@ -228,21 +241,10 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       initial="closed"
       animate="open"
       exit="closed"
-      className="fixed inset-0 z-[99998] flex flex-col bg-[#0c0c0c]"
+      className="fixed inset-0 z-[99998] flex flex-col bg-[#0c0c0c] h-[100dvh] w-screen"
     >
-      {/* Top bar: Logo + close X */}
-      <div className="flex items-center justify-between px-6 pt-4 pb-2">
-        <Link href="/" onClick={onClose} className="flex items-center">
-          <Image
-            src="/assets/images/ump-logo-white.svg"
-            alt="UMP Media"
-            width={120}
-            height={34}
-            className="h-7 w-auto object-contain"
-          />
-        </Link>
-        {/* X button is handled by the parent header's z-index button */}
-      </div>
+      {/* Spacer to push content below the fixed header */}
+      <div className="h-20 flex-shrink-0" />
 
       {/* Centred nav links */}
       <motion.nav
@@ -295,24 +297,24 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
             fontWeight: 700,
             fontSize: "0.95rem",
             color: "#0a0a0a",
-            background: "#32fb00",
+            background: "#ffffff",
             borderRadius: "999px",
             padding: "14px 44px",
             textDecoration: "none",
             display: "inline-block",
             textAlign: "center",
-            boxShadow: "0 8px 24px rgba(50,251,0,0.15)",
+            boxShadow: "0 8px 24px rgba(255,255,255,0.05)",
             transition: "transform 0.2s ease, box-shadow 0.2s ease",
           }}
           onMouseEnter={(e) => {
             const el = e.currentTarget as HTMLAnchorElement;
             el.style.transform = "scale(1.04)";
-            el.style.boxShadow = "0 12px 28px rgba(50,251,0,0.25)";
+            el.style.boxShadow = "0 12px 28px rgba(255,255,255,0.15)";
           }}
           onMouseLeave={(e) => {
             const el = e.currentTarget as HTMLAnchorElement;
             el.style.transform = "scale(1)";
-            el.style.boxShadow = "0 8px 24px rgba(50,251,0,0.15)";
+            el.style.boxShadow = "0 8px 24px rgba(255,255,255,0.05)";
           }}
         >
           Cotizar proyecto
