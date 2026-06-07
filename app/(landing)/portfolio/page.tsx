@@ -5,6 +5,7 @@ import { ProjectCard } from "@/components/ui/project-card";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
+import { RevealText } from "@/components/ui/reveal-text";
 
 const categories = [
   "Todo",
@@ -71,15 +72,36 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen pt-32 pb-20">
       <div className="container mx-auto px-6 mb-16">
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-          Portafolio
-        </h1>
-        <p className="text-xl text-ump-secondary max-w-xl mb-12">
+        <motion.span
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block"
+        >
+          NUESTROS PROYECTOS
+        </motion.span>
+        <RevealText
+          text="PORTAFOLIO"
+          tag="h1"
+          className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
+          delay={0.1}
+        />
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-xl text-ump-secondary max-w-xl mb-12"
+        >
           Una selección curada de nuestros proyectos más recientes.
-        </p>
+        </motion.p>
 
         {/* Filters */}
-        <div className="flex flex-wrap gap-3">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="flex flex-wrap gap-3"
+        >
           {categories.map((cat) => (
             <button
               key={cat}
@@ -93,7 +115,7 @@ export default function PortfolioPage() {
               {cat}
             </button>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <div className="container mx-auto px-6">

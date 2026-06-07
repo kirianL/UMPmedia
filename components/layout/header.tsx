@@ -203,11 +203,27 @@ export function Header() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden z-[100000] p-2"
-          style={{ color: textColor, transition: "color 0.45s ease-in-out" }}
+          className="md:hidden z-[100000] p-2 relative w-10 h-10 flex items-center justify-center focus:outline-none"
+          style={{ color: textColor }}
           aria-label="Toggle Menu"
         >
-          {isOpen ? <X size={26} /> : <Menu size={26} />}
+          <div className="flex flex-col gap-1.5 w-6 items-center justify-center">
+            <motion.span
+              animate={isOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="w-full h-[2px] bg-current rounded-full"
+            />
+            <motion.span
+              animate={isOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              className="w-full h-[2px] bg-current rounded-full"
+            />
+            <motion.span
+              animate={isOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="w-full h-[2px] bg-current rounded-full"
+            />
+          </div>
         </button>
       </motion.header>
 
@@ -233,16 +249,18 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
 
   const menuVariants = {
     closed: {
-      y: "-100%",
+      opacity: 0,
+      scale: 0.96,
       transition: {
-        duration: 0.4,
-        ease: [0.76, 0, 0.24, 1] as const,
+        duration: 0.25,
+        ease: "easeInOut" as const,
       },
     },
     open: {
-      y: 0,
+      opacity: 1,
+      scale: 1,
       transition: {
-        duration: 0.45,
+        duration: 0.35,
         ease: [0.16, 1, 0.3, 1] as const,
       },
     },
