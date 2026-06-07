@@ -95,11 +95,11 @@ export function Header() {
             : "blur(12px)",
         }}
         transition={{
-          y: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
-          opacity: { duration: 0.6 },
-          backgroundColor: { duration: 0.3, ease: "easeInOut" },
-          borderColor: { duration: 0.3, ease: "easeInOut" },
-          backdropFilter: { duration: 0.3, ease: "easeInOut" },
+          y: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
+          opacity: { duration: 0.4 },
+          backgroundColor: { duration: 0.2, ease: "easeInOut" },
+          borderColor: { duration: 0.2, ease: "easeInOut" },
+          backdropFilter: { duration: 0.2, ease: "easeInOut" },
         }}
         style={{
           borderBottomWidth: isScrolled && !isOpen ? "1px" : "0px",
