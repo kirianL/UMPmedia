@@ -58,43 +58,65 @@ export function Header() {
     : "#ffffff";
 
   const borderColor = isOpen
-    ? "#ffffff"
+    ? "rgba(255,255,255,1)"
     : heroIsVisible
-    ? "#0a0a0a"
-    : "#ffffff";
-
-  // Pick the right logo based on context
-  const logoSrc = isOpen
-    ? "/assets/images/ump-logo-white.svg"
-    : heroIsVisible
-    ? "/assets/images/ump-logo-dark.svg"
-    : "/assets/images/ump-logo-white.svg";
+    ? "rgba(10,10,10,1)"
+    : "rgba(255,255,255,1)";
 
   return (
     <>
       <motion.header
         initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        animate={{
+          y: 0,
+          opacity: 1,
+          backgroundColor: isOpen
+            ? "#0c0c0c"
+            : heroIsVisible
+            ? "#32fb00"
+            : "rgba(10,10,10,0.92)",
+          borderColor: isScrolled && !isOpen
+            ? "rgba(255,255,255,0.08)"
+            : "rgba(0,0,0,0)",
+          backdropFilter: isOpen
+            ? "blur(0px)"
+            : heroIsVisible
+            ? "blur(0px)"
+            : "blur(12px)",
+        }}
+        transition={{
+          y: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
+          opacity: { duration: 0.6 },
+          backgroundColor: { duration: 0.45, ease: "easeInOut" },
+          borderColor: { duration: 0.45, ease: "easeInOut" },
+          backdropFilter: { duration: 0.45, ease: "easeInOut" },
+        }}
         style={{
-          ...bgStyle,
-          borderBottom: isScrolled && !isOpen
-            ? "1px solid rgba(255,255,255,0.08)"
-            : "none",
-          transition: "background 0.35s ease, border-color 0.35s ease",
+          borderBottomWidth: isScrolled && !isOpen ? "1px" : "0px",
+          borderStyle: "solid",
         }}
         className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 md:px-14 py-4"
       >
-        {/* Logo — real UMP SVG */}
-        <Link href="/" className="z-50 relative flex items-center" suppressHydrationWarning>
-          <Image
-            src={logoSrc}
-            alt="UMP Media"
-            width={120}
-            height={34}
-            className="h-7 w-auto object-contain"
-            priority
-          />
+        {/* Logo — Stacked for smooth cross-fade transition */}
+        <Link href="/" className="z-50 relative flex items-center w-[120px] h-[34px]" suppressHydrationWarning>
+          <div className="relative w-full h-full">
+            <Image
+              src="/assets/images/ump-logo-dark.svg"
+              alt="UMP Media Logo Dark"
+              fill
+              className="object-contain transition-opacity duration-500 ease-in-out"
+              style={{ opacity: heroIsVisible && !isOpen ? 1 : 0 }}
+              priority
+            />
+            <Image
+              src="/assets/images/ump-logo-white.svg"
+              alt="UMP Media Logo White"
+              fill
+              className="object-contain transition-opacity duration-500 ease-in-out"
+              style={{ opacity: heroIsVisible && !isOpen ? 0 : 1 }}
+              priority
+            />
+          </div>
         </Link>
 
         {/* Desktop centre links */}
@@ -110,7 +132,7 @@ export function Header() {
                 color: textColor,
                 textDecoration: "none",
                 opacity: pathname === link.href ? 1 : 0.75,
-                transition: "opacity 0.2s, color 0.35s",
+                transition: "opacity 0.2s, color 0.45s ease-in-out",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
               onMouseLeave={(e) =>
@@ -134,7 +156,7 @@ export function Header() {
               color: textColor,
               textDecoration: "none",
               opacity: 0.8,
-              transition: "color 0.35s ease, opacity 0.2s",
+              transition: "color 0.45s ease-in-out, opacity 0.2s",
             }}
           >
             Contacto
@@ -151,7 +173,7 @@ export function Header() {
               borderRadius: "4px",
               padding: "7px 16px",
               textDecoration: "none",
-              transition: "all 0.25s ease",
+              transition: "all 0.45s ease-in-out",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
@@ -172,7 +194,7 @@ export function Header() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden z-[100000] p-2"
-          style={{ color: textColor, transition: "color 0.35s ease" }}
+          style={{ color: textColor, transition: "color 0.45s ease-in-out" }}
           aria-label="Toggle Menu"
         >
           {isOpen ? <X size={26} /> : <Menu size={26} />}
