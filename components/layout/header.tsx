@@ -43,23 +43,26 @@ export function Header() {
     setIsScrolled(latest > 60);
   });
 
-  const bgStyle = isOpen
-    ? { background: "#0c0c0c" }
-    : heroIsVisible
+  // Automatically close mobile menu if screen resizes to desktop width
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const bgStyle = heroIsVisible
     ? { background: "#32fb00" }
     : isScrolled
     ? { background: "rgba(10,10,10,0.92)", backdropFilter: "blur(12px)" }
     : { background: "transparent" };
 
-  const textColor = isOpen
-    ? "#ffffff"
-    : heroIsVisible
-    ? "#0a0a0a"
-    : "#ffffff";
+  const textColor = heroIsVisible ? "#0a0a0a" : "#ffffff";
 
-  const borderColor = isOpen
-    ? "rgba(255,255,255,1)"
-    : heroIsVisible
+  const borderColor = heroIsVisible
     ? "rgba(10,10,10,1)"
     : "rgba(255,255,255,1)";
 
@@ -70,17 +73,13 @@ export function Header() {
         animate={{
           y: 0,
           opacity: 1,
-          backgroundColor: isOpen
-            ? "#0c0c0c"
-            : heroIsVisible
+          backgroundColor: heroIsVisible
             ? "#32fb00"
             : "rgba(10,10,10,0.92)",
           borderColor: isScrolled && !isOpen
             ? "rgba(255,255,255,0.08)"
             : "rgba(0,0,0,0)",
-          backdropFilter: isOpen
-            ? "blur(0px)"
-            : heroIsVisible
+          backdropFilter: heroIsVisible
             ? "blur(0px)"
             : "blur(12px)",
         }}
@@ -105,7 +104,7 @@ export function Header() {
               alt="UMP Media Logo Dark"
               fill
               className="object-contain transition-opacity duration-500 ease-in-out"
-              style={{ opacity: heroIsVisible && !isOpen ? 1 : 0 }}
+              style={{ opacity: heroIsVisible ? 1 : 0 }}
               priority
             />
             <Image
@@ -113,7 +112,7 @@ export function Header() {
               alt="UMP Media Logo White"
               fill
               className="object-contain transition-opacity duration-500 ease-in-out"
-              style={{ opacity: heroIsVisible && !isOpen ? 0 : 1 }}
+              style={{ opacity: heroIsVisible ? 0 : 1 }}
               priority
             />
           </div>
@@ -225,15 +224,15 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
     closed: {
       y: "-100%",
       transition: {
-        duration: 0.4,
-        ease: [0.16, 1, 0.3, 1] as const,
+        duration: 0.3,
+        ease: "easeInOut" as const,
       },
     },
     open: {
       y: 0,
       transition: {
-        duration: 0.5,
-        ease: [0.16, 1, 0.3, 1] as const,
+        duration: 0.32,
+        ease: "easeOut" as const,
       },
     },
   };
@@ -242,18 +241,18 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
     closed: {},
     open: {
       transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.15,
+        staggerChildren: 0.04,
+        delayChildren: 0.1,
       },
     },
   };
 
   const linkVariants = {
-    closed: { opacity: 0, y: 30 },
+    closed: { opacity: 0, y: 15 },
     open: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const },
+      transition: { duration: 0.28, ease: "easeOut" as const },
     },
   };
 
@@ -263,7 +262,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       initial="closed"
       animate="open"
       exit="closed"
-      className="fixed inset-0 z-[99998] flex flex-col bg-[#0c0c0c] h-[100dvh] w-screen"
+      className="fixed inset-0 z-[99998] flex flex-col bg-[#0c0c0c] h-[100dvh] w-screen md:hidden"
     >
       {/* Spacer to push content below the fixed header */}
       <div className="h-20 flex-shrink-0" />
