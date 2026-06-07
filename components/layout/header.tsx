@@ -191,14 +191,14 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       y: "-100%",
       transition: {
         duration: 0.4,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
     open: {
       y: 0,
       transition: {
         duration: 0.5,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
@@ -218,7 +218,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
     open: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
