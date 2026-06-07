@@ -13,23 +13,6 @@ export function Hero() {
       <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-end justify-between px-6 md:px-14 pt-[120px] pb-12 lg:pb-16 w-full h-full max-w-7xl mx-auto gap-8">
         {/* LEFT — Copy */}
         <div className="flex flex-col justify-center flex-1 w-full max-w-[590px] lg:pb-6">
-          {/* Logo brand badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-5 flex items-center"
-          >
-            <Image
-              src="/assets/images/ump-logo-dark.svg"
-              alt="UMP Media Logo"
-              width={140}
-              height={40}
-              className="h-8 md:h-9 w-auto object-contain"
-              priority
-            />
-          </motion.div>
-
           {/* Oversized Bold Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
