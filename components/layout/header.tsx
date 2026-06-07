@@ -39,6 +39,7 @@ export function Header() {
   const isHomePage = pathname === "/";
   const heroIsVisible = isHomePage && !isScrolled;
   const isGreenTheme = heroIsVisible && !isOpen;
+  const themeColor = isOpen ? "#0c0c0c" : isGreenTheme ? "#32fb00" : "#0a0a0a";
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 60);
@@ -63,9 +64,8 @@ export function Header() {
       meta.setAttribute("name", "theme-color");
       document.head.appendChild(meta);
     }
-    const color = isGreenTheme ? "#32fb00" : "#0a0a0a";
-    meta.setAttribute("content", color);
-  }, [isGreenTheme]);
+    meta.setAttribute("content", themeColor);
+  }, [themeColor]);
 
   const textColor = isOpen ? "#ffffff" : heroIsVisible ? "#0a0a0a" : "#ffffff";
 
@@ -108,7 +108,7 @@ export function Header() {
         className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 md:px-14 py-4"
       >
         {/* Logo — Stacked for smooth cross-fade transition */}
-        <Link href="/" className="z-50 relative flex items-center w-[120px] h-[34px]" suppressHydrationWarning>
+        <Link href="/" className="z-50 relative flex items-center w-[105px] h-[30px] md:w-[120px] md:h-[34px]" suppressHydrationWarning>
           <div className="relative w-full h-full">
             <Image
               src="/assets/images/ump-logo-dark.svg"
@@ -235,15 +235,15 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
     closed: {
       y: "-100%",
       transition: {
-        duration: 0.3,
-        ease: "easeInOut" as const,
+        duration: 0.4,
+        ease: [0.76, 0, 0.24, 1] as const,
       },
     },
     open: {
       y: 0,
       transition: {
-        duration: 0.32,
-        ease: "easeOut" as const,
+        duration: 0.45,
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
@@ -276,12 +276,12 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       className="fixed inset-0 z-[99998] flex flex-col bg-[#0c0c0c] h-[100dvh] w-screen md:hidden"
     >
       {/* Spacer to push content below the fixed header */}
-      <div className="h-20 flex-shrink-0" />
+      <div className="h-16 flex-shrink-0" />
 
       {/* Centred nav links */}
       <motion.nav
         variants={navVariants}
-        className="flex-1 flex flex-col items-center justify-center gap-5 px-6"
+        className="flex-1 flex flex-col items-center justify-center gap-4 px-6"
       >
         {MOBILE_LINKS.map((link) => (
           <motion.div key={link.href} variants={linkVariants}>
@@ -291,7 +291,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
               style={{
                 fontFamily: "'Bespoke Sans', sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(2rem, 7.5vw, 3rem)",
+                fontSize: "clamp(1.6rem, 6.2vw, 2.3rem)",
                 letterSpacing: "-0.01em",
                 color: "#ffffff",
                 textDecoration: "none",
@@ -319,7 +319,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       {/* Bottom CTA pill */}
       <motion.div
         variants={linkVariants}
-        className="flex flex-col items-center gap-3 pb-12 px-6"
+        className="flex flex-col items-center gap-3 pb-8 px-6"
       >
         <Link
           href="/contact"
