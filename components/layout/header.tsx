@@ -10,60 +10,163 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
+
+const NAV_LINKS = [
+  { href: "/", label: "Inicio" },
+  { href: "/portfolio", label: "Portafolio" },
+  { href: "/services", label: "Servicios" },
+  { href: "/about", label: "Nosotros" },
+  { href: "/news", label: "Noticias" },
+];
+
+const MOBILE_LINKS = [
+  { href: "/", label: "INICIO" },
+  { href: "/about", label: "NOSOTROS" },
+  { href: "/services", label: "SERVICIOS" },
+  { href: "/portfolio", label: "PORTAFOLIO" },
+  { href: "/news", label: "NOTICIAS" },
+  { href: "/team", label: "EQUIPO" },
+  { href: "/contact", label: "CONTACTO" },
+];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
   const { scrollY } = useScroll();
 
+  const isHomePage = pathname === "/";
+  const heroIsVisible = isHomePage && !isScrolled;
+
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 50) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
+    setIsScrolled(latest > 60);
   });
+
+  const bgStyle = heroIsVisible
+    ? { background: "#32fb00" }
+    : isScrolled
+    ? { background: "rgba(10,10,10,0.92)", backdropFilter: "blur(12px)" }
+    : { background: "transparent" };
+
+  const textColor = heroIsVisible ? "#0a0a0a" : "#ffffff";
+  const borderColor = heroIsVisible ? "#0a0a0a" : "#ffffff";
+
+  // Pick the right logo based on context
+  const logoSrc = heroIsVisible
+    ? "/assets/images/ump-logo-dark.svg"
+    : "/assets/images/ump-logo-white.svg";
 
   return (
     <>
       <motion.header
-        initial={{ y: 0 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 py-4 transition-all duration-300 ${
-          isScrolled
-            ? "bg-black/90 backdrop-blur-md border-b border-white/10"
-            : "bg-transparent border-transparent"
-        } text-white`}
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        style={{
+          ...bgStyle,
+          borderBottom: isScrolled
+            ? "1px solid rgba(255,255,255,0.08)"
+            : "none",
+          transition: "background 0.35s ease, border-color 0.35s ease",
+        }}
+        className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 md:px-14 py-4"
       >
-        {/* Logo */}
-        <Link href="/" className="z-50 relative w-20 h-9">
+        {/* Logo — real UMP SVG */}
+        <Link href="/" className="z-50 relative flex items-center" suppressHydrationWarning>
           <Image
-            src="/LogoUMP-Transparente.webp"
+            src={logoSrc}
             alt="UMP Media"
-            fill
-            className="object-contain object-left"
+            width={120}
+            height={34}
+            className="h-7 w-auto object-contain"
             priority
           />
         </Link>
-        <div className="flex items-center gap-4 z-50">
-          {/* Lang Switch (Static for now) */}
-          <button className="text-sm font-medium hover:text-ump-accent transition-colors uppercase tracking-wider">
-            ES
-          </button>
 
-          {/* Menu Trigger */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="p-2 hover:text-ump-accent transition-colors"
-            aria-label="Toggle Menu"
+        {/* Desktop centre links */}
+        <nav className="hidden md:flex items-center gap-7">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              style={{
+                fontFamily: "'Bespoke Sans', sans-serif",
+                fontWeight: 500,
+                fontSize: "0.875rem",
+                color: textColor,
+                textDecoration: "none",
+                opacity: pathname === link.href ? 1 : 0.75,
+                transition: "opacity 0.2s, color 0.35s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.opacity =
+                  pathname === link.href ? "1" : "0.75")
+              }
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Right: Contact link + CTA bordered button (desktop) */}
+        <div className="hidden md:flex items-center gap-5 z-50">
+          <Link
+            href="/contact"
+            style={{
+              fontFamily: "'Bespoke Sans', sans-serif",
+              fontWeight: 500,
+              fontSize: "0.875rem",
+              color: textColor,
+              textDecoration: "none",
+              opacity: 0.8,
+              transition: "color 0.35s ease, opacity 0.2s",
+            }}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            Contacto
+          </Link>
+          <Link
+            href="/portfolio"
+            style={{
+              fontFamily: "'Bespoke Sans', sans-serif",
+              fontWeight: 700,
+              fontSize: "0.82rem",
+              letterSpacing: "0.02em",
+              color: textColor,
+              border: `2px solid ${borderColor}`,
+              borderRadius: "4px",
+              padding: "7px 16px",
+              textDecoration: "none",
+              transition: "all 0.25s ease",
+            }}
+            onMouseEnter={(e) => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = heroIsVisible ? "#0a0a0a" : "#ffffff";
+              el.style.color = heroIsVisible ? "#32fb00" : "#0a0a0a";
+            }}
+            onMouseLeave={(e) => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.background = "transparent";
+              el.style.color = textColor;
+            }}
+          >
+            Ver Portafolio
+          </Link>
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden z-[100000] p-2"
+          style={{ color: isOpen ? "#ffffff" : textColor, transition: "color 0.35s ease" }}
+          aria-label="Toggle Menu"
+        >
+          {isOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
       </motion.header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay — Estudio Shout style */}
       <AnimatePresence>
         {isOpen && <MobileMenu onClose={() => setIsOpen(false)} />}
       </AnimatePresence>
@@ -71,17 +174,11 @@ export function Header() {
   );
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   Estudio Shout–style mobile menu: dark bg, centred bold accent links,
+   logo top-left, CTA pill at the bottom.
+   ═══════════════════════════════════════════════════════════════════════════ */
 function MobileMenu({ onClose }: { onClose: () => void }) {
-  const links = [
-    { href: "/", label: "Home", number: "01" },
-    { href: "/about", label: "Nosotros", number: "02" },
-    { href: "/services", label: "Servicios", number: "03" },
-    { href: "/portfolio", label: "Portafolio", number: "04" },
-    { href: "/news", label: "Noticias", number: "05" },
-    { href: "/team", label: "Equipo", number: "06" },
-    { href: "/contact", label: "Contacto", number: "07" },
-  ];
-
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -89,49 +186,137 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
     };
   }, []);
 
+  const menuVariants = {
+    closed: {
+      y: "-100%",
+      transition: {
+        duration: 0.4,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+    open: {
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
+
+  const navVariants = {
+    closed: {},
+    open: {
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.15,
+      },
+    },
+  };
+
+  const linkVariants = {
+    closed: { opacity: 0, y: 30 },
+    open: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: "-100%" }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: "-100%" }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 z-[99998] bg-ump-background flex flex-col px-6 overflow-y-auto"
+      variants={menuVariants}
+      initial="closed"
+      animate="open"
+      exit="closed"
+      className="fixed inset-0 z-[99998] flex flex-col bg-[#0c0c0c]"
     >
-      <nav className="flex-1 flex flex-col justify-center gap-6 py-24 min-h-min">
-        {links.map((link, index) => (
-          <motion.div
-            key={link.href}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 + index * 0.05 }}
-          >
+      {/* Top bar: Logo + close X */}
+      <div className="flex items-center justify-between px-6 pt-4 pb-2">
+        <Link href="/" onClick={onClose} className="flex items-center">
+          <Image
+            src="/assets/images/ump-logo-white.svg"
+            alt="UMP Media"
+            width={120}
+            height={34}
+            className="h-7 w-auto object-contain"
+          />
+        </Link>
+        {/* X button is handled by the parent header's z-index button */}
+      </div>
+
+      {/* Centred nav links */}
+      <motion.nav
+        variants={navVariants}
+        className="flex-1 flex flex-col items-center justify-center gap-5 px-6"
+      >
+        {MOBILE_LINKS.map((link) => (
+          <motion.div key={link.href} variants={linkVariants}>
             <Link
               href={link.href}
               onClick={onClose}
-              className="group flex items-baseline gap-4 text-4xl md:text-6xl font-bold text-ump-primary hover:text-ump-accent transition-colors tracking-tight"
+              style={{
+                fontFamily: "'Bespoke Sans', sans-serif",
+                fontWeight: 800,
+                fontSize: "clamp(2rem, 7.5vw, 3rem)",
+                letterSpacing: "-0.01em",
+                color: "#ffffff",
+                textDecoration: "none",
+                display: "block",
+                textAlign: "center",
+                transition: "color 0.25s ease, transform 0.25s ease",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.color = "#32fb00";
+                el.style.transform = "scale(1.05)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                el.style.color = "#ffffff";
+                el.style.transform = "scale(1)";
+              }}
             >
-              <span className="text-xs md:text-sm font-normal text-ump-accent font-mono">
-                {link.number}
-              </span>
               {link.label}
             </Link>
           </motion.div>
         ))}
-      </nav>
+      </motion.nav>
 
+      {/* Bottom CTA pill */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
-        className="pb-10 text-ump-secondary text-sm"
+        variants={linkVariants}
+        className="flex flex-col items-center gap-3 pb-12 px-6"
       >
-        <p>Limón, Costa Rica</p>
-        <a
-          href="mailto:hello@umpmedia.com"
-          className="hover:text-white transition-colors"
+        <Link
+          href="/contact"
+          onClick={onClose}
+          style={{
+            fontFamily: "'Bespoke Sans', sans-serif",
+            fontWeight: 700,
+            fontSize: "0.95rem",
+            color: "#0a0a0a",
+            background: "#32fb00",
+            borderRadius: "999px",
+            padding: "14px 44px",
+            textDecoration: "none",
+            display: "inline-block",
+            textAlign: "center",
+            boxShadow: "0 8px 24px rgba(50,251,0,0.15)",
+            transition: "transform 0.2s ease, box-shadow 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            const el = e.currentTarget as HTMLAnchorElement;
+            el.style.transform = "scale(1.04)";
+            el.style.boxShadow = "0 12px 28px rgba(50,251,0,0.25)";
+          }}
+          onMouseLeave={(e) => {
+            const el = e.currentTarget as HTMLAnchorElement;
+            el.style.transform = "scale(1)";
+            el.style.boxShadow = "0 8px 24px rgba(50,251,0,0.15)";
+          }}
         >
-          hello@umpmedia.com
-        </a>
+          Cotizar proyecto
+        </Link>
       </motion.div>
     </motion.div>
   );

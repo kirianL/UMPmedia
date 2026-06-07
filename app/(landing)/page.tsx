@@ -33,12 +33,6 @@ const CTAFinal = dynamic(() =>
 export default function Home() {
   return (
     <>
-      <link
-        rel="preload"
-        href="/assets/videos/Hero-sectionUMP.mp4"
-        as="video"
-        type="video/mp4"
-      />
       <main className="flex flex-col min-h-screen">
         <Hero />
         <AboutTeaser />

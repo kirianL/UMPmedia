@@ -54,8 +54,18 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://umpmedia.vercel.app"),
   icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
+    icon: [
+      { url: "/assets/ICO-UMP/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/assets/ICO-UMP/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/assets/ICO-UMP/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/assets/ICO-UMP/favicon-128x128.png", sizes: "128x128", type: "image/png" },
+      { url: "/assets/ICO-UMP/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/assets/ICO-UMP/favicon-256x256.png", sizes: "256x256", type: "image/png" },
+      { url: "/assets/ICO-UMP/favicon.ico", sizes: "any" }
+    ],
+    apple: [
+      { url: "/assets/ICO-UMP/favicon-180x180.png", sizes: "180x180", type: "image/png" }
+    ]
   },
 };
 
