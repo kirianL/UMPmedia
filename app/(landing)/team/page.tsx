@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ArrowUpRight, X } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { RevealText } from "@/components/ui/reveal-text";
 
 const team = [
   {
@@ -74,19 +75,32 @@ export default function TeamPage() {
   return (
     <div className="bg-ump-background min-h-screen pt-32 relative">
       <div className="container mx-auto px-6 mb-24">
-        <span className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block">
+        <motion.span
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block"
+        >
           El Equipo
-        </span>
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-          El talento detrás
-          <br /> de cada historia.
-        </h1>
+        </motion.span>
+        <RevealText
+          text="El talento detrás de cada historia."
+          tag="h1"
+          className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
+          delay={0.1}
+        />
       </div>
 
       <section className="container mx-auto px-6 pb-40 md:pb-56">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {team.map((member, i) => (
-            <div key={i} className="group flex flex-col">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="group flex flex-col"
+            >
               {/* Photo */}
               <button
                 onClick={() => setSelected(member)}
@@ -127,7 +141,7 @@ export default function TeamPage() {
                   Ver Bio <ArrowUpRight size={12} />
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

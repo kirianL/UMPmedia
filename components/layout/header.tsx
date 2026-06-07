@@ -81,7 +81,7 @@ export function Header() {
           y: 0,
           opacity: 1,
           backgroundColor: isOpen
-            ? "#0c0c0c"
+            ? "transparent"
             : heroIsVisible
             ? "#32fb00"
             : "rgba(10,10,10,0.92)",
@@ -203,27 +203,25 @@ export function Header() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden z-[100000] p-2 relative w-10 h-10 flex items-center justify-center focus:outline-none"
+          className="md:hidden z-[100000] p-2 relative w-10 h-10 flex flex-col items-center justify-center gap-[6px] focus:outline-none"
           style={{ color: textColor }}
           aria-label="Toggle Menu"
         >
-          <div className="flex flex-col gap-1.5 w-6 items-center justify-center">
-            <motion.span
-              animate={isOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="w-full h-[2px] bg-current rounded-full"
-            />
-            <motion.span
-              animate={isOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
-              transition={{ duration: 0.2, ease: "easeInOut" }}
-              className="w-full h-[2px] bg-current rounded-full"
-            />
-            <motion.span
-              animate={isOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="w-full h-[2px] bg-current rounded-full"
-            />
-          </div>
+          <motion.span
+            animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="w-6 h-[2px] bg-current rounded-full"
+          />
+          <motion.span
+            animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.2 }}
+            className="w-6 h-[2px] bg-current rounded-full"
+          />
+          <motion.span
+            animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="w-6 h-[2px] bg-current rounded-full"
+          />
         </button>
       </motion.header>
 
@@ -249,18 +247,16 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
 
   const menuVariants = {
     closed: {
-      opacity: 0,
-      scale: 0.96,
+      y: "-100%",
       transition: {
-        duration: 0.25,
-        ease: "easeInOut" as const,
+        duration: 0.35,
+        ease: [0.76, 0, 0.24, 1] as const,
       },
     },
     open: {
-      opacity: 1,
-      scale: 1,
+      y: 0,
       transition: {
-        duration: 0.35,
+        duration: 0.45,
         ease: [0.16, 1, 0.3, 1] as const,
       },
     },

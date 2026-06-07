@@ -12,26 +12,40 @@ import { Check, Info } from "lucide-react";
 import { DigitalSolutions } from "@/components/sections/digital-solutions";
 import { DigitalCombos } from "@/components/sections/digital-combos";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { RevealText } from "@/components/ui/reveal-text";
 
 export function ServicesContent() {
   return (
-    <div className="min-h-screen pt-32 pb-20">
+    <div className="min-h-screen pt-32 pb-20 bg-ump-background">
       {/* 1. Hero */}
       <div className="container mx-auto px-6 mb-16">
-        <span className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block">
+        <motion.span
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block"
+        >
           Catálogo de Servicios
-        </span>
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-          UMP MEDIA
-          <br /> Productora Audiovisual.
-        </h1>
+        </motion.span>
+        <RevealText
+          text="Catálogo de Servicios."
+          tag="h1"
+          className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
+          delay={0.1}
+        />
         <div className="max-w-2xl">
-          <p className="text-xl text-ump-secondary mb-8 leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl text-ump-secondary mb-8 leading-relaxed"
+          >
             Somos una productora audiovisual especializada en crear contenido
             estratégico que conecta marcas, proyectos y personas con su
             audiencia. Convertimos ideas en historias que comunican, posicionan
             y venden.
-          </p>
+          </motion.p>
         </div>
       </div>
 

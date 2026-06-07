@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Mail, MapPin, MessageSquare } from "lucide-react";
+import { RevealText } from "@/components/ui/reveal-text";
 
 export function ContactContent() {
   return (
@@ -11,18 +12,36 @@ export function ContactContent() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left Col: Info & Headline */}
           <div>
-            <span className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block">
+            <motion.span
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block"
+            >
               Contacto
-            </span>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight leading-none">
-              Hablemos de tu idea.
-            </h1>
-            <p className="text-xl text-ump-secondary max-w-md mb-12 leading-relaxed">
+            </motion.span>
+            <RevealText
+              text="Hablemos de tu idea."
+              tag="h1"
+              className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight leading-none"
+              delay={0.1}
+            />
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl text-ump-secondary max-w-md mb-12 leading-relaxed"
+            >
               Cuéntanos qué tienes en mente. Desde producciones completas hasta
               consultorías creativas.
-            </p>
+            </motion.p>
 
-            <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="space-y-8"
+            >
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-ump-alt rounded-full text-ump-accent">
                   <Mail size={24} />
@@ -50,12 +69,17 @@ export function ContactContent() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="mt-16 p-6 bg-ump-accent/10 border border-ump-accent/20 rounded-xl">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-16 p-6 bg-ump-accent/10 border border-ump-accent/20 rounded-xl"
+            >
               <h3 className="text-white font-bold mb-2 flex items-center gap-2">
                 <MessageSquare size={20} className="text-ump-accent" />
-                Respuesta Rápida
+                Respuesta Rápiva
               </h3>
               <p className="text-sm text-ump-secondary mb-4">
                 ¿Prefieres chat? Escríbenos directamente por WhatsApp.
@@ -63,11 +87,16 @@ export function ContactContent() {
               <Button className="w-full bg-ump-accent hover:bg-ump-accentHover text-white font-bold">
                 Chat en WhatsApp
               </Button>
-            </div>
+            </motion.div>
           </div>
 
           {/* Right Col: Booking Form */}
-          <div className="bg-ump-alt p-8 md:p-10 rounded-2xl border border-white/5">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="bg-ump-alt p-8 md:p-10 rounded-2xl border border-white/5"
+          >
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -138,7 +167,7 @@ export function ContactContent() {
                 Enviar Solicitud
               </Button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

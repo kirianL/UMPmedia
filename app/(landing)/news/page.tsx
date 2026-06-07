@@ -3,6 +3,8 @@
 import { CTAFinal } from "@/components/sections/cta-final";
 import Link from "next/link";
 import { ArrowRight, Calendar } from "lucide-react";
+import { motion } from "framer-motion";
+import { RevealText } from "@/components/ui/reveal-text";
 
 const news = [
   {
@@ -43,18 +45,30 @@ export default function NewsPage() {
   return (
     <div className="min-h-screen pt-32 pb-20">
       <div className="container mx-auto px-6 mb-24">
-        <span className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block">
+        <motion.span
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block"
+        >
           Actualidad
-        </span>
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-          Proyectos, Ideas y<br /> Procesos.
-        </h1>
+        </motion.span>
+        <RevealText
+          text="Proyectos, Ideas y Procesos."
+          tag="h1"
+          className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
+          delay={0.1}
+        />
       </div>
 
       <section className="container mx-auto px-6 mb-32">
         <div className="grid grid-cols-1 gap-12 max-w-4xl">
           {news.map((item, i) => (
-            <article
+            <motion.article
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.05 }}
               key={i}
               className="group border-b border-white/5 pb-12 last:border-0 md:flex md:gap-8 items-start"
             >
@@ -80,7 +94,7 @@ export default function NewsPage() {
                   Leer Artículo <ArrowRight size={16} />
                 </Link>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
 
