@@ -38,6 +38,7 @@ export function Header() {
 
   const isHomePage = pathname === "/";
   const heroIsVisible = isHomePage && !isScrolled;
+  const isGreenTheme = heroIsVisible && !isOpen;
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 60);
@@ -54,15 +55,21 @@ export function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const bgStyle = heroIsVisible
-    ? { background: "#32fb00" }
-    : isScrolled
-    ? { background: "rgba(10,10,10,0.92)", backdropFilter: "blur(12px)" }
-    : { background: "transparent" };
+  // Dynamically update theme-color meta tag to control iPhone status bar color
+  useEffect(() => {
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "theme-color");
+      document.head.appendChild(meta);
+    }
+    const color = isGreenTheme ? "#32fb00" : "#0a0a0a";
+    meta.setAttribute("content", color);
+  }, [isGreenTheme]);
 
-  const textColor = heroIsVisible ? "#0a0a0a" : "#ffffff";
+  const textColor = isOpen ? "#ffffff" : heroIsVisible ? "#0a0a0a" : "#ffffff";
 
-  const borderColor = heroIsVisible
+  const borderColor = heroIsVisible && !isOpen
     ? "rgba(10,10,10,1)"
     : "rgba(255,255,255,1)";
 
@@ -73,22 +80,26 @@ export function Header() {
         animate={{
           y: 0,
           opacity: 1,
-          backgroundColor: heroIsVisible
+          backgroundColor: isOpen
+            ? "#0c0c0c"
+            : heroIsVisible
             ? "#32fb00"
             : "rgba(10,10,10,0.92)",
           borderColor: isScrolled && !isOpen
             ? "rgba(255,255,255,0.08)"
             : "rgba(0,0,0,0)",
-          backdropFilter: heroIsVisible
+          backdropFilter: isOpen
+            ? "blur(0px)"
+            : heroIsVisible
             ? "blur(0px)"
             : "blur(12px)",
         }}
         transition={{
           y: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
           opacity: { duration: 0.6 },
-          backgroundColor: { duration: 0.45, ease: "easeInOut" },
-          borderColor: { duration: 0.45, ease: "easeInOut" },
-          backdropFilter: { duration: 0.45, ease: "easeInOut" },
+          backgroundColor: { duration: 0.3, ease: "easeInOut" },
+          borderColor: { duration: 0.3, ease: "easeInOut" },
+          backdropFilter: { duration: 0.3, ease: "easeInOut" },
         }}
         style={{
           borderBottomWidth: isScrolled && !isOpen ? "1px" : "0px",
@@ -104,7 +115,7 @@ export function Header() {
               alt="UMP Media Logo Dark"
               fill
               className="object-contain transition-opacity duration-500 ease-in-out"
-              style={{ opacity: heroIsVisible ? 1 : 0 }}
+              style={{ opacity: (heroIsVisible && !isOpen) ? 1 : 0 }}
               priority
             />
             <Image
@@ -112,7 +123,7 @@ export function Header() {
               alt="UMP Media Logo White"
               fill
               className="object-contain transition-opacity duration-500 ease-in-out"
-              style={{ opacity: heroIsVisible ? 0 : 1 }}
+              style={{ opacity: (!heroIsVisible || isOpen) ? 1 : 0 }}
               priority
             />
           </div>
