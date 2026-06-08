@@ -1,84 +1,118 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
-export function Hero() {
-  return (
-    <section
-      className="relative w-full overflow-hidden bg-[#32fb00] flex items-center min-h-[100vh] lg:min-h-[560px] lg:h-[92vh] lg:max-h-[820px]"
-    >
-      {/* ─── Hero Body ───────────────────────────────────────────────── */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-end justify-between px-6 md:px-14 pt-[calc(110px+env(safe-area-inset-top))] pb-12 lg:pt-[120px] lg:pb-16 w-full h-full max-w-7xl mx-auto gap-8">
-        {/* LEFT — Copy */}
-        <div className="flex flex-col justify-center flex-1 w-full max-w-[590px] lg:pb-6">
-          {/* Oversized Bold Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              fontFamily: "var(--font-inter), sans-serif",
-              fontWeight: 800,
-              fontSize: "clamp(2.0rem, 7.5vw, 4rem)",
-              lineHeight: 1.05,
-              letterSpacing: "-0.03em",
-              color: "#0a0a0a",
-              margin: 0,
-              marginBottom: "1.25rem",
-            }}
-          >
-            Producción audiovisual para{" "}
-            <span
-              style={{
-                display: "inline",
-                background: "#ffffff",
-                color: "#0a0a0a",
-                borderRadius: "6px",
-                padding: "0 10px 3px 10px",
-                fontWeight: 800,
-                fontStyle: "italic",
-                whiteSpace: "nowrap",
-              }}
-            >
-              conectar
-            </span>{" "}
-            e impactar
-          </motion.h1>
+function FloatingPaths({ position }: { position: number }) {
+  const paths = Array.from({ length: 36 }, (_, i) => ({
+    id: i,
+    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
+      380 - i * 5 * position
+    } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
+      152 - i * 5 * position
+    } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
+      684 - i * 5 * position
+    } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
+    color: `rgba(10,10,10,${0.08 + i * 0.02})`,
+    width: 0.5 + i * 0.03,
+  }));
 
-          {/* Sub-copy */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            style={{
-              fontFamily: "var(--font-inter), sans-serif",
-              fontWeight: 600,
-              fontSize: "1.05rem",
-              lineHeight: 1.6,
-              color: "#0a0a0a",
-              opacity: 0.85,
-              maxWidth: "460px",
-              marginBottom: "2.2rem",
+  return (
+    <div className="absolute inset-0 pointer-events-none z-0">
+      <svg
+        className="w-full h-full text-black"
+        viewBox="0 0 696 316"
+        fill="none"
+      >
+        <title>Background Paths</title>
+        {paths.map((path) => (
+          <motion.path
+            key={path.id}
+            d={path.d}
+            stroke={path.color}
+            strokeWidth={path.width}
+            strokeOpacity={0.1 + path.id * 0.02}
+            initial={{ pathLength: 0.3, opacity: 0.6 }}
+            animate={{
+              pathLength: 1,
+              opacity: [0.3, 0.6, 0.3],
+              pathOffset: [0, 1, 0],
             }}
+            transition={{
+              duration: 20 + Math.random() * 10,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
+          />
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+export function Hero() {
+  const title = "Producción audiovisual para conectar e impactar";
+  const words = title.split(" ");
+
+  return (
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(120px+env(safe-area-inset-top))] pb-20 md:py-32">
+      {/* Animated Background Paths */}
+      <div className="absolute inset-0 z-0">
+        <FloatingPaths position={1} />
+        <FloatingPaths position={-1} />
+      </div>
+
+      <div className="relative z-10 container mx-auto px-6 max-w-5xl text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="max-w-4xl mx-auto flex flex-col items-center"
+        >
+          {/* Main Title with Spring Letter Reveal */}
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-8 tracking-tighter leading-none text-black select-none">
+            {words.map((word, wordIndex) => (
+              <span
+                key={wordIndex}
+                className="inline-block mr-2 md:mr-3 last:mr-0"
+              >
+                {word.split("").map((letter, letterIndex) => (
+                  <motion.span
+                    key={`${wordIndex}-${letterIndex}`}
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                      delay: wordIndex * 0.08 + letterIndex * 0.02,
+                      type: "spring",
+                      stiffness: 150,
+                      damping: 25,
+                    }}
+                    className="inline-block text-black"
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
+                {wordIndex < words.length - 1 && <span className="inline-block w-2 md:w-3">&nbsp;</span>}
+              </span>
+            ))}
+          </h1>
+
+          {/* Subtext description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-black/80 font-semibold text-base md:text-lg max-w-2xl mb-12 leading-relaxed"
           >
-            Ultimate Media Productions te da la libertad y las herramientas para contar tu
-            historia. Grabamos, editamos y distribuimos contenido audiovisual
-            de calidad, desde el Caribe costarricense para el mundo.
+            Ultimate Media Productions te da la libertad y las herramientas para contar tu historia. Grabamos, editamos y distribuimos contenido audiovisual de calidad, desde el Caribe costarricense para el mundo.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* Action Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: "14px",
-              flexWrap: "wrap",
-            }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-row gap-4 flex-wrap justify-center"
           >
             <Link
               href="/contact"
@@ -122,49 +156,29 @@ export function Hero() {
                 borderRadius: "4px",
                 padding: "11px 26px",
                 textDecoration: "none",
-                transition: "background 0.2s, color 0.2s",
+                transition: "background 0.2s, color 0.2s, transform 0.2s",
                 display: "inline-block",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.background =
                   "#0a0a0a";
                 (e.currentTarget as HTMLAnchorElement).style.color = "#32fb00";
+                (e.currentTarget as HTMLAnchorElement).style.transform =
+                  "translateY(-2px)";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.background =
                   "transparent";
                 (e.currentTarget as HTMLAnchorElement).style.color = "#0a0a0a";
+                (e.currentTarget as HTMLAnchorElement).style.transform =
+                  "translateY(0)";
               }}
             >
               Ver portafolio
             </Link>
           </motion.div>
-        </div>
-
-        {/* RIGHT — Hero.svg sticker */}
-        <div className="relative flex-shrink-0 mt-8 lg:mt-0 flex items-center justify-center lg:justify-end self-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{
-              duration: 0.8,
-              ease: [0.16, 1, 0.3, 1],
-              delay: 0.2,
-            }}
-            className="w-[320px] sm:w-[380px] md:w-[480px] lg:w-[540px] aspect-[114/106] relative"
-          >
-            <Image
-              src="/assets/images/Hero.svg"
-              alt="Hero Illustration"
-              fill
-              priority
-              className="object-contain"
-            />
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
-
-
