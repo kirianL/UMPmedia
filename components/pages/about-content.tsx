@@ -12,15 +12,11 @@ export function AboutContent() {
       {/* Jeton-Style Header Banner with UMP Neon Green Background */}
       <div className="bg-[#32fb00] text-black pt-40 pb-24 md:pb-32 px-6 relative z-10">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-black">
-          <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black">
-              Nosotros
-            </h1>
-          </motion.div>
+            <RevealText
+              text="Nosotros"
+              tag="h1"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black"
+            />
           
           <motion.div
             initial={{ opacity: 0, y: -15 }}

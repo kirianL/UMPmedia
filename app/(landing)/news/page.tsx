@@ -66,9 +66,11 @@ export default function NewsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black">
-              Newsroom
-            </h1>
+            <RevealText
+              text="Noticias"
+              tag="h1"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black"
+            />
           </motion.div>
           
           <motion.div
@@ -90,7 +92,7 @@ export default function NewsPage() {
           {/* Latest Articles Title */}
           <div className="mb-12">
             <RevealText
-              text="Latest Articles"
+              text="Últimos Artículos"
               tag="h2"
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight"
             />
@@ -108,14 +110,14 @@ export default function NewsPage() {
                 className="group flex flex-col h-full cursor-pointer"
               >
                 <Link href={`/news/${item.slug}`} className="flex flex-col h-full">
-                  {/* Card Image Wrapper */}
-                  <div className="aspect-[1.5/1] w-full bg-neutral-900 rounded-2xl overflow-hidden relative mb-5 transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+                  {/* Card Image Wrapper: aspect-video makes it smaller vertically, hover:scale removed */}
+                  <div className="aspect-video w-full bg-neutral-900 rounded-2xl overflow-hidden relative mb-5 transition-all duration-300 group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover"
                     />
                     
                     {/* Minimal Category Pill Tag */}

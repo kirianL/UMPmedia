@@ -37,9 +37,7 @@ export function Header() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
 
-  const heroIsVisible = !isScrolled;
-  const isGreenTheme = heroIsVisible && !isOpen;
-  const themeColor = isOpen ? "#0c0c0c" : isGreenTheme ? "#32fb00" : "#0a0a0a";
+  const themeColor = "#0a0a0a";
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 60);
@@ -67,11 +65,8 @@ export function Header() {
     meta.setAttribute("content", themeColor);
   }, [themeColor]);
 
-  const textColor = isOpen ? "#ffffff" : heroIsVisible ? "#0a0a0a" : "#ffffff";
-
-  const borderColor = heroIsVisible && !isOpen
-    ? "rgba(10,10,10,1)"
-    : "rgba(255,255,255,1)";
+  const textColor = "#ffffff";
+  const borderColor = "rgba(255,255,255,0.08)";
 
   return (
     <>
@@ -82,24 +77,20 @@ export function Header() {
           opacity: 1,
           backgroundColor: isOpen
             ? "transparent"
-            : heroIsVisible
-            ? "#32fb00"
-            : "rgba(10,10,10,0.92)",
+            : "rgba(10,10,10,0.75)",
           borderColor: isScrolled && !isOpen
-            ? "rgba(255,255,255,0.08)"
+            ? borderColor
             : "rgba(0,0,0,0)",
           backdropFilter: isOpen
-            ? "blur(0px)"
-            : heroIsVisible
             ? "blur(0px)"
             : "blur(12px)",
         }}
         transition={{
           y: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
           opacity: { duration: 0.4 },
-          backgroundColor: { duration: 0.45, ease: "easeInOut" },
-          borderColor: { duration: 0.45, ease: "easeInOut" },
-          backdropFilter: { duration: 0.45, ease: "easeInOut" },
+          backgroundColor: { duration: 0.3, ease: "easeInOut" },
+          borderColor: { duration: 0.3, ease: "easeInOut" },
+          backdropFilter: { duration: 0.3, ease: "easeInOut" },
         }}
         style={{
           borderBottomWidth: isScrolled && !isOpen ? "1px" : "0px",
@@ -111,7 +102,7 @@ export function Header() {
         <Link href="/" className="z-50 relative flex items-center w-[105px] h-[30px] md:w-[120px] md:h-[34px]" suppressHydrationWarning>
           <div className="relative w-full h-full">
             <AnimatedLogo
-              color={(heroIsVisible && !isOpen) ? "#0a0a0a" : "#ffffff"}
+              color="#ffffff"
               className="w-full h-full object-contain"
             />
           </div>
@@ -167,21 +158,23 @@ export function Header() {
               fontSize: "0.82rem",
               letterSpacing: "0.02em",
               color: textColor,
-              border: `2px solid ${borderColor}`,
+              border: `2px solid rgba(255,255,255,0.25)`,
               borderRadius: "4px",
               padding: "7px 16px",
               textDecoration: "none",
-              transition: "all 0.45s ease-in-out",
+              transition: "all 0.35s ease-in-out",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
-              el.style.background = heroIsVisible ? "#0a0a0a" : "#ffffff";
-              el.style.color = heroIsVisible ? "#32fb00" : "#0a0a0a";
+              el.style.background = "#ffffff";
+              el.style.color = "#0a0a0a";
+              el.style.borderColor = "#ffffff";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
               el.style.background = "transparent";
               el.style.color = textColor;
+              el.style.borderColor = "rgba(255,255,255,0.25)";
             }}
           >
             Ver Portafolio
