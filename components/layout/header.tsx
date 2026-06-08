@@ -65,8 +65,10 @@ export function Header() {
     meta.setAttribute("content", themeColor);
   }, [themeColor]);
 
-  const textColor = "#ffffff";
-  const borderColor = "rgba(255,255,255,0.08)";
+  const isDarkNavbar = isScrolled || isOpen;
+  const textColor = isDarkNavbar ? "#ffffff" : "#0a0a0a";
+  const logoColor = isDarkNavbar ? "#ffffff" : "#0a0a0a";
+  const buttonBorderColor = isDarkNavbar ? "rgba(255, 255, 255, 0.25)" : "rgba(10, 10, 10, 0.25)";
 
   return (
     <>
@@ -77,13 +79,15 @@ export function Header() {
           opacity: 1,
           backgroundColor: isOpen
             ? "transparent"
-            : "rgba(10,10,10,0.75)",
+            : isScrolled
+            ? "rgba(10,10,10,0.85)"
+            : "transparent",
           borderColor: isScrolled && !isOpen
-            ? borderColor
+            ? "rgba(255,255,255,0.08)"
             : "rgba(0,0,0,0)",
-          backdropFilter: isOpen
-            ? "blur(0px)"
-            : "blur(12px)",
+          backdropFilter: isScrolled && !isOpen
+            ? "blur(12px)"
+            : "blur(0px)",
         }}
         transition={{
           y: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
@@ -102,7 +106,7 @@ export function Header() {
         <Link href="/" className="z-50 relative flex items-center w-[105px] h-[30px] md:w-[120px] md:h-[34px]" suppressHydrationWarning>
           <div className="relative w-full h-full">
             <AnimatedLogo
-              color="#ffffff"
+              color={logoColor}
               className="w-full h-full object-contain"
             />
           </div>
@@ -158,23 +162,23 @@ export function Header() {
               fontSize: "0.82rem",
               letterSpacing: "0.02em",
               color: textColor,
-              border: `2px solid rgba(255,255,255,0.25)`,
+              border: `2px solid ${buttonBorderColor}`,
               borderRadius: "4px",
               padding: "7px 16px",
               textDecoration: "none",
-              transition: "all 0.35s ease-in-out",
+              transition: "all 0.3s ease-in-out",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
-              el.style.background = "#ffffff";
-              el.style.color = "#0a0a0a";
-              el.style.borderColor = "#ffffff";
+              el.style.background = isDarkNavbar ? "#ffffff" : "#0a0a0a";
+              el.style.color = isDarkNavbar ? "#0a0a0a" : "#32fb00";
+              el.style.borderColor = isDarkNavbar ? "#ffffff" : "#0a0a0a";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
               el.style.background = "transparent";
               el.style.color = textColor;
-              el.style.borderColor = "rgba(255,255,255,0.25)";
+              el.style.borderColor = buttonBorderColor;
             }}
           >
             Ver Portafolio
