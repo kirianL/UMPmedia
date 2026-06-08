@@ -17,8 +17,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "UMPmedia | Estudio Audiovisual - Limón, Costa Rica",
-    template: "%s | UMPmedia",
+    default: "Ultimate Media Productions | Estudio Audiovisual - Limón, Costa Rica",
+    template: "%s | Ultimate Media Productions",
   },
   description:
     "Desde Limón para el mundo. Estudio audiovisual especializado en producción de video, fotografía profesional y estrategias de contenido digital.",
@@ -28,24 +28,24 @@ export const metadata: Metadata = {
     "fotografía profesional Limón",
     "creación de contenido",
     "marketing digital",
-    "UMPmedia",
+    "Ultimate Media Productions",
     "video corporativo",
   ],
-  authors: [{ name: "UMPmedia Team", url: "https://umpmedia.vercel.app" }],
-  creator: "UMPmedia",
-  publisher: "UMPmedia",
+  authors: [{ name: "Ultimate Media Productions Team", url: "https://umpmedia.vercel.app" }],
+  creator: "Ultimate Media Productions",
+  publisher: "Ultimate Media Productions",
   openGraph: {
-    title: "UMPmedia | Estudio Audiovisual - Limón, Costa Rica",
+    title: "Ultimate Media Productions | Estudio Audiovisual - Limón, Costa Rica",
     description:
       "Desde Limón para el mundo. Estudio audiovisual especializado en producción de video, fotografía profesional y estrategias de contenido digital.",
     url: "https://umpmedia.vercel.app",
-    siteName: "UMPmedia",
+    siteName: "Ultimate Media Productions",
     images: [
       {
         url: "/assets/OpenGraph/og-social.jpg",
         width: 1200,
         height: 630,
-        alt: "UMPmedia - Productora Audiovisual",
+        alt: "Ultimate Media Productions - Productora Audiovisual",
       },
     ],
     locale: "es_CR",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "UMPmedia | Estudio Audiovisual",
+    title: "Ultimate Media Productions | Estudio Audiovisual",
     description:
       "Desde Limón para el mundo. Producción audiovisual de alto nivel.",
     images: ["/assets/OpenGraph/og-social.jpg"],
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: "UMPmedia",
+    title: "Ultimate Media Productions",
     statusBarStyle: "black-translucent",
   },
   metadataBase: new URL("https://umpmedia.vercel.app"),
@@ -89,7 +89,7 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "UMPmedia",
+    name: "Ultimate Media Productions",
     image: "https://umpmedia.vercel.app/assets/OpenGraph/og-social.jpg",
     description: "Estudio audiovisual independiente desde Limón, Costa Rica.",
     url: "https://umpmedia.vercel.app",
