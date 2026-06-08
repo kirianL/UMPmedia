@@ -10,7 +10,7 @@ export function HeroGradient({ active = true }: HeroGradientProps) {
   return (
     <div className="absolute inset-0 z-0 w-full h-full pointer-events-none overflow-hidden bg-[#0a0a0a]">
       <ShaderGradientCanvas
-        pixelDensity={0.9}
+        pixelDensity={0.45}
         fov={45}
         lazyLoad={true}
         powerPreference="low-power"
