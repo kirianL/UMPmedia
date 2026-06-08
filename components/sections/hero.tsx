@@ -55,7 +55,7 @@ export function Hero() {
   const words = title.split(" ");
 
   return (
-    <section className="relative min-h-[70vh] lg:min-h-[500px] lg:max-h-[640px] lg:h-[75vh] w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(120px+env(safe-area-inset-top))] pb-16 md:py-24">
+    <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(88px+env(safe-area-inset-top))] pb-12 md:pt-[calc(120px+env(safe-area-inset-top))] md:pb-24">
       {/* Animated Background Paths */}
       <div className="absolute inset-0 z-0">
         <FloatingPaths position={1} />
@@ -70,7 +70,7 @@ export function Hero() {
           className="max-w-4xl mx-auto flex flex-col items-center w-full"
         >
           {/* Main Title with Spring Letter Reveal */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-6 tracking-tighter leading-[1.1] md:leading-none text-black select-none">
+          <h1 className="text-3xl sm:text-6xl md:text-7xl font-extrabold mb-4 tracking-tighter leading-[1.1] md:leading-none text-black select-none">
             {words.map((word, wordIndex) => (
               <span
                 key={wordIndex}
@@ -102,7 +102,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-black/85 font-semibold text-sm sm:text-base md:text-lg max-w-2xl mb-10 leading-relaxed px-2"
+            className="text-black/85 font-semibold text-sm sm:text-base md:text-lg max-w-2xl mb-6 sm:mb-10 leading-relaxed px-2"
           >
             Ultimate Media Productions te da la libertad y las herramientas para contar tu historia. Grabamos, editamos y distribuimos contenido audiovisual de calidad, desde el Caribe costarricense para el mundo.
           </motion.p>

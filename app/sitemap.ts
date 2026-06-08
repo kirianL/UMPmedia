@@ -1,9 +1,10 @@
 import { MetadataRoute } from "next";
+import { newsArticles } from "@/lib/news-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://umpmedia.vercel.app";
 
-  return [
+  const staticUrls: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -47,4 +48,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
   ];
+
+  const newsUrls: MetadataRoute.Sitemap = newsArticles.map((article) => ({
+    url: `${baseUrl}/news/${article.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticUrls, ...newsUrls];
 }

@@ -85,6 +85,7 @@ function VideoCard({
             size="icon"
             className="relative z-20 w-14 h-14 rounded-full border border-white/20 bg-white/5 backdrop-blur-[2px] text-white hover:bg-white hover:text-black hover:scale-105 transition-all duration-500 cursor-pointer"
             onClick={togglePlay}
+            aria-label={isPlaying ? "Pausar video" : "Reproducir video"}
           >
             {isPlaying ? (
               <Pause size={24} strokeWidth={1.5} />

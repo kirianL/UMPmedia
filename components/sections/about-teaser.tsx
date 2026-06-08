@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 export function AboutTeaser() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -104,13 +105,15 @@ export function AboutTeaser() {
             <div className="col-span-1 md:col-span-2 grid grid-rows-2 gap-3 md:gap-6 h-full">
               <motion.div
                 style={{ y: y2 }}
-                className="bg-ump-card rounded-2xl md:rounded-3xl overflow-hidden relative border border-white/5 group"
+                className="bg-ump-card rounded-2xl md:rounded-3xl overflow-hidden relative border border-white/5 group h-full w-full"
               >
-                <div className="absolute inset-0 bg-ump-card/60 flex items-center justify-center p-2 text-center group-hover:bg-[#32fb00]/20 transition-colors">
-                  <p className="text-white/20 font-mono text-[8px] md:text-[10px] uppercase tracking-[0.2em]">
-                    [ FOTO: <br /> DETALLE TÉCNICO ]
-                  </p>
-                </div>
+                <Image
+                  src="/assets/images/Panasonic HC-X1000/Panasonic HC-X1000-detalles.jpeg"
+                  alt="Detalles de la cámara profesional Panasonic HC-X1000"
+                  fill
+                  className="object-cover opacity-60 group-hover:opacity-85 transition-opacity duration-500"
+                  sizes="(max-width: 768px) 100vw, 20vw"
+                />
                 <div className="absolute inset-y-0 left-0 w-1 bg-[#32fb00] scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-500" />
               </motion.div>
 
