@@ -28,8 +28,8 @@ export default function Home() {
         <ClientsStats />
         <PortfolioPreview />
         <WhyUMP />
-        <AboutTeaser />
         <TeamTeaser />
+        <AboutTeaser />
         <CommunityCTA />
         <CTAFinal />
       </main>

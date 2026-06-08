@@ -39,7 +39,7 @@ function DifferentiatorCard({ icon, title, description, illustration }: Differen
 
 export function WhyUMP() {
   return (
-    <section className="py-14 md:py-24 lg:py-36 bg-ump-background relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 z-40 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section className="py-14 md:py-24 lg:py-36 bg-ump-background relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 z-20 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-28">

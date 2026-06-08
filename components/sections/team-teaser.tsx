@@ -27,17 +27,17 @@ const teamMembers = [
 
 export function TeamTeaser() {
   return (
-    <section className="py-20 md:py-32 bg-ump-background relative z-60 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 overflow-hidden border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section className="py-20 md:py-32 bg-[#32fb00] relative z-30 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 overflow-hidden border-t border-black/5 shadow-[0_-5px_20px_rgba(0,0,0,0.15)]">
       <div className="container mx-auto px-6">
         {/* Centered Header */}
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <span className="text-ump-accent text-xs font-bold uppercase tracking-widest mb-3 block">
+          <span className="text-black/60 text-xs font-bold uppercase tracking-widest mb-3 block">
             talento local, impacto global
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-5xl font-black text-black mb-4">
             El Equipo
           </h2>
-          <p className="text-ump-secondary text-base md:text-lg">
+          <p className="text-black/80 text-base md:text-lg font-medium">
             Las mentes creativas y técnicas detrás de Ultimate Media Productions. Desde Limón para el mundo.
           </p>
         </div>
@@ -64,7 +64,7 @@ export function TeamTeaser() {
                 />
                 {/* SVG Outline Border */}
                 <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none stroke-white/15 group-hover:stroke-[#32fb00]/50 transition-colors duration-500"
+                  className="absolute inset-0 w-full h-full pointer-events-none stroke-white/35 group-hover:stroke-white/75 transition-colors duration-500"
                   viewBox="0 0 100 100"
                   preserveAspectRatio="none"
                   fill="none"
@@ -80,10 +80,10 @@ export function TeamTeaser() {
               
               {/* Text Meta */}
               <div className="space-y-1 pl-2">
-                <h3 className="text-white font-bold text-xl transition-colors duration-300 group-hover:text-[#32fb00]">
+                <h3 className="text-black font-bold text-xl transition-colors duration-300 group-hover:text-white">
                   {member.name}
                 </h3>
-                <span className="text-ump-secondary text-xs uppercase tracking-wider block font-medium">
+                <span className="text-black/70 text-xs uppercase tracking-wider block font-semibold">
                   {member.role}
                 </span>
               </div>
@@ -95,7 +95,7 @@ export function TeamTeaser() {
         <div className="mt-16 text-center">
           <Link
             href="/team"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 hover:border-[#32fb00] text-ump-secondary hover:text-white transition-all duration-300 text-sm font-bold uppercase tracking-wider"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-black/20 hover:border-black hover:bg-black text-black hover:text-[#32fb00] transition-all duration-300 text-sm font-bold uppercase tracking-wider"
           >
             <span>Ver todo el equipo</span>
             <ArrowRight size={16} />
