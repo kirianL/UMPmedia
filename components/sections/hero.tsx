@@ -72,13 +72,14 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(88px+env(safe-area-inset-top))] pb-12 md:pt-[calc(120px+env(safe-area-inset-top))] md:pb-24">
-      {/* Animated Background Paths - Paused when full-screen mobile navigation is open to prevent animation lag */}
-      {!isMenuOpen && (
-        <div className="absolute inset-0 z-0">
-          <FloatingPaths position={1} />
-          <FloatingPaths position={-1} />
-        </div>
-      )}
+      {/* Animated Background Paths - Hidden with CSS when menu is open to prevent layout calculations, without resetting animations */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{ display: isMenuOpen ? "none" : "block" }}
+      >
+        <FloatingPaths position={1} />
+        <FloatingPaths position={-1} />
+      </div>
 
       <div className="relative z-10 container mx-auto px-6 max-w-5xl text-center">
         <motion.div
