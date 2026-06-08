@@ -55,7 +55,7 @@ export function Hero() {
   const words = title.split(" ");
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(120px+env(safe-area-inset-top))] pb-20 md:py-32">
+    <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(110px+env(safe-area-inset-top))] pb-16 md:py-32">
       {/* Animated Background Paths */}
       <div className="absolute inset-0 z-0">
         <FloatingPaths position={1} />
@@ -67,10 +67,10 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="max-w-4xl mx-auto flex flex-col items-center"
+          className="max-w-4xl mx-auto flex flex-col items-center w-full"
         >
           {/* Main Title with Spring Letter Reveal */}
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-8 tracking-tighter leading-none text-black select-none">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-6 tracking-tighter leading-[1.1] md:leading-none text-black select-none">
             {words.map((word, wordIndex) => (
               <span
                 key={wordIndex}
@@ -102,7 +102,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-black/80 font-semibold text-base md:text-lg max-w-2xl mb-12 leading-relaxed"
+            className="text-black/85 font-semibold text-sm sm:text-base md:text-lg max-w-2xl mb-10 leading-relaxed px-2"
           >
             Ultimate Media Productions te da la libertad y las herramientas para contar tu historia. Grabamos, editamos y distribuimos contenido audiovisual de calidad, desde el Caribe costarricense para el mundo.
           </motion.p>
@@ -112,7 +112,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-row gap-4 flex-wrap justify-center"
+            className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto max-w-[280px] sm:max-w-none justify-center"
           >
             <Link
               href="/contact"
@@ -126,9 +126,9 @@ export function Hero() {
                 padding: "13px 26px",
                 textDecoration: "none",
                 transition: "transform 0.2s, box-shadow 0.2s",
-                display: "inline-block",
                 boxShadow: "0 4px 14px rgba(0,0,0,0.18)",
               }}
+              className="w-full sm:w-auto text-center inline-block"
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.transform =
                   "translateY(-2px)";
@@ -157,8 +157,8 @@ export function Hero() {
                 padding: "11px 26px",
                 textDecoration: "none",
                 transition: "background 0.2s, color 0.2s, transform 0.2s",
-                display: "inline-block",
               }}
+              className="w-full sm:w-auto text-center inline-block"
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.background =
                   "#0a0a0a";
