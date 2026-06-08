@@ -27,12 +27,12 @@ const teamMembers = [
 
 export function TeamTeaser() {
   return (
-    <section className="py-20 md:py-32 bg-ump-alt relative z-60 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 overflow-hidden border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section className="py-20 md:py-32 bg-ump-background relative z-60 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 overflow-hidden border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
       <div className="container mx-auto px-6">
         {/* Centered Header */}
         <div className="text-center max-w-2xl mx-auto mb-20">
           <span className="text-ump-accent text-xs font-bold uppercase tracking-widest mb-3 block">
-            / talento local, impacto global /
+            talento local, impacto global
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
             El Equipo

@@ -10,11 +10,6 @@ const PortfolioPreview = dynamic(() =>
     (mod) => mod.PortfolioPreview,
   ),
 );
-const ServicesTeaser = dynamic(() =>
-  import("@/components/sections/services-teaser").then(
-    (mod) => mod.ServicesTeaser,
-  ),
-);
 const TeamTeaser = dynamic(() =>
   import("@/components/sections/team-teaser").then((mod) => mod.TeamTeaser),
 );
@@ -32,7 +27,6 @@ export default function Home() {
         <Hero />
         <ClientsStats />
         <PortfolioPreview />
-        <ServicesTeaser />
         <WhyUMP />
         <AboutTeaser />
         <TeamTeaser />

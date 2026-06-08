@@ -141,83 +141,25 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT — Portrait: smaller, crops at bottom edge of section */}
-        <div className="relative flex-shrink-0 mt-8 lg:mt-0 flex items-end justify-center lg:justify-end self-center lg:self-end">
-          {/* Decorative burst — top-right of portrait */}
+        {/* RIGHT — Hero.svg sticker */}
+        <div className="relative flex-shrink-0 mt-8 lg:mt-0 flex items-center justify-center lg:justify-end self-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.5, rotate: -15 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="absolute"
-            style={{ top: "-2%", right: "-3%", zIndex: 20 }}
-          >
-            <BurstLines />
-          </motion.div>
-
-          {/* Polygon-framed grayscale portrait — bottom-aligned, overflow crops it */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
-              duration: 0.9,
+              duration: 0.8,
               ease: [0.16, 1, 0.3, 1],
               delay: 0.2,
             }}
-            style={{
-              position: "relative",
-              zIndex: 10,
-              /* Push the bottom ~60px below the section edge so it gets clipped on desktop */
-              marginBottom: "-20px",
-            }}
+            className="w-[320px] sm:w-[380px] md:w-[480px] lg:w-[540px] aspect-[114/106] relative"
           >
-            {/* Outer irregular polygon border */}
-            <div
-              style={{
-                width: "clamp(220px, 28vw, 360px)",
-                aspectRatio: "0.78 / 1",
-                clipPath:
-                  "polygon(16% 0%, 84% 3%, 100% 20%, 97% 79%, 80% 100%, 14% 96%, 0% 68%, 3% 16%)",
-                background: "#ffffff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                padding: "9px",
-              }}
-            >
-              {/* Inner image, same clip */}
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  clipPath:
-                    "polygon(16% 0%, 84% 3%, 100% 20%, 97% 79%, 80% 100%, 14% 96%, 0% 68%, 3% 16%)",
-                  overflow: "hidden",
-                  position: "relative",
-                  background: "#1a1a1a",
-                }}
-              >
-                <Image
-                  src="/assets/images/hero-portrait.png"
-                  alt="Realizador audiovisual de Ultimate Media Productions"
-                  fill
-                  className="object-cover object-top"
-                  style={{ filter: "grayscale(100%) contrast(1.12)" }}
-                  priority
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Small burst — lower-right */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 1.1 }}
-            className="absolute"
-            style={{ bottom: "20%", right: "-6%", zIndex: 20 }}
-          >
-            <SmallBurst />
+            <Image
+              src="/assets/images/Hero.svg"
+              alt="Hero Illustration"
+              fill
+              priority
+              className="object-contain"
+            />
           </motion.div>
         </div>
       </div>
@@ -225,75 +167,4 @@ export function Hero() {
   );
 }
 
-/* ─── Decorative SVG elements ────────────────────────────────────────────── */
 
-function BurstLines() {
-  return (
-    <svg
-      width="72"
-      height="72"
-      viewBox="0 0 82 82"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="30"
-        y="0"
-        width="13"
-        height="50"
-        rx="6.5"
-        fill="white"
-        transform="rotate(20 41 41)"
-      />
-      <rect
-        x="48"
-        y="5"
-        width="10"
-        height="38"
-        rx="5"
-        fill="white"
-        transform="rotate(44 41 41)"
-      />
-      <rect
-        x="12"
-        y="7"
-        width="9"
-        height="32"
-        rx="4.5"
-        fill="white"
-        transform="rotate(-4 41 41)"
-      />
-    </svg>
-  );
-}
-
-function SmallBurst() {
-  return (
-    <svg
-      width="40"
-      height="40"
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="19"
-        y="0"
-        width="9"
-        height="32"
-        rx="4.5"
-        fill="white"
-        transform="rotate(25 24 24)"
-      />
-      <rect
-        x="28"
-        y="3"
-        width="7"
-        height="24"
-        rx="3.5"
-        fill="white"
-        transform="rotate(52 24 24)"
-      />
-    </svg>
-  );
-}
