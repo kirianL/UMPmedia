@@ -33,13 +33,10 @@ const teamMembers = [
 
 export function TeamTeaser() {
   return (
-    <section className="py-32 md:py-56 bg-ump-alt relative z-50 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 overflow-hidden border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section className="py-32 md:py-56 bg-ump-alt relative z-60 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 overflow-hidden border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16">
           <div>
-            <span className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block">
-              Talento
-            </span>
             <h2 className="text-4xl md:text-5xl font-bold text-white">
               El Equipo
             </h2>

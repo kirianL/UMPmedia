@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export function CTAFinal() {
   return (
-    <section className="py-32 md:py-56 bg-ump-alt relative overflow-hidden z-90 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section className="py-32 md:py-56 bg-ump-alt relative overflow-hidden z-80 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-ump-background to-ump-card/20 pointer-events-none" />
 

@@ -19,7 +19,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              fontFamily: "'Bespoke Sans', sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 800,
               fontSize: "clamp(2.4rem, 5vw, 4rem)",
               lineHeight: 1.05,
@@ -53,7 +53,7 @@ export function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             style={{
-              fontFamily: "'Bespoke Sans', sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 600,
               fontSize: "1.05rem",
               lineHeight: 1.6,
@@ -83,7 +83,7 @@ export function Hero() {
             <Link
               href="/contact"
               style={{
-                fontFamily: "'Bespoke Sans', sans-serif",
+                fontFamily: "var(--font-inter), sans-serif",
                 fontWeight: 700,
                 fontSize: "0.9rem",
                 color: "#32fb00",
@@ -113,7 +113,7 @@ export function Hero() {
             <Link
               href="/portfolio"
               style={{
-                fontFamily: "'Bespoke Sans', sans-serif",
+                fontFamily: "var(--font-inter), sans-serif",
                 fontWeight: 700,
                 fontSize: "0.9rem",
                 color: "#0a0a0a",

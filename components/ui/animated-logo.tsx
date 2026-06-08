@@ -37,13 +37,25 @@ export function AnimatedLogo({ color = "#ffffff", className = "" }: AnimatedLogo
           strokeLinejoin="round"
           animate={{
             pathLength: [0, 1, 1, 0],
-            fillOpacity: [0, 0, 1, 0]
+            fillOpacity: [0, 0, 1, 0],
+            stroke: color,
+            fill: color,
           }}
           transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            times: [0, 0.3, 0.7, 1]
+            stroke: { duration: 0.4, ease: "easeInOut" },
+            fill: { duration: 0.4, ease: "easeInOut" },
+            pathLength: {
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              times: [0, 0.3, 0.7, 1]
+            },
+            fillOpacity: {
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              times: [0, 0.3, 0.7, 1]
+            }
           }}
         />
       ))}

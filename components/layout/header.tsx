@@ -98,9 +98,9 @@ export function Header() {
         transition={{
           y: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
           opacity: { duration: 0.4 },
-          backgroundColor: { duration: 0.2, ease: "easeInOut" },
-          borderColor: { duration: 0.2, ease: "easeInOut" },
-          backdropFilter: { duration: 0.2, ease: "easeInOut" },
+          backgroundColor: { duration: 0.45, ease: "easeInOut" },
+          borderColor: { duration: 0.45, ease: "easeInOut" },
+          backdropFilter: { duration: 0.45, ease: "easeInOut" },
         }}
         style={{
           borderBottomWidth: isScrolled && !isOpen ? "1px" : "0px",
@@ -125,7 +125,7 @@ export function Header() {
               key={link.href}
               href={link.href}
               style={{
-                fontFamily: "'Bespoke Sans', sans-serif",
+                fontFamily: "var(--font-inter), sans-serif",
                 fontWeight: 500,
                 fontSize: "0.875rem",
                 color: textColor,
@@ -149,7 +149,7 @@ export function Header() {
           <Link
             href="/contact"
             style={{
-              fontFamily: "'Bespoke Sans', sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 500,
               fontSize: "0.875rem",
               color: textColor,
@@ -163,7 +163,7 @@ export function Header() {
           <Link
             href="/portfolio"
             style={{
-              fontFamily: "'Bespoke Sans', sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 700,
               fontSize: "0.82rem",
               letterSpacing: "0.02em",
@@ -193,7 +193,7 @@ export function Header() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden z-[100000] p-2 relative w-10 h-10 flex flex-col items-center justify-center gap-[6px] focus:outline-none"
-          style={{ color: textColor }}
+          style={{ color: textColor, transition: "color 0.4s ease-in-out" }}
           aria-label="Toggle Menu"
         >
           <motion.span
@@ -292,7 +292,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
               href={link.href}
               onClick={onClose}
               style={{
-                fontFamily: "'Bespoke Sans', sans-serif",
+                fontFamily: "var(--font-inter), sans-serif",
                 fontWeight: 800,
                 fontSize: "clamp(1.6rem, 6.2vw, 2.3rem)",
                 letterSpacing: "-0.01em",
@@ -328,7 +328,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
           href="/contact"
           onClick={onClose}
           style={{
-            fontFamily: "'Bespoke Sans', sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
             fontWeight: 700,
             fontSize: "0.95rem",
             color: "#0a0a0a",

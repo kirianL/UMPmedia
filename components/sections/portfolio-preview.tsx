@@ -50,7 +50,7 @@ const categories = [
 
 export function PortfolioPreview() {
   return (
-    <section className="py-40 md:py-64 bg-ump-background relative overflow-hidden z-40 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section className="py-40 md:py-64 bg-ump-background relative overflow-hidden z-20 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">

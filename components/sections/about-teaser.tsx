@@ -20,7 +20,7 @@ export function AboutTeaser() {
   return (
     <section
       ref={containerRef}
-      className="py-32 md:py-64 bg-ump-alt relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 z-10 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
+      className="py-32 md:py-64 bg-ump-alt relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 z-50 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
     >
       {/* Background Decorative Element */}
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-[#18943A]/10 rounded-full blur-[120px] pointer-events-none" />
@@ -35,9 +35,6 @@ export function AboutTeaser() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="inline-block px-4 py-2 rounded-full bg-[#18943A]/10 border border-[#18943A]/20 text-[#18943A] text-xs font-bold uppercase tracking-[0.2em] mb-8 backdrop-blur-sm">
-                Nuestra Esencia
-              </span>
               <h2 className="text-4xl md:text-7xl font-bold text-white leading-[1.05] tracking-tighter mb-8 italic">
                 CULTURA <br />
                 <span className="text-[#18943A] not-italic">

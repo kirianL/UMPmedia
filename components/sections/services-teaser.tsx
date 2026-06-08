@@ -42,9 +42,6 @@ export function ServicesTeaser() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div>
-            <span className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block">
-              Lo que hacemos
-            </span>
             <h2 className="text-4xl md:text-5xl font-bold text-white">
               Servicios
             </h2>
