@@ -11,6 +11,7 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { AnimatedLogo } from "@/components/ui/animated-logo";
 
 const NAV_LINKS = [
   { href: "/", label: "Inicio" },
@@ -107,24 +108,12 @@ export function Header() {
         }}
         className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 md:px-14 py-4"
       >
-        {/* Logo — Stacked for smooth cross-fade transition */}
+        {/* Logo — Animated drawing outline effect */}
         <Link href="/" className="z-50 relative flex items-center w-[105px] h-[30px] md:w-[120px] md:h-[34px]" suppressHydrationWarning>
           <div className="relative w-full h-full">
-            <Image
-              src="/assets/images/ump-logo-dark.svg"
-              alt="UMP Media Logo Dark"
-              fill
-              className="object-contain transition-opacity duration-500 ease-in-out"
-              style={{ opacity: (heroIsVisible && !isOpen) ? 1 : 0 }}
-              priority
-            />
-            <Image
-              src="/assets/images/ump-logo-white.svg"
-              alt="UMP Media Logo White"
-              fill
-              className="object-contain transition-opacity duration-500 ease-in-out"
-              style={{ opacity: (!heroIsVisible || isOpen) ? 1 : 0 }}
-              priority
+            <AnimatedLogo
+              color={(heroIsVisible && !isOpen) ? "#0a0a0a" : "#ffffff"}
+              className="w-full h-full object-contain"
             />
           </div>
         </Link>
