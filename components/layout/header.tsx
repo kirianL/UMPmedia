@@ -40,7 +40,7 @@ export function Header() {
   const themeColor = "#0a0a0a";
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 60);
+    setIsScrolled(latest > 20);
   });
 
   // Automatically close mobile menu if screen resizes to desktop width
@@ -90,11 +90,11 @@ export function Header() {
             : "blur(0px)",
         }}
         transition={{
-          y: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
-          opacity: { duration: 0.4 },
-          backgroundColor: { duration: 0.3, ease: "easeInOut" },
-          borderColor: { duration: 0.3, ease: "easeInOut" },
-          backdropFilter: { duration: 0.3, ease: "easeInOut" },
+          y: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+          opacity: { duration: 0.5 },
+          backgroundColor: { duration: 0.5, ease: "easeInOut" },
+          borderColor: { duration: 0.5, ease: "easeInOut" },
+          backdropFilter: { duration: 0.5, ease: "easeInOut" },
         }}
         style={{
           borderBottomWidth: isScrolled && !isOpen ? "1px" : "0px",
@@ -125,7 +125,7 @@ export function Header() {
                 color: textColor,
                 textDecoration: "none",
                 opacity: pathname === link.href ? 1 : 0.75,
-                transition: "opacity 0.2s, color 0.45s ease-in-out",
+                transition: "opacity 0.2s, color 0.5s ease-in-out",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
               onMouseLeave={(e) =>
@@ -149,7 +149,7 @@ export function Header() {
               color: textColor,
               textDecoration: "none",
               opacity: 0.8,
-              transition: "color 0.45s ease-in-out, opacity 0.2s",
+              transition: "color 0.5s ease-in-out, opacity 0.2s",
             }}
           >
             Contacto
@@ -166,7 +166,7 @@ export function Header() {
               borderRadius: "4px",
               padding: "7px 16px",
               textDecoration: "none",
-              transition: "all 0.3s ease-in-out",
+              transition: "all 0.5s ease-in-out",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;

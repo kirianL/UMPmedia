@@ -63,8 +63,8 @@ const projects = [
   {
     title: "Buscando al dealer",
     category: "Producción",
-    year: "2024",
-    image: "",
+    year: "2026",
+    image: "/portfolio/BuscandoAlDealer/BusquedaDealer_TL.jpg",
     slug: "buscando-al-dealer",
     className: "md:col-span-2 md:row-span-1",
   },

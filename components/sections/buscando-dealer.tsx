@@ -90,6 +90,25 @@ const episodes: Episode[] = [
   },
 ];
 
+const galleryImages = [
+  {
+    src: "/portfolio/BuscandoAlDealer/BusquedaDealer_TL.jpg",
+    alt: "Detrás de cámaras - Producción 2026",
+  },
+  {
+    src: "https://img.youtube.com/vi/XvPBfqjhKP0/maxresdefault.jpg",
+    alt: "Escena Capítulo 1 - Códigos de Calle",
+  },
+  {
+    src: "https://img.youtube.com/vi/IdAsBE-73B8/maxresdefault.jpg",
+    alt: "Escena Capítulo 3 - Conexiones Locales",
+  },
+  {
+    src: "https://img.youtube.com/vi/6VZvExkr6XM/maxresdefault.jpg",
+    alt: "Escena Capítulo 7 - Gran Cierre de Temporada",
+  },
+];
+
 export function BuscandoDealer() {
   const [activeEpisode, setActiveEpisode] = useState<Episode>(episodes[0]);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -111,7 +130,7 @@ export function BuscandoDealer() {
       {/* Title block */}
       <div className="mb-16">
         <span className="text-ump-accent font-bold uppercase tracking-widest text-xs mb-3 block">
-          SERIE ORIGINAL — 2024
+          SERIE ORIGINAL — 2026
         </span>
         <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight leading-none uppercase">
           Buscando al <span className="text-[#32fb00] italic font-black">dealer</span>
@@ -257,6 +276,53 @@ export function BuscandoDealer() {
           </div>
         </div>
       </div>
+
+      {/* Galería de imágenes (Todas horizontales aspect-video) */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="mt-24 pt-16 border-t border-white/5"
+      >
+        <div className="mb-12">
+          <span className="text-ump-accent font-bold uppercase tracking-widest text-xs mb-3 block">
+            PRODUCCIÓN
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight uppercase">
+            Galería del <span className="text-[#32fb00] italic font-black">Rodaje</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {galleryImages.map((image, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+              className="group aspect-video rounded-3xl overflow-hidden relative bg-neutral-900 border border-white/5 shadow-lg cursor-pointer"
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, 600px"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <div>
+                  <span className="text-ump-accent text-xs font-bold uppercase tracking-widest mb-1 block">
+                    Buscando al Dealer
+                  </span>
+                  <p className="text-white font-bold text-lg">{image.alt}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </div>
   );
 }
