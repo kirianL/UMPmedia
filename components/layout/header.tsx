@@ -154,35 +154,6 @@ export function Header() {
           >
             Contacto
           </Link>
-          <Link
-            href="/portfolio"
-            style={{
-              fontFamily: "var(--font-inter), sans-serif",
-              fontWeight: 700,
-              fontSize: "0.82rem",
-              letterSpacing: "0.02em",
-              color: textColor,
-              border: `2px solid ${buttonBorderColor}`,
-              borderRadius: "4px",
-              padding: "7px 16px",
-              textDecoration: "none",
-              transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
-            }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.background = isDarkNavbar ? "#ffffff" : "#0a0a0a";
-              el.style.color = isDarkNavbar ? "#0a0a0a" : "#32fb00";
-              el.style.borderColor = isDarkNavbar ? "#ffffff" : "#0a0a0a";
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLAnchorElement;
-              el.style.background = "transparent";
-              el.style.color = textColor;
-              el.style.borderColor = buttonBorderColor;
-            }}
-          >
-            Ver Portafolio
-          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -229,6 +200,11 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       document.body.style.overflow = "unset";
     };
   }, []);
+
+  const handleLinkClick = () => {
+    document.body.style.overflow = "unset";
+    onClose();
+  };
 
   const menuVariants = {
     closed: {
@@ -286,7 +262,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
           <motion.div key={link.href} variants={linkVariants}>
             <Link
               href={link.href}
-              onClick={onClose}
+              onClick={handleLinkClick}
               style={{
                 fontFamily: "var(--font-inter), sans-serif",
                 fontWeight: 800,
@@ -322,7 +298,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       >
         <Link
           href="/contact"
-          onClick={onClose}
+          onClick={handleLinkClick}
           style={{
             fontFamily: "var(--font-inter), sans-serif",
             fontWeight: 700,
