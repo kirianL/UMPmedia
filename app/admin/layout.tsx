@@ -20,7 +20,7 @@ export default function AdminLayout({
       <aside className="w-64 bg-white dark:bg-zinc-900 border-r border-gray-200 dark:border-zinc-800 hidden md:flex flex-col">
         <div className="p-6 border-b border-gray-200 dark:border-zinc-800">
           <h1 className="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
-            UMPmedia
+            Ultimate Media Productions
           </h1>
         </div>
 

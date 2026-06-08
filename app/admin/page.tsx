@@ -3,7 +3,7 @@ export default function AdminDashboard() {
     <div className="space-y-6">
       <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
       <p className="text-gray-500 dark:text-gray-400">
-        Bienvenido al panel de administración de UMPmedia. Selecciona una opción
+        Bienvenido al panel de administración de Ultimate Media Productions. Selecciona una opción
         del menú para gestionar el contenido.
       </p>
 

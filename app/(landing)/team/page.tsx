@@ -22,7 +22,7 @@ const team = [
   {
     name: "Eymar Ortiz Rojas",
     role: "Productor Audiovisual",
-    bio: "Eymar Ortiz Rojas es productor audiovisual limonense, graduado de la Universidad Creativa, con más de 4 años de experiencia en el mundo de la fotografía y el video. Ha trabajado en estudios de fotografía en Limón y se desempeñó como productor en Noticias Caribe, donde lideró proyectos de transmisión en vivo como los toros y desfiles, además de la producción de programas especiales para la municipalidad.\n\nCuenta con amplia experiencia como editor de video y ha desarrollado proyectos para instituciones y marcas como UCreativa, TecSpace, GenteOPA y Noticias Caribe. Actualmente dirige la productora UMP Media, donde ha producido y dirigido videos musicales para distintos artistas, combinando técnica, narrativa visual y una identidad caribeña marcada.",
+    bio: "Eymar Ortiz Rojas es productor audiovisual limonense, graduado de la Universidad Creativa, con más de 4 años de experiencia en el mundo de la fotografía y el video. Ha trabajado en estudios de fotografía en Limón y se desempeñó como productor en Noticias Caribe, donde lideró proyectos de transmisión en vivo como los toros y desfiles, además de la producción de programas especiales para la municipalidad.\n\nCuenta con amplia experiencia como editor de video y ha desarrollado proyectos para instituciones y marcas como UCreativa, TecSpace, GenteOPA y Noticias Caribe. Actualmente dirige la productora Ultimate Media Productions, donde ha producido y dirigido videos musicales para distintos artistas, combinando técnica, narrativa visual y una identidad caribeña marcada.",
     specialties: [
       "Producción",
       "Dirección",

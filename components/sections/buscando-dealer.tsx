@@ -22,7 +22,7 @@ const episodes: Episode[] = [
     id: 1,
     number: "Capítulo 01",
     title: "Buscando al dealer - Cap 1",
-    description: "Primer capítulo de la serie documental original de UMPmedia. Nos adentramos en las calles para entender los códigos, la música y las realidades del movimiento urbano local.",
+    description: "Primer capítulo de la serie documental original de Ultimate Media Productions. Nos adentramos en las calles para entender los códigos, la música y las realidades del movimiento urbano local.",
     youtubeUrl: "https://youtu.be/XvPBfqjhKP0",
     youtubeId: "XvPBfqjhKP0",
     duration: "10:35",

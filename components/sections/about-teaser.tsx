@@ -54,7 +54,7 @@ export function AboutTeaser() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-lg md:text-xl lg:text-2xl text-white font-medium leading-tight">
-                UMPmedia no es solo una productora; es un{" "}
+                Ultimate Media Productions no es solo una productora; es un{" "}
                 <span className="border-b-2 border-[#32fb00]">
                   manifiesto visual
                 </span>{" "}

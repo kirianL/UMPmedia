@@ -63,7 +63,7 @@ export function Hero() {
               marginBottom: "2.2rem",
             }}
           >
-            UMP Media te da la libertad y las herramientas para contar tu
+            Ultimate Media Productions te da la libertad y las herramientas para contar tu
             historia. Grabamos, editamos y distribuimos contenido audiovisual
             de calidad, desde el Caribe costarricense para el mundo.
           </motion.p>
@@ -170,7 +170,7 @@ export function Hero() {
               marginBottom: "-20px",
             }}
           >
-            {/* Outer white irregular polygon border */}
+            {/* Outer irregular polygon border */}
             <div
               style={{
                 width: "clamp(220px, 28vw, 360px)",
@@ -199,7 +199,7 @@ export function Hero() {
               >
                 <Image
                   src="/assets/images/hero-portrait.png"
-                  alt="Realizador audiovisual de UMP Media"
+                  alt="Realizador audiovisual de Ultimate Media Productions"
                   fill
                   className="object-cover object-top"
                   style={{ filter: "grayscale(100%) contrast(1.12)" }}

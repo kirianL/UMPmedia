@@ -32,7 +32,7 @@ const news = [
     image: "",
   },
   {
-    title: "UMPmedia en el Festival de Cine",
+    title: "Ultimate Media Productions en el Festival de Cine",
     date: "Jul 02, 2024",
     excerpt:
       "Nuestra participación en el festival nacional con dos cortometrajes seleccionados.",

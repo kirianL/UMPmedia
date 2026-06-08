@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ServicesContent } from "@/components/pages/services-content";
 
 export const metadata: Metadata = {
-  title: "Servicios Audiovisuales | Video, Podcast y Fotografía - UMPmedia",
+  title: "Servicios Audiovisuales | Video, Podcast y Fotografía - Ultimate Media Productions",
   description:
     "Catálogo de servicios audiovisuales en Costa Rica: Producción de video, fotografía profesional, podcast, cobertura de eventos y manejo de redes sociales.",
 };

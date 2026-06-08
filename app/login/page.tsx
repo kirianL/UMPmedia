@@ -19,7 +19,7 @@ export default function LoginPage({
       <Card className="w-full max-w-md shadow-lg border-zinc-200 dark:border-zinc-800">
         <CardHeader>
           <CardTitle className="text-center text-2xl font-bold tracking-tight">
-            UMPmedia Admin
+            Ultimate Media Productions Admin
           </CardTitle>
           <p className="text-center text-sm text-zinc-500">
             Enter your credentials to access the dashboard

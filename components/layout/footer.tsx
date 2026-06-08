@@ -10,7 +10,7 @@ export function Footer() {
           <Link href="/" className="relative w-40 h-12 block">
             <Image
               src="/LogoUMP-Transparente.webp"
-              alt="UMP Media"
+              alt="Ultimate Media Productions"
               fill
               className="object-contain object-left"
             />
@@ -54,7 +54,7 @@ export function Footer() {
 
       <div className="container mx-auto mt-10 md:mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-ump-secondary/50 gap-4 text-center md:text-left">
         <p>
-          &copy; {new Date().getFullYear()} UMPmedia. Todos los derechos
+          &copy; {new Date().getFullYear()} Ultimate Media Productions. Todos los derechos
           reservados.
         </p>
         <p>

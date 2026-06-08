@@ -21,7 +21,7 @@ export function DigitalSolutions() {
       {/* Header */}
       <div className="mb-16">
         <span className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block">
-          UMP MEDIA
+          ULTIMATE MEDIA PRODUCTIONS
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
           Sistemas y soluciones digitales

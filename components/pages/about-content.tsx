@@ -49,7 +49,7 @@ export function AboutContent() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Desde aquí, UMPmedia surge en 2026 como una productora audiovisual
+              Desde aquí, Ultimate Media Productions surge en 2026 como una productora audiovisual
               comprometida con crear contenido con calidad técnica, narrativa y
               de diseño, pensado para comunicar con intención y conectar con
               audiencias reales.
@@ -124,7 +124,7 @@ export function AboutContent() {
           >
             <div className="bg-ump-card/20 p-8 md:p-12 rounded-2xl border border-white/10 hover:border-white/20 transition-colors duration-500">
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                UMPmedia se establece como productora audiovisual con base en
+                Ultimate Media Productions se establece como productora audiovisual con base en
                 Limón, ofreciendo servicios de video publicitario y corporativo,
                 producción de podcast, cobertura de eventos, fotografía, video y
                 manejo de redes sociales, manteniendo un estándar profesional

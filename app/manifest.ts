@@ -2,8 +2,8 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "UMPmedia | Estudio Audiovisual",
-    short_name: "UMPmedia",
+    name: "Ultimate Media Productions | Estudio Audiovisual",
+    short_name: "Ultimate Media Productions",
     description:
       "Estudio audiovisual independiente desde Limón, Costa Rica. Producción de video, fotografía y estrategia digital.",
     start_url: "/",
