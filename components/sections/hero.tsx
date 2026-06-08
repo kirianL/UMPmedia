@@ -139,7 +139,7 @@ export function Hero() {
                 fontFamily: "var(--font-inter), sans-serif",
                 fontWeight: 700,
                 fontSize: "0.9rem",
-                color: "#32fb00",
+                color: "#ffffff",
                 background: "#0a0a0a",
                 borderRadius: "4px",
                 padding: "13px 26px",
@@ -181,7 +181,7 @@ export function Hero() {
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLAnchorElement).style.background =
                   "#0a0a0a";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#32fb00";
+                (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
                 (e.currentTarget as HTMLAnchorElement).style.transform =
                   "translateY(-2px)";
               }}

@@ -95,7 +95,33 @@ export function TeamTeaser() {
         <div className="mt-16 text-center">
           <Link
             href="/team"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-black/20 hover:border-black hover:bg-black text-black hover:text-[#32fb00] transition-all duration-300 text-sm font-bold uppercase tracking-wider"
+            style={{
+              fontFamily: "var(--font-inter), sans-serif",
+              fontWeight: 700,
+              fontSize: "0.9rem",
+              color: "#0a0a0a",
+              background: "transparent",
+              border: "2px solid #0a0a0a",
+              borderRadius: "4px",
+              padding: "11px 26px",
+              textDecoration: "none",
+              transition: "background 0.2s, color 0.2s, transform 0.2s",
+            }}
+            className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2"
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background =
+                "#0a0a0a";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
+              (e.currentTarget as HTMLAnchorElement).style.transform =
+                "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background =
+                "transparent";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#0a0a0a";
+              (e.currentTarget as HTMLAnchorElement).style.transform =
+                "translateY(0)";
+            }}
           >
             <span>Ver todo el equipo</span>
             <ArrowRight size={16} />

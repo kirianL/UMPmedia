@@ -95,10 +95,10 @@ export function ContactContent() {
                     <Mail size={14} className="text-[#32fb00]" /> Email
                   </h3>
                   <a
-                    href="mailto:contacto@ultimatemediaproductions.com"
+                    href="mailto:fabian@ultimatemediaproductions.com"
                     className="text-ump-secondary hover:text-white transition-colors text-sm break-all"
                   >
-                    contacto@ultimatemediaproductions.com
+                    fabian@ultimatemediaproductions.com
                   </a>
                 </div>
 

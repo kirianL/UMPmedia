@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import {
   motion,
@@ -39,8 +39,21 @@ export function Header() {
 
   const themeColor = "#0a0a0a";
 
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollYRef = useRef(0);
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
+
+    const prev = lastScrollYRef.current;
+    if (!isOpen) {
+      if (latest > prev && latest > 150) {
+        setIsVisible(false);
+      } else if (latest < prev) {
+        setIsVisible(true);
+      }
+    }
+    lastScrollYRef.current = latest;
   });
 
   // Automatically close mobile menu if screen resizes to desktop width
@@ -75,8 +88,8 @@ export function Header() {
       <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{
-          y: 0,
-          opacity: 1,
+          y: isOpen || isVisible ? 0 : -120,
+          opacity: isOpen || isVisible ? 1 : 0,
           backgroundColor: isOpen
             ? "transparent"
             : isScrolled
@@ -276,12 +289,10 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLAnchorElement;
-                el.style.color = "#32fb00";
                 el.style.transform = "scale(1.05)";
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget as HTMLAnchorElement;
-                el.style.color = "#ffffff";
                 el.style.transform = "scale(1)";
               }}
             >
@@ -302,26 +313,26 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
           style={{
             fontFamily: "var(--font-inter), sans-serif",
             fontWeight: 700,
-            fontSize: "0.95rem",
+            fontSize: "0.9rem",
             color: "#0a0a0a",
             background: "#ffffff",
-            borderRadius: "999px",
-            padding: "14px 44px",
+            borderRadius: "4px",
+            padding: "13px 26px",
             textDecoration: "none",
             display: "inline-block",
             textAlign: "center",
-            boxShadow: "0 8px 24px rgba(255,255,255,0.05)",
+            boxShadow: "0 4px 14px rgba(255,255,255,0.12)",
             transition: "transform 0.2s ease, box-shadow 0.2s ease",
           }}
           onMouseEnter={(e) => {
             const el = e.currentTarget as HTMLAnchorElement;
-            el.style.transform = "scale(1.04)";
-            el.style.boxShadow = "0 12px 28px rgba(255,255,255,0.15)";
+            el.style.transform = "translateY(-2px)";
+            el.style.boxShadow = "0 8px 20px rgba(255,255,255,0.22)";
           }}
           onMouseLeave={(e) => {
             const el = e.currentTarget as HTMLAnchorElement;
-            el.style.transform = "scale(1)";
-            el.style.boxShadow = "0 8px 24px rgba(255,255,255,0.05)";
+            el.style.transform = "translateY(0)";
+            el.style.boxShadow = "0 4px 14px rgba(255,255,255,0.12)";
           }}
         >
           Cotizar proyecto

@@ -18,33 +18,80 @@ export function CTAFinal() {
           visión.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/contact">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto rounded-full bg-ump-accent hover:bg-ump-accentHover text-white px-10 h-16 text-lg font-bold shadow-lg shadow-ump-accent/20"
-            >
-              Hablemos
-            </Button>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="/contact"
+            style={{
+              fontFamily: "var(--font-inter), sans-serif",
+              fontWeight: 700,
+              fontSize: "0.9rem",
+              color: "#0a0a0a",
+              background: "#ffffff",
+              borderRadius: "4px",
+              padding: "13px 26px",
+              textDecoration: "none",
+              transition: "transform 0.2s, box-shadow 0.2s",
+              boxShadow: "0 4px 14px rgba(255,255,255,0.12)",
+            }}
+            className="w-full sm:w-auto text-center inline-block"
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.transform =
+                "translateY(-2px)";
+              (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+                "0 8px 20px rgba(255,255,255,0.22)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.transform =
+                "translateY(0)";
+              (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+                "0 4px 14px rgba(255,255,255,0.12)";
+            }}
+          >
+            Hablemos
           </Link>
-          <Link href="/portfolio">
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto rounded-full border-white/20 text-white hover:bg-white hover:text-black px-10 h-16 text-lg"
-            >
-              Ver más trabajos
-            </Button>
+          <Link
+            href="/portfolio"
+            style={{
+              fontFamily: "var(--font-inter), sans-serif",
+              fontWeight: 700,
+              fontSize: "0.9rem",
+              color: "#ffffff",
+              background: "transparent",
+              border: "2px solid rgba(255, 255, 255, 0.2)",
+              borderRadius: "4px",
+              padding: "11px 26px",
+              textDecoration: "none",
+              transition: "background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s",
+            }}
+            className="w-full sm:w-auto text-center inline-block"
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background =
+                "#ffffff";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#0a0a0a";
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "#ffffff";
+              (e.currentTarget as HTMLAnchorElement).style.transform =
+                "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background =
+                "transparent";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
+              (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255, 255, 255, 0.2)";
+              (e.currentTarget as HTMLAnchorElement).style.transform =
+                "translateY(0)";
+            }}
+          >
+            Ver más trabajos
           </Link>
         </div>
 
         <div className="mt-16 text-ump-secondary text-sm">
           <p>O escríbenos directamente a:</p>
           <a
-            href="mailto:hello@umpmedia.com"
-            className="text-white hover:text-ump-accent transition-colors text-lg font-medium mt-2 block"
+            href="mailto:fabian@ultimatemediaproductions.com"
+            className="text-white hover:underline transition-colors text-lg font-medium mt-2 block"
           >
-            hello@umpmedia.com
+            fabian@ultimatemediaproductions.com
           </a>
         </div>
       </div>

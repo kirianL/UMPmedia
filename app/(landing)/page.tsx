@@ -5,10 +5,8 @@ import { ClientsStats } from "@/components/sections/clients-stats";
 import { WhyUMP } from "@/components/sections/why-ump";
 
 // Lazy load sections below the fold
-const PortfolioPreview = dynamic(() =>
-  import("@/components/sections/portfolio-preview").then(
-    (mod) => mod.PortfolioPreview,
-  ),
+const Showcase = dynamic(() =>
+  import("@/components/sections/showcase").then((mod) => mod.Showcase),
 );
 const TeamTeaser = dynamic(() =>
   import("@/components/sections/team-teaser").then((mod) => mod.TeamTeaser),
@@ -26,7 +24,7 @@ export default function Home() {
       <main className="flex flex-col min-h-screen">
         <Hero />
         <ClientsStats />
-        <PortfolioPreview />
+        <Showcase />
         <WhyUMP />
         <TeamTeaser />
         <AboutTeaser />

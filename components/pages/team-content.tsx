@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { ArrowUpRight, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { RevealText } from "@/components/ui/reveal-text";
 
@@ -253,27 +254,79 @@ export function TeamContent() {
             Llevémoslo al siguiente nivel. Agendemos una llamada para entender
             tu visión.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-full bg-ump-accent hover:bg-ump-accentHover text-black px-10 h-14 text-base font-bold transition-colors shadow-lg shadow-ump-accent/40"
+              style={{
+                fontFamily: "var(--font-inter), sans-serif",
+                fontWeight: 700,
+                fontSize: "0.9rem",
+                color: "#0a0a0a",
+                background: "#ffffff",
+                borderRadius: "4px",
+                padding: "13px 26px",
+                textDecoration: "none",
+                transition: "transform 0.2s, box-shadow 0.2s",
+                boxShadow: "0 4px 14px rgba(255,255,255,0.12)",
+              }}
+              className="w-full sm:w-auto text-center inline-block"
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.transform =
+                  "translateY(-2px)";
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+                  "0 8px 20px rgba(255,255,255,0.22)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.transform =
+                  "translateY(0)";
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+                  "0 4px 14px rgba(255,255,255,0.12)";
+              }}
             >
               Hablemos
-            </a>
-            <a
+            </Link>
+            <Link
               href="/portfolio"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 text-white hover:bg-white hover:text-black px-10 h-14 text-base transition-colors"
+              style={{
+                fontFamily: "var(--font-inter), sans-serif",
+                fontWeight: 700,
+                fontSize: "0.9rem",
+                color: "#ffffff",
+                background: "transparent",
+                border: "2px solid rgba(255, 255, 255, 0.2)",
+                borderRadius: "4px",
+                padding: "11px 26px",
+                textDecoration: "none",
+                transition: "background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s",
+              }}
+              className="w-full sm:w-auto text-center inline-block"
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background =
+                  "#ffffff";
+                (e.currentTarget as HTMLAnchorElement).style.color = "#0a0a0a";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "#ffffff";
+                (e.currentTarget as HTMLAnchorElement).style.transform =
+                  "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.background =
+                  "transparent";
+                (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255, 255, 255, 0.2)";
+                (e.currentTarget as HTMLAnchorElement).style.transform =
+                  "translateY(0)";
+              }}
             >
               Ver más trabajos
-            </a>
+            </Link>
           </div>
           <p className="text-white/30 text-sm mt-10">
             O escríbenos a{" "}
             <a
-              href="mailto:hello@umpmedia.com"
-              className="text-white/60 hover:text-ump-accent transition-colors"
+              href="mailto:fabian@ultimatemediaproductions.com"
+              className="text-white/60 hover:underline transition-colors"
             >
-              hello@umpmedia.com
+              fabian@ultimatemediaproductions.com
             </a>
           </p>
         </div>
