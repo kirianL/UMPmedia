@@ -1,14 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { HeroGradient } from "@/components/ui/hero-gradient";
+import dynamic from "next/dynamic";
+
+const HeroGradient = dynamic(
+  () => import("@/components/ui/hero-gradient").then((mod) => mod.HeroGradient),
+  { ssr: false }
+);
 
 export function Hero() {
   const title = "Producción audiovisual para conectar e impactar";
   const words = title.split(" ");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isInView, setIsInView] = useState(true);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const checkOverflow = () => {
@@ -24,15 +31,34 @@ export function Hero() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        rootMargin: "100px 0px 100px 0px", // Pre-load 100px before entering viewport for a seamless transition
+        threshold: 0,
+      }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(88px+env(safe-area-inset-top))] pb-12 md:pt-[calc(120px+env(safe-area-inset-top))] md:pb-24">
+    <section
+      ref={sectionRef}
+      className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(88px+env(safe-area-inset-top))] pb-12 md:pt-[calc(120px+env(safe-area-inset-top))] md:pb-24"
+    >
       {/* Dynamic 3D Shader Gradient Background */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{ display: isMenuOpen ? "none" : "block" }}
-      >
-        <HeroGradient />
-      </div>
+      {!isMenuOpen && isInView && (
+        <div className="absolute inset-0 z-0">
+          <HeroGradient active={true} />
+        </div>
+      )}
 
       <div className="relative z-10 container mx-auto px-6 max-w-5xl text-center">
         <motion.div
@@ -44,28 +70,20 @@ export function Hero() {
           {/* Main Title with Spring Letter Reveal */}
           <h1 className="text-3xl sm:text-6xl md:text-7xl font-extrabold mb-4 tracking-tighter leading-[1.1] md:leading-none text-black select-none">
             {words.map((word, wordIndex) => (
-              <span
+              <motion.span
                 key={wordIndex}
-                className="inline-block mr-2 md:mr-3 last:mr-0"
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  delay: wordIndex * 0.08,
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 22,
+                }}
+                className="inline-block mr-2 md:mr-3 last:mr-0 text-black"
               >
-                {word.split("").map((letter, letterIndex) => (
-                  <motion.span
-                    key={`${wordIndex}-${letterIndex}`}
-                    initial={{ y: 100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      delay: wordIndex * 0.08 + letterIndex * 0.02,
-                      type: "spring",
-                      stiffness: 150,
-                      damping: 25,
-                    }}
-                    className="inline-block text-black"
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
-                {wordIndex < words.length - 1 && <span className="inline-block w-2 md:w-3">&nbsp;</span>}
-              </span>
+                {word}
+              </motion.span>
             ))}
           </h1>
 
