@@ -42,15 +42,28 @@ export function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollYRef = useRef(0);
 
+  // Initialize scroll position on mount to prevent layout jumps if page is loaded/refreshed mid-scroll
+  useEffect(() => {
+    lastScrollYRef.current = window.scrollY;
+  }, []);
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
 
     const prev = lastScrollYRef.current;
+    const diff = latest - prev;
+
     if (!isOpen) {
-      if (latest > prev && latest > 150) {
-        setIsVisible(false);
-      } else if (latest < prev) {
+      if (latest < 50) {
+        // Always show the header near the top of the page
         setIsVisible(true);
+      } else if (Math.abs(diff) > 12) {
+        // Hysteresis buffer: only toggle visibility if scroll offset moves by more than 12px
+        if (latest > prev) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
       }
     }
     lastScrollYRef.current = latest;
@@ -112,6 +125,8 @@ export function Header() {
         style={{
           borderBottomWidth: "1px",
           borderStyle: "solid",
+          transform: "translate3d(0, 0, 0)",
+          willChange: "transform",
         }}
         className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 md:px-14 pt-[calc(1.25rem+env(safe-area-inset-top))] pb-5 md:py-5"
       >
