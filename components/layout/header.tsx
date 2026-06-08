@@ -40,7 +40,7 @@ export function Header() {
   const themeColor = "#0a0a0a";
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 100);
+    setIsScrolled(latest > 50);
   });
 
   // Automatically close mobile menu if screen resizes to desktop width
@@ -92,12 +92,12 @@ export function Header() {
         transition={{
           y: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
           opacity: { duration: 0.5 },
-          backgroundColor: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-          borderColor: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-          backdropFilter: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+          backgroundColor: { duration: 0.8, ease: "easeInOut" },
+          borderColor: { duration: 0.8, ease: "easeInOut" },
+          backdropFilter: { duration: 0.8, ease: "easeInOut" },
         }}
         style={{
-          borderBottomWidth: isScrolled && !isOpen ? "1px" : "0px",
+          borderBottomWidth: "1px",
           borderStyle: "solid",
         }}
         className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 md:px-14 pt-[calc(1.25rem+env(safe-area-inset-top))] pb-5 md:py-5"
@@ -125,7 +125,7 @@ export function Header() {
                 color: textColor,
                 textDecoration: "none",
                 opacity: pathname === link.href ? 1 : 0.75,
-                transition: "opacity 0.2s, color 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+                transition: "opacity 0.2s, color 0.8s ease-in-out",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
               onMouseLeave={(e) =>
@@ -149,7 +149,7 @@ export function Header() {
               color: textColor,
               textDecoration: "none",
               opacity: 0.8,
-              transition: "color 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s",
+              transition: "color 0.8s ease-in-out, opacity 0.2s",
             }}
           >
             Contacto
@@ -160,7 +160,7 @@ export function Header() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden z-[100000] p-2 relative w-10 h-10 flex flex-col items-center justify-center gap-[6px] focus:outline-none"
-          style={{ color: textColor, transition: "color 0.4s ease-in-out" }}
+          style={{ color: textColor, transition: "color 0.8s ease-in-out" }}
           aria-label="Toggle Menu"
         >
           <motion.span

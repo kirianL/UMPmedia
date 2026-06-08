@@ -42,8 +42,8 @@ export function AnimatedLogo({ color = "#ffffff", className = "" }: AnimatedLogo
             fill: color,
           }}
           transition={{
-            stroke: { duration: 0.4, ease: "easeInOut" },
-            fill: { duration: 0.4, ease: "easeInOut" },
+            stroke: { duration: 0.8, ease: "easeInOut" },
+            fill: { duration: 0.8, ease: "easeInOut" },
             pathLength: {
               duration: 8,
               repeat: Infinity,
