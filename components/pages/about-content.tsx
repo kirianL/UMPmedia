@@ -5,6 +5,7 @@ import { EquipmentShowcase } from "@/components/sections/equipment-showcase";
 import { RevealText } from "@/components/ui/reveal-text";
 import { Check, Shield, Zap, Heart } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function AboutContent() {
   return (
@@ -12,11 +13,17 @@ export function AboutContent() {
       {/* Jeton-Style Header Banner with UMP Neon Green Background */}
       <div className="bg-[#32fb00] text-black pt-40 pb-24 md:pb-32 px-6 relative z-10">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-black">
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
             <RevealText
               text="Nosotros"
               tag="h1"
               className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black"
             />
+          </motion.div>
           
           <motion.div
             initial={{ opacity: 0, y: -15 }}
@@ -62,27 +69,63 @@ export function AboutContent() {
       </div>
 
       {/* 2. Expansion & Context */}
-      <section className="bg-ump-card/10 border-y border-white/5 py-16 mb-16">
+      <section className="bg-ump-card/10 border-y border-white/5 py-16 md:py-24 mb-16">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center md:text-left">
-            <RevealText
-              text="Raíces Caribeñas, Alcance Global"
-              tag="h2"
-              className="text-3xl md:text-4xl font-bold text-white mb-6"
-            />
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-ump-secondary leading-relaxed"
-            >
-              Aunque nuestras raíces están en el Caribe, nuestro alcance no se
-              limita a un solo lugar. Trabajamos y nos expandimos en diferentes
-              regiones de Costa Rica, colaborando con marcas, proyectos y
-              personas que buscan producción audiovisual profesional, sin
-              importar dónde se encuentren.
-            </motion.p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Text Column */}
+            <div className="lg:col-span-7 text-center lg:text-left">
+              <RevealText
+                text="Raíces Caribeñas, Alcance Global"
+                tag="h2"
+                className="text-3xl md:text-5xl font-bold text-white mb-6"
+              />
+              <motion.p
+                initial={{ opacity: 0, y: -15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                className="text-lg md:text-xl text-ump-secondary leading-relaxed"
+              >
+                Aunque nuestras raíces están en el Caribe, nuestro alcance no se
+                limita a un solo lugar. Trabajamos y nos expandimos en diferentes
+                regiones de Costa Rica, colaborando con marcas, proyectos y
+                personas que buscan producción audiovisual profesional, sin
+                importar dónde se encuentren.
+              </motion.p>
+            </div>
+
+            {/* Map Column */}
+            <div className="lg:col-span-5 flex justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: -15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+                className="w-full max-w-[520px] aspect-[4/3] relative flex items-center justify-center select-none"
+              >
+                {/* Floating animation container */}
+                <motion.div
+                  animate={{
+                    y: [0, -12, 0],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="w-full h-full relative"
+                >
+                  <Image
+                    src="/assets/images/CostaRica-map.PNG"
+                    alt="Mapa de Costa Rica con Limón en verde"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 520px"
+                    className="object-contain"
+                    priority
+                  />
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
