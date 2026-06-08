@@ -1,10 +1,11 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 function FloatingPaths({ position }: { position: number }) {
-  const paths = Array.from({ length: 36 }, (_, i) => ({
+  const paths = Array.from({ length: 18 }, (_, i) => ({
     id: i,
     d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
       380 - i * 5 * position
@@ -53,14 +54,31 @@ function FloatingPaths({ position }: { position: number }) {
 export function Hero() {
   const title = "Producción audiovisual para conectar e impactar";
   const words = title.split(" ");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      setIsMenuOpen(document.body.style.overflow === "hidden");
+    };
+
+    const observer = new MutationObserver(checkOverflow);
+    observer.observe(document.body, { attributes: true, attributeFilter: ["style"] });
+
+    // Initial check
+    checkOverflow();
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(88px+env(safe-area-inset-top))] pb-12 md:pt-[calc(120px+env(safe-area-inset-top))] md:pb-24">
-      {/* Animated Background Paths */}
-      <div className="absolute inset-0 z-0">
-        <FloatingPaths position={1} />
-        <FloatingPaths position={-1} />
-      </div>
+      {/* Animated Background Paths - Paused when full-screen mobile navigation is open to prevent animation lag */}
+      {!isMenuOpen && (
+        <div className="absolute inset-0 z-0">
+          <FloatingPaths position={1} />
+          <FloatingPaths position={-1} />
+        </div>
+      )}
 
       <div className="relative z-10 container mx-auto px-6 max-w-5xl text-center">
         <motion.div
