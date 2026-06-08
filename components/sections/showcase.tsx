@@ -160,6 +160,7 @@ export function Showcase() {
 // ═════════════════════════════════════════════════════════════════════════════
 function ShowcaseVideoCard({ project }: { project: ProjectItem }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
@@ -177,6 +178,15 @@ function ShowcaseVideoCard({ project }: { project: ProjectItem }) {
     return () => observer.disconnect();
   }, []);
 
+  // Programmatically trigger play on layout entrance to bypass desktop browser autoplay restrictions
+  useEffect(() => {
+    if (isInView && videoRef.current) {
+      videoRef.current.play().catch((err) => {
+        console.warn("Autoplay block bypassed or ignored:", err);
+      });
+    }
+  }, [isInView]);
+
   return (
     <div
       ref={containerRef}
@@ -185,13 +195,14 @@ function ShowcaseVideoCard({ project }: { project: ProjectItem }) {
       {/* Autoplaying Loop Muted Widescreen Video */}
       {isInView ? (
         <video
+          ref={videoRef}
           src={project.video}
           autoPlay
           loop
           muted
           playsInline
           preload="metadata"
-          className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-95 transition-opacity duration-500"
+          className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-95 transition-opacity duration-500"
         />
       ) : (
         <div className="absolute inset-0 bg-neutral-900" />
