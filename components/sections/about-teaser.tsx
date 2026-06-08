@@ -20,7 +20,7 @@ export function AboutTeaser() {
   return (
     <section
       ref={containerRef}
-      className="py-32 md:py-64 bg-ump-alt relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 z-50 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
+      className="py-16 md:py-32 lg:py-64 bg-ump-alt relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 z-50 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
     >
       {/* Background Decorative Element */}
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-[#18943A]/10 rounded-full blur-[120px] pointer-events-none" />
@@ -35,7 +35,7 @@ export function AboutTeaser() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-7xl font-bold text-white leading-[1.05] tracking-tighter mb-8 italic">
+              <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tighter mb-6 lg:mb-8 italic">
                 CULTURA <br />
                 <span className="text-[#18943A] not-italic">
                   CARIBEÑA.
@@ -53,14 +53,14 @@ export function AboutTeaser() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <p className="text-xl md:text-2xl text-white font-medium leading-tight">
+              <p className="text-lg md:text-xl lg:text-2xl text-white font-medium leading-tight">
                 UMPmedia no es solo una productora; es un{" "}
                 <span className="border-b-2 border-[#18943A]">
                   manifiesto visual
                 </span>{" "}
                 nacido en Limón.
               </p>
-              <p className="text-base md:text-lg text-ump-secondary leading-relaxed max-w-md">
+              <p className="text-sm md:text-base lg:text-lg text-ump-secondary leading-relaxed max-w-md">
                 Combinamos la energía cruda de nuestras raíces con estándares de
                 producción elite. Si tiene alma, nosotros sabemos cómo filmarla.
               </p>
@@ -83,11 +83,11 @@ export function AboutTeaser() {
           </div>
 
           {/* Photo Mosaic - Right 7 Cols */}
-          <div className="lg:col-span-7 grid grid-cols-3 md:grid-cols-5 gap-3 md:gap-6 order-1 lg:order-2 h-[400px] md:h-[700px] relative">
+          <div className="lg:col-span-7 grid grid-cols-3 md:grid-cols-5 gap-3 md:gap-6 order-1 lg:order-2 h-[280px] md:h-[500px] lg:h-[700px] relative">
             {/* Large Image - Main focus */}
             <motion.div
               style={{ y: y1 }}
-              className="col-span-2 md:col-span-3 h-full bg-[#18943A]/20 rounded-3xl overflow-hidden relative border border-white/5 group"
+              className="col-span-2 md:col-span-3 h-full bg-[#18943A]/20 rounded-2xl md:rounded-3xl overflow-hidden relative border border-white/5 group"
             >
               <video
                 src="/assets/videos/Home-detrasdecamaras.mp4"
@@ -104,7 +104,7 @@ export function AboutTeaser() {
             <div className="col-span-1 md:col-span-2 grid grid-rows-2 gap-3 md:gap-6 h-full">
               <motion.div
                 style={{ y: y2 }}
-                className="bg-ump-card rounded-3xl overflow-hidden relative border border-white/5 group"
+                className="bg-ump-card rounded-2xl md:rounded-3xl overflow-hidden relative border border-white/5 group"
               >
                 <div className="absolute inset-0 bg-ump-card/60 flex items-center justify-center p-2 text-center group-hover:bg-[#18943A]/20 transition-colors">
                   <p className="text-white/20 font-mono text-[8px] md:text-[10px] uppercase tracking-[0.2em]">
@@ -117,7 +117,7 @@ export function AboutTeaser() {
               {/* Bottom Small Image - Solid Green Accent */}
               <motion.div
                 style={{ y: y3 }}
-                className="bg-[#18943A] rounded-3xl p-4 md:p-8 flex flex-col justify-end group overflow-hidden relative"
+                className="bg-[#18943A] rounded-2xl md:rounded-3xl p-4 md:p-8 flex flex-col justify-end group overflow-hidden relative"
               >
                 <div className="absolute top-0 right-0 p-4 md:p-8 opacity-20 group-hover:opacity-100 transition-opacity">
                   <ArrowUpRight
@@ -125,7 +125,7 @@ export function AboutTeaser() {
                     className="md:w-10 md:h-10 text-black"
                   />
                 </div>
-                <p className="text-black font-black text-lg md:text-3xl leading-none uppercase tracking-tighter">
+                <p className="text-black font-black text-sm md:text-3xl leading-none uppercase tracking-tighter">
                   ESTO ES <br /> UMP.
                 </p>
                 <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />

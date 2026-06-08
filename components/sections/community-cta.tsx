@@ -8,12 +8,12 @@ export function CommunityCTA() {
   return (
     <section
       id="community-cta-section"
-      className="bg-[#18943A] py-16 px-4 md:py-32 lg:py-40 overflow-hidden relative border-t border-black/5 z-70 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
+      className="bg-[#18943A] py-12 px-4 md:py-24 lg:py-40 overflow-hidden relative border-t border-black/5 z-70 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
     >
       <div className="container mx-auto max-w-7xl">
         {/* Tier 1: Massive Headline (Full Width) */}
-        <div className="mb-12 md:mb-20">
-          <h2 className="text-4xl sm:text-7xl md:text-8xl lg:text-[10rem] font-black text-black leading-[0.9] tracking-tighter uppercase text-balance text-left break-words">
+        <div className="mb-10 md:mb-20">
+          <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-black text-black leading-[0.9] tracking-tighter uppercase text-balance text-left break-words">
             Sigue el <br />
             <span className="opacity-40">movimiento.</span>
           </h2>
@@ -23,11 +23,11 @@ export function CommunityCTA() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
           {/* Left: Description Content */}
           <div className="space-y-6">
-            <p className="text-2xl md:text-4xl text-black font-bold leading-[1.1] max-w-lg">
+            <p className="text-xl md:text-3xl lg:text-4xl text-black font-bold leading-[1.1] max-w-lg">
               Historias reales. <br />
               Producción profesional.
             </p>
-            <p className="text-lg md:text-xl text-black/70 max-w-md font-medium leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-black/70 max-w-md font-medium leading-relaxed">
               Únete a nuestra comunidad y descubre cómo transformamos el mundo
               audiovisual desde Limón.
             </p>

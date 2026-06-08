@@ -5,15 +5,15 @@ import { Button } from "@/components/ui/button";
 
 export function CTAFinal() {
   return (
-    <section className="py-32 md:py-56 bg-ump-alt relative overflow-hidden z-80 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section className="py-16 md:py-32 lg:py-56 bg-ump-alt relative overflow-hidden z-80 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-ump-background to-ump-card/20 pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10 text-center">
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8 tracking-tight">
           ¿Tienes un proyecto en mente?
         </h2>
-        <p className="text-xl text-ump-secondary mb-12 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg lg:text-xl text-ump-secondary mb-10 md:mb-12 max-w-2xl mx-auto">
           Llevémoslo al siguiente nivel. Agendemos una llamada para entender tu
           visión.
         </p>

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="bg-ump-background text-ump-primary py-20 px-6 border-t border-white/5">
+    <footer className="bg-ump-background text-ump-primary py-12 md:py-20 px-6 border-t border-white/5">
       <div className="container mx-auto flex flex-col gap-16 md:flex-row md:justify-between">
         {/* Brand */}
         <div className="flex flex-col gap-4">
@@ -52,7 +52,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="container mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-ump-secondary/50">
+      <div className="container mx-auto mt-10 md:mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-ump-secondary/50 gap-4 text-center md:text-left">
         <p>
           &copy; {new Date().getFullYear()} UMPmedia. Todos los derechos
           reservados.
@@ -84,7 +84,7 @@ function FooterLink({
   return (
     <Link
       href={href}
-      className="text-2xl md:text-3xl font-bold hover:text-ump-accent transition-colors tracking-tight"
+      className="text-xl md:text-3xl font-bold hover:text-ump-accent transition-colors tracking-tight"
     >
       {children}
     </Link>

@@ -12,7 +12,7 @@ interface DifferentiatorCardProps {
 
 function DifferentiatorCard({ icon, title, description, illustration }: DifferentiatorCardProps) {
   return (
-    <div className="group grid grid-cols-1 lg:grid-cols-12 gap-8 p-8 md:p-12 bg-ump-alt/60 rounded-[2rem] border border-white/5 hover:border-ump-accent/20 transition-all duration-700 items-center overflow-hidden relative cursor-default">
+    <div className="group grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 md:p-10 lg:p-12 bg-ump-alt/60 rounded-[2rem] border border-white/5 hover:border-ump-accent/20 transition-all duration-700 items-center overflow-hidden relative cursor-default">
       {/* Decorative background glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-ump-accent/0 to-ump-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
       
@@ -21,16 +21,16 @@ function DifferentiatorCard({ icon, title, description, illustration }: Differen
         <div className="w-14 h-14 rounded-2xl bg-ump-background border border-white/10 flex items-center justify-center text-ump-accent group-hover:bg-ump-accent group-hover:text-black group-hover:border-ump-accent transition-all duration-500 shadow-inner">
           {icon}
         </div>
-        <h3 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">
+        <h3 className="text-xl md:text-3xl font-black text-white uppercase tracking-tight">
           {title}
         </h3>
-        <p className="text-ump-secondary text-base md:text-lg leading-relaxed max-w-xl">
+        <p className="text-ump-secondary text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
           {description}
         </p>
       </div>
 
       {/* Interactive Illustration */}
-      <div className="lg:col-span-5 flex items-center justify-center h-52 lg:h-64 relative bg-ump-background/45 rounded-2xl border border-white/5 overflow-hidden group-hover:border-white/10 transition-colors duration-500">
+      <div className="lg:col-span-5 flex items-center justify-center h-40 md:h-52 lg:h-64 relative bg-ump-background/45 rounded-2xl border border-white/5 overflow-hidden group-hover:border-white/10 transition-colors duration-500">
         {illustration}
       </div>
     </div>
@@ -39,15 +39,15 @@ function DifferentiatorCard({ icon, title, description, illustration }: Differen
 
 export function WhyUMP() {
   return (
-    <section className="py-24 md:py-36 bg-ump-background relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 z-40 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section className="py-14 md:py-24 lg:py-36 bg-ump-background relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 z-40 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 md:mb-28">
-          <h2 className="text-4xl md:text-7xl font-black text-white leading-none tracking-tighter uppercase mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-28">
+          <h2 className="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-none tracking-tighter uppercase mb-6">
             ¿Por qué <br className="md:hidden" />
             <span className="text-ump-accent italic">elegir UMP?</span>
           </h2>
-          <p className="text-lg md:text-xl text-ump-secondary">
+          <p className="text-base md:text-xl text-ump-secondary">
             Fusionamos tecnología audiovisual avanzada con una perspectiva auténtica para crear piezas memorables.
           </p>
         </div>
