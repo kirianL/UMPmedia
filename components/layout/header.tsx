@@ -68,16 +68,13 @@ export function Header() {
         animate={{
           y: 0,
           opacity: 1,
-          backgroundColor: isOpen ? "transparent" : "rgba(10,10,10,0.85)",
-          borderColor: isOpen ? "rgba(0,0,0,0)" : "rgba(255,255,255,0.08)",
-          backdropFilter: isOpen ? "blur(0px)" : "blur(12px)",
+          backgroundColor: "rgba(10,10,10,0.85)",
+          borderColor: "rgba(255,255,255,0.08)",
+          backdropFilter: "blur(12px)",
         }}
         transition={{
           y: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
           opacity: { duration: 0.5 },
-          backgroundColor: { duration: 0.8, ease: "easeInOut" },
-          borderColor: { duration: 0.8, ease: "easeInOut" },
-          backdropFilter: { duration: 0.8, ease: "easeInOut" },
         }}
         style={{
           borderBottomWidth: "1px",
