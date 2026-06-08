@@ -143,7 +143,7 @@ export default function NewsDetailPage({
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.0, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="aspect-video w-full bg-neutral-900 rounded-2xl overflow-hidden mb-12 relative shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
+            className="w-full aspect-video md:aspect-[21/9] max-h-[280px] md:max-h-[380px] bg-neutral-900 rounded-2xl overflow-hidden mb-12 relative shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
           >
             <Image
               src={article.image}

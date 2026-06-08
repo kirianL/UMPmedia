@@ -24,12 +24,12 @@ export function ProjectCard({
   return (
     <Link
       href={`/portfolio/${slug}`}
-      className={`block group relative overflow-hidden bg-ump-card ${className}`}
+      className={`block group relative overflow-hidden bg-ump-card rounded-2xl md:rounded-3xl ${className}`}
     >
       <motion.div
         whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="w-full h-full relative aspect-[4/5]"
+        className="w-full h-full relative"
       >
         {/* Placeholder for Image - using standard gray if src is missing or placeholder */}
         <div className="absolute inset-0 bg-neutral-800" />

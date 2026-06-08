@@ -27,20 +27,40 @@ export default function ProjectDetail({
   }
 
   // Mock Data based on slug (In Phase 2 this comes from Supabase)
+  const isLosChances = slug === "los-chances";
+  const isSazonColombiano = slug === "sazon-colombiano";
   const project = {
-    title: slug === "caribe-roots" ? "Caribe Roots" : "Project Name",
-    client: "National Geographic",
-    year: "2024",
-    category: "Documental",
-    role: "Producción & Dirección",
-    summary:
-      "Una exploración profunda de las raíces culturales del Caribe Sur costarricense, documentando tradiciones que se desvanecen y la nueva generación que las preserva.",
-    credits: [
-      { role: "Director", name: "Juan Perez" },
-      { role: "DP", name: "Maria Gonzalez" },
-      { role: "Editor", name: "Carlos Smith" },
-    ],
-    gallery: [1, 2, 3, 4], // Placeholder IDs
+    title: isSazonColombiano ? "Sazón Colombiano" : isLosChances ? "Los Chances" : "Project Name",
+    client: isSazonColombiano ? "Sazón Colombiano" : isLosChances ? "Ultimate Media Productions" : "National Geographic",
+    year: "2026",
+    category: isSazonColombiano ? "Branding" : "Producción",
+    role: isSazonColombiano ? "Branding & Identidad" : "Producción & Dirección",
+    summary: isSazonColombiano
+      ? "Diseño integral de marca y posicionamiento de identidad para Sazón Colombiano, reflejando su riqueza cultural a través de una estética visual limpia y contemporánea."
+      : isLosChances
+      ? "Una cautivadora producción audiovisual original del Caribe que explora la cultura y las dinámicas locales a través de una narración cinematográfica de primer nivel."
+      : "Una exploración profunda de las raíces culturales del Caribe Sur costarricense, documentando tradiciones que se desvanecen.",
+    credits: isSazonColombiano
+      ? [
+          { role: "Diseño Gráfico", name: "Ultimate Media Productions" },
+          { role: "Dirección de Arte", name: "Team UMP" },
+        ]
+      : isLosChances
+      ? [
+          { role: "Director", name: "Ultimate Media Productions" },
+          { role: "Producción", name: "Team UMP" },
+          { role: "DP", name: "Cámara UMP" },
+        ]
+      : [
+          { role: "Director", name: "Juan Perez" },
+          { role: "DP", name: "Maria Gonzalez" },
+          { role: "Editor", name: "Carlos Smith" },
+        ],
+    image: isSazonColombiano
+      ? "/portfolio/Branding/SazonColombiano/SazonColombiano.jpeg"
+      : isLosChances
+      ? "/portfolio/LosChances/LosChances.jpg"
+      : "",
   };
 
   return (
@@ -74,11 +94,21 @@ export default function ProjectDetail({
         </div>
 
         {/* Main Media (Poster/Video) */}
-        <div className="w-full aspect-video bg-neutral-800 rounded-lg overflow-hidden mb-16 relative">
-          {/* <video ... /> or <Image ... /> */}
-          <div className="absolute inset-0 flex items-center justify-center text-white/20 font-mono">
-            Project Hero Media (Video/Image)
-          </div>
+        <div className="w-full aspect-video md:aspect-[21/9] max-h-[300px] md:max-h-[480px] bg-neutral-900 rounded-3xl overflow-hidden mb-16 relative border border-white/5 shadow-2xl">
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 1200px"
+              className="object-cover"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center text-white/20 font-mono">
+              Project Hero Media (Video/Image)
+            </div>
+          )}
         </div>
 
         {/* Content Grid */}
@@ -113,12 +143,31 @@ export default function ProjectDetail({
         {/* Gallery */}
         <h2 className="text-2xl font-bold text-white mb-8">Galería</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
-          <div className="aspect-[4/5] bg-neutral-800 rounded-sm relative">
-            {/* Img 1 */}
+          <div className="aspect-video bg-neutral-900 rounded-3xl overflow-hidden relative border border-white/5">
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={`${project.title} - Galería 1`}
+                fill
+                sizes="(max-width: 768px) 100vw, 600px"
+                className="object-cover hover:scale-105 transition-transform duration-700"
+              />
+            ) : (
+              <div className="absolute inset-0 bg-neutral-800" />
+            )}
           </div>
-          <div className="flex flex-col gap-6">
-            <div className="aspect-video bg-neutral-800 rounded-sm relative" />
-            <div className="aspect-square bg-neutral-800 rounded-sm relative" />
+          <div className="aspect-video bg-neutral-900 rounded-3xl overflow-hidden relative border border-white/5">
+            {project.image ? (
+              <Image
+                src={project.image}
+                alt={`${project.title} - Galería 2`}
+                fill
+                sizes="(max-width: 768px) 100vw, 600px"
+                className="object-cover hover:scale-105 transition-transform duration-700 brightness-90 filter hue-rotate-15"
+              />
+            ) : (
+              <div className="absolute inset-0 bg-neutral-800" />
+            )}
           </div>
         </div>
       </div>

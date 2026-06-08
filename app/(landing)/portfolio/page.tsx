@@ -15,58 +15,36 @@ const categories = [
   "Contenido",
 ];
 
-const projects = [
-  {
-    title: "Caribe Roots",
-    category: "Producción",
-    year: "2024",
-    image: "",
-    slug: "caribe-roots",
-  },
-  {
-    title: "Neon Nights",
-    category: "Contenido",
-    year: "2023",
-    image: "",
-    slug: "neon-nights",
-    className: "md:row-span-2",
-  },
-  {
-    title: "Urban Flow",
-    category: "Branding",
-    year: "2024",
-    image: "",
-    slug: "urban-flow",
-  },
-  {
-    title: "Puerto Viejo",
-    category: "Fotografía",
-    year: "2023",
-    image: "",
-    slug: "puerto-viejo",
-  },
-  {
-    title: "Cacao",
-    category: "Producción",
-    year: "2024",
-    image: "",
-    slug: "cacao",
-    className: "md:row-span-2",
-  },
-  {
-    title: "Limon Vibes",
-    category: "Contenido",
-    year: "2023",
-    image: "",
-    slug: "limon-vibes",
-  },
+interface ProjectItem {
+  title: string;
+  category: string;
+  year: string;
+  image: string;
+  slug: string;
+  className?: string;
+}
+
+const projects: ProjectItem[] = [
   {
     title: "Buscando al dealer",
     category: "Producción",
     year: "2026",
     image: "/portfolio/BuscandoAlDealer/BusquedaDealer_TL.jpg",
     slug: "buscando-al-dealer",
-    className: "md:col-span-2 md:row-span-1",
+  },
+  {
+    title: "Los Chances",
+    category: "Producción",
+    year: "2026",
+    image: "/portfolio/LosChances/LosChances.jpg",
+    slug: "los-chances",
+  },
+  {
+    title: "Sazón Colombiano",
+    category: "Branding",
+    year: "2026",
+    image: "/portfolio/Branding/SazonColombiano/SazonColombiano.jpeg",
+    slug: "sazon-colombiano",
   },
 ];
 
@@ -129,7 +107,7 @@ export default function PortfolioPage() {
           {/* Grid Layout */}
           <motion.div
             layout
-            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px] md:auto-rows-[400px]"
+            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px] md:auto-rows-[260px]"
           >
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project) => (
