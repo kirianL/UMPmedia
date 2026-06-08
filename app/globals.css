@@ -146,7 +146,7 @@
   --popover: 0 0% 3.9%;
   --popover-foreground: 0 0% 96.1%;
 
-  --primary: 136 72% 34%; /* #18943A */
+  --primary: 108 100% 49%; /* #32fb00 */
   --primary-foreground: 0 0% 96.1%;
 
   --secondary: 0 0% 10.2%; /* #1A1A1A */
@@ -155,7 +155,7 @@
   --muted: 0 0% 10.2%;
   --muted-foreground: 0 0% 62.7%; /* #A0A0A0 */
 
-  --accent: 136 72% 34%;
+  --accent: 108 100% 49%;
   --accent-foreground: 0 0% 96.1%;
 
   --destructive: 0 62.8% 30.6%;

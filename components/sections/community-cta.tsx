@@ -8,7 +8,7 @@ export function CommunityCTA() {
   return (
     <section
       id="community-cta-section"
-      className="bg-[#18943A] py-12 px-4 md:py-24 lg:py-40 overflow-hidden relative border-t border-black/5 z-70 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
+      className="bg-[#32fb00] py-12 px-4 md:py-24 lg:py-40 overflow-hidden relative border-t border-black/5 z-70 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
     >
       <div className="container mx-auto max-w-7xl">
         {/* Tier 1: Massive Headline (Full Width) */}
@@ -38,7 +38,7 @@ export function CommunityCTA() {
             <Link
               href="https://www.instagram.com/umpmediacr?igsh=M3ByaDdlanhsa3Fv"
               target="_blank"
-              className="group flex flex-col justify-between p-4 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#18943A] transition-all duration-700 ease-in-out"
+              className="group flex flex-col justify-between p-4 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#32fb00] transition-all duration-700 ease-in-out"
             >
               <SiInstagram size={32} className="md:w-16 md:h-16" />
               <div className="flex justify-between items-end">
@@ -55,7 +55,7 @@ export function CommunityCTA() {
             <Link
               href="https://www.youtube.com/@UltimateMediaProductions"
               target="_blank"
-              className="group flex flex-col justify-between p-4 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#18943A] transition-all duration-700 ease-in-out"
+              className="group flex flex-col justify-between p-4 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#32fb00] transition-all duration-700 ease-in-out"
             >
               <SiYoutube size={32} className="md:w-16 md:h-16" />
               <div className="flex justify-between items-end">
@@ -72,12 +72,12 @@ export function CommunityCTA() {
             <Link
               href="https://wa.me/506XXXXXXXX"
               target="_blank"
-              className="group col-span-2 flex items-center justify-between p-4 md:p-10 bg-black text-[#18943A] rounded-3xl hover:bg-neutral-900 transition-all duration-500"
+              className="group col-span-2 flex items-center justify-between p-4 md:p-10 bg-black text-[#32fb00] rounded-3xl hover:bg-neutral-900 transition-all duration-500"
             >
               <div className="flex items-center gap-4 md:gap-8">
                 <SiWhatsapp size={32} className="md:w-16 md:h-16" />
                 <div className="flex flex-col">
-                  <span className="text-[10px] md:text-sm font-bold uppercase tracking-widest text-[#18943A]/60">
+                  <span className="text-[10px] md:text-sm font-bold uppercase tracking-widest text-[#32fb00]/60">
                     Hablemos ahora
                   </span>
                   <span className="text-xl md:text-5xl font-black uppercase tracking-tight">

@@ -77,7 +77,7 @@ export function BuscandoDealer() {
           SERIE ORIGINAL — 2024
         </span>
         <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight leading-none uppercase">
-          Buscando al <span className="text-[#18943A] italic font-black">dealer</span>
+          Buscando al <span className="text-[#32fb00] italic font-black">dealer</span>
         </h1>
       </div>
 
@@ -126,7 +126,7 @@ export function BuscandoDealer() {
                   >
                     <motion.div
                       whileHover={{ scale: 1.1 }}
-                      className="w-16 h-16 rounded-full bg-[#18943A] text-black flex items-center justify-center shadow-lg"
+                      className="w-16 h-16 rounded-full bg-[#32fb00] text-black flex items-center justify-center shadow-lg"
                     >
                       <Play size={24} fill="currentColor" className="ml-1 text-black" />
                     </motion.div>
@@ -152,7 +152,7 @@ export function BuscandoDealer() {
               href={activeEpisode.youtubeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-[#18943A] hover:bg-[#18943A]/90 text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm transition-all duration-300 group shadow-lg"
+              className="inline-flex items-center gap-3 bg-[#32fb00] hover:bg-[#32fb00]/90 text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm transition-all duration-300 group shadow-lg"
             >
               <span>Ver en YouTube</span>
               <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -186,7 +186,7 @@ export function BuscandoDealer() {
                   }`}
                 >
                   <div className="space-y-1">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#18943A]/60">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#32fb00]/60">
                       {episode.number}
                     </span>
                     <h3 className="font-bold text-sm uppercase tracking-tight block">
@@ -196,7 +196,7 @@ export function BuscandoDealer() {
 
                   <div className="shrink-0 pl-4">
                     {isActive ? (
-                      <Play size={12} className="text-[#18943A] fill-current" />
+                      <Play size={12} className="text-[#32fb00] fill-current" />
                     ) : (
                       <span className="text-[10px] font-mono text-white/20 group-hover:text-white/40">
                         {episode.duration !== "--:--" ? episode.duration : "Soon"}

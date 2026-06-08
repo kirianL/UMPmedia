@@ -63,9 +63,9 @@ export function Manifesto() {
                 key={index}
                 className={`inline-block ${
                   isCaribe
-                    ? "text-[#18943A] italic"
+                    ? "text-[#32fb00] italic"
                     : isMision || isEstetica
-                      ? "border-b-4 md:border-b-8 border-[#18943A]"
+                      ? "border-b-4 md:border-b-8 border-[#32fb00]"
                       : ""
                 }`}
               >
@@ -80,15 +80,15 @@ export function Manifesto() {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="h-1 w-24 md:w-48 bg-[#18943A] mx-auto mt-16 md:mt-24"
+          className="h-1 w-24 md:w-48 bg-[#32fb00] mx-auto mt-16 md:mt-24"
         />
       </div>
 
       {/* Decorative Symbols */}
-      <div className="absolute top-20 left-20 text-[#18943A]/20 text-9xl font-black select-none hidden lg:block">
+      <div className="absolute top-20 left-20 text-[#32fb00]/20 text-9xl font-black select-none hidden lg:block">
         “
       </div>
-      <div className="absolute bottom-20 right-20 text-[#18943A]/20 text-9xl font-black select-none hidden lg:block">
+      <div className="absolute bottom-20 right-20 text-[#32fb00]/20 text-9xl font-black select-none hidden lg:block">
         ”
       </div>
     </section>

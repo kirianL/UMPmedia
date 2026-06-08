@@ -30,8 +30,8 @@ const config: Config = {
           card: "#2A2A2A", // Cards/Overlays
           primary: "#F5F5F5", // Main Text
           secondary: "#A0A0A0", // Secondary Text
-          accent: "#18943A", // UMP Green
-          accentHover: "#20B048", // Hover Green
+          accent: "#32fb00", // UMP Green (Hero Neon Green)
+          accentHover: "#2ee200", // Hover Green
         },
 
         primary: {
