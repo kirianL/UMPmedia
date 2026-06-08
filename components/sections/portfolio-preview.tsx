@@ -291,12 +291,7 @@ function CategoryCard({
 
         {/* Text Details - Bottom */}
         <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-          <div className="flex items-center gap-2 text-[10px] font-medium text-ump-accent uppercase tracking-widest mb-1 opacity-80">
-            <span>{client}</span>
-            <span className="w-1 h-1 rounded-full bg-white/50" />
-            <span>{format}</span>
-          </div>
-          <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-ump-accent transition-colors">
+          <h3 className="text-xl md:text-2xl font-extrabold text-ump-accent tracking-wide uppercase">
             {title}
           </h3>
         </div>
