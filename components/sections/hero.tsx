@@ -3,12 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
-
-const HeroGradient = dynamic(
-  () => import("@/components/ui/hero-gradient").then((mod) => mod.HeroGradient),
-  { ssr: false }
-);
+import { HeroGradient } from "@/components/ui/hero-gradient";
 
 export function Hero() {
   const title = "Producción audiovisual para conectar e impactar";
