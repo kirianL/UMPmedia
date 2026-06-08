@@ -81,9 +81,9 @@ export default function PortfolioPage() {
     <div className="min-h-screen pt-32 pb-20">
       <div className="container mx-auto px-6 mb-16">
         <motion.span
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block"
         >
           NUESTROS PROYECTOS
@@ -95,9 +95,9 @@ export default function PortfolioPage() {
           delay={0.1}
         />
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           className="text-xl text-ump-secondary max-w-xl mb-12"
         >
           Una selección curada de nuestros proyectos más recientes.
@@ -105,9 +105,9 @@ export default function PortfolioPage() {
 
         {/* Filters */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
+          transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
           className="flex flex-wrap gap-3"
         >
           {categories.map((cat) => (
@@ -131,14 +131,14 @@ export default function PortfolioPage() {
           layout
           className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px] md:auto-rows-[400px]"
         >
-          <AnimatePresence>
+          <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <motion.div
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, y: -15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 15 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
                 key={project.slug}
                 className={project.className || "md:col-span-1 md:row-span-1"}
               >

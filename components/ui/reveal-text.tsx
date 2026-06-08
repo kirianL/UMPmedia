@@ -31,18 +31,16 @@ export function RevealText({
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
+        ease: "easeOut",
+        duration: 0.5,
       },
     },
     hidden: {
       opacity: 0,
-      y: 20,
+      y: -15,
       transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
+        ease: "easeOut",
+        duration: 0.5,
       },
     },
   };
