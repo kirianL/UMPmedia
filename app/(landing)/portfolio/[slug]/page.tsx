@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { use } from "react";
+import { BuscandoDealer } from "@/components/sections/buscando-dealer";
 
 export default function ProjectDetail({
   params,
@@ -13,6 +14,17 @@ export default function ProjectDetail({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
+
+  if (slug === "buscando-al-dealer") {
+    return (
+      <div className="min-h-screen pt-32 pb-20">
+        <BuscandoDealer />
+        <div className="border-t border-white/10 mt-32 pt-20">
+          <CTAFinal />
+        </div>
+      </div>
+    );
+  }
 
   // Mock Data based on slug (In Phase 2 this comes from Supabase)
   const project = {

@@ -60,6 +60,14 @@ const projects = [
     image: "",
     slug: "limon-vibes",
   },
+  {
+    title: "Buscando al dealer",
+    category: "Producción",
+    year: "2024",
+    image: "",
+    slug: "buscando-al-dealer",
+    className: "md:col-span-2 md:row-span-1",
+  },
 ];
 
 export default function PortfolioPage() {
