@@ -130,8 +130,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="es">
-      <body className={`${inter.variable} antialiased`}>
+    <html lang="es" style={{ backgroundColor: "#0a0a0a" }}>
+      <body className={`${inter.variable} antialiased bg-[#0a0a0a] text-white`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
