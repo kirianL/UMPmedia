@@ -106,7 +106,7 @@ export function Header() {
           borderBottomWidth: isScrolled && !isOpen ? "1px" : "0px",
           borderStyle: "solid",
         }}
-        className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 md:px-14 py-4"
+        className="fixed top-0 left-0 right-0 z-[99999] flex items-center justify-between px-6 md:px-14 pt-[calc(1.25rem+env(safe-area-inset-top))] pb-5 md:py-5"
       >
         {/* Logo — Animated drawing outline effect */}
         <Link href="/" className="z-50 relative flex items-center w-[105px] h-[30px] md:w-[120px] md:h-[34px]" suppressHydrationWarning>

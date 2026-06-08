@@ -59,6 +59,11 @@ export const metadata: Metadata = {
     images: ["/assets/OpenGraph/og-social.jpg"],
     creator: "@umpmedia",
   },
+  appleWebApp: {
+    capable: true,
+    title: "UMPmedia",
+    statusBarStyle: "black-translucent",
+  },
   metadataBase: new URL("https://umpmedia.vercel.app"),
   icons: {
     icon: [

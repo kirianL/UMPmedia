@@ -33,13 +33,7 @@ const team = [
     ],
     image: "/assets/images/Team/Eymar.jpg",
   },
-  {
-    name: "Camila Castillo Aguilar",
-    role: "Creadora de Contenido",
-    bio: "Es Lashista y creadora de contenido con proyección en el mundo digital, construyendo su marca desde temprana edad.",
-    specialties: ["Contenido Digital", "Redes Sociales", "Storytelling"],
-    image: "/assets/images/Team/Camila.jpg",
-  },
+
   {
     name: "Kirian Luna Quirós",
     role: "Ingeniero en Sistemas y Desarrollador Web",
@@ -92,7 +86,7 @@ export default function TeamPage() {
       </div>
 
       <section className="container mx-auto px-6 pb-40 md:pb-56">
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {team.map((member, i) => (
             <motion.div
               key={i}

@@ -38,11 +38,11 @@ const services = [
 
 export function ServicesTeaser() {
   return (
-    <section className="py-32 md:py-56 bg-ump-alt border-t border-white/5 relative z-30 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section className="py-16 md:py-32 lg:py-56 bg-ump-alt border-t border-white/5 relative z-30 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
+            <h2 className="text-3xl md:text-5xl font-bold text-white">
               Servicios
             </h2>
           </div>
@@ -54,12 +54,12 @@ export function ServicesTeaser() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {services.map((service, index) => (
             <Link
               key={service.id}
               href="/services"
-              className={`group relative p-8 rounded-2xl border border-white/5 bg-ump-card/20 hover:bg-ump-card/40 hover:border-ump-accent transition-all duration-300 flex flex-col justify-between h-[300px] ${
+              className={`group relative p-6 md:p-8 rounded-2xl border border-white/5 bg-ump-card/20 hover:bg-ump-card/40 hover:border-ump-accent transition-all duration-300 flex flex-col justify-between min-h-[220px] md:h-[300px] ${
                 index === 0 ? "md:col-span-2" : "md:col-span-1"
               }`}
             >

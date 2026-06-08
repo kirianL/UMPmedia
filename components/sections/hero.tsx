@@ -10,7 +10,7 @@ export function Hero() {
       className="relative w-full overflow-hidden bg-[#32fb00] flex items-center min-h-[100vh] lg:min-h-[560px] lg:h-[92vh] lg:max-h-[820px]"
     >
       {/* ─── Hero Body ───────────────────────────────────────────────── */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-end justify-between px-6 md:px-14 pt-[120px] pb-12 lg:pb-16 w-full h-full max-w-7xl mx-auto gap-8">
+      <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-end justify-between px-6 md:px-14 pt-[calc(110px+env(safe-area-inset-top))] pb-12 lg:pt-[120px] lg:pb-16 w-full h-full max-w-7xl mx-auto gap-8">
         {/* LEFT — Copy */}
         <div className="flex flex-col justify-center flex-1 w-full max-w-[590px] lg:pb-6">
           {/* Oversized Bold Headline */}
@@ -21,7 +21,7 @@ export function Hero() {
             style={{
               fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 800,
-              fontSize: "clamp(2.4rem, 5vw, 4rem)",
+              fontSize: "clamp(2.0rem, 7.5vw, 4rem)",
               lineHeight: 1.05,
               letterSpacing: "-0.03em",
               color: "#0a0a0a",

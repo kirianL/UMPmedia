@@ -50,16 +50,16 @@ const categories = [
 
 export function PortfolioPreview() {
   return (
-    <section className="py-40 md:py-64 bg-ump-background relative overflow-hidden z-20 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section className="py-16 md:py-40 lg:py-64 bg-ump-background relative overflow-hidden z-20 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight">
               Historias reales. <br />
               <span className="text-ump-accent">Producción profesional.</span>
             </h2>
-            <p className="text-xl text-ump-secondary/80 font-light">
+            <p className="text-base md:text-xl text-ump-secondary/80 font-light">
               Proyectos que conectan marcas con personas a través de una
               narrativa visual única.
             </p>
@@ -73,7 +73,7 @@ export function PortfolioPreview() {
         </div>
 
         {/* Cinematic Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[400px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[280px] md:auto-rows-[400px]">
           {categories.map((category) => (
             <CategoryCard key={category.id} {...category} />
           ))}

@@ -18,12 +18,6 @@ const teamMembers = [
     bioLink: "/team",
   },
   {
-    name: "Camila Castillo Aguilar",
-    role: "Creadora de Contenido",
-    photo: "/assets/images/Team/Camila.jpg",
-    bioLink: "/team",
-  },
-  {
     name: "Kirian Luna Quirós",
     role: "Ingeniero en Sistemas y Desarrollador Web",
     photo: "/assets/images/Team/Kirian.jpg",
@@ -49,7 +43,7 @@ export function TeamTeaser() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {teamMembers.map((member) => (
             <div key={member.name} className="group cursor-pointer">
               <div className="aspect-[3/4] bg-ump-alt mb-4 relative overflow-hidden rounded-sm grayscale hover:grayscale-0 transition-all duration-500">
