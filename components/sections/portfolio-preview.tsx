@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, Play } from "lucide-react";
@@ -13,7 +13,7 @@ const categories = [
     title: "Publicidad & Marcas",
     client: "Anuncios Publicitarios",
     format: "Comercial TV / Digital",
-    video: "/assets/videos/publicidad1.mp4",
+    video: "/assets/videos/publicidad1.webm",
     colSpan: "md:col-span-2",
   },
   {
@@ -21,7 +21,7 @@ const categories = [
     title: "Eventos & Bodas",
     client: "Cobertura Exclusiva",
     format: "Resumen de Evento",
-    video: "/assets/videos/Presentacion2.mp4",
+    video: "/assets/videos/Presentacion2.webm",
     colSpan: "md:col-span-1",
   },
   {
@@ -29,7 +29,7 @@ const categories = [
     title: "Podcast & Entrevistas",
     client: "Sesiones de Estudio",
     format: "Multicámara 4K",
-    video: "/assets/videos/Podcast .mp4",
+    video: "/assets/videos/Podcast .webm",
     colSpan: "md:col-span-2",
   },
   {
@@ -37,7 +37,7 @@ const categories = [
     title: "Contenido para Redes",
     client: "Contenido Viral",
     format: "Formato Vertical / Reels",
-    video: "/assets/videos/Presentacion1.mp4",
+    video: "/assets/videos/Presentacion1.webm",
     colSpan: "md:col-span-1",
   },
   {
@@ -45,7 +45,7 @@ const categories = [
     title: "Video Corporativo",
     client: "Identidad de Negocios",
     format: "Historia de Marca",
-    video: "/assets/videos/Presentacion2.mp4",
+    video: "/assets/videos/Presentacion2.webm",
     colSpan: "md:col-span-3",
   },
 ];
@@ -256,26 +256,44 @@ function CategoryCard({
   video: string;
   colSpan: string;
 }) {
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    if (!cardRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // keep it loaded once in view
+        }
+      },
+      { rootMargin: "200px" } // load 200px before entering viewport
+    );
+    observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Link
+      ref={cardRef}
       href={`/portfolio`}
       className={`group relative overflow-hidden rounded-2xl bg-ump-card/20 border border-white/5 hover:border-ump-accent transition-all duration-500 ${colSpan}`}
     >
       {/* Video Background */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-ump-card/45 flex items-center justify-center">
-        {video ? (
+        {video && isInView ? (
           <video
             src={video}
             autoPlay
             loop
             muted
             playsInline
+            preload="metadata"
             className="object-cover w-full h-full opacity-45 group-hover:opacity-65 transition-opacity duration-700"
           />
         ) : (
-          <span className="text-white/20 font-mono text-xs uppercase tracking-widest border border-white/10 px-3 py-1.5 rounded">
-            [ Video: {title} ]
-          </span>
+          <div className="absolute inset-0 bg-neutral-950/20" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent z-1 pointer-events-none" />
       </div>

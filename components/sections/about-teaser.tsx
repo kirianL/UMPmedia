@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -8,6 +8,22 @@ import Image from "next/image";
 
 export function AboutTeaser() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [videoInView, setVideoInView] = useState(false);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVideoInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -90,14 +106,19 @@ export function AboutTeaser() {
               style={{ y: y1 }}
               className="col-span-2 md:col-span-3 h-full bg-[#32fb00]/20 rounded-2xl md:rounded-3xl overflow-hidden relative border border-white/5 group"
             >
-              <video
-                src="/assets/videos/Home-detrasdecamaras.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
-              />
+              {videoInView ? (
+                <video
+                  src="/assets/videos/Home-detrasdecamaras.webm"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-neutral-950/20" />
+              )}
               <div className="absolute inset-x-0 bottom-0 h-1 bg-[#32fb00] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
             </motion.div>
 

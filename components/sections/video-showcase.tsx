@@ -25,12 +25,12 @@ export function VideoShowcase() {
           <VideoCard
             title="Showreel Audiovisual"
             category="Cinematografía"
-            videoSrc="/assets/videos/Presentacion1.mp4"
+            videoSrc="/assets/videos/Presentacion1.webm"
           />
           <VideoCard
             title="Nuestra Esencia"
             category="Branding"
-            videoSrc="/assets/videos/Presentacion2.mp4"
+            videoSrc="/assets/videos/Presentacion2.webm"
           />
         </div>
       </div>
