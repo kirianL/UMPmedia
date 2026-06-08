@@ -24,6 +24,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     .trim()
     .slice(0, 160);
 
+  let ogImageUrl = article.image;
+  if (ogImageUrl.includes("unsplash.com")) {
+    ogImageUrl = ogImageUrl.split("?")[0] + "?q=80&w=1200&h=630&fit=crop&auto=format";
+  }
+
   return {
     title: `${article.title} | Ultimate Media Productions`,
     description: cleanDesc,
@@ -33,10 +38,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "article",
       images: [
         {
-          url: article.image,
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
           alt: article.title,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: cleanDesc,
+      images: [ogImageUrl],
     },
   };
 }

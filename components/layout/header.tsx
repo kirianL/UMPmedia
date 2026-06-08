@@ -210,15 +210,15 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
     closed: {
       y: "-100%",
       transition: {
-        duration: 0.35,
-        ease: [0.76, 0, 0.24, 1] as const,
+        duration: 0.2,
+        ease: "easeInOut" as const,
       },
     },
     open: {
       y: 0,
       transition: {
-        duration: 0.45,
-        ease: [0.16, 1, 0.3, 1] as const,
+        duration: 0.25,
+        ease: [0.22, 1, 0.36, 1] as const, // Snappy easeOut-like bezier
       },
     },
   };
@@ -227,8 +227,8 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
     closed: {},
     open: {
       transition: {
-        staggerChildren: 0.04,
-        delayChildren: 0.1,
+        staggerChildren: 0.02,
+        delayChildren: 0.04,
       },
     },
   };
@@ -238,7 +238,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
     open: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.28, ease: "easeOut" as const },
+      transition: { duration: 0.15, ease: "easeOut" as const },
     },
   };
 
