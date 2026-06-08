@@ -7,6 +7,31 @@ import Image from "next/image";
 
 import { use } from "react";
 import { BuscandoDealer } from "@/components/sections/buscando-dealer";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
+    },
+  },
+} as const;
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 16,
+    },
+  },
+} as const;
 
 export default function ProjectDetail({
   params,
@@ -65,16 +90,26 @@ export default function ProjectDetail({
 
   return (
     <div className="min-h-screen pt-32 pb-20">
-      <div className="container mx-auto px-6 mb-12">
-        <Link
-          href="/portfolio"
-          className="inline-flex items-center gap-2 text-ump-secondary hover:text-white mb-8 transition-colors"
-        >
-          <ArrowLeft size={18} /> Volver al Portafolio
-        </Link>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="container mx-auto px-6 mb-12"
+      >
+        <motion.div variants={itemVariants}>
+          <Link
+            href="/portfolio"
+            className="inline-flex items-center gap-2 text-ump-secondary hover:text-white mb-8 transition-colors"
+          >
+            <ArrowLeft size={18} /> Volver al Portafolio
+          </Link>
+        </motion.div>
 
         {/* Hero Metadata */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6"
+        >
           <div>
             <span className="text-ump-accent font-bold uppercase tracking-widest mb-2 block">
               {project.category} — {project.year}
@@ -91,10 +126,13 @@ export default function ProjectDetail({
               {project.client}
             </span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Main Media (Poster/Video) */}
-        <div className="w-full aspect-video md:aspect-[21/9] max-h-[300px] md:max-h-[480px] bg-neutral-900 rounded-3xl overflow-hidden mb-16 relative border border-white/5 shadow-2xl">
+        <motion.div
+          variants={itemVariants}
+          className="w-full aspect-video md:aspect-[21/9] max-h-[300px] md:max-h-[480px] bg-neutral-900 rounded-3xl overflow-hidden mb-16 relative border border-white/5 shadow-2xl"
+        >
           {project.image ? (
             <Image
               src={project.image}
@@ -109,10 +147,13 @@ export default function ProjectDetail({
               Project Hero Media (Video/Image)
             </div>
           )}
-        </div>
+        </motion.div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24">
+        <motion.div
+          variants={itemVariants}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24"
+        >
           {/* Summary */}
           <div className="lg:col-span-8">
             <h2 className="text-2xl font-bold text-white mb-6">El Proyecto</h2>
@@ -138,40 +179,41 @@ export default function ProjectDetail({
               ))}
             </ul>
           </div>
-        </div>
+        </motion.div>
 
         {/* Gallery */}
-        <h2 className="text-2xl font-bold text-white mb-8">Galería</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
-          <div className="aspect-video bg-neutral-900 rounded-3xl overflow-hidden relative border border-white/5">
-            {project.image ? (
-              <Image
-                src={project.image}
-                alt={`${project.title} - Galería 1`}
-                fill
-                sizes="(max-width: 768px) 100vw, 600px"
-                className="object-cover hover:scale-105 transition-transform duration-700"
-              />
-            ) : (
-              <div className="absolute inset-0 bg-neutral-800" />
-            )}
+        <motion.div variants={itemVariants}>
+          <h2 className="text-2xl font-bold text-white mb-8">Galería</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
+            <div className="aspect-video bg-neutral-900 rounded-3xl overflow-hidden relative border border-white/5">
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={`${project.title} - Galería 1`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-neutral-800" />
+              )}
+            </div>
+            <div className="aspect-video bg-neutral-900 rounded-3xl overflow-hidden relative border border-white/5">
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={`${project.title} - Galería 2`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  className="object-cover hover:scale-105 transition-transform duration-700 brightness-90 filter hue-rotate-15"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-neutral-800" />
+              )}
+            </div>
           </div>
-          <div className="aspect-video bg-neutral-900 rounded-3xl overflow-hidden relative border border-white/5">
-            {project.image ? (
-              <Image
-                src={project.image}
-                alt={`${project.title} - Galería 2`}
-                fill
-                sizes="(max-width: 768px) 100vw, 600px"
-                className="object-cover hover:scale-105 transition-transform duration-700 brightness-90 filter hue-rotate-15"
-              />
-            ) : (
-              <div className="absolute inset-0 bg-neutral-800" />
-            )}
-          </div>
-        </div>
-      </div>
-
+        </motion.div>
+      </motion.div>
       <div className="border-t border-white/10 pt-20">
         <CTAFinal />
       </div>

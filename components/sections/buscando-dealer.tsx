@@ -109,6 +109,30 @@ const galleryImages = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
+    },
+  },
+} as const;
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 16,
+    },
+  },
+} as const;
+
 export function BuscandoDealer() {
   const [activeEpisode, setActiveEpisode] = useState<Episode>(episodes[0]);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -119,26 +143,33 @@ export function BuscandoDealer() {
   }, [activeEpisode]);
 
   return (
-    <div className="container mx-auto px-6 max-w-7xl">
-      <Link
-        href="/portfolio"
-        className="inline-flex items-center gap-2 text-ump-secondary hover:text-white mb-12 transition-colors text-sm font-bold uppercase tracking-wider cursor-pointer"
-      >
-        <ArrowLeft size={16} /> Volver al Portafolio
-      </Link>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="container mx-auto px-6 max-w-7xl"
+    >
+      <motion.div variants={itemVariants}>
+        <Link
+          href="/portfolio"
+          className="inline-flex items-center gap-2 text-ump-secondary hover:text-white mb-12 transition-colors text-sm font-bold uppercase tracking-wider cursor-pointer"
+        >
+          <ArrowLeft size={16} /> Volver al Portafolio
+        </Link>
+      </motion.div>
 
       {/* Title block */}
-      <div className="mb-16">
+      <motion.div variants={itemVariants} className="mb-16">
         <span className="text-ump-accent font-bold uppercase tracking-widest text-xs mb-3 block">
           SERIE ORIGINAL — 2026
         </span>
         <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight leading-none uppercase">
           Buscando al <span className="text-[#32fb00] italic font-black">dealer</span>
         </h1>
-      </div>
+      </motion.div>
 
       {/* Interactive Player Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Left Focus Column */}
         <div className="lg:col-span-8 space-y-8">
           <div className="space-y-6">
@@ -275,7 +306,7 @@ export function BuscandoDealer() {
             })}
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Galería de imágenes (Todas horizontales aspect-video) */}
       <motion.div
@@ -323,6 +354,6 @@ export function BuscandoDealer() {
           ))}
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }

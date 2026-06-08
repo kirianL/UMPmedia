@@ -106,17 +106,20 @@ export default function PortfolioPage() {
 
           {/* Grid Layout */}
           <motion.div
-            layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px] md:auto-rows-[260px]"
           >
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project) => (
                 <motion.div
                   layout
-                  initial={{ opacity: 0, y: -15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 15 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{
+                    layout: { type: "spring", stiffness: 320, damping: 35 },
+                    opacity: { duration: 0.25, ease: "easeOut" },
+                    scale: { duration: 0.25, ease: "easeOut" }
+                  }}
                   key={project.slug}
                   className={project.className || "md:col-span-1 md:row-span-1"}
                 >
