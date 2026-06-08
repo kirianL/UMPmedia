@@ -67,25 +67,36 @@ export default function TeamPage() {
   const closeModal = () => setSelected(null);
 
   return (
-    <div className="bg-ump-background min-h-screen pt-32 relative">
-      <div className="container mx-auto px-6 mb-24">
-        <motion.span
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block"
-        >
-          El Equipo
-        </motion.span>
-        <RevealText
-          text="El talento detrás de cada historia."
-          tag="h1"
-          className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
-          delay={0.1}
-        />
+    <div className="bg-ump-background min-h-screen">
+      {/* Jeton-Style Header Banner with UMP Neon Green Background */}
+      <div className="bg-[#32fb00] text-black pt-40 pb-24 md:pb-32 px-6 relative z-10">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-black">
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black">
+              Equipo
+            </h1>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            className="max-w-md md:text-right md:self-end text-black"
+          >
+            <p className="text-base md:text-lg font-bold leading-snug text-black/80">
+              El talento detrás de cada historia. Profesionales apasionados por el cine, la fotografía y la tecnología.
+            </p>
+          </motion.div>
+        </div>
       </div>
 
-      <section className="container mx-auto px-6 pb-40 md:pb-56">
+      {/* Main Content Area Overlapping the Banner with Smooth Rounded Top */}
+      <div className="bg-ump-background rounded-t-[2.5rem] md:rounded-t-[4.5rem] -mt-10 md:-mt-16 relative z-20 pt-16 md:pt-24 pb-20 px-6">
+        <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {team.map((member, i) => (
             <motion.div
@@ -138,7 +149,8 @@ export default function TeamPage() {
             </motion.div>
           ))}
         </div>
-      </section>
+        </div>
+      </div>
 
       {/* Modern, Horizontal & Fluid Bio Modal — Mobile-First Bottom Sheet */}
       <AnimatePresence>

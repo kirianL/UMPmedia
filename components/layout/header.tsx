@@ -37,8 +37,7 @@ export function Header() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
 
-  const isHomePage = pathname === "/";
-  const heroIsVisible = isHomePage && !isScrolled;
+  const heroIsVisible = !isScrolled;
   const isGreenTheme = heroIsVisible && !isOpen;
   const themeColor = isOpen ? "#0c0c0c" : isGreenTheme ? "#32fb00" : "#0a0a0a";
 

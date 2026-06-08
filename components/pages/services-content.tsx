@@ -17,39 +17,36 @@ import { RevealText } from "@/components/ui/reveal-text";
 
 export function ServicesContent() {
   return (
-    <div className="min-h-screen pt-32 pb-20 bg-ump-background">
-      {/* 1. Hero */}
-      <div className="container mx-auto px-6 mb-16">
-        <motion.span
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block"
-        >
-          Catálogo de Servicios
-        </motion.span>
-        <RevealText
-          text="Catálogo de Servicios."
-          tag="h1"
-          className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
-          delay={0.1}
-        />
-        <div className="max-w-2xl">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
+    <div className="min-h-screen bg-ump-background">
+      {/* Jeton-Style Header Banner with UMP Neon Green Background */}
+      <div className="bg-[#32fb00] text-black pt-40 pb-24 md:pb-32 px-6 relative z-10">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-black">
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-ump-secondary mb-8 leading-relaxed"
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            Somos una productora audiovisual especializada en crear contenido
-            estratégico que conecta marcas, proyectos y personas con su
-            audiencia. Convertimos ideas en historias que comunican, posicionan
-            y venden.
-          </motion.p>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black">
+              Servicios
+            </h1>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            className="max-w-md md:text-right md:self-end text-black"
+          >
+            <p className="text-base md:text-lg font-bold leading-snug text-black/80">
+              Productora audiovisual especializada en crear contenido estratégico que conecta marcas con su audiencia. Convertimos ideas en historias que comunican y venden.
+            </p>
+          </motion.div>
         </div>
       </div>
 
-      <div className="container mx-auto px-6 space-y-24 mb-32">
+      {/* Main Content Area Overlapping the Banner with Smooth Rounded Top */}
+      <div className="bg-ump-background rounded-t-[2.5rem] md:rounded-t-[4.5rem] -mt-10 md:-mt-16 relative z-20 pt-16 md:pt-24 pb-20 px-6">
+        <div className="container mx-auto space-y-24 mb-32">
         {/* Videos Publicitarios */}
         <section>
           <div className="mb-8">
@@ -329,6 +326,7 @@ export function ServicesContent() {
       </section>
 
       <CTAFinal />
+      </div>
     </div>
   );
 }

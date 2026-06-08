@@ -2,18 +2,29 @@
 
 import { CTAFinal } from "@/components/sections/cta-final";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import { RevealText } from "@/components/ui/reveal-text";
 
-const news = [
+interface NewsItem {
+  title: string;
+  date: string;
+  excerpt: string;
+  slug: string;
+  image: string;
+  category: string;
+}
+
+const news: NewsItem[] = [
   {
     title: "Nueva producción documental en Puerto Viejo",
     date: "Oct 12, 2024",
     excerpt:
       "Un vistazo exclusivo al detrás de cámaras de nuestro último rodaje en el Caribe Sur, explorando la cultura del cacao.",
     slug: "produccion-puerto-viejo",
-    image: "",
+    image: "https://images.unsplash.com/photo-1540206395-68808572332f?q=80&w=800&auto=format&fit=crop",
+    category: "Documental",
   },
   {
     title: "Lanzamiento de videoclip 'Caribe'",
@@ -21,7 +32,8 @@ const news = [
     excerpt:
       "Colaboración con artistas locales para crear una pieza visual que redefine la estética urbana tropical.",
     slug: "lanzamiento-videoclip-caribe",
-    image: "",
+    image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=800&auto=format&fit=crop",
+    category: "Producción",
   },
   {
     title: "Workshop: Iluminación para Cine",
@@ -29,7 +41,8 @@ const news = [
     excerpt:
       "Compartiendo técnicas avanzadas de iluminación con la comunidad creativa de Limón.",
     slug: "workshop-iluminacion",
-    image: "",
+    image: "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?q=80&w=800&auto=format&fit=crop",
+    category: "Educación",
   },
   {
     title: "Ultimate Media Productions en el Festival de Cine",
@@ -37,73 +50,106 @@ const news = [
     excerpt:
       "Nuestra participación en el festival nacional con dos cortometrajes seleccionados.",
     slug: "festival-cine",
-    image: "",
+    image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=800&auto=format&fit=crop",
+    category: "Noticias",
   },
 ];
 
 export default function NewsPage() {
   return (
-    <div className="min-h-screen pt-32 pb-20">
-      <div className="container mx-auto px-6 mb-24">
-        <motion.span
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block"
-        >
-          Actualidad
-        </motion.span>
-        <RevealText
-          text="Proyectos, Ideas y Procesos."
-          tag="h1"
-          className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
-          delay={0.1}
-        />
+    <div className="min-h-screen bg-ump-background">
+      {/* Jeton-Style Header Banner with UMP Neon Green Background */}
+      <div className="bg-[#32fb00] text-black pt-40 pb-24 md:pb-32 px-6 relative z-10">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-black">
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black">
+              Newsroom
+            </h1>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            className="max-w-md md:text-right md:self-end text-black"
+          >
+            <p className="text-base md:text-lg font-bold leading-snug text-black/80">
+              ¡Mantente al día con las novedades de Ultimate Media Productions! El pulso de nuestros rodajes, producciones y proyectos del Caribe para el mundo.
+            </p>
+          </motion.div>
+        </div>
       </div>
 
-      <section className="container mx-auto px-6 mb-32">
-        <div className="grid grid-cols-1 gap-12 max-w-4xl">
-          {news.map((item, i) => (
-            <motion.article
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.05 }}
-              key={i}
-              className="group border-b border-white/5 pb-12 last:border-0 md:flex md:gap-8 items-start"
-            >
-              <div className="aspect-video md:w-1/3 bg-neutral-800 rounded-lg overflow-hidden relative mb-6 md:mb-0 grayscale group-hover:grayscale-0 transition-all duration-500">
-                {/* Image Placeholder */}
-              </div>
-              <div className="md:w-2/3">
-                <div className="flex items-center gap-2 text-ump-accent text-xs font-bold uppercase tracking-wider mb-3">
-                  <Calendar size={14} /> {item.date}
-                </div>
-                <Link href={`/news/${item.slug}`}>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-ump-accent transition-colors">
-                    {item.title}
-                  </h2>
-                </Link>
-                <p className="text-ump-secondary text-lg mb-6 leading-relaxed">
-                  {item.excerpt}
-                </p>
-                <Link
-                  href={`/news/${item.slug}`}
-                  className="inline-flex items-center gap-2 text-white font-bold text-sm border-b border-ump-accent pb-1 hover:text-ump-accent transition-colors"
-                >
-                  Leer Artículo <ArrowRight size={16} />
-                </Link>
-              </div>
-            </motion.article>
-          ))}
-        </div>
+      {/* Main Content Area Overlapping the Banner with Smooth Rounded Top */}
+      <div className="bg-ump-background rounded-t-[2.5rem] md:rounded-t-[4.5rem] -mt-10 md:-mt-16 relative z-20 pt-16 md:pt-24 pb-20 px-6">
+        <div className="container mx-auto">
+          {/* Latest Articles Title */}
+          <div className="mb-12">
+            <RevealText
+              text="Latest Articles"
+              tag="h2"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight"
+            />
+          </div>
 
-        <div className="mt-16 text-center">
-          <button className="text-ump-secondary hover:text-white transition-colors border-b border-white/20 pb-1 text-sm font-bold uppercase tracking-wider">
-            Cargar Más
-          </button>
+          {/* Grid Layout matching Jeton's responsive cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
+            {news.map((item, i) => (
+              <motion.article
+                key={item.slug}
+                initial={{ opacity: 0, y: -15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                className="group flex flex-col h-full cursor-pointer"
+              >
+                <Link href={`/news/${item.slug}`} className="flex flex-col h-full">
+                  {/* Card Image Wrapper */}
+                  <div className="aspect-[1.5/1] w-full bg-neutral-900 rounded-2xl overflow-hidden relative mb-5 transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    
+                    {/* Minimal Category Pill Tag */}
+                    <div className="absolute top-4 right-4 bg-white text-black font-semibold text-xs py-1 px-3 rounded-full shadow-md select-none pointer-events-none">
+                      {item.category}
+                    </div>
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="flex flex-col flex-1">
+                    <h3 className="text-xl font-bold text-white mb-2 leading-snug group-hover:text-[#32fb00] transition-colors duration-300">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-ump-secondary mb-4 line-clamp-2 leading-relaxed">
+                      {item.excerpt}
+                    </p>
+                    <div className="mt-auto flex items-center gap-2 text-white/50 text-xs font-medium">
+                      <Calendar size={12} />
+                      <span>{item.date}</span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.article>
+            ))}
+          </div>
+
+          {/* Load More Button */}
+          <div className="mt-20 text-center">
+            <button className="text-ump-secondary hover:text-white transition-colors border-b border-white/20 pb-1 text-sm font-bold uppercase tracking-wider">
+              Cargar Más
+            </button>
+          </div>
         </div>
-      </section>
+      </div>
 
       <CTAFinal />
     </div>

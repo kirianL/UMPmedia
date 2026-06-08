@@ -8,46 +8,42 @@ import { motion } from "framer-motion";
 
 export function AboutContent() {
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      {/* 1. Hero & Intro */}
-      <section className="container mx-auto px-6 mb-16 md:mb-20">
-        <div className="max-w-4xl">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-6 block"
-          >
-            NUESTRA HISTORIA
-          </motion.span>
-          <RevealText
-            text="DESDE LIMÓN, PARA EL MUNDO"
-            tag="h1"
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[0.9] text-white"
-            delay={0.1}
-          />
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-ump-secondary leading-relaxed mb-12 max-w-3xl"
-          >
-            Nacimos en Limón, en el Caribe costarricense, un territorio donde el
-            ritmo, el color y la identidad no se construyen: se viven.
-          </motion.p>
+    <div className="min-h-screen bg-ump-background">
+      {/* Jeton-Style Header Banner with UMP Neon Green Background */}
+      <div className="bg-[#32fb00] text-black pt-40 pb-24 md:pb-32 px-6 relative z-10">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-black">
           <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "circOut" }}
-            className="w-20 h-1 bg-ump-accent mb-12 origin-left"
-          />
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black">
+              Nosotros
+            </h1>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            className="max-w-md md:text-right md:self-end text-black"
+          >
+            <p className="text-base md:text-lg font-bold leading-snug text-black/80">
+              Nacimos en Limón, en el Caribe costarricense. Un territorio con pulso, ritmo y una cultura única que inspira cada una de nuestras producciones.
+            </p>
+          </motion.div>
+        </div>
+      </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-lg text-gray-300 leading-relaxed">
+      {/* Main Content Area Overlapping the Banner with Smooth Rounded Top */}
+      <div className="bg-ump-background rounded-t-[2.5rem] md:rounded-t-[4.5rem] -mt-10 md:-mt-16 relative z-20 pt-16 md:pt-24 pb-20 px-6">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-lg text-gray-300 leading-relaxed mb-16 max-w-4xl mx-auto">
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: -15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             >
               Desde aquí, Ultimate Media Productions surge en 2026 como una productora audiovisual
               comprometida con crear contenido con calidad técnica, narrativa y
@@ -55,10 +51,10 @@ export function AboutContent() {
               audiencias reales.
             </motion.p>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: -15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             >
               Representamos a Limón no como un estereotipo, sino como un punto
               de partida creativo. Nuestro trabajo parte del contexto, del
@@ -67,7 +63,7 @@ export function AboutContent() {
             </motion.p>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* 2. Expansion & Context */}
       <section className="bg-ump-card/10 border-y border-white/5 py-16 mb-16">
