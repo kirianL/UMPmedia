@@ -29,8 +29,8 @@ const categories = [
     title: "Podcast & Entrevistas",
     client: "Sesiones de Estudio",
     format: "Multicámara 4K",
-    video: "/assets/placeholder-video-1.mp4",
-    colSpan: "md:col-span-1",
+    video: "/assets/videos/Podcast .mp4",
+    colSpan: "md:col-span-2",
   },
   {
     id: "social",
@@ -46,7 +46,7 @@ const categories = [
     client: "Identidad de Negocios",
     format: "Historia de Marca",
     video: "/assets/videos/Presentacion2.mp4",
-    colSpan: "md:col-span-1",
+    colSpan: "md:col-span-3",
   },
 ];
 

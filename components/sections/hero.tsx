@@ -55,7 +55,7 @@ export function Hero() {
   const words = title.split(" ");
 
   return (
-    <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(110px+env(safe-area-inset-top))] pb-16 md:py-32">
+    <section className="relative min-h-[70vh] lg:min-h-[500px] lg:max-h-[640px] lg:h-[75vh] w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(120px+env(safe-area-inset-top))] pb-16 md:py-24">
       {/* Animated Background Paths */}
       <div className="absolute inset-0 z-0">
         <FloatingPaths position={1} />
