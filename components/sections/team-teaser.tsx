@@ -12,13 +12,13 @@ const teamMembers = [
     bioLink: "/team",
   },
   {
-    name: "Eymar Ortiz Rojas",
+    name: "Eymar Ortiz",
     role: "Productor Audiovisual",
     photo: "/assets/images/Team/Eymar_T.png",
     bioLink: "/team",
   },
   {
-    name: "Kirian Luna Quirós",
+    name: "Kirian Luna",
     role: "Ingeniero en Sistemas y Desarrollador Web",
     photo: "/assets/images/Team/Kirian_T.png",
     bioLink: "/team",
