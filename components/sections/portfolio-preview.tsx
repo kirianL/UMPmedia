@@ -13,7 +13,7 @@ const categories = [
     title: "Publicidad & Marcas",
     client: "Anuncios Publicitarios",
     format: "Comercial TV / Digital",
-    video: "/assets/videos/Presentacion1.mp4",
+    video: "/assets/videos/publicidad1.mp4",
     colSpan: "md:col-span-2",
   },
   {
@@ -247,6 +247,7 @@ function CategoryCard({
   title,
   client,
   format,
+  video,
   colSpan,
 }: {
   title: string;
@@ -260,11 +261,23 @@ function CategoryCard({
       href={`/portfolio`}
       className={`group relative overflow-hidden rounded-2xl bg-ump-card/20 border border-white/5 hover:border-ump-accent transition-all duration-500 ${colSpan}`}
     >
-      {/* Video Placeholder Background */}
-      <div className="absolute inset-0 z-0 bg-ump-card/40 flex items-center justify-center group-hover:bg-ump-card/60 transition-colors">
-        <span className="text-white/20 font-mono text-xs uppercase tracking-widest border border-white/10 px-3 py-1.5 rounded">
-          [ Video: {title} ]
-        </span>
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-ump-card/45 flex items-center justify-center">
+        {video ? (
+          <video
+            src={video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="object-cover w-full h-full opacity-45 group-hover:opacity-65 transition-opacity duration-700"
+          />
+        ) : (
+          <span className="text-white/20 font-mono text-xs uppercase tracking-widest border border-white/10 px-3 py-1.5 rounded">
+            [ Video: {title} ]
+          </span>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent z-1 pointer-events-none" />
       </div>
 
       {/* Content Overlay */}
