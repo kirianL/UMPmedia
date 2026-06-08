@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { ScrollToTop } from "@/components/layout/scroll-to-top";
 
 export default function LandingLayout({
   children,
@@ -8,6 +9,7 @@ export default function LandingLayout({
 }) {
   return (
     <div className="flex min-h-screen flex-col bg-ump-background text-ump-primary selection:bg-ump-accent selection:text-white">
+      <ScrollToTop />
       <Header />
       <main className="flex-1 w-full flex flex-col">{children}</main>
       <Footer />
