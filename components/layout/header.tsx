@@ -7,6 +7,8 @@ import { Menu, X } from "lucide-react";
 import {
   motion,
   AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
 } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { AnimatedLogo } from "@/components/ui/animated-logo";
@@ -31,9 +33,41 @@ const MOBILE_LINKS = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const { scrollY } = useScroll();
 
   const themeColor = "#0a0a0a";
+
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollYRef = useRef(0);
+
+  // Initialize scroll position on mount to prevent layout jumps if page is loaded/refreshed mid-scroll
+  useEffect(() => {
+    lastScrollYRef.current = window.scrollY;
+  }, []);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 50);
+
+    const prev = lastScrollYRef.current;
+    const diff = latest - prev;
+
+    if (!isOpen) {
+      if (latest < 50) {
+        // Always show the header near the top of the page
+        setIsVisible(true);
+      } else if (Math.abs(diff) > 12) {
+        // Hysteresis buffer: only toggle visibility if scroll offset moves by more than 12px
+        if (latest > prev) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
+      }
+    }
+    lastScrollYRef.current = latest;
+  });
 
   // Automatically close mobile menu if screen resizes to desktop width
   useEffect(() => {
@@ -57,24 +91,36 @@ export function Header() {
     meta.setAttribute("content", themeColor);
   }, [themeColor]);
 
-  const textColor = "#ffffff";
-  const logoColor = "#ffffff";
-  const buttonBorderColor = "rgba(255, 255, 255, 0.25)";
+  const isDarkNavbar = isScrolled || isOpen;
+  const textColor = isDarkNavbar ? "#ffffff" : "#0a0a0a";
+  const logoColor = isDarkNavbar ? "#ffffff" : "#0a0a0a";
+  const buttonBorderColor = isDarkNavbar ? "rgba(255, 255, 255, 0.25)" : "rgba(10, 10, 10, 0.25)";
 
   return (
     <>
       <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{
-          y: 0,
-          opacity: 1,
-          backgroundColor: "rgba(10,10,10,0.85)",
-          borderColor: "rgba(255,255,255,0.08)",
-          backdropFilter: "blur(12px)",
+          y: isOpen || isVisible ? 0 : -120,
+          opacity: isOpen || isVisible ? 1 : 0,
+          backgroundColor: isOpen
+            ? "transparent"
+            : isScrolled
+            ? "rgba(10,10,10,0.85)"
+            : "transparent",
+          borderColor: isScrolled && !isOpen
+            ? "rgba(255,255,255,0.08)"
+            : "rgba(0,0,0,0)",
+          backdropFilter: isScrolled && !isOpen
+            ? "blur(12px)"
+            : "blur(0px)",
         }}
         transition={{
           y: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
           opacity: { duration: 0.5 },
+          backgroundColor: { duration: 0.8, ease: "easeInOut" },
+          borderColor: { duration: 0.8, ease: "easeInOut" },
+          backdropFilter: { duration: 0.8, ease: "easeInOut" },
         }}
         style={{
           borderBottomWidth: "1px",

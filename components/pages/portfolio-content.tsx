@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { ProjectCard } from "@/components/ui/project-card";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { AnimatePresence, motion } from "framer-motion";
 import { RevealText } from "@/components/ui/reveal-text";
-import dynamic from "next/dynamic";
 
 const categories = [
   "Todo",
@@ -48,46 +47,8 @@ const projects: ProjectItem[] = [
   },
 ];
 
-const HeroGradient = dynamic(
-  () => import("@/components/ui/hero-gradient").then((mod) => mod.HeroGradient),
-  { ssr: false }
-);
-
 export function PortfolioContent() {
   const [filter, setFilter] = useState("Todo");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isInView, setIsInView] = useState(true);
-  const bannerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const checkOverflow = () => {
-      setIsMenuOpen(document.body.style.overflow === "hidden");
-    };
-
-    const observer = new MutationObserver(checkOverflow);
-    observer.observe(document.body, { attributes: true, attributeFilter: ["style"] });
-
-    checkOverflow();
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!bannerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      {
-        rootMargin: "100px 0px 100px 0px",
-        threshold: 0,
-      }
-    );
-
-    observer.observe(bannerRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   const filteredProjects = projects.filter(
     (p) => filter === "Todo" || p.category === filter,
@@ -96,18 +57,8 @@ export function PortfolioContent() {
   return (
     <div className="min-h-screen bg-ump-background">
       {/* Jeton-Style Header Banner with UMP Neon Green Background */}
-      <div
-        ref={bannerRef}
-        className="bg-[#32fb00] text-black pt-40 pb-24 md:pb-32 px-6 relative z-10 overflow-hidden"
-      >
-        {/* Dynamic 3D Shader Gradient Background */}
-        {!isMenuOpen && isInView && (
-          <div className="absolute inset-0 z-0">
-            <HeroGradient active={true} />
-          </div>
-        )}
-
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-black relative z-10">
+      <div className="bg-[#32fb00] text-black pt-40 pb-24 md:pb-32 px-6 relative z-10">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-black">
           <RevealText
             text="Portafolio"
             tag="h1"
