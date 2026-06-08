@@ -15,6 +15,7 @@ import {
   Phone,
 } from "lucide-react";
 import { RevealText } from "@/components/ui/reveal-text";
+import { Map, MapMarker, MarkerContent, MarkerPopup, MapControls } from "@/components/ui/map";
 
 export function ContactContent() {
   return (
@@ -229,23 +230,39 @@ export function ContactContent() {
             </div>
           </div>
 
-          {/* Stylized Grayscale Dark Map */}
+          {/* Interactive Map Component */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-24 rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl h-[450px] relative w-full bg-neutral-900"
+            className="mt-24 rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl h-[450px] relative w-full bg-[#0c0c0c]"
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125718.36868875323!2d-83.11181299999999!3d9.991295999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa14fc903d6d5ef%3A0xa1936c5357497d3e!2zTGltw7NuLCBDb3N0YSBSaWNh!5e0!3m2!1ses!2scr!4v1700000000000!5m2!1ses!2scr"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: "grayscale(1) invert(0.92) contrast(1.15) brightness(0.95)" }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            <Map center={[-83.027217, 9.995277]} zoom={17} theme="dark" attributionControl={false}>
+              <MapControls position="bottom-right" />
+              <MapMarker longitude={-83.027217} latitude={9.995277}>
+                <MarkerContent>
+                  <div className="relative flex items-center justify-center">
+                    {/* Glowing outer rings */}
+                    <div className="absolute w-8 h-8 rounded-full bg-[#32fb00]/30 animate-ping" />
+                    <div className="absolute w-5 h-5 rounded-full bg-[#32fb00]/50 animate-pulse" />
+                    {/* Inner solid dot */}
+                    <div className="relative w-3.5 h-3.5 rounded-full bg-[#32fb00] border border-black shadow-[0_0_10px_rgba(50,251,0,0.8)]" />
+                  </div>
+                </MarkerContent>
+                <MarkerPopup className="w-60 p-4 bg-ump-alt border border-white/10 rounded-2xl shadow-xl space-y-2">
+                  <div>
+                    <span className="text-[10px] text-ump-accent font-bold uppercase tracking-widest block mb-1">
+                      Ubicación
+                    </span>
+                    <h3 className="text-white font-bold leading-tight">Ultimate Media Productions</h3>
+                  </div>
+                  <p className="text-xs text-ump-secondary leading-normal">
+                    Av. 5, Limón, Costa Rica
+                  </p>
+                </MarkerPopup>
+              </MapMarker>
+            </Map>
           </motion.div>
         </div>
       </div>
