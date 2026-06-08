@@ -59,7 +59,7 @@ export default function ProjectDetail({
     image: isSazonColombiano
       ? "/portfolio/Branding/SazonColombiano/SazonColombiano.jpeg"
       : isLosChances
-      ? "/portfolio/LosChances/LosChances.jpg"
+      ? "/portfolio/productions/LosChances/LosChances.jpg"
       : "",
   };
 

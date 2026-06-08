@@ -92,7 +92,7 @@ const episodes: Episode[] = [
 
 const galleryImages = [
   {
-    src: "/portfolio/BuscandoAlDealer/BusquedaDealer_TL.jpg",
+    src: "/portfolio/productions/BuscandoAlDealer/BusquedaDealer_TL.jpg",
     alt: "Detrás de cámaras - Producción 2026",
   },
   {

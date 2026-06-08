@@ -29,14 +29,14 @@ const projects: ProjectItem[] = [
     title: "Buscando al dealer",
     category: "Producción",
     year: "2026",
-    image: "/portfolio/BuscandoAlDealer/BusquedaDealer_TL.jpg",
+    image: "/portfolio/productions/BuscandoAlDealer/BusquedaDealer_TL.jpg",
     slug: "buscando-al-dealer",
   },
   {
     title: "Los Chances",
     category: "Producción",
     year: "2026",
-    image: "/portfolio/LosChances/LosChances.jpg",
+    image: "/portfolio/productions/LosChances/LosChances.jpg",
     slug: "los-chances",
   },
   {
@@ -107,7 +107,7 @@ export default function PortfolioPage() {
           {/* Grid Layout */}
           <motion.div
             layout
-            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px] md:auto-rows-[260px]"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px] md:auto-rows-[260px]"
           >
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project) => (
