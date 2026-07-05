@@ -24,7 +24,7 @@ const PROJECTS: ProjectItem[] = [
   {
     title: "Campañas de Marca",
     category: "Publicidad & Comercial",
-    video: "/assets/videos/Home-detrasdecamaras.webm",
+    video: "/assets/videos/publicidad1.webm",
   },
   {
     title: "Eventos y Bodas",
