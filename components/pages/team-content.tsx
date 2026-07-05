@@ -5,7 +5,6 @@ import { ArrowUpRight, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { CommunityCTA } from "@/components/sections/community-cta";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { RevealText } from "@/components/ui/reveal-text";
 
@@ -242,7 +241,6 @@ export function TeamContent() {
         )}
       </AnimatePresence>
 
-      <CommunityCTA />
       <CTAFinal />
     </div>
   );

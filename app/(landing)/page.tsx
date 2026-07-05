@@ -14,9 +14,6 @@ const TeamTeaser = dynamic(() =>
 const CommunityCTA = dynamic(() =>
   import("@/components/sections/community-cta").then((mod) => mod.CommunityCTA),
 );
-const CTAFinal = dynamic(() =>
-  import("@/components/sections/cta-final").then((mod) => mod.CTAFinal),
-);
 
 export default function Home() {
   return (
@@ -29,7 +26,6 @@ export default function Home() {
         <TeamTeaser />
         <AboutTeaser />
         <CommunityCTA />
-        <CTAFinal />
       </main>
     </>
   );

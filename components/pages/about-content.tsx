@@ -1,6 +1,5 @@
 "use client";
 
-import { CommunityCTA } from "@/components/sections/community-cta";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { EquipmentShowcase } from "@/components/sections/equipment-showcase";
 import { RevealText } from "@/components/ui/reveal-text";
@@ -49,7 +48,7 @@ export function AboutContent() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             >
-              Desde aquí, Ultimate Media Productions surge en 2026 como una productora audiovisual
+              Desde aquí, Ultimate Media Productions surge en 2025 como una productora audiovisual
               comprometida con crear contenido con calidad técnica, narrativa y
               de diseño, pensado para comunicar con intención y conectar con
               audiencias reales.
@@ -131,7 +130,7 @@ export function AboutContent() {
         </div>
       </section>
 
-      {/* 3. The Beginning (2026) */}
+      {/* 3. The Beginning (2025) */}
       <section className="container mx-auto px-6 mb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-4">
@@ -143,7 +142,7 @@ export function AboutContent() {
               className="sticky top-32"
             >
               <span className="text-8xl font-bold text-white/5 block leading-none mb-4">
-                2026
+                2025
               </span>
               <h3 className="text-3xl font-bold text-white mb-2">
                 Nuestro inicio
@@ -248,7 +247,6 @@ export function AboutContent() {
       {/* 5. Equipment Showcase */}
       <EquipmentShowcase />
 
-      <CommunityCTA />
       <CTAFinal />
     </div>
   );

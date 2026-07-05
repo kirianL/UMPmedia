@@ -14,10 +14,10 @@ interface DifferentiatorCardProps {
 function DifferentiatorCard({ icon, title, description, illustration, index }: DifferentiatorCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
       className="group grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 p-6 md:p-10 lg:p-12 bg-ump-alt/60 rounded-2xl md:rounded-[2rem] border border-white/5 hover:border-ump-accent/20 transition-all duration-500 items-center overflow-hidden relative cursor-default"
     >
       {/* Decorative background glow */}
@@ -50,10 +50,10 @@ export function WhyUMP() {
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="text-center max-w-3xl mx-auto mb-12 md:mb-20 lg:mb-28"
         >
           <h2 className="text-3xl md:text-5xl lg:text-7xl font-black text-white leading-none tracking-tighter uppercase mb-4 md:mb-6">
