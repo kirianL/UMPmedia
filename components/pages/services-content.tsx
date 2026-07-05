@@ -291,25 +291,23 @@ export function ServicesContent() {
           Preguntas frecuentes
         </h2>
         <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
+          <AccordionItem value="item-1" className="border-none">
             <AccordionTrigger className="text-white hover:text-ump-accent">
               ¿Cuál es el tiempo de entrega promedio?
             </AccordionTrigger>
             <AccordionContent className="text-ump-secondary">
-              Para proyectos de fotografía, 5-7 días hábiles. Para video, entre
-              2 y 4 semanas dependiendo de la complejidad de la post-producción.
+              Para proyectos de fotografía, 5-7 días hábiles. Para video, una semana.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-2">
+          <AccordionItem value="item-2" className="border-none">
             <AccordionTrigger className="text-white hover:text-ump-accent">
               ¿Trabajan fuera de Limón?
             </AccordionTrigger>
             <AccordionContent className="text-ump-secondary">
-              ¡Claro! Nos encanta viajar. Trabajamos en todo Costa Rica y
-              estamos disponibles para proyectos internacionales.
+              No trabajamos fuera de Limón aún.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-3">
+          <AccordionItem value="item-3" className="border-none">
             <AccordionTrigger className="text-white hover:text-ump-accent">
               ¿Cómo se reservan las fechas?
             </AccordionTrigger>
@@ -321,8 +319,8 @@ export function ServicesContent() {
         </Accordion>
       </section>
 
-      <CTAFinal />
       </div>
+      <CTAFinal />
     </div>
   );
 }
