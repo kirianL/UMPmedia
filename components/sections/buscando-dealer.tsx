@@ -393,7 +393,7 @@ export function BuscandoDealer() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.05, ease: "easeOut" }}
-              className="aspect-video rounded-xl overflow-hidden relative bg-neutral-900 border border-white/5 shadow-md"
+              className="aspect-[3/4] rounded-xl overflow-hidden relative bg-neutral-900 border border-white/5 shadow-md"
             >
               <Image
                 src={image.src}
