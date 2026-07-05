@@ -20,152 +20,28 @@ interface Episode {
 const episodes: Episode[] = [
   {
     id: 1,
-    number: "Capítulo 01",
-    title: "Buscando al dealer - Cap 1",
-    description: "Primer capítulo de la serie documental original de Ultimate Media Productions. Nos adentramos en las calles para entender los códigos, la música y las realidades del movimiento urbano local.",
-    youtubeUrl: "https://youtu.be/XvPBfqjhKP0",
-    youtubeId: "XvPBfqjhKP0",
-    duration: "10:35",
-    status: "Disponible",
-  },
-  {
-    id: 2,
-    number: "Capítulo 02",
-    title: "Buscando al dealer - Cap 2",
-    description: "La búsqueda se intensifica. Entrevistas exclusivas revelan detalles inéditos sobre la cultura de la calle, la música y el pulso local.",
-    youtubeUrl: "https://youtu.be/HNWP0Ut8z40",
-    youtubeId: "HNWP0Ut8z40",
-    duration: "11:20",
-    status: "Disponible",
-  },
-  {
-    id: 3,
-    number: "Capítulo 03",
-    title: "Buscando al dealer - Cap 3",
-    description: "Nuevas pistas y conexiones locales bajo el ritmo y la esencia urbana. Exploramos historias reales que marcan el camino.",
-    youtubeUrl: "https://youtu.be/IdAsBE-73B8",
-    youtubeId: "IdAsBE-73B8",
-    duration: "14:15",
-    status: "Disponible",
-  },
-  {
-    id: 4,
-    number: "Capítulo 04",
-    title: "Buscando al dealer - Cap 4",
-    description: "La tensión aumenta a medida que nos acercamos a las figuras clave del movimiento. Cada escena retrata la realidad con un acabado premium.",
-    youtubeUrl: "https://youtu.be/Py0itclDITQ",
-    youtubeId: "Py0itclDITQ",
-    duration: "12:50",
-    status: "Disponible",
-  },
-  {
-    id: 5,
-    number: "Capítulo 05",
-    title: "Buscando al dealer - Cap 5",
-    description: "Un recorrido visual por las locaciones más icónicas de la producción, destacando testimonios con perspectivas globales.",
-    youtubeUrl: "https://youtu.be/ozg6sR1Qr9Y",
+    number: "Película Principal",
+    title: "La Family",
+    description: "Una emotiva e impactante producción original que retrata la unión, los conflictos y la realidad de los lazos familiares en el Caribe costarricense. Narrativa cinematográfica con calidad de alta gama.",
+    youtubeUrl: "https://youtu.be/ozg6sR1Qr9Y", // Placeholder/UMP video
     youtubeId: "ozg6sR1Qr9Y",
     duration: "13:05",
     status: "Disponible",
-  },
-  {
-    id: 6,
-    number: "Capítulo 06",
-    title: "Buscando al dealer - Cap 6",
-    description: "Camino hacia el desenlace. Análisis profundo de los acontecimientos que han redefinido la serie en esta temporada.",
-    youtubeUrl: "https://youtu.be/NLrm6YhVb74",
-    youtubeId: "NLrm6YhVb74",
-    duration: "15:40",
-    status: "Disponible",
-  },
-  {
-    id: 7,
-    number: "Capítulo 07",
-    title: "Buscando al dealer - Cap 7",
-    description: "Gran cierre de temporada. Conclusiones impactantes y el final del viaje de esta producción documental original.",
-    youtubeUrl: "https://youtu.be/6VZvExkr6XM",
-    youtubeId: "6VZvExkr6XM",
-    duration: "16:22",
-    status: "Disponible",
-  },
+  }
 ];
 
 const galleryImages = [
   {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/BIGGI%20LOVE1.jpg.jpeg",
-    alt: "Biggi Love 1",
+    src: "/portfolio/productions/LaFamily/Galeria/HERMANO%20MAYOR%202.jpg.jpeg",
+    alt: "Hermano Mayor 2",
   },
   {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/BIGGI%20LOVE2.jpg.jpeg",
-    alt: "Biggi Love 2",
+    src: "/portfolio/productions/LaFamily/Galeria/HERMANO%20MENOR%201.jpg.jpeg",
+    alt: "Hermano Menor 1",
   },
   {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/DEALER%201.jpg.jpeg",
-    alt: "Dealer 1",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/DEALER%202.jpg.jpeg",
-    alt: "Dealer 2",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/GEMELO%201.jpg.jpeg",
-    alt: "Gemelo 1",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/GEMELO%202.jpg.jpeg",
-    alt: "Gemelo 2",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/KILYAM%202.jpg.jpeg",
-    alt: "Kilyam 2",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/Kilyam.jpg.jpeg",
-    alt: "Kilyam",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/OFICIAL%20ARR%201.jpg.jpeg",
-    alt: "Oficial Arr 1",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/OFICIAL%20ARR%202.jpg.jpeg",
-    alt: "Oficial Arr 2",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/OFICIAL%20TUTS%201.jpg.jpeg",
-    alt: "Oficial Tuts 1",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/OFICIAL%20TUTS%202%20.jpg.jpeg",
-    alt: "Oficial Tuts 2",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/PAPA%EF%BF%BD%201.jpg.jpeg",
-    alt: "Papá 1",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/PAPA%EF%BF%BD%202.jpg.jpeg",
-    alt: "Papá 2",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/RASHAWN.jpg.jpeg",
-    alt: "Rashawn",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/SOLDADO.jpg.jpeg",
-    alt: "Soldado",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/TILI.jpg.jpeg",
-    alt: "Tili",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/YAYIS%201.jpg.jpeg",
-    alt: "Yayis 1",
-  },
-  {
-    src: "/portfolio/productions/BuscandoAlDealer/Galeria/YAYIS%202.jpg.jpeg",
-    alt: "Yayis 2",
+    src: "/portfolio/productions/LaFamily/Galeria/HERMANO%20MENOR%202.jpg.jpeg",
+    alt: "Hermano Menor 2",
   },
 ];
 
@@ -193,11 +69,10 @@ const itemVariants = {
   },
 } as const;
 
-export function BuscandoDealer() {
+export function LaFamily() {
   const [activeEpisode, setActiveEpisode] = useState<Episode>(episodes[0]);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Stop video playback when changing active episode
   useEffect(() => {
     setIsPlaying(false);
   }, [activeEpisode]);
@@ -221,10 +96,10 @@ export function BuscandoDealer() {
       {/* Title block */}
       <motion.div variants={itemVariants} className="mb-16">
         <span className="text-ump-accent font-bold uppercase tracking-widest text-xs mb-3 block">
-          SERIE ORIGINAL — 2026
+          PRODUCCIÓN ORIGINAL — 2026
         </span>
         <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight leading-none uppercase">
-          Buscando al <span className="text-[#32fb00] italic font-black">dealer</span>
+          La <span className="text-[#32fb00] italic font-black">Family</span>
         </h1>
       </motion.div>
 
@@ -246,7 +121,7 @@ export function BuscandoDealer() {
               ) : (
                 <div className="w-full h-full relative">
                   <Image
-                    src={`https://img.youtube.com/vi/${activeEpisode.youtubeId}/maxresdefault.jpg`}
+                    src="/portfolio/productions/LaFamily/LaFamily.jpg"
                     alt={activeEpisode.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 800px"
@@ -321,7 +196,7 @@ export function BuscandoDealer() {
         <div className="lg:col-span-4 space-y-4">
           <div className="pb-4 border-b border-white/5">
             <span className="text-xs font-bold uppercase tracking-widest text-white/40">
-              Episodios ({episodes.length})
+              Contenido ({episodes.length})
             </span>
           </div>
 
@@ -402,10 +277,10 @@ export function BuscandoDealer() {
                 sizes="(max-width: 768px) 100vw, 600px"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                 <div>
                   <span className="text-ump-accent text-xs font-bold uppercase tracking-widest mb-1 block">
-                    Buscando al Dealer
+                    La Family
                   </span>
                   <p className="text-white font-bold text-lg">{image.alt}</p>
                 </div>

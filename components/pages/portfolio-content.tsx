@@ -32,11 +32,11 @@ const projects: ProjectItem[] = [
     slug: "buscando-al-dealer",
   },
   {
-    title: "Los Chances",
+    title: "La Family",
     category: "Producción",
     year: "2026",
-    image: "/portfolio/productions/LosChances/LosChances.jpg",
-    slug: "los-chances",
+    image: "/portfolio/productions/LaFamily/LaFamily.jpg",
+    slug: "la-family",
   },
   {
     title: "Sazón Colombiano",

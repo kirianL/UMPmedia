@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import { use } from "react";
 import { BuscandoDealer } from "@/components/sections/buscando-dealer";
+import { LaFamily } from "@/components/sections/la-family";
 import { motion } from "framer-motion";
 
 const containerVariants = {
@@ -49,26 +50,35 @@ export default function ProjectDetail({
     );
   }
 
+  if (slug === "la-family") {
+    return (
+      <div className="min-h-screen pt-32 pb-20">
+        <LaFamily />
+        <CTAFinal />
+      </div>
+    );
+  }
+
   // Mock Data based on slug (In Phase 2 this comes from Supabase)
-  const isLosChances = slug === "los-chances";
+  const isLaFamily = slug === "la-family";
   const isSazonColombiano = slug === "sazon-colombiano";
   const project = {
-    title: isSazonColombiano ? "Sazón Colombiano" : isLosChances ? "Los Chances" : "Project Name",
-    client: isSazonColombiano ? "Sazón Colombiano" : isLosChances ? "Ultimate Media Productions" : "National Geographic",
+    title: isSazonColombiano ? "Sazón Colombiano" : isLaFamily ? "La Family" : "Project Name",
+    client: isSazonColombiano ? "Sazón Colombiano" : isLaFamily ? "Ultimate Media Productions" : "National Geographic",
     year: "2026",
     category: isSazonColombiano ? "Branding" : "Producción",
     role: isSazonColombiano ? "Branding & Identidad" : "Producción & Dirección",
     summary: isSazonColombiano
       ? "Diseño integral de marca y posicionamiento de identidad para Sazón Colombiano, reflejando su riqueza cultural a través de una estética visual limpia y contemporánea."
-      : isLosChances
-      ? "Una cautivadora producción audiovisual original del Caribe que explora la cultura y las dinámicas locales a través de una narración cinematográfica de primer nivel."
+      : isLaFamily
+      ? "Una emotiva e impactante producción original que retrata la unión, los conflictos y la realidad de los lazos familiares en el Caribe costarricense."
       : "Una exploración profunda de las raíces culturales del Caribe Sur costarricense, documentando tradiciones que se desvanecen.",
     credits: isSazonColombiano
       ? [
           { role: "Diseño Gráfico", name: "Ultimate Media Productions" },
           { role: "Dirección de Arte", name: "Team UMP" },
         ]
-      : isLosChances
+      : isLaFamily
       ? [
           { role: "Director", name: "Ultimate Media Productions" },
           { role: "Producción", name: "Team UMP" },
@@ -81,8 +91,8 @@ export default function ProjectDetail({
         ],
     image: isSazonColombiano
       ? "/portfolio/Branding/SazonColombiano/SazonColombiano.jpeg"
-      : isLosChances
-      ? "/portfolio/productions/LosChances/LosChances.jpg"
+      : isLaFamily
+      ? "/portfolio/productions/LaFamily/LaFamily.jpg"
       : "",
   };
 
