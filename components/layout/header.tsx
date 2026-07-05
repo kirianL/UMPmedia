@@ -49,24 +49,6 @@ export function Header() {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
-
-    const prev = lastScrollYRef.current;
-    const diff = latest - prev;
-
-    if (!isOpen) {
-      if (latest < 50) {
-        // Always show the header near the top of the page
-        setIsVisible(true);
-      } else if (Math.abs(diff) > 12) {
-        // Hysteresis buffer: only toggle visibility if scroll offset moves by more than 12px
-        if (latest > prev) {
-          setIsVisible(false);
-        } else {
-          setIsVisible(true);
-        }
-      }
-    }
-    lastScrollYRef.current = latest;
   });
 
   // Automatically close mobile menu if screen resizes to desktop width
