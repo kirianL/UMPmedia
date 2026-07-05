@@ -207,7 +207,7 @@ export function BuscandoDealer() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="container mx-auto px-6 max-w-7xl"
+      className="container mx-auto px-6 max-w-7xl pb-32"
     >
       <motion.div variants={itemVariants}>
         <Link
@@ -385,31 +385,23 @@ export function BuscandoDealer() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {galleryImages.map((image, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
-              className="group aspect-video rounded-3xl overflow-hidden relative bg-neutral-900 border border-white/5 shadow-lg cursor-pointer"
+              transition={{ duration: 0.6, delay: i * 0.05, ease: "easeOut" }}
+              className="aspect-video rounded-xl overflow-hidden relative bg-neutral-900 border border-white/5 shadow-md"
             >
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, 600px"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes="(max-width: 768px) 50vw, 33vw"
+                className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <div>
-                  <span className="text-ump-accent text-xs font-bold uppercase tracking-widest mb-1 block">
-                    Buscando al Dealer
-                  </span>
-                  <p className="text-white font-bold text-lg">{image.alt}</p>
-                </div>
-              </div>
             </motion.div>
           ))}
         </div>
