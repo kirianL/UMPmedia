@@ -1,5 +1,6 @@
 "use client";
 
+import { CommunityCTA } from "@/components/sections/community-cta";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { EquipmentShowcase } from "@/components/sections/equipment-showcase";
 import { RevealText } from "@/components/ui/reveal-text";
@@ -247,6 +248,7 @@ export function AboutContent() {
       {/* 5. Equipment Showcase */}
       <EquipmentShowcase />
 
+      <CommunityCTA />
       <CTAFinal />
     </div>
   );

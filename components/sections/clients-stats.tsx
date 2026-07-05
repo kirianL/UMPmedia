@@ -84,22 +84,22 @@ export function ClientsStats() {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           <StatCounter
-            value={10}
-            suffix="+"
-            label="Proyectos Realizados"
-            description="De formato comercial, documental, videoclips y eventos masivos."
+            value={75}
+            suffix="K+"
+            label="YouTube"
+            description="Suscriptores y reproducciones en nuestro canal de contenidos."
           />
           <StatCounter
-            value={10}
+            value={1}
             suffix="M+"
-            label="Reproducciones"
-            description="Impacto masivo en plataformas digitales y redes sociales."
+            label="TikTok"
+            description="Visualizaciones y comunidad en constante crecimiento masivo."
           />
           <StatCounter
-            value={2025}
-            suffix=""
-            label="Creación"
-            description="Liderando la innovación y calidad audiovisual desde Limón."
+            value={1}
+            suffix="M+"
+            label="Instagram"
+            description="Alcance mensual e interacciones con nuestra audiencia activa."
           />
         </div>
       </div>

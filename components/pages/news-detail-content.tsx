@@ -1,5 +1,6 @@
 "use client";
 
+import { CommunityCTA } from "@/components/sections/community-cta";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { ArrowLeft, Calendar, Share2, Check } from "lucide-react";
 import Link from "next/link";
@@ -155,9 +156,8 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
         </div>
       </motion.div>
 
-      <div className="border-t border-white/10 pt-12">
-        <CTAFinal />
-      </div>
+      <CommunityCTA />
+      <CTAFinal />
     </div>
   );
 }

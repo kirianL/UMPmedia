@@ -1,5 +1,6 @@
 "use client";
 
+import { CommunityCTA } from "@/components/sections/community-cta";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
@@ -44,9 +45,8 @@ export default function ProjectDetail({
     return (
       <div className="min-h-screen pt-32 pb-20">
         <BuscandoDealer />
-        <div className="border-t border-white/10 mt-32 pt-20">
-          <CTAFinal />
-        </div>
+        <CommunityCTA />
+        <CTAFinal />
       </div>
     );
   }
@@ -214,9 +214,8 @@ export default function ProjectDetail({
           </div>
         </motion.div>
       </motion.div>
-      <div className="border-t border-white/10 pt-20">
-        <CTAFinal />
-      </div>
+      <CommunityCTA />
+      <CTAFinal />
     </div>
   );
 }

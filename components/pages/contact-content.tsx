@@ -15,7 +15,6 @@ import {
   Phone,
 } from "lucide-react";
 import { RevealText } from "@/components/ui/reveal-text";
-import { Map, MapMarker, MarkerContent, MarkerPopup, MapControls } from "@/components/ui/map";
 
 export function ContactContent() {
   return (
@@ -230,40 +229,7 @@ export function ContactContent() {
             </div>
           </div>
 
-          {/* Interactive Map Component */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-24 rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl h-[450px] relative w-full bg-[#0c0c0c]"
-          >
-            <Map center={[-83.027217, 9.995277]} zoom={17} theme="dark" attributionControl={false}>
-              <MapControls position="bottom-right" />
-              <MapMarker longitude={-83.027217} latitude={9.995277}>
-                <MarkerContent>
-                  <div className="relative flex items-center justify-center">
-                    {/* Glowing outer rings */}
-                    <div className="absolute w-8 h-8 rounded-full bg-[#32fb00]/30 animate-ping" />
-                    <div className="absolute w-5 h-5 rounded-full bg-[#32fb00]/50 animate-pulse" />
-                    {/* Inner solid dot */}
-                    <div className="relative w-3.5 h-3.5 rounded-full bg-[#32fb00] border border-black shadow-[0_0_10px_rgba(50,251,0,0.8)]" />
-                  </div>
-                </MarkerContent>
-                <MarkerPopup className="w-60 p-4 bg-ump-alt border border-white/10 rounded-2xl shadow-xl space-y-2">
-                  <div>
-                    <span className="text-[10px] text-ump-accent font-bold uppercase tracking-widest block mb-1">
-                      Ubicación
-                    </span>
-                    <h3 className="text-white font-bold leading-tight">Ultimate Media Productions</h3>
-                  </div>
-                  <p className="text-xs text-ump-secondary leading-normal">
-                    Av. 5, Limón, Costa Rica
-                  </p>
-                </MarkerPopup>
-              </MapMarker>
-            </Map>
-          </motion.div>
+
         </div>
       </div>
     </div>

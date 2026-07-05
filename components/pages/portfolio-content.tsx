@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ProjectCard } from "@/components/ui/project-card";
+import { CommunityCTA } from "@/components/sections/community-cta";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { AnimatePresence, motion } from "framer-motion";
 import { RevealText } from "@/components/ui/reveal-text";
@@ -128,9 +129,8 @@ export function PortfolioContent() {
         </div>
       </div>
 
-      <div className="mt-12">
-        <CTAFinal />
-      </div>
+      <CommunityCTA />
+      <CTAFinal />
     </div>
   );
 }

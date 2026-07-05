@@ -5,6 +5,8 @@ import { ArrowUpRight, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { CommunityCTA } from "@/components/sections/community-cta";
+import { CTAFinal } from "@/components/sections/cta-final";
 import { RevealText } from "@/components/ui/reveal-text";
 
 const team = [
@@ -240,97 +242,8 @@ export function TeamContent() {
         )}
       </AnimatePresence>
 
-      {/* CTA Section — inline, sin overlap */}
-      <section className="border-t border-white/5 py-24 md:py-32">
-        <div className="container mx-auto px-6 text-center text-white">
-          <span className="text-ump-accent text-xs font-bold uppercase tracking-widest mb-4 block">
-            Próximo paso
-          </span>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            ¿Tienes un proyecto
-            <br className="hidden md:block" /> en mente?
-          </h2>
-          <p className="text-white/50 text-lg mb-10 max-w-xl mx-auto">
-            Llevémoslo al siguiente nivel. Agendemos una llamada para entender
-            tu visión.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="/contact"
-              style={{
-                fontFamily: "var(--font-inter), sans-serif",
-                fontWeight: 700,
-                fontSize: "0.9rem",
-                color: "#0a0a0a",
-                background: "#ffffff",
-                borderRadius: "4px",
-                padding: "13px 26px",
-                textDecoration: "none",
-                transition: "transform 0.2s, box-shadow 0.2s",
-                boxShadow: "0 4px 14px rgba(255,255,255,0.12)",
-              }}
-              className="w-full sm:w-auto text-center inline-block"
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(-2px)";
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                  "0 8px 20px rgba(255,255,255,0.22)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(0)";
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                  "0 4px 14px rgba(255,255,255,0.12)";
-              }}
-            >
-              Hablemos
-            </Link>
-            <Link
-              href="/portfolio"
-              style={{
-                fontFamily: "var(--font-inter), sans-serif",
-                fontWeight: 700,
-                fontSize: "0.9rem",
-                color: "#ffffff",
-                background: "transparent",
-                border: "2px solid rgba(255, 255, 255, 0.2)",
-                borderRadius: "4px",
-                padding: "11px 26px",
-                textDecoration: "none",
-                transition: "background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s",
-              }}
-              className="w-full sm:w-auto text-center inline-block"
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background =
-                  "#ffffff";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#0a0a0a";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "#ffffff";
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(-2px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background =
-                  "transparent";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255, 255, 255, 0.2)";
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(0)";
-              }}
-            >
-              Ver más trabajos
-            </Link>
-          </div>
-          <p className="text-white/30 text-sm mt-10">
-            O escríbenos a{" "}
-            <a
-              href="mailto:fabian@ultimatemediaproductions.com"
-              className="text-white/60 hover:underline transition-colors"
-            >
-              fabian@ultimatemediaproductions.com
-            </a>
-          </p>
-        </div>
-      </section>
+      <CommunityCTA />
+      <CTAFinal />
     </div>
   );
 }

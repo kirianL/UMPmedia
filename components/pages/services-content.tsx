@@ -1,5 +1,6 @@
 "use client";
 
+import { CommunityCTA } from "@/components/sections/community-cta";
 import { CTAFinal } from "@/components/sections/cta-final";
 import {
   Accordion,
@@ -321,6 +322,7 @@ export function ServicesContent() {
         </Accordion>
       </section>
 
+      <CommunityCTA />
       <CTAFinal />
       </div>
     </div>
