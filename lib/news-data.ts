@@ -10,6 +10,35 @@ export interface NewsItem {
 
 export const newsArticles: NewsItem[] = [
   {
+    title: "Visita de la Ministra del MEIC a UMP: Impulso al Emprendimiento y la Industria Creativa en Limón",
+    date: "Feb 24, 2026",
+    excerpt:
+      "La Ministra de Economía, Industria y Comercio (MEIC) visitó las instalaciones de Ultimate Media Productions en Limón para respaldar el modelo de negocio, la innovación audiovisual y el crecimiento de las PYMES creativas en la región.",
+    slug: "visita-ministerial-desarrollo-ump",
+    image: "/assets/images/Ministra.png",
+    category: "Institucional",
+    content: `
+      <p class="mb-6 text-lg md:text-xl text-neutral-700 leading-relaxed font-light">La visita de la Ministra de Economía, Industria y Comercio (MEIC) a las instalaciones de Ultimate Media Productions (UMP) en Limón representó un respaldo institucional decisivo para el florecimiento del emprendimiento joven y la economía creativa en la provincia caribeña.</p>
+      <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">El encuentro permitió a la jerarca conocer de cerca la propuesta de valor de UMP, una empresa fundada y gestionada por talento joven local que demuestra la viabilidad de construir modelos de negocio rentables y sostenibles en el sector audiovisual y tecnológico fuera del Gran Área Metropolitana.</p>
+      
+      <h3 class="text-2xl md:text-3xl font-black text-neutral-950 mt-10 mb-4 tracking-tight">Reunión Estratégica con el MEIC y Apoyo al Emprendimiento Local</h3>
+      <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">Durante la sesión de trabajo, se discutieron las oportunidades y retos que enfrentan las micro, pequeñas y medianas empresas (PYMES) de base creativa en Limón. La Ministra subrayó la prioridad del MEIC de acompañar a los emprendedores que generan empleo de calidad y retienen el talento especializado en sus comunidades de origen.</p>
+      <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">El equipo de UMP compartió la historia de crecimiento de la productora, analizando las necesidades de acceso a instrumentos de fomento empresarial, simplificación de trámites y mecanismos que permitan a proyectos emergentes del Caribe acceder a encadenamientos con corporaciones e instituciones de escala nacional.</p>
+
+      <h3 class="text-2xl md:text-3xl font-black text-neutral-950 mt-10 mb-4 tracking-tight">Innovación en Producción Audiovisual y Estándar Cinematográfico</h3>
+      <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">La comitiva ministerial recorrió las instalaciones operativas del estudio, donde se exhibieron los equipos de captura y postproducción cinematográfica en 4K y 6K RAW. Se demostró cómo UMP desarrolla piezas de video comercial, institucional y documental con estándares que compiten directamente con las grandes agencias del país.</p>
+      <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">Asimismo, se visitaron los sets dedicados a la producción de podcast y streaming en vivo, espacios creados para que marcas, creadores y organizaciones puedan conectar de forma auténtica y profesional con sus comunidades digitales.</p>
+
+      <h3 class="text-2xl md:text-3xl font-black text-neutral-950 mt-10 mb-4 tracking-tight">Desarrollo de Soluciones Digitales para el Comercio y Empresas</h3>
+      <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">Más allá del lenguaje audiovisual, UMP expuso su vertical de soluciones digitales y desarrollo web moderno, diseñada para transformar y potenciar la presencia digital de los negocios del Caribe, facilitando su transición hacia plataformas ágiles y comercio en línea.</p>
+      <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">La jerarca del MEIC destacó la importancia de la digitalización como palanca de productividad y competitividad para las PYMES de la zona, valorando positivamente que existan empresas locales capaces de brindar este acompañamiento integral con criterio técnico avanzado.</p>
+
+      <h3 class="text-2xl md:text-3xl font-black text-neutral-950 mt-10 mb-4 tracking-tight">Ruta de Fortalecimiento y Competitividad Regional</h3>
+      <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">Al término del encuentro, la Ministra del MEIC felicitó al equipo de UMP por su perseverancia, visión empresarial y estándar de excelencia, reiterando el compromiso del ministerio de seguir articulando sinergias que promuevan el crecimiento del ecosistema emprendedor en la provincia.</p>
+      <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">Para Ultimate Media Productions, esta visita consolida su rol como referente de la producción audiovisual y la innovación digital en el Caribe, reafirmando que con trabajo constante y rigor profesional es posible liderar la industria desde Limón para todo Costa Rica.</p>
+    `,
+  },
+  {
     title: "Nueva producción documental en Puerto Viejo",
     date: "Oct 12, 2024",
     excerpt:

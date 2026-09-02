@@ -259,6 +259,7 @@
   .animate-marquee-smooth:hover {
     animation-play-state: paused;
   }
+
 }
 
 /* Reduced motion support */

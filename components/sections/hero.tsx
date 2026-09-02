@@ -29,7 +29,7 @@ export function Hero() {
 
       {/* Koyeb 3D Wireframe Globe & Floating Nodes */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
-        <div className="relative w-[480px] h-[480px] sm:w-[680px] sm:h-[680px] md:w-[780px] md:h-[780px] lg:w-[840px] lg:h-[840px] shrink-0 flex items-center justify-center opacity-45">
+        <div className="relative w-[560px] h-[560px] xs:w-[620px] xs:h-[620px] sm:w-[680px] sm:h-[680px] md:w-[780px] md:h-[780px] lg:w-[840px] lg:h-[840px] shrink-0 flex items-center justify-center opacity-45">
           
           <svg
             viewBox="0 0 1000 1000"
@@ -48,15 +48,6 @@ export function Hero() {
             <ellipse cx="500" cy="500" rx="310" ry="460" stroke="#d0d0ca" strokeWidth="1.2" />
             <line x1="500" y1="40" x2="500" y2="960" stroke="#d0d0ca" strokeWidth="1.2" />
             <line x1="40" y1="500" x2="960" y2="500" stroke="#d0d0ca" strokeWidth="1.2" />
-
-            {/* Subtle Caribbean emerald accent arc */}
-            <path
-              d="M 500 800 C 650 800, 780 730, 830 630"
-              stroke="#059669"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-              opacity="0.5"
-            />
           </svg>
         </div>
       </div>
@@ -71,12 +62,12 @@ export function Hero() {
           transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
           className="font-black tracking-[-0.035em] leading-[0.96] text-[#111111] uppercase select-none w-full max-w-3xl mx-auto"
         >
-          <span className="block text-[29px] xs:text-[33px] sm:text-5xl md:text-6xl lg:text-[74px]">HACEMOS CRECER</span>
-          <span className="block text-[29px] xs:text-[33px] sm:text-5xl md:text-6xl lg:text-[74px] mt-0.5 sm:mt-1">MARCAS</span>
-          <span className="block text-[21px] xs:text-[25px] sm:text-4xl md:text-5xl lg:text-[58px] mt-1.5 sm:mt-2">
+          <span className="block text-[34px] xs:text-[39px] sm:text-5xl md:text-6xl lg:text-[74px]">HACEMOS CRECER</span>
+          <span className="block text-[34px] xs:text-[39px] sm:text-5xl md:text-6xl lg:text-[74px] mt-0.5 sm:mt-1">MARCAS</span>
+          <span className="block text-[24px] xs:text-[28px] sm:text-4xl md:text-5xl lg:text-[58px] mt-1 sm:mt-2">
             DESDE EL
           </span>
-          <span className="block text-[33px] xs:text-[38px] sm:text-5xl md:text-6xl lg:text-[76px] mt-0.5 sm:mt-1 text-emerald-600">
+          <span className="block text-[40px] xs:text-[46px] sm:text-5xl md:text-6xl lg:text-[76px] mt-0.5 sm:mt-1 text-emerald-600">
             CARIBE
           </span>
         </motion.h1>
@@ -86,7 +77,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-          className="text-[11px] sm:text-sm md:text-base text-[#222222] font-medium max-w-lg mx-auto leading-relaxed mt-2.5 sm:mt-4 mb-3.5 sm:mb-6 px-2"
+          className="text-[12.5px] xs:text-[13.5px] sm:text-sm md:text-base text-[#222222] font-medium max-w-sm sm:max-w-lg mx-auto leading-relaxed mt-3 sm:mt-4 mb-4 sm:mb-6 px-3"
         >
           Producción audiovisual, social media y soluciones digitales.
         </motion.p>
@@ -102,7 +93,7 @@ export function Hero() {
             href="/contact"
             variant="primary"
             size="md"
-            className="w-full sm:w-auto rounded-lg bg-[#141414] hover:bg-black text-white font-bold text-[11px] sm:text-xs uppercase tracking-wider shadow-[0_4px_14px_rgba(0,0,0,0.18)] px-6 sm:px-7 py-2.5 text-center flex justify-center items-center active:scale-[0.97] transition-transform"
+            className="w-full sm:w-auto rounded-lg bg-[#141414] hover:bg-black text-white font-bold text-xs uppercase tracking-wider shadow-[0_4px_14px_rgba(0,0,0,0.18)] px-7 py-3 sm:py-2.5 text-center flex justify-center items-center active:scale-[0.97] transition-transform"
           >
             ▸ COTIZAR PROYECTO
           </SlotButton>
@@ -111,7 +102,7 @@ export function Hero() {
             href="/portfolio"
             variant="ghost"
             size="md"
-            className="w-full sm:w-auto text-[11px] sm:text-xs font-bold uppercase tracking-wider text-black/90 hover:text-black transition-colors px-4 py-2 text-center flex justify-center items-center active:scale-[0.97]"
+            className="w-full sm:w-auto text-xs font-bold uppercase tracking-wider text-black/90 hover:text-black transition-colors px-5 py-2.5 sm:py-2 text-center flex justify-center items-center active:scale-[0.97]"
           >
             ▸ VER PORTAFOLIO ◂
           </SlotButton>
