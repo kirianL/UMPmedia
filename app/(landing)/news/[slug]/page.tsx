@@ -36,6 +36,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: article.title,
       description: cleanDesc,
       type: "article",
+      url: `/news/${article.slug}`,
+      siteName: "Ultimate Media Productions",
+      locale: "es_CR",
       images: [
         {
           url: ogImageUrl,
