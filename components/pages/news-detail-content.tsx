@@ -11,6 +11,7 @@ import {
   useSpring,
   useTransform,
   useMotionValueEvent,
+  useReducedMotion,
 } from "framer-motion";
 import {
   ArrowLeft,
@@ -44,6 +45,7 @@ interface TocItem {
 }
 
 export function NewsDetailContent({ article }: NewsDetailContentProps) {
+  const shouldReduceMotion = useReducedMotion();
   const [copied, setCopied] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const [isAboutOpen, setIsAboutOpen] = useState(false);
@@ -349,31 +351,42 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                 </Link>
               </div>
 
-              {/* Standardized Date & Dynamic Read Time (Using pipe | separator) */}
-              <div className="flex items-center gap-2.5 text-xs font-mono uppercase tracking-wider text-neutral-400 mb-4 select-none">
-                <span className="flex items-center gap-1.5 text-neutral-600 font-semibold">
-                  <Calendar size={13} className="text-neutral-400" />
-                  {article.date}
-                </span>
-                <span className="text-neutral-300 font-normal">|</span>
-                <span className="flex items-center gap-1.5">
-                  <Clock size={13} className="text-neutral-400" />
-                  {readingTime} MIN DE LECTURA
-                </span>
+              {/* Header */}
+              <div>
+                {/* Standardized Category, Date & Dynamic Read Time */}
+                <div className="flex items-center flex-wrap gap-2 text-xs font-mono uppercase tracking-wider text-neutral-400 mb-4 select-none">
+                  <span className="text-neutral-950 font-bold tracking-widest">{article.category}</span>
+                  <span className="text-neutral-300 font-light">|</span>
+                  <span className="flex items-center gap-1.5 text-neutral-600 font-semibold">
+                    <Calendar size={13} className="text-neutral-400" />
+                    {article.date}
+                  </span>
+                  <span className="text-neutral-300 font-light">|</span>
+                  <span className="flex items-center gap-1.5">
+                    <Clock size={13} className="text-neutral-400" />
+                    {readingTime} MIN DE LECTURA
+                  </span>
+                </div>
+
+                {/* Master Headline */}
+                <h1 className="font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl uppercase tracking-[-0.035em] leading-[1.04] text-neutral-950 mb-6 sm:mb-8">
+                  {article.title}
+                </h1>
               </div>
 
-              {/* Master Headline */}
-              <h1 className="font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl uppercase tracking-[-0.035em] leading-[1.04] text-neutral-950 mb-6 sm:mb-8">
-                {article.title}
-              </h1>
-
-              {/* Featured Image with Velocity-Based Motion Blur */}
-              <div className="relative mb-8 sm:mb-10 overflow-hidden rounded-xl border border-neutral-200/80 bg-neutral-950 shadow-sm">
+              {/* Featured Image with Silky Optical Settle & Zero Layout Shift */}
+              <div className="relative mb-8 sm:mb-10 overflow-hidden rounded-2xl border border-neutral-200/80 bg-neutral-100 shadow-[0_8px_30px_rgba(0,0,0,0.03)]">
                 <motion.div
+                  initial={shouldReduceMotion ? false : { scale: 1.04, opacity: 0.85 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{
+                    duration: 0.7,
+                    ease: [0.23, 1, 0.32, 1],
+                  }}
                   style={{
                     filter: "url(#scroll-motion-blur)",
                   }}
-                  className="relative w-full aspect-[16/10] sm:aspect-[16/9] transition-transform duration-200"
+                  className="relative w-full aspect-[16/10] sm:aspect-[16/9] will-change-transform"
                 >
                   <Image
                     src={article.image}
