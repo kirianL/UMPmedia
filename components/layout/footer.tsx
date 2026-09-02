@@ -1,92 +1,84 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-ump-background text-ump-primary py-12 md:py-20 px-6 border-t border-white/5">
-      <div className="container mx-auto flex flex-col gap-16 md:flex-row md:justify-between">
-        {/* Brand */}
-        <div className="flex flex-col gap-4">
-          <Link href="/" className="relative w-40 h-12 block">
-            <Image
-              src="/LogoUMP-Transparente.webp"
-              alt="Ultimate Media Productions"
-              fill
-              className="object-contain object-left"
-            />
-          </Link>
-          <p className="text-ump-secondary text-sm max-w-xs">
-            Estudio audiovisual independiente.
-            <br />
-            Creamos experiencias visuales que perduran.
-          </p>
-        </div>
-
-        {/* Links */}
-        <div className="flex flex-col gap-2">
-          <FooterLink href="/portfolio">Portafolio</FooterLink>
-          <FooterLink href="/services">Servicios</FooterLink>
-          <FooterLink href="/about">Nosotros</FooterLink>
-          <FooterLink href="/contact">Contacto</FooterLink>
-        </div>
-
-        {/* Contact */}
-        <div className="flex flex-col gap-4 text-sm text-ump-secondary">
-          <span className="uppercase tracking-widest text-xs font-semibold text-ump-accent">
-            Ubicación
-          </span>
-          <p>Limón, Costa Rica</p>
-
-          <span className="uppercase tracking-widest text-xs font-semibold text-ump-accent mt-4">
-            Social
-          </span>
-          <div className="flex gap-4">
-            {/* TODO: Add Social Icons/Links */}
-            <a href="#" className="hover:text-white transition-colors">
-              Instagram
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
-              LinkedIn
-            </a>
+    <footer className="w-full bg-[#f6f6f3] text-neutral-900 border-t border-neutral-200/60 pt-10 sm:pt-14 md:pt-16 overflow-hidden select-none">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Minimal Navigation & Copyright Bar matching Reference */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 pb-6 sm:pb-8 md:pb-10 text-xs font-mono uppercase tracking-wider">
+          {/* Left: Copyright */}
+          <div className="flex items-center gap-2.5 text-neutral-500">
+            <span>&copy; {currentYear} UMP.</span>
+            <span className="text-neutral-300">|</span>
+            <span className="text-neutral-400">Limón, Costa Rica</span>
           </div>
+
+          {/* Right: Minimal Navigation Links */}
+          <nav aria-label="Enlaces del pie de página" className="flex flex-wrap items-center gap-5 sm:gap-8">
+            <Link
+              href="/portfolio"
+              className="text-neutral-500 hover:text-neutral-950 transition-colors duration-150"
+            >
+              Portafolio
+            </Link>
+            <Link
+              href="/services"
+              className="text-neutral-500 hover:text-neutral-950 transition-colors duration-150"
+            >
+              Servicios
+            </Link>
+            <Link
+              href="/about"
+              className="text-neutral-500 hover:text-neutral-950 transition-colors duration-150"
+            >
+              Nosotros
+            </Link>
+            <Link
+              href="/news"
+              className="text-neutral-500 hover:text-neutral-950 transition-colors duration-150"
+            >
+              Noticias
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-1 text-neutral-950 font-bold hover:text-emerald-700 transition-colors duration-150 group"
+            >
+              <span>Contacto</span>
+              <ArrowUpRight
+                size={13}
+                className="transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </Link>
+          </nav>
         </div>
       </div>
 
-      <div className="container mx-auto mt-10 md:mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-ump-secondary/50 gap-4 text-center md:text-left">
-        <p>
-          &copy; {new Date().getFullYear()} Ultimate Media Productions. Todos los derechos
-          reservados.
-        </p>
-        <p>
-          Desarrollado por{" "}
-          <a
-            href="https://kirian.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-ump-accent transition-colors"
-          >
-            kirian.dev
-          </a>{" "}
-          de UMP.
-        </p>
+      {/* Caribbean Landscape Panorama (Footer.jpeg) */}
+      <div
+        className="relative w-full h-64 sm:h-80 md:h-[420px] lg:h-[480px] overflow-hidden"
+        style={{
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 14%, black 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 14%, black 100%)",
+        }}
+      >
+        {/* Subtle sky blend at the very top edge */}
+        <div className="absolute inset-x-0 top-0 h-16 sm:h-24 bg-gradient-to-b from-[#f6f6f3] via-[#f6f6f3]/30 to-transparent z-10 pointer-events-none" />
+
+        {/* Scenic Caribbean Photo - Anchored to bottom to reveal boats and turquoise sea */}
+        <Image
+          src="/assets/Footer.jpeg"
+          alt="Costa caribeña de Limón - Ultimate Media Productions"
+          fill
+          priority={false}
+          quality={95}
+          sizes="100vw"
+          className="object-cover object-bottom select-none pointer-events-none"
+        />
       </div>
     </footer>
-  );
-}
-
-function FooterLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className="text-xl md:text-3xl font-bold hover:text-ump-accent transition-colors tracking-tight"
-    >
-      {children}
-    </Link>
   );
 }
