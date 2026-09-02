@@ -48,10 +48,10 @@ export function CTAFinal() {
           />
 
           {/* Inner Container / Focal Card (Solid White Center) */}
-          <div className="relative z-10 w-full rounded-[1.8rem] sm:rounded-[2.3rem] md:rounded-[3rem] bg-white border border-neutral-200/90 p-8 sm:p-12 md:p-16 lg:p-20 text-center flex flex-col items-center shadow-[0_10px_35px_rgba(0,0,0,0.04)] overflow-hidden">
+          <div className="relative z-10 w-full rounded-[1.8rem] sm:rounded-[2.3rem] md:rounded-[3rem] bg-white border border-neutral-200/90 px-5 py-8 sm:px-10 sm:py-14 md:p-16 lg:p-20 pb-10 sm:pb-16 md:pb-20 text-center flex flex-col items-center shadow-[0_10px_35px_rgba(0,0,0,0.04)] overflow-hidden">
             
             {/* Hero Editorial Typography */}
-            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.2rem] font-black tracking-tighter uppercase leading-[0.92] text-neutral-950 mb-6 sm:mb-8 text-balance">
+            <h2 className="text-3xl sm:text-6xl md:text-7xl lg:text-[6.2rem] font-black tracking-tighter uppercase leading-[0.92] text-neutral-950 mb-5 sm:mb-8 text-balance">
               Creemos algo <br />
               <span className="font-serif italic font-normal text-neutral-400 lowercase tracking-tight">
                 inolvidable.
@@ -59,24 +59,24 @@ export function CTAFinal() {
             </h2>
 
             {/* Sub-headline Kicker */}
-            <p className="text-neutral-950 text-lg sm:text-xl md:text-2xl font-bold tracking-tight mb-3">
+            <p className="text-neutral-950 text-base sm:text-xl md:text-2xl font-bold tracking-tight mb-2 sm:mb-3">
               De la idea a la ejecución.
             </p>
 
             {/* Narrative Description */}
-            <p className="text-neutral-600 text-base sm:text-lg md:text-xl font-normal max-w-xl mx-auto leading-relaxed mb-10 sm:mb-12 text-pretty">
+            <p className="text-neutral-600 text-sm sm:text-lg md:text-xl font-normal max-w-xl mx-auto leading-relaxed mb-8 sm:mb-12 text-pretty px-2">
               Producción audiovisual, social media y soluciones digitales diseñadas para hacer crecer tu marca.
             </p>
 
             {/* Main Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none mx-auto mb-12 sm:mb-16">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none mx-auto mb-8 sm:mb-12">
               <SlotButton
                 href="/contact"
                 variant="primary"
                 size="lg"
                 icon={<PiArrowRight size={18} />}
                 iconPosition="right"
-                className="w-full sm:w-auto rounded-full px-8 py-4 uppercase tracking-wider text-xs sm:text-sm font-bold shadow-sm active:scale-[0.98]"
+                className="w-full sm:w-auto rounded-full px-8 py-3.5 sm:py-4 uppercase tracking-wider text-xs sm:text-sm font-bold shadow-sm active:scale-[0.98]"
               >
                 Empecemos
               </SlotButton>
@@ -87,24 +87,24 @@ export function CTAFinal() {
                 size="lg"
                 icon={<PiSparkle size={18} className="text-neutral-400 group-hover:text-neutral-950 transition-colors" />}
                 iconPosition="left"
-                className="w-full sm:w-auto rounded-full px-8 py-4 uppercase tracking-wider text-xs sm:text-sm font-bold border-neutral-200/80 bg-neutral-50 hover:bg-neutral-100 hover:border-neutral-300 shadow-sm active:scale-[0.98]"
+                className="w-full sm:w-auto rounded-full px-8 py-3.5 sm:py-4 uppercase tracking-wider text-xs sm:text-sm font-bold border-neutral-200/80 bg-neutral-50 hover:bg-neutral-100 hover:border-neutral-300 shadow-sm active:scale-[0.98]"
               >
                 Ver más trabajos
               </SlotButton>
             </div>
 
             {/* Clean Direct Email Pill */}
-            <div className="flex flex-col items-center w-full max-w-full">
-              <p className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-neutral-400 mb-3 text-center">
+            <div className="flex flex-col items-center w-full max-w-full mt-1">
+              <p className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-neutral-400 mb-2.5 text-center">
                 O escríbenos directamente
               </p>
 
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="group inline-flex items-center justify-between gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl bg-neutral-50 border border-neutral-200/80 hover:border-neutral-300 hover:bg-white transition-all duration-200 cursor-pointer active:scale-[0.98] max-w-[90vw] sm:max-w-md shadow-2xs"
+                className="group inline-flex items-center justify-between gap-2.5 sm:gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl bg-neutral-50 border border-neutral-200/80 hover:border-neutral-300 hover:bg-white transition-all duration-200 cursor-pointer active:scale-[0.98] w-full max-w-[340px] sm:max-w-md shadow-2xs"
               >
-                <span className="text-neutral-900 font-medium text-xs sm:text-sm truncate select-all">
+                <span className="text-neutral-900 font-medium text-xs sm:text-sm truncate min-w-0 text-left select-all">
                   {email}
                 </span>
                 <span className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-neutral-200/60 text-[11px] font-semibold text-neutral-600 group-hover:bg-neutral-100 group-hover:text-neutral-950 transition-colors">

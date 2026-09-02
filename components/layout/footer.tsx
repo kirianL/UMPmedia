@@ -79,11 +79,6 @@ export function Footer() {
           className="object-cover object-bottom select-none pointer-events-none"
         />
       </div>
-
-      {/* Mobile Overscroll Shelf: matches bottom of Caribbean image so rubber-banding never flashes dark */}
-      <div className="w-full h-0 relative">
-        <div className="absolute top-0 inset-x-0 h-[100vh] bg-[#47633b] pointer-events-none" />
-      </div>
     </footer>
   );
 }
