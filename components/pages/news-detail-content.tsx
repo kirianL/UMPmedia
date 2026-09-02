@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import {
   PiXLogoBold,
+  PiWhatsappLogoBold,
   PiFacebookLogoBold,
   PiInstagramLogoBold,
   PiLinkedinLogoBold,
@@ -176,7 +177,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
     }
   };
 
-  const handleShare = (platform: "x" | "facebook" | "linkedin" | "instagram") => {
+  const handleShare = (platform: "x" | "whatsapp" | "facebook" | "linkedin" | "instagram") => {
     const url = typeof window !== "undefined" ? window.location.href : "";
     const title = article.title;
     let shareUrl = "";
@@ -185,6 +186,10 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
       shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
         title
       )}&url=${encodeURIComponent(url)}`;
+    } else if (platform === "whatsapp") {
+      shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
+        `${title} - ${url}`
+      )}`;
     } else if (platform === "facebook") {
       shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
         url
@@ -481,6 +486,16 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                     </motion.button>
 
                     <motion.button
+                      onClick={() => handleShare("whatsapp")}
+                      whileHover={{ y: -2, scale: 1.04 }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
+                      className="w-10 h-10 rounded-lg bg-white hover:bg-[#25D366] border border-neutral-200/80 hover:border-[#25D366] flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
+                    >
+                      <PiWhatsappLogoBold size={18} />
+                    </motion.button>
+
+                    <motion.button
                       onClick={() => handleShare("facebook")}
                       whileHover={{ y: -2, scale: 1.04 }}
                       whileTap={{ scale: 0.97 }}
@@ -610,6 +625,18 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                       className="w-10 h-10 rounded-lg bg-white hover:bg-black border border-neutral-200/80 hover:border-black flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
                     >
                       <PiXLogoBold size={17} />
+                    </motion.button>
+                  </Tooltip>
+
+                  <Tooltip content="Compartir en WhatsApp" side="bottom">
+                    <motion.button
+                      onClick={() => handleShare("whatsapp")}
+                      whileHover={{ y: -2, scale: 1.04 }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
+                      className="w-10 h-10 rounded-lg bg-white hover:bg-[#25D366] border border-neutral-200/80 hover:border-[#25D366] flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
+                    >
+                      <PiWhatsappLogoBold size={18} />
                     </motion.button>
                   </Tooltip>
 
