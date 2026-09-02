@@ -80,7 +80,7 @@ function StatCounter({ value, suffix, label, icon, delay = 0 }: StatItemProps) {
 
 export function ClientsStats() {
   return (
-    <section className="py-14 md:py-24 bg-ump-background relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 z-20 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
+    <section className="pt-16 pb-14 md:pt-24 md:pb-24 bg-ump-background relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] z-20 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]">
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Header */}
         <div className="mb-8 md:mb-12 max-w-2xl">

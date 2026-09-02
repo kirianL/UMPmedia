@@ -240,6 +240,25 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee-smooth {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 24s linear infinite;
+  }
+
+  .animate-marquee-smooth:hover {
+    animation-play-state: paused;
+  }
 }
 
 /* Reduced motion support */

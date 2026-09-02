@@ -82,13 +82,13 @@ export function Header() {
           backgroundColor: isOpen
             ? "transparent"
             : isScrolled
-            ? "rgba(247,247,245,0.92)"
+            ? "#f6f6f3"
             : "transparent",
           borderColor: isScrolled && !isOpen
-            ? "rgba(0,0,0,0.06)"
+            ? "rgba(0,0,0,0.08)"
             : "rgba(0,0,0,0)",
           backdropFilter: isScrolled && !isOpen
-            ? "blur(16px)"
+            ? "blur(0px)"
             : "blur(0px)",
         }}
         transition={{
