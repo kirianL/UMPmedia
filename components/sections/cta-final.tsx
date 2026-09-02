@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { SlotButton } from "@/components/ui/slot-button";
 import { SlotText } from "slot-text/react";
 import { PiArrowRight, PiCopy, PiCheck, PiSparkle } from "react-icons/pi";
@@ -21,77 +20,94 @@ export function CTAFinal() {
   };
 
   return (
-    <section className="w-full bg-[#f6f6f3] text-neutral-900 py-20 md:py-32 lg:py-48 overflow-hidden relative z-50 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 shadow-[0_-8px_30px_rgba(0,0,0,0.04)]">
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
+    <section className="w-full bg-[#f6f6f3] text-neutral-900 pt-6 pb-12 sm:pt-10 sm:pb-16 md:pt-14 md:pb-20 overflow-hidden relative z-50">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        <p className="text-neutral-500 font-mono text-xs sm:text-sm uppercase tracking-widest mb-6 md:mb-8">
-          Inicia tu Proyecto
-        </p>
-        
-        <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.85] tracking-tighter uppercase text-balance text-neutral-950 mb-6 md:mb-8">
-          ¿Tienes un proyecto <br className="hidden md:block" />
-          <span className="text-neutral-300">en mente?</span>
-        </h2>
-        
-        <p className="text-lg md:text-xl text-neutral-600 max-w-2xl mx-auto leading-relaxed mb-12 font-medium">
-          Llevémoslo al siguiente nivel. Agendemos una llamada para entender tu visión.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto">
-          <SlotButton
-            href="/contact"
-            variant="primary"
-            size="lg"
-            icon={<PiArrowRight size={18} />}
-            iconPosition="right"
-            className="w-full sm:w-auto rounded-full px-8 py-4 uppercase tracking-wider text-sm"
-          >
-            Hablemos
-          </SlotButton>
-
-          <SlotButton
-            href="/portfolio"
-            variant="secondary"
-            size="lg"
-            icon={<PiSparkle size={18} className="text-neutral-400 group-hover:text-neutral-950 transition-colors" />}
-            iconPosition="left"
-            className="w-full sm:w-auto rounded-full px-8 py-4 uppercase tracking-wider text-sm"
-          >
-            Ver más trabajos
-          </SlotButton>
-        </div>
-
-        {/* Interactive Copy Email Section with tactile SlotText */}
-        <div className="mt-20 flex flex-col items-center">
-          <p className="text-xs font-mono uppercase tracking-widest text-neutral-400 mb-4">
-            O escríbenos directamente
-          </p>
-
-          <button
-            onClick={handleCopyEmail}
-            className="group flex items-center gap-4 px-6 py-4 rounded-2xl bg-white border border-neutral-200/60 hover:border-neutral-300 hover:shadow-sm transition-all duration-300 cursor-pointer active:scale-[0.98]"
-          >
-            <span className="text-neutral-950 text-base md:text-lg font-medium select-all">
-              {email}
-            </span>
+        {/* Outer Container / Bezel Frame */}
+        <div className="p-2 sm:p-3.5 md:p-4 rounded-[2.2rem] sm:rounded-[2.8rem] md:rounded-[3.5rem] bg-neutral-200/60 border border-neutral-300/70 shadow-[0_4px_25px_rgba(0,0,0,0.02)]">
+          
+          {/* Inner Container / Focal Card */}
+          <div className="w-full rounded-[1.8rem] sm:rounded-[2.3rem] md:rounded-[3rem] bg-white border border-neutral-200/80 p-8 sm:p-12 md:p-16 lg:p-20 text-center flex flex-col items-center shadow-[0_10px_35px_rgba(0,0,0,0.03)] relative overflow-hidden">
             
-            <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-100 text-xs font-bold text-neutral-500 group-hover:text-neutral-950 group-hover:bg-neutral-200 transition-colors">
-              {copied ? <PiCheck size={16} className="text-emerald-600" /> : <PiCopy size={16} />}
-              <span className="inline-block overflow-hidden py-0.5">
-                <SlotText
-                  text={copied ? "¡Copiado!" : "Copiar"}
-                  options={{
-                    direction: copied ? "up" : "down",
-                    rollBy: "character",
-                    duration: 250,
-                  }}
-                />
+            {/* Hero Editorial Typography */}
+            <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.2rem] font-black tracking-tighter uppercase leading-[0.92] text-neutral-950 mb-6 sm:mb-8 text-balance">
+              Hagamos algo <br />
+              <span className="font-serif italic font-normal text-neutral-400 lowercase tracking-tight">
+                que importe.
               </span>
-            </span>
-          </button>
+            </h2>
+
+            {/* Sub-headline Kicker */}
+            <p className="text-neutral-950 text-lg sm:text-xl md:text-2xl font-bold tracking-tight mb-3">
+              De la idea a la ejecución.
+            </p>
+
+            {/* Narrative Description */}
+            <p className="text-neutral-600 text-base sm:text-lg md:text-xl font-normal max-w-xl mx-auto leading-relaxed mb-10 sm:mb-12 text-pretty">
+              Producción audiovisual, social media y soluciones digitales diseñadas para hacer crecer tu marca.
+            </p>
+
+            {/* Main Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none mx-auto mb-12 sm:mb-16">
+              <SlotButton
+                href="/contact"
+                variant="primary"
+                size="lg"
+                icon={<PiArrowRight size={18} />}
+                iconPosition="right"
+                className="w-full sm:w-auto rounded-full px-8 py-4 uppercase tracking-wider text-xs sm:text-sm font-bold shadow-sm active:scale-[0.98]"
+              >
+                Empecemos
+              </SlotButton>
+
+              <SlotButton
+                href="/portfolio"
+                variant="secondary"
+                size="lg"
+                icon={<PiSparkle size={18} className="text-neutral-400 group-hover:text-neutral-950 transition-colors" />}
+                iconPosition="left"
+                className="w-full sm:w-auto rounded-full px-8 py-4 uppercase tracking-wider text-xs sm:text-sm font-bold border-neutral-200/80 bg-neutral-50 hover:bg-neutral-100 hover:border-neutral-300 shadow-sm active:scale-[0.98]"
+              >
+                Ver más trabajos
+              </SlotButton>
+            </div>
+
+            {/* Clean Direct Email Pill */}
+            <div className="flex flex-col items-center w-full max-w-full">
+              <p className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-neutral-400 mb-3 text-center">
+                O escríbenos directamente
+              </p>
+
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="group inline-flex items-center justify-between gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl bg-neutral-50 border border-neutral-200/80 hover:border-neutral-300 hover:bg-white transition-all duration-200 cursor-pointer active:scale-[0.98] max-w-[90vw] sm:max-w-md shadow-2xs"
+              >
+                <span className="text-neutral-900 font-medium text-xs sm:text-sm truncate select-all">
+                  {email}
+                </span>
+                <span className="shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-neutral-200/60 text-[11px] font-semibold text-neutral-600 group-hover:bg-neutral-100 group-hover:text-neutral-950 transition-colors">
+                  {copied ? <PiCheck size={13} className="text-emerald-600 stroke-[3]" /> : <PiCopy size={13} />}
+                  <span className="overflow-hidden py-0.5 inline-block">
+                    <SlotText
+                      text={copied ? "¡Copiado!" : "Copiar"}
+                      options={{
+                        direction: copied ? "up" : "down",
+                        rollBy: "character",
+                        duration: 250,
+                      }}
+                    />
+                  </span>
+                </span>
+              </button>
+            </div>
+
+          </div>
         </div>
+
       </div>
     </section>
   );
 }
+
 
