@@ -220,6 +220,10 @@ export function Tooltip({
   }, [side, align]);
 
   const show = useCallback(() => {
+    if (typeof window !== "undefined") {
+      const isTouchOrMobile = window.matchMedia("(pointer: coarse), (max-width: 1024px)").matches;
+      if (isTouchOrMobile) return;
+    }
     if (timer.current) clearTimeout(timer.current);
     const warm = Date.now() - lastHiddenAt < WARM_WINDOW_MS;
     timer.current = setTimeout(
@@ -243,16 +247,9 @@ export function Tooltip({
   const tap = useTapGesture<boolean>();
 
   const toggleOnTap = useCallback(() => {
-    const gesture = tap.take();
-    if (!gesture || gesture.pointerType === "mouse") return;
-    if (gesture.state) {
-      hide();
-      return;
-    }
-    if (timer.current) clearTimeout(timer.current);
-    place();
-    setOpen(true);
-  }, [hide, place, tap]);
+    // Completely deactivated on touch/mobile
+    return;
+  }, []);
 
   useDismiss(open, hide, anchorRef);
 

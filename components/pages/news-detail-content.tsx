@@ -20,12 +20,12 @@ import {
   Bookmark,
 } from "lucide-react";
 import {
-  PiXLogo,
-  PiFacebookLogo,
-  PiInstagramLogo,
-  PiLinkedinLogo,
-  PiLinkSimple,
-  PiCheck,
+  PiXLogoBold,
+  PiFacebookLogoBold,
+  PiInstagramLogoBold,
+  PiLinkedinLogoBold,
+  PiLinkSimpleBold,
+  PiCheckBold,
   PiInfo,
   PiCaretDown,
 } from "react-icons/pi";
@@ -214,15 +214,6 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
           </filter>
         </defs>
       </svg>
-
-      {/* Background Texture matching Hero */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-40 z-0 mix-blend-multiply"
-        style={{
-          backgroundImage: `radial-gradient(#d5d5d0 0.75px, transparent 0.75px)`,
-          backgroundSize: "24px 24px",
-        }}
-      />
 
       {/* Main Container */}
       <div className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-20">
@@ -479,93 +470,83 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                     COMPARTIR
                   </p>
                   <div className="flex items-center gap-2">
-                    <Tooltip content="Compartir en X" side="bottom" align="start">
-                      <motion.button
-                        onClick={() => handleShare("x")}
-                        whileHover={{ y: -2, scale: 1.04 }}
-                        whileTap={{ scale: 0.97 }}
-                        transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
-                        className="w-10 h-10 rounded-lg bg-white hover:bg-black border border-neutral-200/80 hover:border-black flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
-                      >
-                        <PiXLogo size={18} />
-                      </motion.button>
-                    </Tooltip>
+                    <motion.button
+                      onClick={() => handleShare("x")}
+                      whileHover={{ y: -2, scale: 1.04 }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
+                      className="w-10 h-10 rounded-lg bg-white hover:bg-black border border-neutral-200/80 hover:border-black flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
+                    >
+                      <PiXLogoBold size={17} />
+                    </motion.button>
 
-                    <Tooltip content="Compartir en Facebook" side="bottom">
-                      <motion.button
-                        onClick={() => handleShare("facebook")}
-                        whileHover={{ y: -2, scale: 1.04 }}
-                        whileTap={{ scale: 0.97 }}
-                        transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
-                        className="w-10 h-10 rounded-lg bg-white hover:bg-[#1877F2] border border-neutral-200/80 hover:border-[#1877F2] flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
-                      >
-                        <PiFacebookLogo size={19} />
-                      </motion.button>
-                    </Tooltip>
+                    <motion.button
+                      onClick={() => handleShare("facebook")}
+                      whileHover={{ y: -2, scale: 1.04 }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
+                      className="w-10 h-10 rounded-lg bg-white hover:bg-[#1877F2] border border-neutral-200/80 hover:border-[#1877F2] flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
+                    >
+                      <PiFacebookLogoBold size={18} />
+                    </motion.button>
 
-                    <Tooltip content="Compartir en Instagram" side="bottom">
-                      <motion.button
-                        onClick={() => handleShare("instagram")}
-                        whileHover={{ y: -2, scale: 1.04 }}
-                        whileTap={{ scale: 0.97 }}
-                        transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
-                        className="w-10 h-10 rounded-lg bg-white hover:bg-[#E1306C] border border-neutral-200/80 hover:border-[#E1306C] flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
-                      >
-                        <PiInstagramLogo size={19} />
-                      </motion.button>
-                    </Tooltip>
+                    <motion.button
+                      onClick={() => handleShare("instagram")}
+                      whileHover={{ y: -2, scale: 1.04 }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
+                      className="w-10 h-10 rounded-lg bg-white hover:bg-[#E1306C] border border-neutral-200/80 hover:border-[#E1306C] flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
+                    >
+                      <PiInstagramLogoBold size={18} />
+                    </motion.button>
 
-                    <Tooltip content="Compartir en LinkedIn" side="bottom">
-                      <motion.button
-                        onClick={() => handleShare("linkedin")}
-                        whileHover={{ y: -2, scale: 1.04 }}
-                        whileTap={{ scale: 0.97 }}
-                        transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
-                        className="w-10 h-10 rounded-lg bg-white hover:bg-[#0A66C2] border border-neutral-200/80 hover:border-[#0A66C2] flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
-                      >
-                        <PiLinkedinLogo size={19} />
-                      </motion.button>
-                    </Tooltip>
+                    <motion.button
+                      onClick={() => handleShare("linkedin")}
+                      whileHover={{ y: -2, scale: 1.04 }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
+                      className="w-10 h-10 rounded-lg bg-white hover:bg-[#0A66C2] border border-neutral-200/80 hover:border-[#0A66C2] flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
+                    >
+                      <PiLinkedinLogoBold size={18} />
+                    </motion.button>
 
-                    <Tooltip content={copied ? "Enlace copiado" : "Copiar enlace"} side="bottom" align="end">
-                      <motion.button
-                        onClick={handleCopyLink}
-                        whileHover={{ y: -2, scale: 1.04 }}
-                        whileTap={{ scale: 0.97 }}
-                        transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
-                        className={`w-10 h-10 rounded-lg border flex items-center justify-center relative overflow-hidden transition-colors duration-200 cursor-pointer shadow-xs ${
-                          copied
-                            ? "bg-neutral-950 border-neutral-950 text-white"
-                            : "bg-white hover:bg-neutral-950 hover:border-neutral-950 hover:text-white border-neutral-200/80 text-neutral-800"
-                        }`}
-                      >
-                        <AnimatePresence mode="wait" initial={false}>
-                          {copied ? (
-                            <motion.span
-                              key="check"
-                              initial={{ y: 8, opacity: 0 }}
-                              animate={{ y: 0, opacity: 1 }}
-                              exit={{ y: -8, opacity: 0 }}
-                              transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
-                              className="flex items-center justify-center text-white"
-                            >
-                              <PiCheck size={19} className="stroke-[3]" />
-                            </motion.span>
-                          ) : (
-                            <motion.span
-                              key="link"
-                              initial={{ y: 8, opacity: 0 }}
-                              animate={{ y: 0, opacity: 1 }}
-                              exit={{ y: -8, opacity: 0 }}
-                              transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
-                              className="flex items-center justify-center"
-                            >
-                              <PiLinkSimple size={19} />
-                            </motion.span>
-                          )}
-                        </AnimatePresence>
-                      </motion.button>
-                    </Tooltip>
+                    <motion.button
+                      onClick={handleCopyLink}
+                      whileHover={{ y: -2, scale: 1.04 }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
+                      className={`w-10 h-10 rounded-lg border flex items-center justify-center relative overflow-hidden transition-colors duration-200 cursor-pointer shadow-xs ${
+                        copied
+                          ? "bg-neutral-950 border-neutral-950 text-white"
+                          : "bg-white hover:bg-neutral-950 hover:border-neutral-950 hover:text-white border-neutral-200/80 text-neutral-800"
+                      }`}
+                    >
+                      <AnimatePresence mode="wait" initial={false}>
+                        {copied ? (
+                          <motion.span
+                            key="check"
+                            initial={{ y: 8, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -8, opacity: 0 }}
+                            transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
+                            className="flex items-center justify-center text-white"
+                          >
+                            <PiCheckBold size={18} />
+                          </motion.span>
+                        ) : (
+                          <motion.span
+                            key="link"
+                            initial={{ y: 8, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -8, opacity: 0 }}
+                            transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
+                            className="flex items-center justify-center"
+                          >
+                            <PiLinkSimpleBold size={18} />
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
+                    </motion.button>
                   </div>
                 </div>
               </div>
@@ -628,7 +609,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                       transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
                       className="w-10 h-10 rounded-lg bg-white hover:bg-black border border-neutral-200/80 hover:border-black flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
                     >
-                      <PiXLogo size={18} />
+                      <PiXLogoBold size={17} />
                     </motion.button>
                   </Tooltip>
 
@@ -640,7 +621,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                       transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
                       className="w-10 h-10 rounded-lg bg-white hover:bg-[#1877F2] border border-neutral-200/80 hover:border-[#1877F2] flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
                     >
-                      <PiFacebookLogo size={19} />
+                      <PiFacebookLogoBold size={18} />
                     </motion.button>
                   </Tooltip>
 
@@ -652,7 +633,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                       transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
                       className="w-10 h-10 rounded-lg bg-white hover:bg-[#E1306C] border border-neutral-200/80 hover:border-[#E1306C] flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
                     >
-                      <PiInstagramLogo size={19} />
+                      <PiInstagramLogoBold size={18} />
                     </motion.button>
                   </Tooltip>
 
@@ -664,7 +645,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                       transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
                       className="w-10 h-10 rounded-lg bg-white hover:bg-[#0A66C2] border border-neutral-200/80 hover:border-[#0A66C2] flex items-center justify-center text-neutral-800 hover:text-white transition-colors duration-200 shadow-xs cursor-pointer"
                     >
-                      <PiLinkedinLogo size={19} />
+                      <PiLinkedinLogoBold size={18} />
                     </motion.button>
                   </Tooltip>
 
@@ -690,7 +671,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                             transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
                             className="flex items-center justify-center text-white"
                           >
-                            <PiCheck size={19} className="stroke-[3]" />
+                            <PiCheckBold size={18} />
                           </motion.span>
                         ) : (
                           <motion.span
@@ -701,7 +682,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                             transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
                             className="flex items-center justify-center"
                           >
-                            <PiLinkSimple size={19} />
+                            <PiLinkSimpleBold size={18} />
                           </motion.span>
                         )}
                       </AnimatePresence>
