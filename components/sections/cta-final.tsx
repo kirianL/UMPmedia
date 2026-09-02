@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { SlotButton } from "@/components/ui/slot-button";
 import { SlotText } from "slot-text/react";
 import { PiArrowRight, PiCopy, PiCheck, PiSparkle } from "react-icons/pi";
 
