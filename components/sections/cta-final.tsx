@@ -52,9 +52,9 @@ export function CTAFinal() {
             
             {/* Hero Editorial Typography */}
             <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.2rem] font-black tracking-tighter uppercase leading-[0.92] text-neutral-950 mb-6 sm:mb-8 text-balance">
-              Hagamos algo <br />
+              Creemos algo <br />
               <span className="font-serif italic font-normal text-neutral-400 lowercase tracking-tight">
-                que importe.
+                inolvidable.
               </span>
             </h2>
 
