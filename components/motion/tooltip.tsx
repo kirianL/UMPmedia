@@ -269,10 +269,15 @@ export function Tooltip({
     [reduce, side],
   );
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   if (!isValidElement(children)) return children;
 
   const trigger = cloneElement(children as ReactElement<Record<string, unknown>>, {
-    "aria-describedby": id,
+    "aria-describedby": mounted && open ? id : undefined,
   });
 
   return (

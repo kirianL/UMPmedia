@@ -23,11 +23,32 @@ export function CTAFinal() {
     <section className="w-full bg-[#f6f6f3] text-neutral-900 pt-6 pb-12 sm:pt-10 sm:pb-16 md:pt-14 md:pb-20 overflow-hidden relative z-50">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Outer Container / Bezel Frame */}
-        <div className="p-2 sm:p-3.5 md:p-4 rounded-[2.2rem] sm:rounded-[2.8rem] md:rounded-[3.5rem] bg-neutral-200/60 border border-neutral-300/70 shadow-[0_4px_25px_rgba(0,0,0,0.02)]">
+        {/* Outer Shell with Full-Bezel Traveling Emerald Beam */}
+        <div className="relative p-2 sm:p-3 md:p-4 rounded-[2.2rem] sm:rounded-[2.8rem] md:rounded-[3.5rem] overflow-hidden bg-[#eaeae6] border border-neutral-300/80 shadow-[0_10px_35px_rgba(0,0,0,0.03)]">
           
-          {/* Inner Container / Focal Card */}
-          <div className="w-full rounded-[1.8rem] sm:rounded-[2.3rem] md:rounded-[3rem] bg-white border border-neutral-200/80 p-8 sm:p-12 md:p-16 lg:p-20 text-center flex flex-col items-center shadow-[0_10px_35px_rgba(0,0,0,0.03)] relative overflow-hidden">
+          {/* Subtle green ambient tint */}
+          <div className="absolute inset-0 bg-emerald-500/[0.04] pointer-events-none" />
+
+          {/* Diffused Glow Beam (spreads through the entire gray bezel) */}
+          <div 
+            className="absolute -inset-[180%] pointer-events-none opacity-85 blur-md will-change-transform"
+            style={{
+              animation: "spin 15s linear infinite",
+              background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 230deg, rgba(16, 185, 129, 0.25) 260deg, rgba(16, 185, 129, 0.85) 315deg, #10b981 345deg, #059669 358deg, transparent 360deg)"
+            }}
+          />
+
+          {/* Sharp Core Light Beam (travels directly through the bezel track) */}
+          <div 
+            className="absolute -inset-[180%] pointer-events-none opacity-95 will-change-transform"
+            style={{
+              animation: "spin 15s linear infinite",
+              background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 250deg, rgba(16, 185, 129, 0.4) 280deg, #34d399 330deg, #10b981 350deg, #059669 358deg, transparent 360deg)"
+            }}
+          />
+
+          {/* Inner Container / Focal Card (Solid White Center) */}
+          <div className="relative z-10 w-full rounded-[1.8rem] sm:rounded-[2.3rem] md:rounded-[3rem] bg-white border border-neutral-200/90 p-8 sm:p-12 md:p-16 lg:p-20 text-center flex flex-col items-center shadow-[0_10px_35px_rgba(0,0,0,0.04)] overflow-hidden">
             
             {/* Hero Editorial Typography */}
             <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.2rem] font-black tracking-tighter uppercase leading-[0.92] text-neutral-950 mb-6 sm:mb-8 text-balance">
@@ -104,7 +125,6 @@ export function CTAFinal() {
 
           </div>
         </div>
-
       </div>
     </section>
   );

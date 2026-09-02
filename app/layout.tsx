@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#f6f6f3",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -130,8 +130,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="es" style={{ backgroundColor: "#0a0a0a" }}>
-      <body className={`${inter.variable} antialiased bg-[#0a0a0a] text-white`}>
+    <html lang="es" style={{ backgroundColor: "#f6f6f3" }}>
+      <body className={`${inter.variable} antialiased bg-[#f6f6f3] text-neutral-900`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
