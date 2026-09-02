@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { SlotButton } from "@/components/ui/slot-button";
 
 const CLIENT_LOGOS = [
-  { name: "Caribeños", src: "/assets/LogosHero/Caribenos.png" },
+  { name: "Caribeños", src: "/assets/LogosHero/Caribenos.png", invert: true },
   { name: "DN Express", src: "/assets/LogosHero/DnExpress.png" },
   { name: "Bufete Morgan JM", src: "/assets/LogosHero/JM.png" },
   { name: "Neon Party", src: "/assets/LogosHero/NeonParty.png" },
@@ -129,18 +129,20 @@ export function Hero() {
           EMPRESAS QUE CONFÍAN EN NOSOTROS
         </p>
 
-        <div className="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <div className="animate-marquee-smooth flex items-center gap-10 sm:gap-14 md:gap-16 text-[#141414]">
-            {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((brand, i) => (
+        <div className="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+          <div className="animate-marquee-smooth flex items-center gap-12 sm:gap-16 md:gap-20 text-[#141414]">
+            {[...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS].map((brand, i) => (
               <div
                 key={i}
-                className="opacity-50 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer flex items-center shrink-0 px-2"
+                className="group cursor-pointer flex items-center justify-center shrink-0 px-2 sm:px-4"
                 title={brand.name}
               >
                 <img
                   src={brand.src}
                   alt={brand.name}
-                  className="h-6 sm:h-7 md:h-8 w-auto max-w-[110px] sm:max-w-[130px] object-contain select-none pointer-events-none"
+                  className={`h-9 sm:h-11 md:h-12 lg:h-13 w-auto max-w-[130px] sm:max-w-[160px] md:max-w-[190px] object-contain select-none pointer-events-none grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300 ${
+                    brand.invert ? "invert" : ""
+                  }`}
                   loading="lazy"
                 />
               </div>

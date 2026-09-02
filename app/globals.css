@@ -253,7 +253,7 @@
   .animate-marquee-smooth {
     display: flex;
     width: max-content;
-    animation: marquee-scroll 24s linear infinite;
+    animation: marquee-scroll 48s linear infinite;
   }
 
   .animate-marquee-smooth:hover {
