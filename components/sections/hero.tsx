@@ -1,203 +1,121 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
-
-function FloatingPaths({ position }: { position: number }) {
-  const paths = Array.from({ length: 18 }, (_, i) => ({
-    id: i,
-    d: `M-${380 - i * 5 * position} -${189 + i * 6}C-${
-      380 - i * 5 * position
-    } -${189 + i * 6} -${312 - i * 5 * position} ${216 - i * 6} ${
-      152 - i * 5 * position
-    } ${343 - i * 6}C${616 - i * 5 * position} ${470 - i * 6} ${
-      684 - i * 5 * position
-    } ${875 - i * 6} ${684 - i * 5 * position} ${875 - i * 6}`,
-    color: `rgba(10,10,10,${0.08 + i * 0.02})`,
-    width: 0.5 + i * 0.03,
-  }));
-
-  return (
-    <div className="absolute inset-0 pointer-events-none z-0">
-      <svg
-        className="w-full h-full text-black"
-        viewBox="0 0 696 316"
-        fill="none"
-      >
-        <title>Background Paths</title>
-        {paths.map((path) => (
-          <motion.path
-            key={path.id}
-            d={path.d}
-            stroke={path.color}
-            strokeWidth={path.width}
-            strokeOpacity={0.1 + path.id * 0.02}
-            initial={{ pathLength: 0.3, opacity: 0.6 }}
-            animate={{
-              pathLength: 1,
-              opacity: [0.3, 0.6, 0.3],
-              pathOffset: [0, 1, 0],
-            }}
-            transition={{
-              duration: 20 + Math.random() * 10,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "linear",
-            }}
-          />
-        ))}
-      </svg>
-    </div>
-  );
-}
+import { SlotButton } from "@/components/ui/slot-button";
 
 export function Hero() {
-  const title = "Producción audiovisual para conectar e impactar";
-  const words = title.split(" ");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const checkOverflow = () => {
-      setIsMenuOpen(document.body.style.overflow === "hidden");
-    };
-
-    const observer = new MutationObserver(checkOverflow);
-    observer.observe(document.body, { attributes: true, attributeFilter: ["style"] });
-
-    // Initial check
-    checkOverflow();
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#32fb00] pt-[calc(88px+env(safe-area-inset-top))] pb-12 md:pt-[calc(120px+env(safe-area-inset-top))] md:pb-24">
-      {/* Animated Background Paths - Hidden with CSS when menu is open to prevent layout calculations, without resetting animations */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{ display: isMenuOpen ? "none" : "block" }}
-      >
-        <FloatingPaths position={1} />
-        <FloatingPaths position={-1} />
+    <section className="relative min-h-[92dvh] sm:min-h-[100dvh] md:h-[100dvh] md:max-h-[100dvh] w-full flex flex-col justify-between items-center overflow-hidden bg-[#f6f6f3] text-[#111111] px-4 sm:px-6 pt-[calc(70px+env(safe-area-inset-top))] sm:pt-[calc(80px+env(safe-area-inset-top))] pb-0 select-none">
+      
+      {/* Background Texture & Warm Lighting */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-40 z-0 mix-blend-multiply"
+        style={{
+          backgroundImage: `radial-gradient(#d5d5d0 0.75px, transparent 0.75px)`,
+          backgroundSize: "24px 24px"
+        }}
+      />
+
+      {/* Koyeb 3D Wireframe Globe & Floating Nodes */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        <div className="relative w-[340px] sm:w-[620px] md:w-[860px] lg:w-[960px] h-[340px] sm:h-[620px] md:h-[860px] lg:h-[960px] flex items-center justify-center">
+          
+          <svg
+            viewBox="0 0 1000 1000"
+            className="w-full h-full"
+            fill="none"
+          >
+            {/* Latitude Arcs (Perspective Globe) */}
+            <ellipse cx="500" cy="500" rx="460" ry="460" stroke="#d8d8d3" strokeWidth="1.2" />
+            <ellipse cx="500" cy="500" rx="460" ry="160" stroke="#d8d8d3" strokeWidth="1.2" />
+            <ellipse cx="500" cy="500" rx="460" ry="300" stroke="#d8d8d3" strokeWidth="1.2" />
+            <ellipse cx="500" cy="380" rx="420" ry="120" stroke="#d8d8d3" strokeWidth="1" strokeDasharray="4 4" />
+            <ellipse cx="500" cy="620" rx="420" ry="120" stroke="#d8d8d3" strokeWidth="1" />
+
+            {/* Longitude Ellipses */}
+            <ellipse cx="500" cy="500" rx="160" ry="460" stroke="#d8d8d3" strokeWidth="1.2" />
+            <ellipse cx="500" cy="500" rx="310" ry="460" stroke="#d8d8d3" strokeWidth="1.2" />
+            <line x1="500" y1="40" x2="500" y2="960" stroke="#d8d8d3" strokeWidth="1.2" />
+            <line x1="40" y1="500" x2="960" y2="500" stroke="#d8d8d3" strokeWidth="1.2" />
+
+            {/* Subtle Caribbean emerald accent arc */}
+            <path
+              d="M 500 800 C 650 800, 780 730, 830 630"
+              stroke="#059669"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+              opacity="0.45"
+            />
+          </svg>
+        </div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 max-w-5xl text-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="max-w-4xl mx-auto flex flex-col items-center w-full"
+      {/* Main Content (Koyeb Condensed Typography) */}
+      <div className="relative z-10 container mx-auto max-w-4xl flex flex-col items-center text-center my-auto pt-2 sm:pt-4">
+        
+        {/* Condensed Architectural Master Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-black tracking-[-0.04em] leading-[0.96] text-[#111111] uppercase select-none max-w-3xl mx-auto"
         >
-          {/* Main Title with Spring Letter Reveal */}
-          <h1 className="text-3xl sm:text-6xl md:text-7xl font-extrabold mb-4 tracking-tighter leading-[1.1] md:leading-none text-black select-none">
-            {words.map((word, wordIndex) => (
-              <span
-                key={wordIndex}
-                className="inline-block mr-2 md:mr-3 last:mr-0"
-              >
-                {word.split("").map((letter, letterIndex) => (
-                  <motion.span
-                    key={`${wordIndex}-${letterIndex}`}
-                    initial={{ y: 100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      delay: wordIndex * 0.08 + letterIndex * 0.02,
-                      type: "spring",
-                      stiffness: 150,
-                      damping: 25,
-                    }}
-                    className="inline-block text-black"
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
-                {wordIndex < words.length - 1 && <span className="inline-block w-2 md:w-3">&nbsp;</span>}
-              </span>
-            ))}
-          </h1>
+          PRODUCCIÓN AUDIOVISUAL
+          <span className="block mt-1">
+            CON ALMA DEL <span className="text-emerald-600">CARIBE</span>
+          </span>
+        </motion.h1>
 
-          {/* Subtext description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-black/85 font-semibold text-sm sm:text-base md:text-lg max-w-2xl mb-6 sm:mb-10 leading-relaxed px-2"
-          >
-            Ultimate Media Productions te da la libertad y las herramientas para contar tu historia. Grabamos, editamos y distribuimos contenido audiovisual de calidad, desde el Caribe costarricense para el mundo.
-          </motion.p>
+        {/* Subtext description with enhanced contrast */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
+          className="text-xs sm:text-sm md:text-base text-[#222222] font-semibold max-w-xl mx-auto leading-relaxed mt-3 sm:mt-5 mb-6 sm:mb-8 px-4"
+        >
+          Producción comercial, cinematográfica y narrativa estratégica en 4K/6K RAW con estándares de nivel global.
+        </motion.p>
 
-          {/* Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto max-w-[280px] sm:max-w-none justify-center"
+        {/* Koyeb Action Buttons with Mobile-optimized Vertical Stack */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.22, ease: [0.23, 1, 0.32, 1] }}
+          className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center w-full max-w-[280px] sm:max-w-none mx-auto"
+        >
+          <SlotButton
+            href="/contact"
+            variant="primary"
+            size="md"
+            className="w-full sm:w-auto rounded-lg bg-[#141414] hover:bg-black text-white font-bold text-xs uppercase tracking-wider shadow-[0_4px_14px_rgba(0,0,0,0.18)] px-7 py-3 sm:py-2.5 text-center flex justify-center items-center"
           >
-            <Link
-              href="/contact"
-              style={{
-                fontFamily: "var(--font-inter), sans-serif",
-                fontWeight: 700,
-                fontSize: "0.9rem",
-                color: "#ffffff",
-                background: "#0a0a0a",
-                borderRadius: "4px",
-                padding: "13px 26px",
-                textDecoration: "none",
-                transition: "transform 0.2s, box-shadow 0.2s",
-                boxShadow: "0 4px 14px rgba(0,0,0,0.18)",
-              }}
-              className="w-full sm:w-auto text-center inline-block"
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(-2px)";
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                  "0 8px 20px rgba(0,0,0,0.28)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(0)";
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                  "0 4px 14px rgba(0,0,0,0.18)";
-              }}
-            >
-              Cotizar Proyecto
-            </Link>
-            <Link
-              href="/portfolio"
-              style={{
-                fontFamily: "var(--font-inter), sans-serif",
-                fontWeight: 700,
-                fontSize: "0.9rem",
-                color: "#0a0a0a",
-                background: "transparent",
-                border: "2px solid #0a0a0a",
-                borderRadius: "4px",
-                padding: "11px 26px",
-                textDecoration: "none",
-                transition: "background 0.2s, color 0.2s, transform 0.2s",
-              }}
-              className="w-full sm:w-auto text-center inline-block"
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background =
-                  "#0a0a0a";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(-2px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background =
-                  "transparent";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#0a0a0a";
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(0)";
-              }}
-            >
-              Ver portafolio
-            </Link>
-          </motion.div>
+            ▸ COTIZAR PROYECTO
+          </SlotButton>
+
+          <SlotButton
+            href="/portfolio"
+            variant="ghost"
+            size="md"
+            className="w-full sm:w-auto text-xs font-bold uppercase tracking-wider text-black/90 hover:text-black transition-colors px-4 py-2.5 sm:py-2 text-center flex justify-center items-center"
+          >
+            ▸ VER PORTAFOLIO ◂
+          </SlotButton>
         </motion.div>
       </div>
+
+      {/* Koyeb Bottom Terminal Console Peek */}
+      <div className="relative z-10 w-full max-w-3xl mx-auto">
+        <div className="w-full h-8 sm:h-9 bg-[#111111] rounded-t-xl sm:rounded-t-2xl border-t border-x border-black/15 shadow-2xl flex items-center px-4 gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#059669]" />
+          <span className="ml-3 text-[10px] font-mono text-white/40 uppercase tracking-widest hidden sm:inline">
+            UMP MEDIA • 6K CINEMA ENGINE
+          </span>
+        </div>
+      </div>
+
     </section>
   );
 }
+

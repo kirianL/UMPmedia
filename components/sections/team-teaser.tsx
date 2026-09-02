@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { SlotButton } from "@/components/ui/slot-button";
 
 const teamMembers = [
   {
@@ -27,17 +28,17 @@ const teamMembers = [
 
 export function TeamTeaser() {
   return (
-    <section className="py-20 md:py-32 bg-[#32fb00] relative z-30 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 overflow-hidden border-t border-black/5 shadow-[0_-5px_20px_rgba(0,0,0,0.15)]">
+    <section className="py-20 md:py-32 bg-ump-accent relative z-30 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 overflow-hidden border-t border-black/5 shadow-[0_-5px_20px_rgba(0,0,0,0.15)]">
       <div className="container mx-auto px-6">
         {/* Centered Header */}
         <div className="text-center max-w-2xl mx-auto mb-20">
-          <span className="text-black/60 text-xs font-bold uppercase tracking-widest mb-3 block">
+          <span className="text-white/60 text-xs font-bold uppercase tracking-widest mb-3 block">
             talento local, impacto global
           </span>
-          <h2 className="text-3xl md:text-5xl font-black text-black mb-4">
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
             El Equipo
           </h2>
-          <p className="text-black/80 text-base md:text-lg font-medium">
+          <p className="text-white/80 text-base md:text-lg font-medium">
             Las mentes creativas y técnicas detrás de Ultimate Media Productions. Desde Limón para el mundo.
           </p>
         </div>
@@ -80,10 +81,10 @@ export function TeamTeaser() {
               
               {/* Text Meta */}
               <div className="space-y-1 pl-2">
-                <h3 className="text-black font-bold text-xl transition-colors duration-300 group-hover:text-white">
+                <h3 className="text-white font-bold text-xl transition-colors duration-300 group-hover:text-white/80">
                   {member.name}
                 </h3>
-                <span className="text-black/70 text-xs uppercase tracking-wider block font-semibold">
+                <span className="text-white/60 text-xs uppercase tracking-wider block font-semibold">
                   {member.role}
                 </span>
               </div>
@@ -93,39 +94,16 @@ export function TeamTeaser() {
 
         {/* Center Bottom CTA */}
         <div className="mt-16 text-center">
-          <Link
+          <SlotButton
             href="/team"
-            style={{
-              fontFamily: "var(--font-inter), sans-serif",
-              fontWeight: 700,
-              fontSize: "0.9rem",
-              color: "#0a0a0a",
-              background: "transparent",
-              border: "2px solid #0a0a0a",
-              borderRadius: "4px",
-              padding: "11px 26px",
-              textDecoration: "none",
-              transition: "background 0.2s, color 0.2s, transform 0.2s",
-            }}
-            className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2"
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background =
-                "#0a0a0a";
-              (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
-              (e.currentTarget as HTMLAnchorElement).style.transform =
-                "translateY(-2px)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background =
-                "transparent";
-              (e.currentTarget as HTMLAnchorElement).style.color = "#0a0a0a";
-              (e.currentTarget as HTMLAnchorElement).style.transform =
-                "translateY(0)";
-            }}
+            variant="outline"
+            size="md"
+            icon={<ArrowRight size={16} />}
+            iconPosition="right"
+            className="border-white/30 text-white hover:bg-white/10 hover:text-white"
           >
-            <span>Ver todo el equipo</span>
-            <ArrowRight size={16} />
-          </Link>
+            Ver todo el equipo
+          </SlotButton>
         </div>
       </div>
 
@@ -140,3 +118,4 @@ export function TeamTeaser() {
     </section>
   );
 }
+

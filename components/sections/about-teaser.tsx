@@ -1,10 +1,11 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { PiArrowUpRight } from "react-icons/pi";
 import Image from "next/image";
+import { SlotButton } from "@/components/ui/slot-button";
+import { SlotBadge } from "@/components/ui/slot-badge";
 
 export function AboutTeaser() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,9 +31,9 @@ export function AboutTeaser() {
     offset: ["start end", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -40]);
 
   return (
     <section
@@ -40,21 +41,24 @@ export function AboutTeaser() {
       className="py-16 md:py-32 lg:py-64 bg-ump-alt relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 z-50 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
     >
       {/* Background Decorative Element */}
-      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-[#32fb00]/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-ump-accent/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
           {/* Text Content - Left 5 Cols */}
           <div className="lg:col-span-5 space-y-8 md:space-y-12 order-2 lg:order-1">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
             >
+              <div className="mb-4">
+                <SlotBadge text="Identidad & Visión" variant="accent" />
+              </div>
               <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tighter mb-6 lg:mb-8 italic">
                 CULTURA <br />
-                <span className="text-[#32fb00] not-italic">
+                <span className="text-ump-accent not-italic">
                   CARIBEÑA.
                 </span>{" "}
                 <br />
@@ -65,14 +69,14 @@ export function AboutTeaser() {
 
             <motion.div
               className="space-y-6"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, transform: "translate3d(-16px, 0, 0)" }}
+              whileInView={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.35, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
             >
               <p className="text-lg md:text-xl lg:text-2xl text-white font-medium leading-tight">
                 Ultimate Media Productions no es solo una productora; es un{" "}
-                <span className="border-b-2 border-[#32fb00]">
+                <span className="border-b-2 border-ump-accent">
                   manifiesto visual
                 </span>{" "}
                 nacido en Limón.
@@ -82,20 +86,17 @@ export function AboutTeaser() {
                 producción elite. Si tiene alma, nosotros sabemos cómo filmarla.
               </p>
 
-              <Link
-                href="/about"
-                className="group flex items-center gap-4 text-white hover:text-[#32fb00] transition-all duration-300 pt-4"
-              >
-                <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[#32fb00] group-hover:border-[#32fb00] transition-all">
-                  <ArrowUpRight
-                    size={20}
-                    className="group-hover:text-black transition-colors"
-                  />
-                </div>
-                <span className="font-bold uppercase tracking-widest text-sm">
+              <div className="pt-4">
+                <SlotButton
+                  href="/about"
+                  variant="outline"
+                  size="md"
+                  icon={<PiArrowUpRight size={18} />}
+                  iconPosition="right"
+                >
                   Explora nuestra historia
-                </span>
-              </Link>
+                </SlotButton>
+              </div>
             </motion.div>
           </div>
 
@@ -104,7 +105,7 @@ export function AboutTeaser() {
             {/* Large Image - Main focus */}
             <motion.div
               style={{ y: y1 }}
-              className="col-span-2 md:col-span-3 h-full bg-[#32fb00]/20 rounded-2xl md:rounded-3xl overflow-hidden relative border border-white/5 group"
+              className="col-span-2 md:col-span-3 h-full bg-ump-accent/20 rounded-2xl md:rounded-3xl overflow-hidden relative border border-white/5 group"
             >
               {videoInView ? (
                 <video
@@ -119,7 +120,7 @@ export function AboutTeaser() {
               ) : (
                 <div className="absolute inset-0 bg-neutral-950/20" />
               )}
-              <div className="absolute inset-x-0 bottom-0 h-1 bg-[#32fb00] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+              <div className="absolute inset-x-0 bottom-0 h-1 bg-ump-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
             </motion.div>
 
             {/* Top Small Image */}
@@ -132,19 +133,19 @@ export function AboutTeaser() {
                   src="/assets/images/Panasonic HC-X1000/Panasonic HC-X1000-detalles.jpeg"
                   alt="Detalles de la cámara profesional Panasonic HC-X1000"
                   fill
-                  className="object-cover opacity-60 group-hover:opacity-85 transition-opacity duration-500"
+                  className="object-cover opacity-60 group-hover:opacity-85 transition-opacity duration-300"
                   sizes="(max-width: 768px) 100vw, 20vw"
                 />
-                <div className="absolute inset-y-0 left-0 w-1 bg-[#32fb00] scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-500" />
+                <div className="absolute inset-y-0 left-0 w-1 bg-ump-accent scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300" />
               </motion.div>
 
               {/* Bottom Small Image - Solid Green Accent */}
               <motion.div
                 style={{ y: y3 }}
-                className="bg-[#32fb00] rounded-2xl md:rounded-3xl p-4 md:p-8 flex flex-col justify-end group overflow-hidden relative"
+                className="bg-ump-accent rounded-2xl md:rounded-3xl p-4 md:p-8 flex flex-col justify-end group overflow-hidden relative"
               >
                 <div className="absolute top-0 right-0 p-4 md:p-8 opacity-20 group-hover:opacity-100 transition-opacity">
-                  <ArrowUpRight
+                  <PiArrowUpRight
                     size={24}
                     className="md:w-10 md:h-10 text-black"
                   />
@@ -161,3 +162,4 @@ export function AboutTeaser() {
     </section>
   );
 }
+

@@ -4,7 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { PiArrowUpRight } from "react-icons/pi";
+import { SlotBadge } from "@/components/ui/slot-badge";
+import { SlotButton } from "@/components/ui/slot-button";
 
 const services = [
   {
@@ -44,7 +46,6 @@ const services = [
   },
 ];
 
-
 export function ServicesTeaser() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
@@ -53,19 +54,19 @@ export function ServicesTeaser() {
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
           <div className="max-w-2xl">
-            <span className="text-ump-accent text-xs font-bold uppercase tracking-widest mb-3 block">
-              / servicios /
-            </span>
+            <div className="mb-3">
+              <SlotBadge text="Soluciones Audiovisuales" variant="accent" />
+            </div>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Cómo te <span className="text-ump-accent">podemos ayudar</span>
             </h2>
           </div>
           <Link
             href="/services"
-            className="flex items-center gap-2 text-ump-secondary hover:text-white transition-colors group text-sm font-bold uppercase tracking-wider md:mb-2"
+            className="flex items-center gap-2 text-ump-secondary hover:text-white transition-colors duration-200 group text-sm font-bold uppercase tracking-wider md:mb-2 select-none active:scale-[0.97]"
           >
             Ver todos los servicios{" "}
-            <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <PiArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
           </Link>
         </div>
 
@@ -77,13 +78,15 @@ export function ServicesTeaser() {
               <div
                 key={service.id}
                 onClick={() => setActiveIndex(index)}
-                className="border-b border-white/5 py-5 md:py-6 cursor-pointer transition-colors"
+                className={`border-b border-white/5 py-5 md:py-6 cursor-pointer transition-[background-color] duration-200 ${
+                  isActive ? "bg-white/[0.015]" : "hover:bg-white/[0.008]"
+                } px-3 md:px-4 rounded-xl`}
               >
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 items-start">
                   
                   {/* Number - Left Col */}
                   <div className="col-span-1 md:col-span-2 flex items-center pt-1">
-                    <span className={`text-xs md:text-sm font-bold font-mono transition-all duration-300 ${
+                    <span className={`text-xs md:text-sm font-bold font-mono transition-colors duration-200 ${
                       isActive ? "text-ump-accent" : "text-white/30"
                     }`}>
                       {service.id}.
@@ -92,7 +95,7 @@ export function ServicesTeaser() {
 
                   {/* Title */}
                   <div className="col-span-1 md:col-span-4 pt-1">
-                    <h3 className={`text-base md:text-lg font-bold uppercase tracking-wide transition-all duration-300 ${
+                    <h3 className={`text-base md:text-lg font-bold uppercase tracking-wide transition-colors duration-200 ${
                       isActive ? "text-white" : "text-white/50 hover:text-white"
                     }`}>
                       {service.title}
@@ -108,22 +111,20 @@ export function ServicesTeaser() {
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ 
-                            type: "spring", 
-                            stiffness: 120, 
-                            damping: 22,
-                            opacity: { duration: 0.25 }
+                            height: { type: "spring", stiffness: 320, damping: 30 },
+                            opacity: { duration: 0.2, ease: [0.23, 1, 0.32, 1] }
                           }}
                           className="pt-3 md:pt-0"
                         >
                           <motion.div 
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            transition={{ duration: 0.3, delay: 0.05 }}
+                            initial={{ opacity: 0, transform: "translateY(8px)" }}
+                            animate={{ opacity: 1, transform: "translateY(0px)" }}
+                            exit={{ opacity: 0, transform: "translateY(8px)" }}
+                            transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
                             className="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center"
                           >
                             
-                            {/* Image Container - Center */}
+                            {/* Image Container */}
                             <div className="sm:col-span-6 relative aspect-[16/10] rounded-xl overflow-hidden border border-white/5 bg-neutral-900 shadow-md">
                               <Image
                                 src={service.image}
@@ -134,7 +135,7 @@ export function ServicesTeaser() {
                               />
                             </div>
 
-                            {/* Info Details - Right */}
+                            {/* Info Details */}
                             <div className="sm:col-span-6 flex flex-col justify-between space-y-3">
                               <p className="text-ump-secondary text-xs md:text-sm leading-relaxed font-light">
                                 {service.description}
@@ -152,12 +153,18 @@ export function ServicesTeaser() {
                                 ))}
                               </div>
 
-                              <Link href="/contact" className="inline-flex self-start pt-1 group/btn">
-                                <span className="text-ump-accent group-hover/btn:text-white transition-colors font-bold text-xs uppercase tracking-wider flex items-center gap-1">
+                              <div className="pt-1">
+                                <SlotButton
+                                  href="/contact"
+                                  variant="ghost"
+                                  size="sm"
+                                  icon={<PiArrowUpRight size={14} />}
+                                  iconPosition="right"
+                                  className="text-ump-accent hover:text-white p-0"
+                                >
                                   Cotizar servicio
-                                  <ArrowUpRight size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                                </span>
-                              </Link>
+                                </SlotButton>
+                              </div>
                             </div>
 
                           </motion.div>
@@ -175,3 +182,4 @@ export function ServicesTeaser() {
     </section>
   );
 }
+

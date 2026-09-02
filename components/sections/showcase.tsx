@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import { SlotButton } from "@/components/ui/slot-button";
 
 interface ProjectItem {
   title: string;
@@ -69,70 +69,21 @@ export function Showcase() {
             transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto md:self-end"
           >
-            <Link
+            <SlotButton
               href="/portfolio"
-              style={{
-                fontFamily: "var(--font-inter), sans-serif",
-                fontWeight: 700,
-                fontSize: "0.9rem",
-                color: "#0a0a0a",
-                background: "#ffffff",
-                borderRadius: "4px",
-                padding: "13px 26px",
-                textDecoration: "none",
-                transition: "transform 0.2s, box-shadow 0.2s",
-                boxShadow: "0 4px 14px rgba(255,255,255,0.12)",
-              }}
-              className="w-full sm:w-auto text-center inline-block"
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(-2px)";
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                  "0 8px 20px rgba(255,255,255,0.22)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(0)";
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                  "0 4px 14px rgba(255,255,255,0.12)";
-              }}
+              variant="secondary"
+              size="md"
             >
               Ver portafolio completo
-            </Link>
-            <Link
+            </SlotButton>
+            <SlotButton
               href="/services"
-              style={{
-                fontFamily: "var(--font-inter), sans-serif",
-                fontWeight: 700,
-                fontSize: "0.9rem",
-                color: "#ffffff",
-                background: "transparent",
-                border: "2px solid rgba(255, 255, 255, 0.2)",
-                borderRadius: "4px",
-                padding: "11px 26px",
-                textDecoration: "none",
-                transition: "background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s",
-              }}
-              className="w-full sm:w-auto text-center inline-block"
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background =
-                  "#ffffff";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#0a0a0a";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "#ffffff";
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(-2px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.background =
-                  "transparent";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255, 255, 255, 0.2)";
-                (e.currentTarget as HTMLAnchorElement).style.transform =
-                  "translateY(0)";
-              }}
+              variant="outline"
+              size="md"
+              className="border-white/20 text-white hover:bg-white hover:text-black"
             >
               Explorar servicios
-            </Link>
+            </SlotButton>
           </motion.div>
         </div>
 

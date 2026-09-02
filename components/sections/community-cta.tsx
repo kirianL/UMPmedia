@@ -8,12 +8,12 @@ export function CommunityCTA() {
   return (
     <section
       id="community-cta-section"
-      className="bg-[#32fb00] py-12 px-4 md:py-24 lg:py-40 overflow-hidden relative border-t border-black/5 z-70 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
+      className="bg-ump-accent py-12 px-4 md:py-24 lg:py-40 overflow-hidden relative border-t border-black/5 z-70 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
     >
       <div className="container mx-auto max-w-7xl">
         {/* Tier 1: Massive Headline (Full Width) */}
         <div className="mb-10 md:mb-20">
-          <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-black text-black leading-[0.9] tracking-tighter uppercase text-balance text-left break-words">
+          <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-black text-white leading-[0.9] tracking-tighter uppercase text-balance text-left break-words">
             Sigue el <br />
             <span className="opacity-40">movimiento.</span>
           </h2>
@@ -23,11 +23,11 @@ export function CommunityCTA() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
           {/* Left: Description Content */}
           <div className="space-y-6">
-            <p className="text-xl md:text-3xl lg:text-4xl text-black font-bold leading-[1.1] max-w-lg">
+            <p className="text-xl md:text-3xl lg:text-4xl text-white font-bold leading-[1.1] max-w-lg">
               Historias reales. <br />
               Producción profesional.
             </p>
-            <p className="text-base md:text-lg lg:text-xl text-black/70 max-w-md font-medium leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-white/70 max-w-md font-medium leading-relaxed">
               Únete a nuestra comunidad y descubre cómo transformamos el mundo
               audiovisual desde Limón.
             </p>
@@ -38,7 +38,7 @@ export function CommunityCTA() {
             <Link
               href="https://www.instagram.com/umpmediacr?igsh=M3ByaDdlanhsa3Fv"
               target="_blank"
-              className="group flex flex-col justify-between p-4 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#32fb00] transition-all duration-700 ease-in-out"
+              className="group flex flex-col justify-between p-4 md:p-10 bg-white/10 border border-white/15 rounded-3xl aspect-square hover:bg-white hover:text-ump-accent transition-all duration-500 ease-out text-white"
             >
               <SiInstagram size={32} className="md:w-16 md:h-16" />
               <div className="flex justify-between items-end">
@@ -55,7 +55,7 @@ export function CommunityCTA() {
             <Link
               href="https://www.youtube.com/@UltimateMediaProductions"
               target="_blank"
-              className="group flex flex-col justify-between p-4 md:p-10 bg-black/5 border border-black/10 rounded-3xl aspect-square hover:bg-black hover:text-[#32fb00] transition-all duration-700 ease-in-out"
+              className="group flex flex-col justify-between p-4 md:p-10 bg-white/10 border border-white/15 rounded-3xl aspect-square hover:bg-white hover:text-ump-accent transition-all duration-500 ease-out text-white"
             >
               <SiYoutube size={32} className="md:w-16 md:h-16" />
               <div className="flex justify-between items-end">
@@ -72,12 +72,12 @@ export function CommunityCTA() {
             <Link
               href="https://wa.me/506XXXXXXXX"
               target="_blank"
-              className="group col-span-2 flex items-center justify-between p-4 md:p-10 bg-black text-[#32fb00] rounded-3xl hover:bg-neutral-900 transition-all duration-500"
+              className="group col-span-2 flex items-center justify-between p-4 md:p-10 bg-white text-ump-accent rounded-3xl hover:bg-neutral-100 transition-all duration-500"
             >
               <div className="flex items-center gap-4 md:gap-8">
                 <SiWhatsapp size={32} className="md:w-16 md:h-16" />
                 <div className="flex flex-col">
-                  <span className="text-[10px] md:text-sm font-bold uppercase tracking-widest text-[#32fb00]/60">
+                  <span className="text-[10px] md:text-sm font-bold uppercase tracking-widest text-ump-accent/60">
                     Hablemos ahora
                   </span>
                   <span className="text-xl md:text-5xl font-black uppercase tracking-tight">

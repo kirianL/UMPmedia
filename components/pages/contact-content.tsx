@@ -20,13 +20,19 @@ export function ContactContent() {
   return (
     <div className="min-h-screen bg-ump-background">
       {/* Jeton-Style Header Banner with UMP Neon Green Background */}
-      <div className="bg-[#32fb00] text-black pt-40 pb-24 md:pb-32 px-6 relative z-10">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-black">
-          <RevealText
-            text="Contacto"
-            tag="h1"
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black"
-          />
+      <div className="bg-[#059669] text-white pt-40 pb-24 md:pb-32 px-6 relative z-10">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-white">
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <RevealText
+              text="Contacto"
+              tag="h1"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-white"
+            />
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: -15 }}
@@ -64,7 +70,7 @@ export function ContactContent() {
                 {/* Phones */}
                 <div className="space-y-2">
                   <h3 className="text-white font-bold uppercase tracking-wider text-xs text-ump-secondary flex items-center gap-2">
-                    <Phone size={14} className="text-[#32fb00]" /> Llámanos
+                    <Phone size={14} className="text-[#059669]" /> Llámanos
                   </h3>
                   <div className="text-ump-secondary space-y-1 text-sm">
                     <a href="tel:+50688888888" className="hover:text-white transition-colors block">
@@ -79,7 +85,7 @@ export function ContactContent() {
                 {/* Location */}
                 <div className="space-y-2">
                   <h3 className="text-white font-bold uppercase tracking-wider text-xs text-ump-secondary flex items-center gap-2">
-                    <MapPin size={14} className="text-[#32fb00]" /> Nuestra Ubicación
+                    <MapPin size={14} className="text-[#059669]" /> Nuestra Ubicación
                   </h3>
                   <p className="text-ump-secondary text-sm leading-relaxed">
                     Limón, Costa Rica
@@ -91,7 +97,7 @@ export function ContactContent() {
                 {/* Email */}
                 <div className="space-y-2">
                   <h3 className="text-white font-bold uppercase tracking-wider text-xs text-ump-secondary flex items-center gap-2">
-                    <Mail size={14} className="text-[#32fb00]" /> Email
+                    <Mail size={14} className="text-[#059669]" /> Email
                   </h3>
                   <a
                     href="mailto:fabian@ultimatemediaproductions.com"
@@ -104,40 +110,40 @@ export function ContactContent() {
                 {/* Social Network */}
                 <div className="space-y-2">
                   <h3 className="text-white font-bold uppercase tracking-wider text-xs text-ump-secondary flex items-center gap-2">
-                    <MessageSquare size={14} className="text-[#32fb00]" /> Redes Sociales
+                    <MessageSquare size={14} className="text-[#059669]" /> Redes Sociales
                   </h3>
                   <div className="flex gap-4 pt-1">
                     <a
                       href="#"
-                      className="text-ump-secondary hover:text-[#32fb00] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
+                      className="text-ump-secondary hover:text-[#059669] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
                       aria-label="Facebook"
                     >
                       <Facebook size={18} />
                     </a>
                     <a
                       href="#"
-                      className="text-ump-secondary hover:text-[#32fb00] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
+                      className="text-ump-secondary hover:text-[#059669] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
                       aria-label="Twitter"
                     >
                       <Twitter size={18} />
                     </a>
                     <a
                       href="#"
-                      className="text-ump-secondary hover:text-[#32fb00] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
+                      className="text-ump-secondary hover:text-[#059669] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
                       aria-label="LinkedIn"
                     >
                       <Linkedin size={18} />
                     </a>
                     <a
                       href="#"
-                      className="text-ump-secondary hover:text-[#32fb00] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
+                      className="text-ump-secondary hover:text-[#059669] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
                       aria-label="YouTube"
                     >
                       <Youtube size={18} />
                     </a>
                     <a
                       href="#"
-                      className="text-ump-secondary hover:text-[#32fb00] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
+                      className="text-ump-secondary hover:text-[#059669] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
                       aria-label="Instagram"
                     >
                       <Instagram size={18} />
@@ -170,7 +176,7 @@ export function ContactContent() {
                     </label>
                     <input
                       type="text"
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#32fb00] focus:outline-none transition-colors placeholder:text-ump-secondary/30"
+                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#059669] focus:outline-none transition-colors placeholder:text-ump-secondary/30"
                       placeholder="Ej. Juan Pérez"
                       required
                     />
@@ -183,7 +189,7 @@ export function ContactContent() {
                     </label>
                     <input
                       type="email"
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#32fb00] focus:outline-none transition-colors placeholder:text-ump-secondary/30"
+                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#059669] focus:outline-none transition-colors placeholder:text-ump-secondary/30"
                       placeholder="tu@email.com"
                       required
                     />
@@ -196,7 +202,7 @@ export function ContactContent() {
                     </label>
                     <input
                       type="text"
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#32fb00] focus:outline-none transition-colors placeholder:text-ump-secondary/30"
+                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#059669] focus:outline-none transition-colors placeholder:text-ump-secondary/30"
                       placeholder="Ej. Cotización de video musical"
                       required
                     />
@@ -209,7 +215,7 @@ export function ContactContent() {
                     </label>
                     <textarea
                       rows={3}
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#32fb00] focus:outline-none transition-colors placeholder:text-ump-secondary/30 resize-none"
+                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#059669] focus:outline-none transition-colors placeholder:text-ump-secondary/30 resize-none"
                       placeholder="Cuéntanos brevemente sobre tu proyecto..."
                       required
                     />
@@ -218,7 +224,7 @@ export function ContactContent() {
                   <div className="pt-4">
                     <button
                       type="submit"
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 bg-[#32fb00] text-black hover:bg-[#32fb00]/90 font-bold uppercase tracking-wider text-xs transition-colors shadow-lg cursor-pointer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 bg-[#059669] text-white hover:bg-[#059669]/90 font-bold uppercase tracking-wider text-xs transition-colors shadow-lg cursor-pointer"
                     >
                       <span>Enviar Mensaje</span>
                       <ArrowRight size={14} />

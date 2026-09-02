@@ -49,9 +49,9 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
         initial={{ opacity: 0, y: -45 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="bg-[#32fb00] text-black pt-36 pb-24 md:pb-32 px-6 relative z-10"
+        className="bg-[#059669] text-white pt-36 pb-24 md:pb-32 px-6 relative z-10"
       >
-        <div className="container mx-auto max-w-4xl text-black">
+        <div className="container mx-auto max-w-4xl text-white">
           {/* Back button link inside green area */}
           <motion.div
             initial={{ opacity: 0, y: -15 }}
@@ -61,7 +61,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
           >
             <Link
               href="/news"
-              className="inline-flex items-center gap-2 text-black/70 hover:text-black transition-colors text-sm font-bold uppercase tracking-wider"
+              className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-bold uppercase tracking-wider"
             >
               <ArrowLeft size={16} /> Volver a Noticias
             </Link>
@@ -72,12 +72,12 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-4 text-black"
+              className="flex items-center gap-4 text-white"
             >
               <span className="bg-black text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
                 {article.category}
               </span>
-              <span className="text-black/70 text-sm flex items-center gap-2 font-medium">
+              <span className="text-white/80 text-sm flex items-center gap-2 font-medium">
                 <Calendar size={14} /> {article.date}
               </span>
             </motion.div>
@@ -88,7 +88,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
             tag="h1"
             mode="mask"
             delay={0.3}
-            className="text-4xl md:text-6xl font-bold tracking-tight text-black leading-tight"
+            className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight"
           />
         </div>
       </motion.div>
@@ -139,16 +139,16 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
             <span className="text-white font-bold">Compartir artículo</span>
             <div className="flex items-center gap-3">
               {copied && (
-                <span className="text-xs font-bold text-[#32fb00] bg-ump-alt/80 border border-[#32fb00]/10 px-3 py-1.5 rounded-full select-none">
+                <span className="text-xs font-bold text-[#059669] bg-ump-alt/80 border border-[#059669]/20 px-3 py-1.5 rounded-full select-none">
                   ¡Enlace copiado!
                 </span>
               )}
               <button
                 onClick={handleShare}
                 aria-label="Compartir artículo"
-                className="p-3 bg-ump-alt rounded-full hover:bg-ump-accent hover:text-black transition-colors text-ump-secondary flex items-center justify-center cursor-pointer"
+                className="p-3 bg-ump-alt rounded-full hover:bg-ump-accent hover:text-white transition-colors text-ump-secondary flex items-center justify-center cursor-pointer"
               >
-                {copied ? <Check size={20} className="text-[#32fb00]" /> : <Share2 size={20} />}
+                {copied ? <Check size={20} className="text-[#059669]" /> : <Share2 size={20} />}
               </button>
             </div>
           </motion.div>

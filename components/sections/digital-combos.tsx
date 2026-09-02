@@ -1,17 +1,18 @@
 "use client";
 
-import { Check, Zap, Crown, BarChart3 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { PiCheck, PiLightning, PiCrownSimple, PiChartBar } from "react-icons/pi";
+import { SlotButton } from "@/components/ui/slot-button";
+import { SlotBadge } from "@/components/ui/slot-badge";
+import { motion } from "framer-motion";
 
 export function DigitalCombos() {
   return (
     <section className="mb-32">
       <div className="container mx-auto px-6">
         <div className="mb-16">
-          <span className="text-ump-accent text-sm font-bold uppercase tracking-widest mb-4 block">
-            Paquetes Integrales
-          </span>
+          <div className="mb-3">
+            <SlotBadge text="Paquetes Integrales" variant="accent" />
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Combos estratégicos
           </h2>
@@ -20,19 +21,19 @@ export function DigitalCombos() {
             ecosistemas digitales que funcionan. Diseño, contenido y tecnología
             en un solo lugar.
           </p>
-          <div className="h-1 w-20 bg-ump-accent mt-8"></div>
+          <div className="h-1 w-20 bg-ump-accent mt-8 rounded-full" />
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          {/* 1. INICIAL - Minimal Blue Accent */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          {/* 1. INICIAL */}
           <PricingCard
             title="Inicial"
             subtitle="Presencia digital esencial"
             price="$750"
             description="Para emprendedores que necesitan verse profesionales hoy mismo."
             accentColor="blue-500"
-            icon={Zap}
+            icon={PiLightning}
             features={[
               "Landing Page Comercial (Conversión)",
               "Diseño adaptable a móviles",
@@ -43,14 +44,15 @@ export function DigitalCombos() {
             excluded={["Hosting: $0 - $20/mes", "Dominio: ~$20/año"]}
           />
 
-          {/* 2. PROFESIONAL - Minimal Amber Accent */}
+          {/* 2. PROFESIONAL */}
           <PricingCard
             title="Profesional"
             subtitle="Lanzamiento comercial"
             price="$1,250"
             description="El paquete ideal para marcas establecidas que buscan crecimiento real."
             accentColor="amber-500"
-            icon={Crown}
+            icon={PiCrownSimple}
+            isPopular
             features={[
               "Landing Page Comercial PRO",
               "Video Publicitario Producción Completa",
@@ -62,14 +64,14 @@ export function DigitalCombos() {
             excluded={["Hosting: $20/mes", "Dominio: ~$20/año"]}
           />
 
-          {/* 3. CORPORATIVO - Minimal Red Accent */}
+          {/* 3. CORPORATIVO */}
           <PricingCard
             title="Corporativo"
             subtitle="Sistema digital completo"
             price="$2,200"
             description="Solución robusta para empresas. Web completa y contenido de alta gama."
             accentColor="red-500"
-            icon={BarChart3}
+            icon={PiChartBar}
             features={[
               "Sitio Web Corporativo (5 secciones)",
               "Video Corporativo Institucional",
@@ -90,7 +92,7 @@ export function DigitalCombos() {
         <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-white/5 pt-12 text-center md:text-left">
           <div className="p-6">
             <h4 className="text-white font-bold mb-2 flex items-center gap-2 justify-center md:justify-start">
-              <div className="w-2 h-2 rounded-full bg-ump-accent"></div>
+              <div className="w-2 h-2 rounded-full bg-ump-accent" />
               Solución unificada
             </h4>
             <p className="text-sm text-ump-secondary leading-relaxed">
@@ -100,7 +102,7 @@ export function DigitalCombos() {
           </div>
           <div className="p-6 border-l border-r border-white/5">
             <h4 className="text-white font-bold mb-2 flex items-center gap-2 justify-center md:justify-start">
-              <div className="w-2 h-2 rounded-full bg-ump-accent"></div>
+              <div className="w-2 h-2 rounded-full bg-ump-accent" />
               Escalabilidad real
             </h4>
             <p className="text-sm text-ump-secondary leading-relaxed">
@@ -110,7 +112,7 @@ export function DigitalCombos() {
           </div>
           <div className="p-6">
             <h4 className="text-white font-bold mb-2 flex items-center gap-2 justify-center md:justify-start">
-              <div className="w-2 h-2 rounded-full bg-ump-accent"></div>
+              <div className="w-2 h-2 rounded-full bg-ump-accent" />
               Enfoque en ventas
             </h4>
             <p className="text-sm text-ump-secondary leading-relaxed">
@@ -132,7 +134,8 @@ interface PricingCardProps {
   features: string[];
   excluded: string[];
   accentColor: string;
-  icon: any;
+  icon: React.ElementType;
+  isPopular?: boolean;
 }
 
 function PricingCard({
@@ -144,8 +147,8 @@ function PricingCard({
   excluded,
   accentColor,
   icon: Icon,
+  isPopular = false,
 }: PricingCardProps) {
-  // Tailwind color classes mapping based on accentColor prop
   const colorMap: Record<string, string> = {
     "blue-500": "text-blue-500",
     "amber-500": "text-amber-500",
@@ -155,9 +158,21 @@ function PricingCard({
   const accentClass = colorMap[accentColor] || "text-white";
 
   return (
-    <div
-      className={`relative flex flex-col h-full rounded-2xl p-8 transition-all duration-300 border bg-transparent border-white/5`}
+    <motion.div
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+      className={`relative flex flex-col h-full rounded-2xl p-8 border transition-[border-color,background-color,box-shadow] duration-200 bg-white/[0.02] ${
+        isPopular
+          ? "border-ump-accent/40 shadow-[0_4px_24px_rgba(50,251,0,0.08)] hover:border-ump-accent/60"
+          : "border-white/5 hover:border-white/15"
+      }`}
     >
+      {isPopular && (
+        <div className="absolute -top-3 right-6">
+          <SlotBadge text="Recomendado" variant="accent" />
+        </div>
+      )}
+
       <div className="mb-8">
         <div
           className={`w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mb-6 ${accentClass}`}
@@ -173,7 +188,7 @@ function PricingCard({
         </p>
 
         <div className="flex items-baseline gap-1 mb-4">
-          <span className="text-4xl font-bold text-white">{price}</span>
+          <span className="text-4xl font-bold text-white tracking-tight">{price}</span>
         </div>
 
         <p className="text-sm text-ump-secondary leading-relaxed">
@@ -188,7 +203,7 @@ function PricingCard({
               key={i}
               className="flex items-start gap-3 text-sm text-gray-300"
             >
-              <Check size={14} className={`mt-1 shrink-0 ${accentClass}`} />
+              <PiCheck size={16} className={`mt-0.5 shrink-0 ${accentClass}`} />
               <span className="leading-tight">{feature}</span>
             </li>
           ))}
@@ -211,13 +226,17 @@ function PricingCard({
         </div>
       </div>
 
-      <Link href="/contact" className="block w-full">
-        <Button
-          className={`w-full font-bold tracking-wide bg-white/5 text-white hover:bg-white/10 border border-white/10 cursor-pointer`}
+      <div className="w-full">
+        <SlotButton
+          href="/contact"
+          variant={isPopular ? "accent" : "outline"}
+          size="md"
+          className="w-full"
         >
-          Cotizar {title}
-        </Button>
-      </Link>
-    </div>
+          {`Cotizar ${title.toLowerCase()}`}
+        </SlotButton>
+      </div>
+    </motion.div>
   );
 }
+

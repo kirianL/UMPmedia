@@ -1,17 +1,23 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "slot-text/style.css";
+@import "lenis/dist/lenis.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* UMP Design System v4 */
+  /* ═══════════════════════════════════════════════════
+     UMP Design System v5 — Terracota Accent
+     Palette: warm, creative, Caribbean-inspired.
+     DO NOT reintroduce neon greens (#32fb00, #00f59b).
+     ═══════════════════════════════════════════════════ */
   --color-ump-background: #0a0a0a;
   --color-ump-alt: #1a1a1a;
   --color-ump-card: #2a2a2a;
   --color-ump-primary: #f5f5f5;
   --color-ump-secondary: #a0a0a0;
-  --color-ump-accent: #32fb00;
-  --color-ump-accentHover: #2be500;
+  --color-ump-accent: #059669;
+  --color-ump-accentHover: #047857;
 
   /* Shadcn Colors */
   --color-background: var(--background);
@@ -54,6 +60,12 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
 
+  /* Motion Easings & Tokens */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
   /* Animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -76,61 +88,45 @@
   }
 }
 
+/* Bespoke Sans — woff2 only (modern browsers) */
 @font-face {
   font-family: "Bespoke Sans";
-  src:
-    url("/assets/font/WEB/fonts/BespokeSans-Light.woff2") format("woff2"),
-    url("/assets/font/WEB/fonts/BespokeSans-Light.woff") format("woff"),
-    url("/assets/font/WEB/fonts/BespokeSans-Light.ttf") format("truetype");
+  src: url("/assets/font/WEB/fonts/BespokeSans-Light.woff2") format("woff2");
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "Bespoke Sans";
-  src:
-    url("/assets/font/WEB/fonts/BespokeSans-Regular.woff2") format("woff2"),
-    url("/assets/font/WEB/fonts/BespokeSans-Regular.woff") format("woff"),
-    url("/assets/font/WEB/fonts/BespokeSans-Regular.ttf") format("truetype");
+  src: url("/assets/font/WEB/fonts/BespokeSans-Regular.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "Bespoke Sans";
-  src:
-    url("/assets/font/WEB/fonts/BespokeSans-Medium.woff2") format("woff2"),
-    url("/assets/font/WEB/fonts/BespokeSans-Medium.woff") format("woff"),
-    url("/assets/font/WEB/fonts/BespokeSans-Medium.ttf") format("truetype");
+  src: url("/assets/font/WEB/fonts/BespokeSans-Medium.woff2") format("woff2");
   font-weight: 500;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "Bespoke Sans";
-  src:
-    url("/assets/font/WEB/fonts/BespokeSans-Bold.woff2") format("woff2"),
-    url("/assets/font/WEB/fonts/BespokeSans-Bold.woff") format("woff"),
-    url("/assets/font/WEB/fonts/BespokeSans-Bold.ttf") format("truetype");
+  src: url("/assets/font/WEB/fonts/BespokeSans-Bold.woff2") format("woff2");
   font-weight: 700;
   font-display: swap;
   font-style: normal;
 }
 @font-face {
   font-family: "Bespoke Sans";
-  src:
-    url("/assets/font/WEB/fonts/BespokeSans-Extrabold.woff2") format("woff2"),
-    url("/assets/font/WEB/fonts/BespokeSans-Extrabold.woff") format("woff"),
-    url("/assets/font/WEB/fonts/BespokeSans-Extrabold.ttf") format("truetype");
+  src: url("/assets/font/WEB/fonts/BespokeSans-Extrabold.woff2") format("woff2");
   font-weight: 800;
   font-display: swap;
   font-style: normal;
 }
 
 :root {
-  /* Font */
-  /* Font */
-  /* --font-inter removed in favor of Bespoke Sans */
+  /* Motion Constants — canonical source (also in @theme for Tailwind) */
 
   /* UMP Dark Mode Defaults */
   --ump-background: #0a0a0a;
@@ -146,7 +142,7 @@
   --popover: 0 0% 3.9%;
   --popover-foreground: 0 0% 96.1%;
 
-  --primary: 108 100% 49%; /* #32fb00 */
+  --primary: 160 84% 39%; /* #059669 verde esmeralda */
   --primary-foreground: 0 0% 96.1%;
 
   --secondary: 0 0% 10.2%; /* #1A1A1A */
@@ -155,7 +151,7 @@
   --muted: 0 0% 10.2%;
   --muted-foreground: 0 0% 62.7%; /* #A0A0A0 */
 
-  --accent: 108 100% 49%;
+  --accent: 160 84% 39%; /* #059669 verde esmeralda */
   --accent-foreground: 0 0% 96.1%;
 
   --destructive: 0 62.8% 30.6%;
@@ -187,6 +183,20 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: var(--font-inter), sans-serif;
+  }
+
+  /* Interactive tactile press feedback */
+  button,
+  [role="button"],
+  .btn-tactile {
+    transition: transform 160ms var(--ease-out), opacity 160ms var(--ease-out), background-color 200ms var(--ease-out), border-color 200ms var(--ease-out), color 200ms var(--ease-out);
+    will-change: transform;
+  }
+
+  button:active,
+  [role="button"]:active,
+  .btn-tactile:active {
+    transform: scale(0.97) !important;
   }
 
   /* Hide Scrollbar */
@@ -229,5 +239,17 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

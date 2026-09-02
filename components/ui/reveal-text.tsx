@@ -1,13 +1,14 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, useReducedMotion } from "framer-motion";
 
 interface RevealTextProps {
   text: string;
-  tag?: "h1" | "h2" | "h3" | "p" | "span";
+  tag?: "h1" | "h2" | "h3" | "h4" | "p" | "span";
   className?: string;
   delay?: number;
-  mode?: "slide" | "mask";
+  stagger?: number;
+  mode?: "mask" | "slide" | string;
 }
 
 export function RevealText({
@@ -15,34 +16,34 @@ export function RevealText({
   tag = "h2",
   className = "",
   delay = 0,
-  mode = "slide",
+  stagger = 0.04,
 }: RevealTextProps) {
+  const shouldReduceMotion = useReducedMotion();
   const words = text.split(" ");
   const Tag = tag as any;
 
-  const container: Variants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: mode === "mask" ? 0.04 : 0.05, delayChildren: delay },
-    }),
-  };
-
-  const child: Variants = {
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        ease: mode === "mask" ? [0.16, 1, 0.3, 1] : "easeOut",
-        duration: mode === "mask" ? 0.85 : 0.5,
+        staggerChildren: shouldReduceMotion ? 0 : stagger,
+        delayChildren: delay,
       },
     },
+  };
+
+  const wordVariants: Variants = {
     hidden: {
       opacity: 0,
-      y: mode === "mask" ? "110%" : -15,
+      transform: shouldReduceMotion ? "none" : "translate3d(0, 115%, 0)",
+    },
+    visible: {
+      opacity: 1,
+      transform: "translate3d(0, 0, 0)",
       transition: {
-        ease: mode === "mask" ? [0.16, 1, 0.3, 1] : "easeOut",
-        duration: mode === "mask" ? 0.85 : 0.5,
+        duration: shouldReduceMotion ? 0.01 : 0.55,
+        ease: [0.23, 1, 0.32, 1],
       },
     },
   };
@@ -50,40 +51,26 @@ export function RevealText({
   return (
     <Tag className={`relative ${className}`} aria-label={text}>
       <motion.span
-        variants={container}
+        variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className={mode === "mask" ? "inline-flex flex-wrap overflow-hidden py-1 -my-1" : "relative inline-block"}
+        animate="visible"
+        className="inline-flex flex-wrap justify-center"
       >
-        {words.map((word, index) => {
-          if (mode === "mask") {
-            return (
-              <span
-                key={index}
-                className="inline-block overflow-hidden mr-[0.25em] py-[0.1em] -my-[0.1em]"
-              >
-                <motion.span
-                  variants={child}
-                  className="inline-block"
-                >
-                  {word}
-                </motion.span>
-              </span>
-            );
-          }
-          return (
+        {words.map((word, index) => (
+          <span
+            key={index}
+            className="inline-block overflow-hidden mr-[0.24em] last:mr-0 py-[0.08em] -my-[0.08em] whitespace-nowrap"
+          >
             <motion.span
-              variants={child}
-              style={{ marginRight: "0.25em" }}
-              key={index}
-              className="inline-block"
+              variants={wordVariants}
+              className="inline-block will-change-transform"
             >
               {word}
             </motion.span>
-          );
-        })}
+          </span>
+        ))}
       </motion.span>
     </Tag>
   );
 }
+

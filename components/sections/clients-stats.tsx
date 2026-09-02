@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { SiYoutube, SiTiktok, SiInstagram } from "react-icons/si";
+import { SlotBadge } from "@/components/ui/slot-badge";
 
 interface StatItemProps {
   value: number;
@@ -28,14 +29,14 @@ function StatCounter({ value, suffix, label, icon, delay = 0 }: StatItemProps) {
     if (!visible) return;
 
     const end = value;
-    const duration = 900;
+    const duration = 800;
     let startTimestamp: number | null = null;
 
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      // cubic ease-out
-      const ease = 1 - Math.pow(1 - progress, 3);
+      // Emil's strong ease-out: 1 - (1 - progress)^3.5
+      const ease = 1 - Math.pow(1 - progress, 3.5);
       setCount(Math.floor(ease * end));
       if (progress < 1) window.requestAnimationFrame(step);
     };
@@ -46,13 +47,16 @@ function StatCounter({ value, suffix, label, icon, delay = 0 }: StatItemProps) {
   return (
     <div
       ref={ref}
-      className={`group relative flex items-center gap-5 p-5 md:p-7 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-ump-accent/20 transition-all duration-500 ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      className={`group relative flex items-center gap-5 p-5 md:p-7 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-ump-accent/30 transition-[transform,opacity,background-color,border-color] duration-250 ease-out select-none active:scale-[0.98] ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
       }`}
-      style={{ transition: "opacity 0.5s cubic-bezier(0.22,1,0.36,1), transform 0.5s cubic-bezier(0.22,1,0.36,1), background 0.5s, border-color 0.5s" }}
+      style={{
+        transform: visible ? "translate3d(0, 0, 0)" : "translate3d(0, 12px, 0)",
+        transition: "opacity 0.35s cubic-bezier(0.23, 1, 0.32, 1), transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), background-color 0.2s, border-color 0.2s",
+      }}
     >
       {/* Icon */}
-      <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-xl bg-ump-alt border border-white/10 flex items-center justify-center text-ump-accent group-hover:bg-ump-accent group-hover:text-black group-hover:border-ump-accent transition-all duration-400">
+      <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-xl bg-ump-alt border border-white/10 flex items-center justify-center text-ump-accent group-hover:bg-ump-accent group-hover:text-black group-hover:border-ump-accent transition-[background-color,color,border-color,transform] duration-200 group-hover:scale-105">
         {icon}
       </div>
 
@@ -66,7 +70,7 @@ function StatCounter({ value, suffix, label, icon, delay = 0 }: StatItemProps) {
             {suffix}
           </span>
         </div>
-        <span className="text-sm md:text-base font-semibold text-white/60 mt-1 leading-tight">
+        <span className="text-sm md:text-base font-semibold text-white/60 mt-1 leading-tight group-hover:text-white/90 transition-colors duration-200">
           {label}
         </span>
       </div>
@@ -80,6 +84,9 @@ export function ClientsStats() {
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Header */}
         <div className="mb-8 md:mb-12 max-w-2xl">
+          <div className="mb-3">
+            <SlotBadge text="Comunidad & Alcance" variant="accent" />
+          </div>
           <h2 className="text-3xl md:text-5xl font-black text-white leading-none tracking-tighter uppercase mb-3 md:mb-4">
             Nuestro{" "}
             <span className="text-ump-accent italic">alcance.</span>
@@ -103,17 +110,18 @@ export function ClientsStats() {
             suffix="M+"
             label="TikTok"
             icon={<SiTiktok size={22} />}
-            delay={100}
+            delay={80}
           />
           <StatCounter
             value={1}
             suffix="M+"
             label="Instagram"
             icon={<SiInstagram size={22} />}
-            delay={200}
+            delay={160}
           />
         </div>
       </div>
     </section>
   );
 }
+

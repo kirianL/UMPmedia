@@ -224,7 +224,7 @@ export function BuscandoDealer() {
           SERIE ORIGINAL — 2026
         </span>
         <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight leading-none uppercase">
-          Buscando al <span className="text-[#32fb00] italic font-black">dealer</span>
+          Buscando al <span className="text-[#059669] italic font-black">dealer</span>
         </h1>
       </motion.div>
 
@@ -276,9 +276,9 @@ export function BuscandoDealer() {
                     <motion.div
                       whileHover={{ scale: 1.08 }}
                       transition={{ ease: "easeOut", duration: 0.3 }}
-                      className="w-16 h-16 rounded-full bg-[#32fb00] text-black flex items-center justify-center shadow-lg"
+                      className="w-16 h-16 rounded-full bg-[#059669] text-white flex items-center justify-center shadow-lg"
                     >
-                      <Play size={24} fill="currentColor" className="ml-1 text-black" />
+                      <Play size={24} fill="currentColor" className="ml-1 text-white" />
                     </motion.div>
                   </button>
                 </div>
@@ -309,7 +309,7 @@ export function BuscandoDealer() {
           {!isPlaying && (
             <button
               onClick={() => setIsPlaying(true)}
-              className="inline-flex items-center gap-3 bg-[#32fb00] hover:bg-[#32fb00]/90 text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm transition-all duration-300 cursor-pointer"
+              className="inline-flex items-center gap-3 bg-[#059669] hover:bg-[#059669]/90 text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-sm transition-all duration-300 cursor-pointer"
             >
               <Play size={16} fill="currentColor" />
               <span>Reproducir ahora</span>
@@ -341,9 +341,9 @@ export function BuscandoDealer() {
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
                       {isActive && (
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#32fb00]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#059669]" />
                       )}
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#32fb00]/80 font-bold">
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#059669]/90 font-bold">
                         {episode.number}
                       </span>
                     </div>
@@ -354,7 +354,7 @@ export function BuscandoDealer() {
 
                   <div className="shrink-0 pl-4">
                     {isActive ? (
-                      <Play size={12} className="text-[#32fb00] fill-current" />
+                      <Play size={12} className="text-[#059669] fill-current" />
                     ) : (
                       <span className="text-[10px] font-mono text-white/20 group-hover:text-white/40">
                         {episode.duration}
@@ -381,7 +381,7 @@ export function BuscandoDealer() {
             PRODUCCIÓN
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight uppercase">
-            Galería del <span className="text-[#32fb00] italic font-black">Rodaje</span>
+            Galería del <span className="text-[#059669] italic font-black">Rodaje</span>
           </h2>
         </div>
 

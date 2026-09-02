@@ -12,8 +12,8 @@ export function NewsContent() {
   return (
     <div className="min-h-screen bg-ump-background">
       {/* Jeton-Style Header Banner with UMP Neon Green Background */}
-      <div className="bg-[#32fb00] text-black pt-40 pb-24 md:pb-32 px-6 relative z-10">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-black">
+      <div className="bg-[#059669] text-white pt-40 pb-24 md:pb-32 px-6 relative z-10">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-white">
           <motion.div
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ export function NewsContent() {
             <RevealText
               text="Noticias"
               tag="h1"
-              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-white"
             />
           </motion.div>
           
@@ -30,9 +30,9 @@ export function NewsContent() {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className="max-w-md md:text-right md:self-end text-black"
+            className="max-w-md md:text-right md:self-end text-white"
           >
-            <p className="text-base md:text-lg font-bold leading-snug text-black/80">
+            <p className="text-base md:text-lg font-bold leading-snug text-white/90">
               ¡Mantente al día con las novedades de Ultimate Media Productions! El pulso de nuestros rodajes, producciones y proyectos del Caribe para el mundo.
             </p>
           </motion.div>
@@ -81,7 +81,7 @@ export function NewsContent() {
 
                   {/* Card Content */}
                   <div className="flex flex-col flex-1">
-                    <h3 className="text-xl font-bold text-white mb-2 leading-snug group-hover:text-[#32fb00] transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white mb-2 leading-snug group-hover:text-[#059669] transition-colors duration-300">
                       {item.title}
                     </h3>
                     <p className="text-sm text-ump-secondary mb-4 line-clamp-2 leading-relaxed">

@@ -11,8 +11,8 @@ export function AboutContent() {
   return (
     <div className="min-h-screen bg-ump-background">
       {/* Jeton-Style Header Banner with UMP Neon Green Background */}
-      <div className="bg-[#32fb00] text-black pt-40 pb-24 md:pb-32 px-6 relative z-10">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-black">
+      <div className="bg-[#059669] text-white pt-40 pb-24 md:pb-32 px-6 relative z-10">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-white">
           <motion.div
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -21,7 +21,7 @@ export function AboutContent() {
             <RevealText
               text="Nosotros"
               tag="h1"
-              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-black"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-white"
             />
           </motion.div>
           
