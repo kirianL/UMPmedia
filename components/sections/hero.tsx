@@ -3,47 +3,15 @@
 import { motion } from "framer-motion";
 import { SlotButton } from "@/components/ui/slot-button";
 
-const BRAND_TEMPLATES = [
-  {
-    name: "VERTEX",
-    svg: (
-      <svg className="h-5 sm:h-6 md:h-7 w-auto fill-current" viewBox="0 0 110 28" fill="none">
-        <path d="M10 4h5l6 15 6-15h5L23 24h-4L10 4zm28 0h14v4.5h-9v3h7v4h-7v3.5h9V24H38V4zm20 0h9c5 0 8 3 8 7.5 0 3-1.5 5.5-4 6.5l5 6h-6l-4-5h-3v5h-5V4zm5 9h4c2 0 3.5-1 3.5-2.5S59 8 57 8h-4v5zM76 8.5h-5V4h15v4.5h-5V24h-5V8.5z" />
-      </svg>
-    ),
-  },
-  {
-    name: "LUMEN",
-    svg: (
-      <svg className="h-5 sm:h-6 md:h-7 w-auto fill-current" viewBox="0 0 110 28" fill="none">
-        <path d="M10 4h5v15h9v5H10V4zM30 4h5v12c0 3 2 4 4.5 4s4.5-1 4.5-4V4h5v12c0 6-4 9-9.5 9s-9.5-3-9.5-9V4zM55 4h6l5 11 5-11h6v20h-5V11l-4.5 9h-3L63 11v13h-5V4zM83 4h15v4.5h-10v3h8v4h-8v3.5h10V24H83V4z" />
-      </svg>
-    ),
-  },
-  {
-    name: "NEXUS",
-    svg: (
-      <svg className="h-5 sm:h-6 md:h-7 w-auto fill-current" viewBox="0 0 110 28" fill="none">
-        <path d="M10 4h5l10 14V4h5v20h-5L15 10v14h-5V4zM36 4h15v4.5h-10v3h8v4h-8v3.5h10V24H36V4zM57 4l5 8-5 8h6l3-5 3 5h6l-5-8 5-8h-6l-3 5-3-5h-6zM78 4h5v12c0 3 2 4 4.5 4s4.5-1 4.5-4V4h5v12c0 6-4 9-9.5 9s-9.5-3-9.5-9V4z" />
-      </svg>
-    ),
-  },
-  {
-    name: "PULSE",
-    svg: (
-      <svg className="h-5 sm:h-6 md:h-7 w-auto fill-current" viewBox="0 0 100 28" fill="none">
-        <path d="M10 4h9c5 0 8 3 8 7.5s-3 7.5-8 7.5h-4v5h-5V4zm5 10h4c2.5 0 4-1 4-2.5S21.5 9 19 9h-4v5zM33 4h5v15h8v5H33V4zM49 4h5v12c0 3 2 4 4.5 4s4.5-1 4.5-4V4h5v12c0 6-4 9-9.5 9s-9.5-3-9.5-9V4zM70 4h5v15h8v5H70V4z" />
-      </svg>
-    ),
-  },
-  {
-    name: "KINETIC",
-    svg: (
-      <svg className="h-5 sm:h-6 md:h-7 w-auto fill-current" viewBox="0 0 120 28" fill="none">
-        <path d="M10 4h5v9l7-9h6l-8 10 9 10h-6l-8-9v9h-5V4zM32 4h5v20h-5V4zM43 4h5l10 14V4h5v20h-5L48 10v14h-5V4zM69 4h14v4.5h-9v3h7v4h-7v3.5h9V24H69V4zM90 8.5h-5V4h15v4.5h-5V24h-5V8.5z" />
-      </svg>
-    ),
-  },
+const CLIENT_LOGOS = [
+  { name: "Caribeños", src: "/assets/LogosHero/Caribenos.png" },
+  { name: "DN Express", src: "/assets/LogosHero/DnExpress.png" },
+  { name: "Bufete Morgan JM", src: "/assets/LogosHero/JM.png" },
+  { name: "Neon Party", src: "/assets/LogosHero/NeonParty.png" },
+  { name: "Dra. Jeinnel Newball", src: "/assets/LogosHero/Newball.png" },
+  { name: "Pollo Kerrico", src: "/assets/LogosHero/PolloKerrico.png" },
+  { name: "Sazón Colombiano", src: "/assets/LogosHero/SazonColombiano.png" },
+  { name: "Soda El Patty", src: "/assets/LogosHero/SodaElpatty.png" },
 ];
 
 export function Hero() {
@@ -162,14 +130,19 @@ export function Hero() {
         </p>
 
         <div className="w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <div className="animate-marquee-smooth flex items-center gap-10 sm:gap-16 md:gap-20 text-[#141414]">
-            {[...BRAND_TEMPLATES, ...BRAND_TEMPLATES].map((brand, i) => (
+          <div className="animate-marquee-smooth flex items-center gap-10 sm:gap-14 md:gap-16 text-[#141414]">
+            {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((brand, i) => (
               <div
                 key={i}
-                className="opacity-70 hover:opacity-100 transition-opacity duration-200 cursor-pointer flex items-center shrink-0"
+                className="opacity-50 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer flex items-center shrink-0 px-2"
                 title={brand.name}
               >
-                {brand.svg}
+                <img
+                  src={brand.src}
+                  alt={brand.name}
+                  className="h-6 sm:h-7 md:h-8 w-auto max-w-[110px] sm:max-w-[130px] object-contain select-none pointer-events-none"
+                  loading="lazy"
+                />
               </div>
             ))}
           </div>
