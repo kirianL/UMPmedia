@@ -134,7 +134,6 @@ export function WhyUMP() {
                     className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
                   />
                 </Link>
-                <span className="w-1.5 h-1.5 rounded-full bg-neutral-200 group-hover:bg-emerald-500 transition-colors" />
               </div>
 
             </motion.div>
