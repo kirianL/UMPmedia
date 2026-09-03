@@ -13,6 +13,7 @@ import {
 import { CTAFinal } from "@/components/sections/cta-final";
 import { EquipmentShowcase } from "@/components/sections/equipment-showcase";
 import { TextMotion } from "@/components/ui/text-motion";
+import { SlotButton } from "@/components/ui/slot-button";
 
 const fadeUpVariants = {
   hidden: { opacity: 0, y: 14 },
@@ -327,7 +328,7 @@ export function AboutContent() {
 
                 <TextMotion
                   text="Trabajamos de forma directa, estratégica y cercana, combinando creatividad, tecnología y producción para construir proyectos que tienen un propósito y se sienten auténticos."
-                  highlightWords={["Trabajamos", "de", "forma", "directa,", "estratégica", "y", "cercana,"]}
+                  highlightWords={["Trabajamos", "de", "forma", "directa", "estratégica", "y", "cercana"]}
                   highlightClass="font-bold text-white"
                   normalClass="text-emerald-200/80"
                   className="text-lg sm:text-xl md:text-2xl font-normal leading-relaxed tracking-tight"
@@ -339,35 +340,18 @@ export function AboutContent() {
                   initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-15px" }}
-                  transition={{ duration: 0.35, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
+                  transition={{ duration: 0.35, delay: 0.2, ease: [0.23, 1, 0.32, 1] as const }}
                   className="pt-2"
                 >
-                  <Link
+                  <SlotButton
                     href="/portfolio"
-                    className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-white text-neutral-950 text-xs font-mono uppercase tracking-wider font-bold hover:bg-emerald-50 transition-all duration-200 shadow-xs hover:scale-[1.02] active:scale-[0.97] cursor-pointer"
+                    variant="secondary"
+                    className="rounded-full bg-white text-neutral-950 hover:bg-neutral-100 font-medium text-xs md:text-sm shadow-xs px-5 py-2.5 normal-case tracking-tight"
+                    icon={<PiArrowRightBold size={13} />}
+                    iconPosition="right"
                   >
-                    {/* Dual Text Roll on Hover */}
-                    <span className="relative overflow-hidden inline-flex h-[18px] leading-none">
-                      <span className="inline-block transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-full">
-                        Ver Portafolio
-                      </span>
-                      <span className="absolute inset-0 translate-y-full transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0 text-emerald-950">
-                        Ver Portafolio
-                      </span>
-                    </span>
-
-                    {/* Kinetic Arrow Slide-Through */}
-                    <span className="relative inline-flex w-3.5 h-3.5 overflow-hidden shrink-0">
-                      <PiArrowRightBold
-                        size={13}
-                        className="absolute inset-0 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3.5"
-                      />
-                      <PiArrowRightBold
-                        size={13}
-                        className="absolute inset-0 -translate-x-3.5 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0 text-emerald-950"
-                      />
-                    </span>
-                  </Link>
+                    Ver portafolio
+                  </SlotButton>
                 </motion.div>
               </div>
 

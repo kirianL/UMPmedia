@@ -69,7 +69,7 @@ export function TextMotion({
         // Strip punctuation to check if word is highlighted
         const cleanWord = word.replace(/[.,:;]/g, "").toLowerCase();
         const isHighlighted = highlightWords.some(
-          (hw) => hw.toLowerCase() === cleanWord
+          (hw) => hw.replace(/[.,:;]/g, "").toLowerCase() === cleanWord
         );
 
         return (
