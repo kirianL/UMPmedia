@@ -317,12 +317,12 @@ export function AboutContent() {
             {/* Subtle optical background gradient bloom */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-14 items-center relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-14 items-center relative z-10">
               
               {/* Left Column (Desktop): Statement, Subtext & Desktop CTA */}
-              <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+              <div className="lg:col-span-7 space-y-6 sm:space-y-7">
                 
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
                   Hechos en Limón. Creados para el mundo.
                 </h2>
 
@@ -371,26 +371,26 @@ export function AboutContent() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-15px" }}
                 transition={{ duration: 0.45, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-                className="lg:col-span-5 flex items-center justify-center py-2 sm:py-0"
+                className="lg:col-span-5 flex items-center justify-center pt-2 pb-0 sm:py-0"
               >
-                <div className="relative w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[480px] aspect-[16/10] sm:aspect-[4/3] select-none">
+                <div className="relative w-full max-w-[390px] sm:max-w-[460px] lg:max-w-[500px] aspect-[16/10] sm:aspect-[4/3] select-none scale-105 sm:scale-100">
                   <Image
                     src="/assets/images/CostaRica-map.PNG"
                     alt="Mapa de Costa Rica con Limón destacado en verde"
                     fill
-                    sizes="(max-width: 1024px) 100vw, 480px"
+                    sizes="(max-width: 1024px) 100vw, 500px"
                     className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
                   />
                 </div>
               </motion.div>
 
-              {/* Mobile-only Centered Button (at bottom below the map) */}
+              {/* Mobile-only Centered Button (close below the map) */}
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-15px" }}
                 transition={{ duration: 0.35, delay: 0.15, ease: [0.23, 1, 0.32, 1] as const }}
-                className="lg:hidden flex justify-center w-full pt-1"
+                className="lg:hidden flex justify-center w-full -mt-2 sm:mt-0 pt-0"
               >
                 <SlotButton
                   href="/portfolio"
