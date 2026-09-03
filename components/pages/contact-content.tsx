@@ -95,7 +95,7 @@ export function ContactContent() {
               <div className="relative w-12 h-12 rounded-full overflow-hidden border border-neutral-300/80 shadow-xs shrink-0 bg-neutral-200">
                 <Image
                   src="/assets/images/Team/Fabian.jpg"
-                  alt="Fabián Forbes"
+                  alt="Fabián Acuña"
                   fill
                   sizes="48px"
                   className="object-cover"
@@ -103,7 +103,7 @@ export function ContactContent() {
               </div>
               <div>
                 <p className="text-sm sm:text-base font-bold text-neutral-950 leading-tight">
-                  Fabián Forbes
+                  Fabián Acuña
                 </p>
                 <p className="text-xs text-neutral-500 font-mono tracking-tight mt-0.5">
                   Director Creativo & Fundador

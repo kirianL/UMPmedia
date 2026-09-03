@@ -87,7 +87,7 @@ export function AboutContent() {
                   <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-[#f6f6f3] shadow-xs">
                     <Image
                       src="/assets/images/Team/Fabian.jpg"
-                      alt="Fabián Forbes"
+                      alt="Fabián Acuña"
                       fill
                       sizes="32px"
                       className="object-cover"
@@ -96,7 +96,7 @@ export function AboutContent() {
                   <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-[#f6f6f3] shadow-xs">
                     <Image
                       src="/assets/images/Team/Kirian.jpg"
-                      alt="Kirian"
+                      alt="Kirian Luna"
                       fill
                       sizes="32px"
                       className="object-cover"
@@ -105,7 +105,7 @@ export function AboutContent() {
                   <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-[#f6f6f3] shadow-xs">
                     <Image
                       src="/assets/images/Team/Eymar.jpg"
-                      alt="Eymar"
+                      alt="Eymar Ortiz"
                       fill
                       sizes="32px"
                       className="object-cover"
@@ -122,7 +122,7 @@ export function AboutContent() {
                     <PiStarFill size={11} />
                   </div>
                   <span className="text-[11px] font-mono text-neutral-500 tracking-tight">
-                    Fabián Forbes · Kirian · Eymar
+                    Fabián Acuña · Kirian Luna · Eymar Ortiz
                   </span>
                 </div>
               </div>
@@ -218,18 +218,18 @@ export function AboutContent() {
               <div className="space-y-3">
                 {[
                   {
-                    name: "Fabián Forbes",
-                    role: "Director Creativo & Fundador",
+                    name: "Fabián Acuña",
+                    role: "Director General & Fundador",
                     image: "/assets/images/Team/Fabian.jpg",
                   },
                   {
-                    name: "Kirian",
-                    role: "Desarrollo & Producción Digital",
+                    name: "Kirian Luna",
+                    role: "Ingeniería en Sistemas & Web",
                     image: "/assets/images/Team/Kirian.jpg",
                   },
                   {
-                    name: "Eymar",
-                    role: "Producción Audiovisual & Cámara",
+                    name: "Eymar Ortiz",
+                    role: "Producción Audiovisual & Dirección",
                     image: "/assets/images/Team/Eymar.jpg",
                   },
                 ].map((member, i) => (

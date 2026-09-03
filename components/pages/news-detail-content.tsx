@@ -469,7 +469,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                     </div>
                     <div className="text-xs">
                       <p className="font-bold text-neutral-900">
-                        Kirian Luna, Eymar, Fabian
+                        Fabián Acuña, Eymar Ortiz, Kirian Luna
                       </p>
                       <p className="text-neutral-500 text-[11px]">
                         Equipo Creativo UMP Media
@@ -613,7 +613,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                   </div>
                   <div className="text-xs">
                     <p className="font-bold text-neutral-950 leading-tight">
-                      Kirian Luna, Eymar, Fabian
+                      Fabián Acuña, Eymar Ortiz, Kirian Luna
                     </p>
                     <p className="text-neutral-500 text-[11px] mt-0.5">
                       Equipo Creativo UMP
