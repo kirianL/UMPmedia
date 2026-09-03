@@ -101,7 +101,7 @@ export function WhyUMP() {
                       alt={cap.imageAlt}
                       fill
                       sizes="(max-width: 768px) 240px, 300px"
-                      className="object-contain mix-blend-multiply drop-shadow-xs"
+                      className="object-contain"
                     />
                   </div>
                 </div>

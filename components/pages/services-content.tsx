@@ -197,7 +197,7 @@ export function ServicesContent() {
                       alt={service.imageAlt}
                       fill
                       sizes="(max-width: 768px) 280px, 340px"
-                      className="object-contain mix-blend-multiply"
+                      className="object-contain"
                     />
                   </div>
                 </div>
