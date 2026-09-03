@@ -8,6 +8,19 @@ import { PiPlusBold } from "react-icons/pi";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { newsArticles } from "@/lib/news-data";
 
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.75,
+      delay: i * 0.12,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+};
+
 export function NewsContent() {
   const featuredArticle = newsArticles[0];
   const standardArticles = newsArticles.slice(1);
@@ -19,35 +32,55 @@ export function NewsContent() {
       <section className="pt-36 sm:pt-44 md:pt-48 pb-14 sm:pb-20 border-b border-neutral-200/60">
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
           
-          {/* Main Giant Display Headline - Title Case with period */}
-          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7.2rem] font-bold tracking-tight text-neutral-950 mb-12 sm:mb-16">
-            Noticias.
-          </h1>
+          {/* Main Giant Display Headline with Page Entrance Animation */}
+          <motion.div
+            custom={0}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUpVariants}
+            className="mb-12 sm:mb-16"
+          >
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7.2rem] font-bold tracking-tight text-neutral-950">
+              Noticias.
+            </h1>
+          </motion.div>
 
           {/* Subtitle Row with exact two-tone typography from Fabrica */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-start">
+          <motion.div
+            custom={1}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUpVariants}
+            className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-start"
+          >
             
             {/* Left Col: Two-tone bold statement */}
             <div className="md:col-span-8 lg:col-span-8">
               <p className="text-xl sm:text-2xl md:text-[1.65rem] font-normal leading-snug tracking-tight text-neutral-500">
-                <span className="font-bold text-neutral-950">Perspectivas y coberturas exclusivas</span> en producción audiovisual, cine y estrategia digital para hacer destacar tu marca.
+                <span className="font-bold text-neutral-950">Lo que estamos creando.</span> Lo que está pasando. Lo que viene.
               </p>
             </div>
 
             {/* Right Col: Light context description */}
             <div className="md:col-span-4 lg:col-span-4 md:pt-1">
               <p className="text-xs sm:text-sm text-neutral-400 font-normal leading-relaxed">
-                Desde rodajes en el Caribe hasta estándares de postproducción cinematográfica—todo lo que necesitas para tu visión.
+                Una mirada detrás de nuestras producciones audiovisuales, proyectos digitales, colaboraciones y nuevas ideas.
               </p>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
       </section>
 
-      {/* Main Articles Grid matching Fabrica layout */}
-      <section className="py-12 sm:py-16 md:py-24">
+      {/* Main Articles Grid with Staggered Page Entrance Animation */}
+      <motion.section
+        custom={2}
+        initial="hidden"
+        animate="visible"
+        variants={fadeUpVariants}
+        className="py-12 sm:py-16 md:py-24"
+      >
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
@@ -165,7 +198,7 @@ export function NewsContent() {
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
       {/* Global CTA Section */}
       <CTAFinal />
