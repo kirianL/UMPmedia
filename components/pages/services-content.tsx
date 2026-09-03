@@ -44,7 +44,7 @@ const SERVICES: ServiceBlock[] = [
       "Cobertura fotográfica y de video para eventos y lanzamientos",
       "Edición dinámica, subtítulos, musicalización y master digital",
     ],
-    imageSrc: "/assets/illustrations/services/audiovisual.png",
+    imageSrc: "/assets/illustrations/services/audiovisual-trans.png",
     imageAlt: "Ilustración de encuadre de cámara y producción audiovisual",
     ctaText: "Cotizar Producción Audiovisual",
     whatsappMessage: "Hola UMP, quiero cotizar un proyecto de Producción Audiovisual",
@@ -66,7 +66,7 @@ const SERVICES: ServiceBlock[] = [
       "Diseño gráfico de identidad para piezas estáticas y carruseles",
       "Informes periódicos de métricas, alcance y optimización",
     ],
-    imageSrc: "/assets/illustrations/services/social.png",
+    imageSrc: "/assets/illustrations/services/social-trans.png",
     imageAlt: "Ilustración de smartphone y alcance en redes sociales",
     ctaText: "Consultar Planes de Redes",
     whatsappMessage: "Hola UMP, me interesa conocer los planes mensuales de Manejo de Redes",
@@ -87,7 +87,7 @@ const SERVICES: ServiceBlock[] = [
       "Optimización SEO on-page y analítica de tráfico integrada",
       "Desarrollo de software y aplicaciones web a medida",
     ],
-    imageSrc: "/assets/illustrations/services/digital.png",
+    imageSrc: "/assets/illustrations/services/digital-trans.png",
     imageAlt: "Ilustración de desarrollo web y plataformas de código",
     ctaText: "Cotizar Desarrollo Web",
     whatsappMessage: "Hola UMP, deseo cotizar una página web o solución digital",
@@ -108,7 +108,7 @@ const SERVICES: ServiceBlock[] = [
       "Pack de reels promocionales listos para pauta y redes sociales",
       "Estrategia de lanzamiento y configuración de canales digitales",
     ],
-    imageSrc: "/assets/illustrations/services/combos.png",
+    imageSrc: "/assets/illustrations/services/combos-trans.png",
     imageAlt: "Ilustración de ecosistema digital 360",
     ctaText: "Cotizar Combo 360",
     whatsappMessage: "Hola UMP, quiero cotizar un Combo 360 para mi marca",
@@ -196,6 +196,7 @@ export function ServicesContent() {
                       src={service.imageSrc}
                       alt={service.imageAlt}
                       fill
+                      unoptimized
                       sizes="(max-width: 768px) 280px, 340px"
                       className="object-contain"
                     />

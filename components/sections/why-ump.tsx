@@ -22,7 +22,7 @@ const CAPABILITIES: CapabilityCardProps[] = [
     title: "Historias que capturan la atención",
     description:
       "Desarrollamos comerciales, formatos narrativos y coberturas de alto impacto. Cuidamos cada fotograma, ritmo y sonido para que tu marca se perciba con autenticidad y autoridad.",
-    imageSrc: "/assets/illustrations/audiovisual-clean.png",
+    imageSrc: "/assets/illustrations/audiovisual-trans.png",
     imageAlt: "Ilustración de claqueta de producción audiovisual",
     linkText: "Ver producciones",
     linkHref: "/portfolio",
@@ -33,7 +33,7 @@ const CAPABILITIES: CapabilityCardProps[] = [
     title: "Estrategia para conectar y crecer",
     description:
       "Diseñamos contenido ágil pensado para las plataformas que importan hoy. Storytelling, formatos verticales y campañas que despiertan conversación y fidelizan comunidad.",
-    imageSrc: "/assets/illustrations/social-clean.png",
+    imageSrc: "/assets/illustrations/social-trans.png",
     imageAlt: "Ilustración de interacción y alcance en redes sociales",
     linkText: "Explorar alcance",
     linkHref: "/portfolio",
@@ -44,7 +44,7 @@ const CAPABILITIES: CapabilityCardProps[] = [
     title: "Plataformas web y tecnología moderna",
     description:
       "Construimos experiencias web interactivas, fluidas y de alto rendimiento. Arquitectura limpia, interfaces hechas a medida y tecnología que impulsa tu negocio.",
-    imageSrc: "/assets/illustrations/digital-clean.png",
+    imageSrc: "/assets/illustrations/digital-trans.png",
     imageAlt: "Ilustración de desarrollo web y soluciones digitales",
     linkText: "Conocer servicios",
     linkHref: "/services",
@@ -100,6 +100,7 @@ export function WhyUMP() {
                       src={cap.imageSrc}
                       alt={cap.imageAlt}
                       fill
+                      unoptimized
                       sizes="(max-width: 768px) 240px, 300px"
                       className="object-contain"
                     />
