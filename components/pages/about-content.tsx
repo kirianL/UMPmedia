@@ -371,14 +371,14 @@ export function AboutContent() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-15px" }}
                 transition={{ duration: 0.45, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-                className="lg:col-span-5 flex items-center justify-center pt-2 sm:pt-0"
+                className="lg:col-span-5 flex items-center justify-center py-2 sm:py-0"
               >
-                <div className="relative w-full max-w-[280px] sm:max-w-[420px] aspect-[16/10] sm:aspect-[4/3] select-none">
+                <div className="relative w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[480px] aspect-[16/10] sm:aspect-[4/3] select-none">
                   <Image
                     src="/assets/images/CostaRica-map.PNG"
                     alt="Mapa de Costa Rica con Limón destacado en verde"
                     fill
-                    sizes="(max-width: 1024px) 100vw, 420px"
+                    sizes="(max-width: 1024px) 100vw, 480px"
                     className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
                   />
                 </div>
