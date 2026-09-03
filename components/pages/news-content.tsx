@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { PiArrowUpRightBold } from "react-icons/pi";
+import { PiPlusBold } from "react-icons/pi";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { newsArticles } from "@/lib/news-data";
 
@@ -113,7 +113,7 @@ export function NewsContent() {
               </motion.div>
             )}
 
-            {/* 2. Standard Cards (Fabrica square thumbnail + top right arrow with Motion spring scale) */}
+            {/* 2. Standard Cards (Expanding Image Banner on Hover + Top-Right Plus Icon) */}
             {standardArticles.map((article) => (
               <motion.div
                 key={article.slug}
@@ -124,48 +124,24 @@ export function NewsContent() {
               >
                 <Link
                   href={`/news/${article.slug}`}
-                  className="group flex flex-col justify-between h-full min-h-[440px] sm:min-h-[480px] rounded-3xl bg-white border border-neutral-200/80 p-6 sm:p-7 shadow-xs hover:border-neutral-300 transition-colors duration-200"
+                  className="group relative flex flex-col justify-between h-full min-h-[440px] sm:min-h-[480px] rounded-3xl bg-white border border-neutral-200/80 p-6 sm:p-7 shadow-xs hover:border-neutral-300 transition-colors duration-200 overflow-hidden"
                 >
-                  {/* Top Row: Square Thumbnail on Left + Minimal Arrow on Right */}
-                  <div className="flex items-start justify-between gap-4 mb-8">
-                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden bg-neutral-100 border border-neutral-200/60 shrink-0">
-                      <motion.div
-                        variants={{
-                          rest: { scale: 1 },
-                          hover: { scale: 1.12 },
-                        }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 280,
-                          damping: 22,
-                          mass: 0.8,
-                        }}
-                        className="w-full h-full relative"
-                      >
-                        <Image
-                          src={article.image}
-                          alt={article.title}
-                          fill
-                          sizes="64px"
-                          className="object-cover"
-                        />
-                      </motion.div>
+                  {/* Top-Right Plus Icon (stays fixed in the corner) */}
+                  <div className="absolute top-6 sm:top-7 right-6 sm:right-7 z-10">
+                    <div className="w-6 h-6 rounded-full bg-neutral-950 text-white flex items-center justify-center shadow-xs group-hover:bg-neutral-800 group-hover:scale-105 transition-all duration-300">
+                      <PiPlusBold size={11} />
                     </div>
+                  </div>
 
-                    <motion.div
-                      variants={{
-                        rest: { scale: 1, backgroundColor: "#0a0a0a" },
-                        hover: { scale: 1.1, backgroundColor: "#262626" },
-                      }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 22,
-                      }}
-                      className="w-6 h-6 rounded-full text-white flex items-center justify-center shrink-0"
-                    >
-                      <PiArrowUpRightBold size={10} />
-                    </motion.div>
+                  {/* Expanding Thumbnail Container - Smooth, perfectly contained expansion */}
+                  <div className="relative w-16 h-16 group-hover:w-[calc(100%-2.25rem)] group-hover:h-40 rounded-2xl overflow-hidden bg-neutral-100 border border-neutral-200/60 shrink-0 mb-6 transition-[width,height] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-[width,height]">
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 320px"
+                      className="object-cover"
+                    />
                   </div>
 
                   {/* Bottom Content Area */}
