@@ -113,11 +113,13 @@ export function PortfolioContent() {
                   {isSelected && (
                     <motion.div
                       layoutId="portfolio-active-filter-pill"
+                      layout="position"
                       className="absolute inset-0 bg-[#059669] rounded-xl shadow-[0_2px_12px_rgba(5,150,105,0.4)]"
                       transition={{
                         type: "spring",
-                        stiffness: 380,
-                        damping: 30,
+                        stiffness: 450,
+                        damping: 35,
+                        mass: 0.6,
                       }}
                     />
                   )}

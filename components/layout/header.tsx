@@ -117,14 +117,14 @@ export function Header() {
         </Link>
 
         {/* Desktop centre links (perfectly centered to the viewport) */}
-        <nav className="hidden md:flex items-center gap-1 p-1 rounded-full bg-neutral-100/90 border border-neutral-200/60 backdrop-blur-md md:absolute md:left-1/2 md:-translate-x-1/2">
+        <nav className="hidden md:flex items-center gap-1 p-1 h-9 rounded-full bg-neutral-100/90 border border-neutral-200/60 backdrop-blur-md md:absolute md:left-1/2 md:-translate-x-1/2">
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative px-3.5 py-1.5 text-xs font-medium tracking-tight transition-colors duration-150 select-none rounded-full"
+                className="relative flex items-center justify-center px-3.5 h-full text-xs font-medium tracking-tight transition-colors duration-150 select-none rounded-full"
                 style={{
                   color: isActive ? "#0a0a0a" : "#666666",
                 }}
@@ -132,11 +132,13 @@ export function Header() {
                 {isActive && (
                   <motion.div
                     layoutId="header-active-pill"
+                    layout="position"
                     className="absolute inset-0 rounded-full bg-white shadow-xs border border-neutral-200/50"
                     transition={{
                       type: "spring",
-                      stiffness: 400,
-                      damping: 32,
+                      stiffness: 450,
+                      damping: 35,
+                      mass: 0.6,
                     }}
                   />
                 )}
