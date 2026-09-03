@@ -312,15 +312,15 @@ export function AboutContent() {
       <section className="py-16 sm:py-24">
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
           
-          <div className="rounded-3xl md:rounded-[2.5rem] bg-[#032014] text-white p-8 sm:p-12 md:p-16 border border-emerald-900/50 shadow-xs relative overflow-hidden">
+          <div className="rounded-3xl md:rounded-[2.5rem] bg-[#032014] text-white p-6 sm:p-10 md:p-14 lg:p-16 border border-emerald-900/50 shadow-xs relative overflow-hidden">
             
             {/* Subtle optical background gradient bloom */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-14 items-center relative z-10">
               
               {/* Left Column: Statement, Subtext & CTA Pill with TextMotion */}
-              <div className="lg:col-span-7 space-y-6">
+              <div className="lg:col-span-7 space-y-4 sm:space-y-6">
                 
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
                   Hechos en Limón. Creados para el mundo.
@@ -331,7 +331,7 @@ export function AboutContent() {
                   highlightWords={["Trabajamos", "de", "forma", "directa", "estratégica", "y", "cercana"]}
                   highlightClass="font-bold text-white"
                   normalClass="text-emerald-200/80"
-                  className="text-lg sm:text-xl md:text-2xl font-normal leading-relaxed tracking-tight"
+                  className="text-base sm:text-xl md:text-2xl font-normal leading-relaxed tracking-tight"
                   stagger={0.015}
                   delay={0.05}
                 />
@@ -341,7 +341,7 @@ export function AboutContent() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-15px" }}
                   transition={{ duration: 0.35, delay: 0.2, ease: [0.23, 1, 0.32, 1] as const }}
-                  className="pt-2"
+                  className="pt-1 sm:pt-2"
                 >
                   <SlotButton
                     href="/portfolio"
@@ -361,9 +361,9 @@ export function AboutContent() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-15px" }}
                 transition={{ duration: 0.45, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-                className="lg:col-span-5 flex items-center justify-center"
+                className="lg:col-span-5 flex items-center justify-center pt-2 sm:pt-0"
               >
-                <div className="relative w-full max-w-[420px] aspect-[4/3] select-none">
+                <div className="relative w-full max-w-[320px] sm:max-w-[420px] aspect-[16/10] sm:aspect-[4/3] select-none">
                   <Image
                     src="/assets/images/CostaRica-map.PNG"
                     alt="Mapa de Costa Rica con Limón destacado en verde"
