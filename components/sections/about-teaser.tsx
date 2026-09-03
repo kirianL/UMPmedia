@@ -66,11 +66,11 @@ export function AboutTeaser() {
               transition={{ duration: 0.35, delay: 0.08, ease: [0.23, 1, 0.32, 1] }}
             >
               <p className="text-lg sm:text-xl md:text-2xl text-neutral-950 font-medium leading-snug">
-                Ultimate Media Productions es un estudio creativo independiente nacido en Limón para transformar la forma en que se cuenta el Caribe.
+                Ultimate Media Productions es un estudio creativo nacido en Limón para transformar la forma en que las marcas conectan hoy.
               </p>
               
               <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal max-w-xl">
-                Combinamos producción audiovisual, contenido digital y tecnología para construir proyectos que conectan con las personas, transmiten identidad y dejan una huella auténtica.
+                Unificamos <span className="font-semibold text-neutral-950">producción audiovisual</span> de alto nivel, <span className="font-semibold text-neutral-950">estrategia y gestión de redes</span>, y <span className="font-semibold text-neutral-950">soluciones digitales</span> a medida para construir proyectos que conectan con la audiencia y generan un impacto real.
               </p>
 
               <div className="pt-3">
