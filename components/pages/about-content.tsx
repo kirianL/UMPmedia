@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { 
   PiArrowRightBold, 
-  PiStarFill, 
   PiFilmSlateBold, 
   PiSparkleBold,
   PiWaveformBold
@@ -79,52 +78,6 @@ export function AboutContent() {
               <p className="text-sm sm:text-base text-neutral-600 leading-relaxed pt-1">
                 Somos un estudio creativo que combina producción audiovisual, contenido digital y soluciones digitales para convertir ideas en proyectos que conectan con las personas y generan impacto.
               </p>
-
-              {/* Social Proof: Avatar Cluster + Rating */}
-              <div className="flex items-center gap-3 pt-2">
-                <div className="flex -space-x-2.5">
-                  <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-[#f6f6f3] shadow-xs">
-                    <Image
-                      src="/assets/images/Team/Fabian.jpg"
-                      alt="Fabián Acuña"
-                      fill
-                      sizes="32px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-[#f6f6f3] shadow-xs">
-                    <Image
-                      src="/assets/images/Team/Kirian.jpg"
-                      alt="Kirian Luna"
-                      fill
-                      sizes="32px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-[#f6f6f3] shadow-xs">
-                    <Image
-                      src="/assets/images/Team/Eymar.jpg"
-                      alt="Eymar Ortiz"
-                      fill
-                      sizes="32px"
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-1 text-amber-500 text-xs">
-                    <PiStarFill size={11} />
-                    <PiStarFill size={11} />
-                    <PiStarFill size={11} />
-                    <PiStarFill size={11} />
-                    <PiStarFill size={11} />
-                  </div>
-                  <span className="text-[11px] font-mono text-neutral-500 tracking-tight">
-                    Fabián Acuña · Kirian Luna · Eymar Ortiz
-                  </span>
-                </div>
-              </div>
             </motion.div>
 
             {/* Right Col: Light context description */}
