@@ -319,7 +319,7 @@ export function AboutContent() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-14 items-center relative z-10">
               
-              {/* Left Column: Statement, Subtext & CTA Pill with TextMotion */}
+              {/* Left Column (Desktop): Statement, Subtext & Desktop CTA */}
               <div className="lg:col-span-7 space-y-4 sm:space-y-6">
                 
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
@@ -328,7 +328,16 @@ export function AboutContent() {
 
                 <TextMotion
                   text="Trabajamos de forma directa, estratégica y cercana, combinando creatividad, tecnología y producción para construir proyectos que tienen un propósito y se sienten auténticos."
-                  highlightWords={["Trabajamos", "de", "forma", "directa", "estratégica", "y", "cercana"]}
+                  highlightWords={[
+                    "directa",
+                    "estratégica",
+                    "cercana",
+                    "creatividad",
+                    "tecnología",
+                    "producción",
+                    "propósito",
+                    "auténticos",
+                  ]}
                   highlightClass="font-bold text-white"
                   normalClass="text-emerald-200/80"
                   className="text-base sm:text-xl md:text-2xl font-normal leading-relaxed tracking-tight"
@@ -336,12 +345,13 @@ export function AboutContent() {
                   delay={0.05}
                 />
 
+                {/* Desktop-only Button */}
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-15px" }}
                   transition={{ duration: 0.35, delay: 0.2, ease: [0.23, 1, 0.32, 1] as const }}
-                  className="pt-1 sm:pt-2"
+                  className="hidden lg:block pt-2"
                 >
                   <SlotButton
                     href="/portfolio"
@@ -355,7 +365,7 @@ export function AboutContent() {
                 </motion.div>
               </div>
 
-              {/* Right Column: Costa Rica Map with Limón highlighted */}
+              {/* Right Column (Desktop) / Middle (Mobile): Costa Rica Map */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -363,7 +373,7 @@ export function AboutContent() {
                 transition={{ duration: 0.45, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
                 className="lg:col-span-5 flex items-center justify-center pt-2 sm:pt-0"
               >
-                <div className="relative w-full max-w-[320px] sm:max-w-[420px] aspect-[16/10] sm:aspect-[4/3] select-none">
+                <div className="relative w-full max-w-[280px] sm:max-w-[420px] aspect-[16/10] sm:aspect-[4/3] select-none">
                   <Image
                     src="/assets/images/CostaRica-map.PNG"
                     alt="Mapa de Costa Rica con Limón destacado en verde"
@@ -372,6 +382,25 @@ export function AboutContent() {
                     className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
                   />
                 </div>
+              </motion.div>
+
+              {/* Mobile-only Centered Button (at bottom below the map) */}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-15px" }}
+                transition={{ duration: 0.35, delay: 0.15, ease: [0.23, 1, 0.32, 1] as const }}
+                className="lg:hidden flex justify-center w-full pt-1"
+              >
+                <SlotButton
+                  href="/portfolio"
+                  variant="secondary"
+                  className="rounded-full bg-white text-neutral-950 hover:bg-neutral-100 font-medium text-xs shadow-xs px-6 py-3 normal-case tracking-tight"
+                  icon={<PiArrowRightBold size={13} />}
+                  iconPosition="right"
+                >
+                  Ver portafolio
+                </SlotButton>
               </motion.div>
 
             </div>
