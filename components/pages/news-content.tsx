@@ -77,8 +77,8 @@ export function NewsContent() {
                       },
                     }}
                     transition={{
-                      duration: 0.65,
-                      ease: [0.25, 1, 0.5, 1],
+                      duration: 0.8,
+                      ease: [0.4, 0, 0.2, 1],
                     }}
                     className="absolute inset-0 w-full h-full will-change-[transform,filter]"
                   >
@@ -133,8 +133,8 @@ export function NewsContent() {
                     </div>
                   </div>
 
-                  {/* Expanding Thumbnail Container - Smooth, perfectly contained expansion */}
-                  <div className="relative w-16 h-16 group-hover:w-[calc(100%-2.25rem)] group-hover:h-40 rounded-2xl overflow-hidden bg-neutral-100 border border-neutral-200/60 shrink-0 mb-6 transition-[width,height] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-[width,height]">
+                  {/* Expanding Thumbnail Container - Soft, calm and slower entrance/exit */}
+                  <div className="relative w-16 h-16 group-hover:w-[calc(100%-2.25rem)] group-hover:h-40 rounded-2xl overflow-hidden bg-neutral-100 border border-neutral-200/60 shrink-0 mb-6 transition-[width,height] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] will-change-[width,height]">
                     <Image
                       src={article.image}
                       alt={article.title}
