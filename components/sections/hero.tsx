@@ -16,7 +16,7 @@ const CLIENT_LOGOS = [
 
 export function Hero() {
   return (
-    <section className="relative h-[100dvh] w-full flex flex-col justify-between items-center overflow-hidden bg-[#f6f6f3] text-[#111111] px-4 sm:px-6 pt-[calc(68px+env(safe-area-inset-top))] pb-[calc(14px+env(safe-area-inset-bottom))] sm:pb-6 select-none">
+    <section className="relative min-h-[100svh] h-[100svh] sm:h-screen sm:min-h-0 w-full flex flex-col justify-between items-center overflow-hidden bg-[#f6f6f3] text-[#111111] px-4 sm:px-6 pt-[calc(68px+env(safe-area-inset-top))] pb-[calc(14px+env(safe-area-inset-bottom))] sm:pb-6 select-none">
       
       {/* Background Texture & Warm Lighting */}
       <div 
@@ -29,7 +29,10 @@ export function Hero() {
 
       {/* Koyeb 3D Wireframe Globe & Floating Nodes */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
-        <div className="relative w-[560px] h-[560px] xs:w-[620px] xs:h-[620px] sm:w-[680px] sm:h-[680px] md:w-[780px] md:h-[780px] lg:w-[840px] lg:h-[840px] shrink-0 flex items-center justify-center opacity-45">
+        <div 
+          className="relative w-[560px] h-[560px] xs:w-[620px] xs:h-[620px] sm:w-[680px] sm:h-[680px] md:w-[780px] md:h-[780px] lg:w-[840px] lg:h-[840px] shrink-0 flex items-center justify-center opacity-45 will-change-transform"
+          style={{ transform: "translate3d(0, 0, 0)" }}
+        >
           
           <svg
             viewBox="0 0 1000 1000"
@@ -52,14 +55,14 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Main Content (Centered Vertically & Horizontally) */}
-      <div className="relative z-10 w-full max-w-4xl flex flex-col items-center text-center my-auto pt-1 sm:pt-2">
+      {/* Main Content (Centered Vertically & Horizontally with Stable Flex Flow) */}
+      <div className="relative z-10 w-full max-w-4xl flex-1 flex flex-col items-center justify-center text-center py-2 sm:py-4">
         
         {/* Condensed Architectural Master Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="font-black tracking-[-0.035em] leading-[0.96] text-[#111111] uppercase select-none w-full max-w-3xl mx-auto"
         >
           <span className="block text-[34px] xs:text-[39px] sm:text-5xl md:text-6xl lg:text-[74px]">HACEMOS CRECER</span>
@@ -76,7 +79,7 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           className="text-[12.5px] xs:text-[13.5px] sm:text-sm md:text-base text-[#222222] font-medium max-w-sm sm:max-w-lg mx-auto leading-relaxed mt-3 sm:mt-4 mb-4 sm:mb-6 px-3"
         >
           Producción audiovisual, social media y soluciones digitales.
@@ -86,7 +89,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.22, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: 0.5, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col sm:flex-row gap-2.5 sm:gap-4 justify-center items-center w-full max-w-[280px] sm:max-w-none mx-auto"
         >
           <SlotButton
@@ -111,10 +114,10 @@ export function Hero() {
 
       {/* Free, Unboxed Trust Section with Smooth Marquee */}
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, delay: 0.28, ease: [0.23, 1, 0.32, 1] }}
-        className="relative z-10 w-full max-w-5xl mx-auto mt-auto shrink-0 flex flex-col items-center gap-2 sm:gap-3.5 pb-1 sm:pb-0"
+        transition={{ duration: 0.55, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 w-full max-w-5xl mx-auto shrink-0 flex flex-col items-center gap-2 sm:gap-3.5 pb-2 sm:pb-3"
       >
         <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#111111]/50 text-center select-none">
           EMPRESAS QUE CONFÍAN EN NOSOTROS
@@ -134,7 +137,7 @@ export function Hero() {
                   className={`h-9 sm:h-11 md:h-12 lg:h-13 w-auto max-w-[130px] sm:max-w-[160px] md:max-w-[190px] object-contain select-none pointer-events-none grayscale contrast-125 opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300 ${
                     brand.invert ? "invert" : ""
                   }`}
-                  loading="lazy"
+                  loading={i < 16 ? "eager" : "lazy"}
                 />
               </div>
             ))}

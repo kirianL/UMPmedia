@@ -57,30 +57,36 @@ export function WhyUMP() {
     <section className="py-20 sm:py-28 md:py-36 bg-[#f6f6f3] text-neutral-900 relative z-20 overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
-        {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-24">
+        {/* Header Section with smooth entrance */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-3xl mx-auto mb-16 sm:mb-24"
+        >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.1]">
             ¿Por qué <span className="text-emerald-600 font-normal italic">elegir UMP?</span>
           </h2>
           <p className="text-neutral-600 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed mt-3 font-normal">
             Combinamos producción audiovisual, contenido digital y tecnología bajo un mismo estándar de calidad y visión estratégica.
           </p>
-        </div>
+        </motion.div>
 
         {/* 3-Column Modern Architectural Illustration Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {CAPABILITIES.map((cap) => (
             <motion.div
               key={cap.title}
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-15px" }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px -20px 0px" }}
               transition={{
-                duration: 0.35,
+                duration: 0.6,
                 delay: cap.index * 0.08,
-                ease: [0.23, 1, 0.32, 1],
+                ease: [0.16, 1, 0.3, 1],
               }}
-              className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-3xl bg-white border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-neutral-300 transition-all duration-300 select-none overflow-hidden"
+              className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-3xl bg-white border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-neutral-300 transition-all duration-300 select-none overflow-hidden will-change-transform"
             >
               {/* Corner Architectural SVG Accent */}
               <svg

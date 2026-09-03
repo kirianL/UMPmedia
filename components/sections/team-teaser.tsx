@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { PiArrowRightBold } from "react-icons/pi";
 import { SlotButton } from "@/components/ui/slot-button";
 
@@ -34,15 +35,21 @@ export function TeamTeaser() {
 
       <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+        {/* Header with smooth entrance */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-16 sm:mb-20"
+        >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
             El <span className="text-emerald-400 font-normal italic">equipo</span>
           </h2>
           <p className="text-emerald-200/80 text-sm sm:text-base md:text-lg font-normal leading-relaxed mt-3">
             Las personas detrás de cada producción, estrategia y línea de código en Ultimate Media Productions.
           </p>
-        </div>
+        </motion.div>
 
         {/* Responsive Grid with SVG Folder Cutouts */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto justify-center">

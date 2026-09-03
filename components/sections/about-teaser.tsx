@@ -44,10 +44,10 @@ export function AboutTeaser() {
           {/* Text Content Column */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8">
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-15px" }}
-              transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="space-y-2"
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.08]">
@@ -60,10 +60,10 @@ export function AboutTeaser() {
 
             <motion.div
               className="space-y-5"
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-15px" }}
-              transition={{ duration: 0.35, delay: 0.08, ease: [0.23, 1, 0.32, 1] }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <p className="text-lg sm:text-xl md:text-2xl text-neutral-950 font-medium leading-snug">
                 Ultimate Media Productions es un estudio creativo nacido en Limón para transformar la forma en que las marcas conectan hoy.
@@ -89,11 +89,11 @@ export function AboutTeaser() {
 
           {/* Clean Architectural Video Showcase Column */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-15px" }}
-            transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-            className="lg:col-span-6"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 will-change-transform"
           >
             <div className="relative aspect-[16/10] sm:aspect-[16/9] rounded-3xl bg-neutral-950 border border-neutral-200/80 shadow-xs overflow-hidden group">
               

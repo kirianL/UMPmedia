@@ -254,12 +254,13 @@
     display: flex;
     width: max-content;
     animation: marquee-scroll 48s linear infinite;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
   }
 
   .animate-marquee-smooth:hover {
     animation-play-state: paused;
   }
-
 }
 
 /* Reduced motion support */
