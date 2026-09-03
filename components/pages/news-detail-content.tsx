@@ -222,16 +222,24 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
         </defs>
       </svg>
 
-      {/* Main Container */}
-      <div className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-20">
+      {/* Main Container with Silky-Smooth Optical Reveal */}
+      <motion.div
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 24, filter: "blur(6px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{
+          duration: 0.85,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-20 will-change-[transform,opacity,filter]"
+      >
         
         {/* Mobile Header Bar (Navigation) */}
         <div className="lg:hidden mb-6">
           <Link
             href="/news"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-500 hover:text-neutral-900 transition-colors py-1 mb-3"
+            className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-500 hover:text-neutral-900 transition-colors py-1 mb-3"
           >
-            <ArrowLeft size={14} /> TODAS LAS NOTICIAS
+            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform duration-300 ease-out" /> TODAS LAS NOTICIAS
           </Link>
         </div>
 
@@ -241,7 +249,12 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
           {/* ═════════════════════════════════════════════════════════
               LEFT COLUMN (Table of Contents & About Card)
               ═════════════════════════════════════════════════════════ */}
-          <aside className="hidden lg:block lg:col-span-3">
+          <motion.aside
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block lg:col-span-3"
+          >
             <div className="sticky top-28 space-y-6">
               
               {/* Standard Brand Info Card */}
@@ -333,21 +346,30 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                 </nav>
               )}
             </div>
-          </aside>
+          </motion.aside>
 
           {/* ═════════════════════════════════════════════════════════
               CENTER COLUMN (Main Standard Article Card)
               ═════════════════════════════════════════════════════════ */}
           <main className="lg:col-span-6">
-            <article className="bg-white border border-neutral-200/80 rounded-2xl p-6 sm:p-10 md:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
+            <motion.article
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.85,
+                delay: 0.08,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="bg-white border border-neutral-200/80 rounded-2xl p-6 sm:p-10 md:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.03)] will-change-[transform,opacity]"
+            >
               
               {/* Desktop Breadcrumb Navigation */}
               <div className="hidden lg:flex items-center mb-6 pb-2 border-b border-neutral-100">
                 <Link
                   href="/news"
-                  className="inline-flex items-center gap-2 text-xs font-bold font-mono uppercase tracking-wider text-neutral-500 hover:text-neutral-950 transition-colors"
+                  className="group inline-flex items-center gap-2 text-xs font-bold font-mono uppercase tracking-wider text-neutral-500 hover:text-neutral-950 transition-colors"
                 >
-                  <ArrowLeft size={13} /> TODAS LAS NOTICIAS
+                  <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform duration-300 ease-out" /> TODAS LAS NOTICIAS
                 </Link>
               </div>
 
@@ -575,13 +597,18 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                   </div>
                 </div>
               </div>
-            </article>
+            </motion.article>
           </main>
 
           {/* ═════════════════════════════════════════════════════════
               RIGHT COLUMN (Authors & Share - Desktop Sticky)
               ═════════════════════════════════════════════════════════ */}
-          <aside className="hidden lg:block lg:col-span-3">
+          <motion.aside
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:block lg:col-span-3"
+          >
             <div className="sticky top-28 space-y-8">
               
               {/* Authors Section (NO slash!) */}
@@ -728,10 +755,10 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                 </div>
               </div>
             </div>
-          </aside>
+          </motion.aside>
 
         </div>
-      </div>
+      </motion.div>
 
       {/* Global CTA Section at bottom */}
       <CTAFinal />
