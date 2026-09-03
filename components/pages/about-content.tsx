@@ -11,7 +11,6 @@ import {
   PiWaveformBold
 } from "react-icons/pi";
 import { CTAFinal } from "@/components/sections/cta-final";
-import { EquipmentShowcase } from "@/components/sections/equipment-showcase";
 import { TextMotion } from "@/components/ui/text-motion";
 import { SlotButton } from "@/components/ui/slot-button";
 
@@ -552,10 +551,7 @@ export function AboutContent() {
         </div>
       </section>
 
-      {/* 6. Technical Equipment Showcase Component */}
-      <EquipmentShowcase />
-
-      {/* 7. Global CTA Section */}
+      {/* Global CTA Section */}
       <CTAFinal />
     </div>
   );
