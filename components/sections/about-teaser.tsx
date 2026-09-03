@@ -1,14 +1,13 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { PiArrowUpRight } from "react-icons/pi";
-import Image from "next/image";
+import { motion } from "framer-motion";
+import { PiArrowRightBold } from "react-icons/pi";
 import { SlotButton } from "@/components/ui/slot-button";
-import { SlotBadge } from "@/components/ui/slot-badge";
 
 export function AboutTeaser() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [videoInView, setVideoInView] = useState(false);
 
   useEffect(() => {
@@ -26,140 +25,126 @@ export function AboutTeaser() {
     return () => observer.disconnect();
   }, []);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y1 = useTransform(scrollYProgress, [0, 1], [-20, 20]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [20, -20]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [-12, 12]);
+  useEffect(() => {
+    if (videoInView && videoRef.current) {
+      videoRef.current.play().catch((err) => {
+        console.warn("Autoplay bypassed:", err);
+      });
+    }
+  }, [videoInView]);
 
   return (
     <section
       ref={containerRef}
-      className="py-16 md:py-32 lg:py-64 bg-ump-alt relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 z-50 border-t border-white/5 shadow-[0_-5px_20px_rgba(0,0,0,0.2)]"
+      className="py-20 sm:py-28 md:py-36 bg-[#f6f6f3] text-neutral-900 relative overflow-hidden z-20"
     >
-      {/* Background Decorative Element */}
-      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-ump-accent/10 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-          {/* Text Content - Left 5 Cols */}
-          <div className="lg:col-span-5 space-y-8 md:space-y-12 order-2 lg:order-1">
+      <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          
+          {/* Text Content Column */}
+          <div className="lg:col-span-6 space-y-6 sm:space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-15px" }}
               transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
+              className="space-y-3"
             >
-              <div className="mb-4">
-                <SlotBadge text="Identidad & Visión" variant="accent" />
-              </div>
-              <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tighter mb-6 lg:mb-8 italic">
-                CULTURA <br />
-                <span className="text-ump-accent not-italic">
-                  CARIBEÑA.
-                </span>{" "}
-                <br />
-                ACABADO <br />
-                <span className="opacity-40">GLOBAL.</span>
+              <span className="text-xs font-mono uppercase tracking-widest text-emerald-600 font-semibold block">
+                Identidad y Visión
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.08]">
+                Cultura caribeña,{" "}
+                <span className="text-emerald-600 font-normal italic block sm:inline">
+                  estándar global
+                </span>
               </h2>
             </motion.div>
 
             <motion.div
-              className="space-y-6"
+              className="space-y-5"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-15px" }}
               transition={{ duration: 0.35, delay: 0.08, ease: [0.23, 1, 0.32, 1] }}
             >
-              <p className="text-lg md:text-xl lg:text-2xl text-white font-medium leading-tight">
-                Ultimate Media Productions no es solo una productora; es un{" "}
-                <span className="border-b-2 border-ump-accent">
-                  manifiesto visual
-                </span>{" "}
-                nacido en Limón.
+              <p className="text-lg sm:text-xl md:text-2xl text-neutral-950 font-medium leading-snug">
+                Ultimate Media Productions es un estudio creativo independiente nacido en Limón para transformar la forma en que se cuenta el Caribe.
               </p>
-              <p className="text-sm md:text-base lg:text-lg text-ump-secondary leading-relaxed max-w-md">
-                Combinamos la energía cruda de nuestras raíces con estándares de
-                producción elite. Si tiene alma, nosotros sabemos cómo filmarla.
+              
+              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal max-w-xl">
+                Combinamos producción audiovisual, contenido digital y tecnología para construir proyectos que conectan con las personas, transmiten identidad y dejan una huella auténtica.
               </p>
 
-              <div className="pt-4">
+              <div className="pt-3">
                 <SlotButton
                   href="/about"
-                  variant="outline"
-                  size="md"
-                  icon={<PiArrowUpRight size={18} />}
+                  variant="primary"
+                  className="rounded-full bg-neutral-950 text-white hover:bg-neutral-800 font-medium text-xs sm:text-sm px-6 py-3 normal-case tracking-tight shadow-xs"
+                  icon={<PiArrowRightBold size={13} />}
                   iconPosition="right"
                 >
-                  Explora nuestra historia
+                  Conoce nuestra historia
                 </SlotButton>
               </div>
             </motion.div>
           </div>
 
-          {/* Photo Mosaic - Right 7 Cols */}
-          <div className="lg:col-span-7 grid grid-cols-3 md:grid-cols-5 gap-3 md:gap-6 order-1 lg:order-2 h-[280px] md:h-[500px] lg:h-[700px] relative">
-            {/* Large Image - Main focus */}
-            <motion.div
-              style={{ y: y1 }}
-              className="col-span-2 md:col-span-3 h-full bg-ump-accent/20 rounded-2xl md:rounded-3xl overflow-hidden relative border border-white/5 group"
-            >
+          {/* Clean Architectural Video Showcase Column */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-15px" }}
+            transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
+            className="lg:col-span-6"
+          >
+            <div className="relative aspect-[16/10] sm:aspect-[16/9] rounded-3xl bg-neutral-950 border border-neutral-200/80 shadow-xs overflow-hidden group">
+              
+              {/* Autoplaying Loop Video 100% clean without words */}
               {videoInView ? (
                 <video
+                  ref={videoRef}
                   src="/assets/videos/Home-detrasdecamaras.webm"
                   autoPlay
                   loop
                   muted
                   playsInline
                   preload="metadata"
-                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                 />
               ) : (
-                <div className="absolute inset-0 bg-neutral-950/20" />
+                <div className="w-full h-full bg-neutral-950" />
               )}
-              <div className="absolute inset-x-0 bottom-0 h-1 bg-ump-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-            </motion.div>
 
-            {/* Top Small Image */}
-            <div className="col-span-1 md:col-span-2 grid grid-rows-2 gap-3 md:gap-6 h-full">
-              <motion.div
-                style={{ y: y2 }}
-                className="bg-ump-card rounded-2xl md:rounded-3xl overflow-hidden relative border border-white/5 group h-full w-full"
+              {/* Modern SVG corner architectural notch */}
+              <svg
+                className="absolute top-4 right-4 w-5 h-5 text-white/40 group-hover:text-emerald-400 pointer-events-none transition-colors duration-300"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <Image
-                  src="/assets/images/Panasonic HC-X1000/Panasonic HC-X1000-detalles.jpeg"
-                  alt="Detalles de la cámara profesional Panasonic HC-X1000"
-                  fill
-                  className="object-cover opacity-60 group-hover:opacity-85 transition-opacity duration-300"
-                  sizes="(max-width: 768px) 100vw, 20vw"
-                />
-                <div className="absolute inset-y-0 left-0 w-1 bg-ump-accent scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300" />
-              </motion.div>
+                <path d="M20 0H8V2H18V12H20V0Z" fill="currentColor" />
+              </svg>
 
-              {/* Bottom Small Image - Solid Green Accent */}
-              <motion.div
-                style={{ y: y3 }}
-                className="bg-ump-accent rounded-2xl md:rounded-3xl p-4 md:p-8 flex flex-col justify-end group overflow-hidden relative"
+              <svg
+                className="absolute bottom-4 left-4 w-5 h-5 text-white/40 group-hover:text-emerald-400 pointer-events-none transition-colors duration-300"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <div className="absolute top-0 right-0 p-4 md:p-8 opacity-20 group-hover:opacity-100 transition-opacity">
-                  <PiArrowUpRight
-                    size={24}
-                    className="md:w-10 md:h-10 text-black"
-                  />
-                </div>
-                <p className="text-black font-black text-sm md:text-3xl leading-none uppercase tracking-tighter">
-                  ESTO ES <br /> UMP.
-                </p>
-                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-              </motion.div>
+                <path d="M0 20H12V18H2V8H0V20Z" fill="currentColor" />
+              </svg>
             </div>
-          </div>
+
+            {/* Subtle caption beneath video */}
+            <div className="flex items-center justify-between pt-3 px-2 text-xs font-mono text-neutral-500">
+              <span>Rodaje en locación</span>
+              <span className="text-emerald-700 font-semibold">Limón, Costa Rica</span>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
   );
 }
-

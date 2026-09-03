@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { PiArrowRightBold } from "react-icons/pi";
 import { SlotButton } from "@/components/ui/slot-button";
 
 const teamMembers = [
   {
     name: "Fabián Acuña",
-    role: "Director General | Manager de Artistas",
+    role: "Director General & Fundador",
     photo: "/assets/images/Team/Fabian_T.png",
     bioLink: "/team",
   },
@@ -20,7 +20,7 @@ const teamMembers = [
   },
   {
     name: "Kirian Luna",
-    role: "Ingeniero en Sistemas y Desarrollador Web",
+    role: "Ingeniero en Sistemas & Desarrollador Web",
     photo: "/assets/images/Team/Kirian_T.png",
     bioLink: "/team",
   },
@@ -28,22 +28,26 @@ const teamMembers = [
 
 export function TeamTeaser() {
   return (
-    <section className="py-20 md:py-32 bg-ump-accent relative z-30 rounded-t-[2.5rem] md:rounded-t-[5rem] -mt-8 md:-mt-12 overflow-hidden border-t border-black/5 shadow-[0_-5px_20px_rgba(0,0,0,0.15)]">
-      <div className="container mx-auto px-6">
-        {/* Centered Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20">
-          <span className="text-white/60 text-xs font-bold uppercase tracking-widest mb-3 block">
-            talento local, impacto global
+    <section className="py-20 sm:py-28 md:py-36 bg-[#032014] text-white relative z-20 overflow-hidden">
+      {/* Subtle emerald bloom */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold mb-3 block">
+            Talento Local, Impacto Global
           </span>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
-            El Equipo
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+            El <span className="text-emerald-400 font-normal italic">equipo</span>
           </h2>
-          <p className="text-white/80 text-base md:text-lg font-medium">
-            Las mentes creativas y técnicas detrás de Ultimate Media Productions. Desde Limón para el mundo.
+          <p className="text-emerald-200/80 text-sm sm:text-base md:text-lg font-normal leading-relaxed mt-3">
+            Las personas detrás de cada producción, estrategia y línea de código en Ultimate Media Productions.
           </p>
         </div>
 
-        {/* Responsive Grid */}
+        {/* Responsive Grid with SVG Folder Cutouts */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto justify-center">
           {teamMembers.map((member) => (
             <Link
@@ -53,7 +57,7 @@ export function TeamTeaser() {
             >
               {/* Folder-shape Clipped Card */}
               <div
-                className="relative aspect-[3/4] bg-[#1a1a1c] transition-all duration-500 group-hover:bg-[#222225] overflow-hidden shadow-xl"
+                className="relative aspect-[3/4] bg-black/40 border border-emerald-900/50 transition-all duration-500 group-hover:bg-black/60 overflow-hidden shadow-xl"
                 style={{ clipPath: "url(#folder-clip)" }}
               >
                 <Image
@@ -65,7 +69,7 @@ export function TeamTeaser() {
                 />
                 {/* SVG Outline Border */}
                 <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none stroke-white/35 group-hover:stroke-white/75 transition-colors duration-500"
+                  className="absolute inset-0 w-full h-full pointer-events-none stroke-white/20 group-hover:stroke-emerald-400/60 transition-colors duration-500"
                   viewBox="0 0 100 100"
                   preserveAspectRatio="none"
                   fill="none"
@@ -78,13 +82,13 @@ export function TeamTeaser() {
                   />
                 </svg>
               </div>
-              
+
               {/* Text Meta */}
               <div className="space-y-1 pl-2">
-                <h3 className="text-white font-bold text-xl transition-colors duration-300 group-hover:text-white/80">
+                <h3 className="text-white font-bold text-xl group-hover:text-emerald-300 transition-colors duration-200">
                   {member.name}
                 </h3>
-                <span className="text-white/60 text-xs uppercase tracking-wider block font-semibold">
+                <span className="text-emerald-200/70 text-xs uppercase tracking-wider block font-semibold">
                   {member.role}
                 </span>
               </div>
@@ -93,18 +97,18 @@ export function TeamTeaser() {
         </div>
 
         {/* Center Bottom CTA */}
-        <div className="mt-16 text-center">
+        <div className="mt-16 sm:mt-20 text-center">
           <SlotButton
             href="/team"
-            variant="outline"
-            size="md"
-            icon={<ArrowRight size={16} />}
+            variant="secondary"
+            className="rounded-full bg-white text-neutral-950 hover:bg-neutral-100 font-medium text-xs sm:text-sm px-6 py-3 normal-case tracking-tight shadow-xs"
+            icon={<PiArrowRightBold size={13} />}
             iconPosition="right"
-            className="border-white/30 text-white hover:bg-white/10 hover:text-white"
           >
-            Ver todo el equipo
+            Conoce a todo el equipo
           </SlotButton>
         </div>
+
       </div>
 
       {/* SVG ClipPath Definition for the Folder Tab Shape */}
@@ -118,4 +122,3 @@ export function TeamTeaser() {
     </section>
   );
 }
-

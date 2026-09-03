@@ -67,9 +67,10 @@ export function CommunityCTA() {
             </Link>
             
             <Link
-              href="https://wa.me/506XXXXXXXX"
+              href="https://wa.me/50670609325"
               target="_blank"
-              className="group flex items-center justify-between p-5 sm:p-6 bg-neutral-950 border border-neutral-950 rounded-2xl hover:bg-neutral-900 active:scale-[0.98] transition-all duration-300 ease-out mt-2"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between p-5 sm:p-6 bg-neutral-950 border border-neutral-950 rounded-2xl hover:bg-neutral-900 active:scale-[0.97] transition-all duration-200 ease-out mt-2 shadow-xs"
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center group-hover:bg-neutral-700 transition-colors duration-300">

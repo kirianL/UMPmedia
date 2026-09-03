@@ -2,112 +2,100 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { PiArrowUpRightBold, PiArrowRightBold } from "react-icons/pi";
 import { SlotButton } from "@/components/ui/slot-button";
 
 interface ProjectItem {
   title: string;
   category: string;
+  description: string;
   video: string;
 }
 
 const PROJECTS: ProjectItem[] = [
   {
     title: "Buscando al dealer",
-    category: "Producción Cinematográfica",
+    category: "Producción Audiovisual",
+    description: "Narrativa visual, dirección de arte y montaje dinámico con estándar internacional.",
     video: "/assets/videos/Presentacion1.webm",
   },
   {
     title: "Estudio UMP",
-    category: "Podcast & Entrevistas",
+    category: "Podcast & Contenido Digital",
+    description: "Espacios de diálogo, entrevistas y piezas serializadas diseñadas para redes.",
     video: "/assets/videos/Podcast .webm",
   },
   {
     title: "Campañas de Marca",
     category: "Publicidad & Comercial",
+    description: "Estrategia audiovisual orientada a posicionar marcas y acelerar conversión.",
     video: "/assets/videos/publicidad1.webm",
   },
   {
-    title: "Eventos y Bodas",
-    category: "Cobertura Premium",
+    title: "Eventos y Experiencias",
+    category: "Cobertura & Documentación",
+    description: "Captura en vivo con ritmo ágil, iluminación cuidada y máxima fidelidad de audio.",
     video: "/assets/videos/Presentacion2.webm",
   },
 ];
 
 export function Showcase() {
   return (
-    <section className="py-24 md:py-36 bg-[#0a0a0a] text-white relative z-20 rounded-t-[2.5rem] md:rounded-t-[4rem] -mt-8 md:-mt-12 border-t border-white/5">
-      <div className="container mx-auto px-6 max-w-6xl">
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12 mb-20 md:mb-28">
-          <div className="max-w-2xl space-y-4">
-            <motion.h2
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-15px" }}
-              transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-              className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight"
-            >
-              Producciones que <br className="hidden sm:block" />
-              <span className="text-ump-accent italic font-normal">dejan huella.</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-15px" }}
-              transition={{ duration: 0.35, delay: 0.06, ease: [0.23, 1, 0.32, 1] }}
-              className="text-ump-secondary text-sm md:text-base leading-relaxed max-w-lg font-light"
-            >
-              Cada proyecto es una oportunidad para contar una historia, conectar con una audiencia y generar resultados reales.
-            </motion.p>
+    <section className="py-20 sm:py-28 md:py-36 bg-[#f6f6f3] text-neutral-900 relative z-20 overflow-hidden">
+      <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        
+        {/* Editorial Header Section */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-14 sm:mb-20">
+          <div className="max-w-2xl space-y-3">
+            <span className="text-xs font-mono uppercase tracking-widest text-emerald-600 font-semibold block">
+              Proyectos Destacados
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.1]">
+              Producciones que{" "}
+              <span className="text-emerald-600 font-normal italic">dejan huella</span>
+            </h2>
+            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-lg font-normal pt-1">
+              Cada proyecto combina visión creativa, técnica avanzada y narrativa auténtica para conectar marcas con sus audiencias.
+            </p>
           </div>
 
-          {/* Action CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-15px" }}
-            transition={{ duration: 0.35, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-            className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto md:self-end"
-          >
+          {/* Action Link Button */}
+          <div className="pt-2 md:pt-0">
             <SlotButton
               href="/portfolio"
-              variant="secondary"
-              size="md"
+              variant="primary"
+              className="rounded-full bg-neutral-950 text-white hover:bg-neutral-800 font-medium text-xs sm:text-sm px-6 py-3 normal-case tracking-tight shadow-xs"
+              icon={<PiArrowRightBold size={13} />}
+              iconPosition="right"
             >
               Ver portafolio completo
             </SlotButton>
-            <SlotButton
-              href="/services"
-              variant="outline"
-              size="md"
-              className="border-white/20 text-white hover:bg-white hover:text-black"
-            >
-              Explorar servicios
-            </SlotButton>
-          </motion.div>
+          </div>
         </div>
 
-        {/* 16:9 Video Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* 2x2 Clean Video Grid without text plastered on top */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
           {PROJECTS.map((project, i) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-15px" }}
-              transition={{ duration: 0.35, delay: i * 0.06, ease: [0.23, 1, 0.32, 1] }}
+              transition={{ duration: 0.35, delay: i * 0.05, ease: [0.23, 1, 0.32, 1] }}
             >
               <ShowcaseVideoCard project={project} />
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// SHOWCASE CARD COMPONENT
+// SHOWCASE CARD COMPONENT (Clean Video + External Metadata in Light Mode)
 // ═════════════════════════════════════════════════════════════════════════════
 function ShowcaseVideoCard({ project }: { project: ProjectItem }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -129,11 +117,10 @@ function ShowcaseVideoCard({ project }: { project: ProjectItem }) {
     return () => observer.disconnect();
   }, []);
 
-  // Programmatically trigger play on layout entrance to bypass desktop browser autoplay restrictions
   useEffect(() => {
     if (isInView && videoRef.current) {
       videoRef.current.play().catch((err) => {
-        console.warn("Autoplay block bypassed or ignored:", err);
+        console.warn("Autoplay bypassed:", err);
       });
     }
   }, [isInView]);
@@ -141,33 +128,77 @@ function ShowcaseVideoCard({ project }: { project: ProjectItem }) {
   return (
     <div
       ref={containerRef}
-      className="group relative w-full aspect-video overflow-hidden rounded-md bg-neutral-900 border border-white/[0.03] shadow-md transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.02] cursor-default"
+      className="group relative flex flex-col rounded-3xl bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-xs hover:shadow-sm transition-all duration-300 overflow-hidden"
     >
-      {/* Autoplaying Loop Muted Widescreen Video */}
-      {isInView ? (
-        <video
-          ref={videoRef}
-          src={project.video}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-95 transition-opacity duration-500"
-        />
-      ) : (
-        <div className="absolute inset-0 bg-neutral-900" />
-      )}
+      {/* Clean, Unobstructed Video Container */}
+      <div className="relative w-full aspect-video overflow-hidden bg-neutral-900">
+        
+        {/* Autoplaying Loop Muted Widescreen Video - 100% clean without words */}
+        {isInView ? (
+          <video
+            ref={videoRef}
+            src={project.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+          />
+        ) : (
+          <div className="w-full h-full bg-neutral-900" />
+        )}
 
-      {/* Clean Interactive Hover Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 select-none pointer-events-none">
-        <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-          <span className="text-ump-accent text-xs font-bold uppercase tracking-wider block mb-1">
+        {/* Top-Right Architectural Corner SVG Bracket */}
+        <svg
+          className="absolute top-3 right-3 w-4 h-4 text-white/40 group-hover:text-emerald-400 pointer-events-none transition-colors duration-300"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M16 0H6V2H14V10H16V0Z" fill="currentColor" />
+        </svg>
+
+        {/* Bottom-Left Architectural Corner SVG Bracket */}
+        <svg
+          className="absolute bottom-3 left-3 w-4 h-4 text-white/40 group-hover:text-emerald-400 pointer-events-none transition-colors duration-300"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 16H10V14H2V6H0V16Z" fill="currentColor" />
+        </svg>
+      </div>
+
+      {/* Structured Editorial Metadata Bar OUTSIDE the Video */}
+      <div className="p-6 sm:p-7 flex flex-col justify-between flex-1 gap-4">
+        <div className="space-y-1.5">
+          <span className="text-xs font-mono uppercase tracking-wider text-emerald-600 font-semibold block">
             {project.category}
           </span>
-          <h4 className="text-lg md:text-xl font-bold text-white tracking-wide uppercase">
+          <h3 className="text-xl sm:text-2xl font-bold text-neutral-950 tracking-tight group-hover:text-emerald-700 transition-colors duration-200">
             {project.title}
-          </h4>
+          </h3>
+          <p className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed pt-1">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Bottom Link indicator */}
+        <div className="pt-3 flex items-center justify-between border-t border-neutral-100">
+          <span className="text-xs font-medium text-neutral-400">
+            Producción UMP
+          </span>
+          <Link
+            href="/portfolio"
+            className="flex items-center gap-1.5 text-xs font-semibold text-neutral-900 group-hover:text-emerald-600 transition-colors"
+          >
+            <span>Ver detalles</span>
+            <PiArrowUpRightBold
+              size={13}
+              className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200"
+            />
+          </Link>
         </div>
       </div>
     </div>
