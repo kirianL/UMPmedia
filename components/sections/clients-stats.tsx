@@ -2,21 +2,33 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
-import { SiYoutube, SiTiktok, SiInstagram } from "react-icons/si";
+import { SiTiktok, SiInstagram } from "react-icons/si";
+import { PiTrendUpBold } from "react-icons/pi";
 
 interface StatItemProps {
   value: number;
   suffix: string;
   label: string;
   subtitle: string;
+  highlight?: string;
   icon: React.ReactNode;
   delay?: number;
+  decimals?: number;
 }
 
-function StatCounter({ value, suffix, label, subtitle, icon, delay = 0 }: StatItemProps) {
+function StatCounter({
+  value,
+  suffix,
+  label,
+  subtitle,
+  highlight,
+  icon,
+  delay = 0,
+  decimals = 0,
+}: StatItemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const [count, setCount] = useState(0);
+  const [displayValue, setDisplayValue] = useState<string>(decimals > 0 ? "0.0" : "0");
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -36,12 +48,19 @@ function StatCounter({ value, suffix, label, subtitle, icon, delay = 0 }: StatIt
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
       const ease = 1 - Math.pow(1 - progress, 3.5);
-      setCount(Math.floor(ease * end));
+      const current = ease * end;
+      
+      if (decimals > 0) {
+        setDisplayValue(current.toFixed(decimals));
+      } else {
+        setDisplayValue(Math.floor(current).toLocaleString());
+      }
+
       if (progress < 1) window.requestAnimationFrame(step);
     };
 
     window.requestAnimationFrame(step);
-  }, [visible, value]);
+  }, [visible, value, decimals]);
 
   return (
     <div
@@ -76,12 +95,19 @@ function StatCounter({ value, suffix, label, subtitle, icon, delay = 0 }: StatIt
       <div className="space-y-1">
         <div className="flex items-baseline gap-1">
           <span className="text-4xl sm:text-5xl font-black text-neutral-950 tabular-nums tracking-tight leading-none">
-            {count.toLocaleString()}
+            {displayValue}
           </span>
           <span className="text-2xl sm:text-3xl font-bold text-emerald-600 leading-none">
             {suffix}
           </span>
         </div>
+
+        {highlight && (
+          <span className="inline-block text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md mt-1 mb-0.5">
+            {highlight}
+          </span>
+        )}
+
         <p className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed pt-1">
           {subtitle}
         </p>
@@ -104,34 +130,38 @@ export function ClientsStats() {
           </div>
 
           <p className="text-neutral-600 text-sm sm:text-base max-w-md font-normal leading-relaxed">
-            Impacto real en las plataformas que mueven la conversación digital. Resultados medibles y audiencias comprometidas.
+            Impacto real en las plataformas que mueven la conversación digital. Métricas de visualización y crecimiento orgánico mensual.
           </p>
         </div>
 
-        {/* Stats Grid with Clean White Cards */}
+        {/* Stats Grid with Real Statistics from Instagram & TikTok */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           <StatCounter
-            value={75}
+            value={585}
             suffix="K+"
-            label="YouTube"
-            subtitle="Suscriptores y reproducciones orgánicas"
-            icon={<SiYoutube size={20} />}
+            label="Instagram"
+            highlight="↗ +3.0K nuevos seguidores"
+            subtitle="585.4K visualizaciones en el último mes de actividad"
+            icon={<SiInstagram size={20} />}
             delay={0}
           />
           <StatCounter
-            value={1}
-            suffix="M+"
+            value={633}
+            suffix="K+"
             label="TikTok"
-            subtitle="Alcance acumulado en visualizaciones"
+            highlight="↑ +274% de crecimiento"
+            subtitle="633.8K reproducciones de video y 35.4K me gusta"
             icon={<SiTiktok size={19} />}
             delay={80}
           />
           <StatCounter
-            value={1}
+            value={1.2}
+            decimals={1}
             suffix="M+"
-            label="Instagram"
-            subtitle="Impresiones y comunidad consolidada"
-            icon={<SiInstagram size={20} />}
+            label="Impacto Total"
+            highlight="En los últimos 28 días"
+            subtitle="Más de 1.2 millones de reproducciones acumuladas"
+            icon={<PiTrendUpBold size={20} />}
             delay={160}
           />
         </div>
