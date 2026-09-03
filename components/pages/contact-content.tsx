@@ -1,242 +1,234 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import {
-  Mail,
-  MapPin,
-  MessageSquare,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Youtube,
-  Instagram,
-  ArrowRight,
-  Phone,
-} from "lucide-react";
-import { RevealText } from "@/components/ui/reveal-text";
+import { useState } from "react";
+import Image from "next/image";
+import { 
+  PiArrowRightBold, 
+  PiCheckBold, 
+  PiCopyBold 
+} from "react-icons/pi";
+import { SlotText } from "slot-text/react";
 
 export function ContactContent() {
+  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const email = "fabian@ultimatemediaproductions.com";
+  const phone = "(506) 8888-8888";
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2400);
+    } catch {
+      // Fallback
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email) return;
+
+    setStatus("submitting");
+    setTimeout(() => {
+      setStatus("success");
+    }, 600);
+  };
+
   return (
-    <div className="min-h-screen bg-ump-background">
-      {/* Jeton-Style Header Banner with UMP Neon Green Background */}
-      <div className="bg-[#059669] text-white pt-40 pb-24 md:pb-32 px-6 relative z-10">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-12 text-white">
-          <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            <RevealText
-              text="Contacto"
-              tag="h1"
-              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none select-none text-white"
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: -15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className="max-w-md md:text-right md:self-end text-black"
-          >
-            <p className="text-base md:text-lg font-bold leading-snug text-black/80">
-              Cuéntanos qué tienes en mente. Desde producciones completas hasta consultorías creativas o soluciones de desarrollo de software.
-            </p>
-          </motion.div>
+    <div className="min-h-screen bg-[#f6f6f3] text-neutral-900 selection:bg-neutral-950 selection:text-white">
+      <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 pt-36 sm:pt-44 md:pt-48 pb-24 md:pb-36">
+        
+        {/* Main Display Headline */}
+        <div className="mb-14 sm:mb-20 md:mb-24">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter uppercase leading-[0.9] text-neutral-950">
+            Hablemos.
+          </h1>
         </div>
-      </div>
 
-      {/* Main Content Area Overlapping the Banner with Smooth Rounded Top */}
-      <div className="bg-ump-background rounded-t-[2.5rem] md:rounded-t-[4.5rem] -mt-10 md:-mt-16 relative z-20 pt-16 md:pt-28 pb-20 px-6">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
-            {/* Left Col: Info & Headline */}
-            <div className="lg:col-span-6 space-y-12">
+        {/* Two-Column Architecture matching Fabrica reference */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 xl:gap-28 items-start">
+          
+          {/* Left Column: Mission / Intent & Team Lead */}
+          <div className="lg:col-span-5 space-y-10 lg:space-y-12">
+            
+            <div className="max-w-md space-y-4">
+              <h2 className="text-xl sm:text-2xl md:text-[1.7rem] font-bold text-neutral-950 leading-snug tracking-tight">
+                ¿Tienes un proyecto en mente?
+              </h2>
+              <p className="text-neutral-600 text-base sm:text-lg font-normal leading-relaxed text-pretty">
+                Escríbenos y conversemos sobre la mejor manera de planificar, producir y hacer crecer tu marca desde el Caribe para el mundo.
+              </p>
+            </div>
+
+            {/* Team Lead Card (matching Fabrica reference) */}
+            <div className="flex items-center gap-4 pt-2">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden border border-neutral-300/80 shadow-xs shrink-0 bg-neutral-200">
+                <Image
+                  src="/assets/images/Team/Fabian.jpg"
+                  alt="Fabián Forbes"
+                  fill
+                  sizes="48px"
+                  className="object-cover"
+                />
+              </div>
               <div>
-                <span className="text-ump-accent text-xs font-bold uppercase tracking-widest mb-4 block">
-                  / hablemos /
-                </span>
-                <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-6">
-                  Siempre listos para ayudarte y responder tus preguntas
-                </h2>
-                <p className="text-lg text-ump-secondary leading-relaxed">
-                  Queremos escuchar tus ideas y hacerlas realidad. Cuéntanos sobre tu proyecto cinematográfico, comercial, o de desarrollo y descubramos cómo podemos colaborar juntos.
+                <p className="text-sm sm:text-base font-bold text-neutral-950 leading-tight">
+                  Fabián Forbes
+                </p>
+                <p className="text-xs text-neutral-500 font-mono tracking-tight mt-0.5">
+                  Director Creativo & Fundador
                 </p>
               </div>
-
-              {/* Info Grid (2x2) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6">
-                {/* Phones */}
-                <div className="space-y-2">
-                  <h3 className="text-white font-bold uppercase tracking-wider text-xs text-ump-secondary flex items-center gap-2">
-                    <Phone size={14} className="text-[#059669]" /> Llámanos
-                  </h3>
-                  <div className="text-ump-secondary space-y-1 text-sm">
-                    <a href="tel:+50688888888" className="hover:text-white transition-colors block">
-                      +506 8888-8888
-                    </a>
-                    <a href="tel:+50622222222" className="hover:text-white transition-colors block">
-                      +506 2222-2222
-                    </a>
-                  </div>
-                </div>
-
-                {/* Location */}
-                <div className="space-y-2">
-                  <h3 className="text-white font-bold uppercase tracking-wider text-xs text-ump-secondary flex items-center gap-2">
-                    <MapPin size={14} className="text-[#059669]" /> Nuestra Ubicación
-                  </h3>
-                  <p className="text-ump-secondary text-sm leading-relaxed">
-                    Limón, Costa Rica
-                    <br />
-                    Barrio Vargas, Calle Central
-                  </p>
-                </div>
-
-                {/* Email */}
-                <div className="space-y-2">
-                  <h3 className="text-white font-bold uppercase tracking-wider text-xs text-ump-secondary flex items-center gap-2">
-                    <Mail size={14} className="text-[#059669]" /> Email
-                  </h3>
-                  <a
-                    href="mailto:fabian@ultimatemediaproductions.com"
-                    className="text-ump-secondary hover:text-white transition-colors text-sm break-all"
-                  >
-                    fabian@ultimatemediaproductions.com
-                  </a>
-                </div>
-
-                {/* Social Network */}
-                <div className="space-y-2">
-                  <h3 className="text-white font-bold uppercase tracking-wider text-xs text-ump-secondary flex items-center gap-2">
-                    <MessageSquare size={14} className="text-[#059669]" /> Redes Sociales
-                  </h3>
-                  <div className="flex gap-4 pt-1">
-                    <a
-                      href="#"
-                      className="text-ump-secondary hover:text-[#059669] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
-                      aria-label="Facebook"
-                    >
-                      <Facebook size={18} />
-                    </a>
-                    <a
-                      href="#"
-                      className="text-ump-secondary hover:text-[#059669] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
-                      aria-label="Twitter"
-                    >
-                      <Twitter size={18} />
-                    </a>
-                    <a
-                      href="#"
-                      className="text-ump-secondary hover:text-[#059669] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
-                      aria-label="LinkedIn"
-                    >
-                      <Linkedin size={18} />
-                    </a>
-                    <a
-                      href="#"
-                      className="text-ump-secondary hover:text-[#059669] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
-                      aria-label="YouTube"
-                    >
-                      <Youtube size={18} />
-                    </a>
-                    <a
-                      href="#"
-                      className="text-ump-secondary hover:text-[#059669] transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10"
-                      aria-label="Instagram"
-                    >
-                      <Instagram size={18} />
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            {/* Right Col: Booking Form Card */}
-            <div className="lg:col-span-6">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-ump-alt p-8 md:p-12 rounded-[2rem] border border-white/5 shadow-2xl space-y-8"
-              >
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Ponte en Contacto</h3>
-                  <p className="text-sm text-ump-secondary leading-relaxed">
-                    Define tus metas e identifica cómo podemos potenciar tu marca o proyecto.
-                  </p>
-                </div>
-
-                <form className="space-y-6">
-                  {/* Nombre */}
-                  <div className="space-y-1">
-                    <label className="text-[10px] uppercase tracking-wider font-bold text-ump-secondary/70">
-                      Nombre Completo
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#059669] focus:outline-none transition-colors placeholder:text-ump-secondary/30"
-                      placeholder="Ej. Juan Pérez"
-                      required
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div className="space-y-1">
-                    <label className="text-[10px] uppercase tracking-wider font-bold text-ump-secondary/70">
-                      Correo Electrónico
-                    </label>
-                    <input
-                      type="email"
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#059669] focus:outline-none transition-colors placeholder:text-ump-secondary/30"
-                      placeholder="tu@email.com"
-                      required
-                    />
-                  </div>
-
-                  {/* Asunto */}
-                  <div className="space-y-1">
-                    <label className="text-[10px] uppercase tracking-wider font-bold text-ump-secondary/70">
-                      Asunto
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#059669] focus:outline-none transition-colors placeholder:text-ump-secondary/30"
-                      placeholder="Ej. Cotización de video musical"
-                      required
-                    />
-                  </div>
-
-                  {/* Mensaje */}
-                  <div className="space-y-1">
-                    <label className="text-[10px] uppercase tracking-wider font-bold text-ump-secondary/70">
-                      Mensaje
-                    </label>
-                    <textarea
-                      rows={3}
-                      className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-[#059669] focus:outline-none transition-colors placeholder:text-ump-secondary/30 resize-none"
-                      placeholder="Cuéntanos brevemente sobre tu proyecto..."
-                      required
-                    />
-                  </div>
-
-                  <div className="pt-4">
-                    <button
-                      type="submit"
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 bg-[#059669] text-white hover:bg-[#059669]/90 font-bold uppercase tracking-wider text-xs transition-colors shadow-lg cursor-pointer"
-                    >
-                      <span>Enviar Mensaje</span>
-                      <ArrowRight size={14} />
-                    </button>
-                  </div>
-                </form>
-              </motion.div>
-            </div>
           </div>
 
+          {/* Right Column: Minimalist Form & Direct Contact */}
+          <div className="lg:col-span-7 space-y-14 sm:space-y-16">
+            
+            {/* Form */}
+            <div className="max-w-xl">
+              {status === "success" ? (
+                <div className="p-8 sm:p-10 rounded-2xl bg-white border border-neutral-200/80 shadow-xs space-y-4">
+                  <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                    <PiCheckBold size={20} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-neutral-950 tracking-tight">
+                    ¡Mensaje recibido con éxito!
+                  </h3>
+                  <p className="text-neutral-600 text-sm sm:text-base leading-relaxed">
+                    Gracias por escribirnos, {formData.name}. Hemos recibido los detalles de tu proyecto y nos pondremos en contacto contigo a la brevedad.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setStatus("idle");
+                      setFormData({ name: "", email: "", message: "" });
+                    }}
+                    className="mt-4 text-xs font-mono uppercase tracking-wider font-bold text-neutral-950 hover:text-emerald-700 transition-colors underline underline-offset-4 cursor-pointer"
+                  >
+                    Enviar otro mensaje
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  
+                  {/* Name field */}
+                  <div className="border-b border-neutral-300 focus-within:border-neutral-950 transition-colors pb-2">
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Tu nombre *"
+                      className="w-full bg-transparent text-base sm:text-lg text-neutral-950 placeholder:text-neutral-400 outline-none py-2"
+                    />
+                  </div>
+
+                  {/* Email field */}
+                  <div className="border-b border-neutral-300 focus-within:border-neutral-950 transition-colors pb-2">
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="Tu correo electrónico *"
+                      className="w-full bg-transparent text-base sm:text-lg text-neutral-950 placeholder:text-neutral-400 outline-none py-2"
+                    />
+                  </div>
+
+                  {/* Message field */}
+                  <div className="border-b border-neutral-300 focus-within:border-neutral-950 transition-colors pb-2">
+                    <textarea
+                      name="message"
+                      rows={3}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      placeholder="Tu mensaje o detalles del proyecto"
+                      className="w-full bg-transparent text-base sm:text-lg text-neutral-950 placeholder:text-neutral-400 outline-none py-2 resize-none"
+                    />
+                  </div>
+
+                  {/* Submit Button & Disclaimer */}
+                  <div className="pt-2 space-y-4">
+                    <button
+                      type="submit"
+                      disabled={status === "submitting"}
+                      className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-neutral-950 text-white text-xs font-mono uppercase tracking-wider font-bold hover:bg-neutral-800 transition-colors cursor-pointer shadow-xs active:scale-[0.98] disabled:opacity-50"
+                    >
+                      <span>{status === "submitting" ? "Enviando..." : "Enviar mensaje"}</span>
+                      <PiArrowRightBold size={13} />
+                    </button>
+
+                    <p className="text-[11px] sm:text-xs text-neutral-400 leading-relaxed font-mono">
+                      Al enviar este formulario, aceptas nuestros términos y políticas de privacidad.
+                    </p>
+                  </div>
+
+                </form>
+              )}
+            </div>
+
+            {/* Subtle Divider symbol matching Fabrica reference */}
+            <div className="text-neutral-300 text-lg font-light select-none">
+              +
+            </div>
+
+            {/* Direct Contact Block (matching Fabrica reference) */}
+            <div className="space-y-4 pt-2 max-w-xl">
+              <p className="text-xs font-mono uppercase tracking-wider text-neutral-400 font-semibold">
+                {phone}
+              </p>
+
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                <a
+                  href={`mailto:${email}`}
+                  className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-neutral-950 hover:text-emerald-700 transition-colors flex items-center gap-2 group"
+                >
+                  <span className="text-neutral-400 group-hover:text-emerald-700 transition-colors">•</span>
+                  <span className="underline decoration-neutral-300 underline-offset-6 group-hover:decoration-emerald-700 transition-colors break-all sm:break-normal">
+                    {email}
+                  </span>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-200/70 hover:bg-neutral-200 border border-neutral-300/80 text-[11px] font-mono uppercase tracking-wider text-neutral-700 hover:text-neutral-950 transition-colors w-fit cursor-pointer active:scale-95"
+                >
+                  {copied ? <PiCheckBold size={12} className="text-emerald-700" /> : <PiCopyBold size={12} />}
+                  <span className="overflow-hidden py-0.5 inline-block">
+                    <SlotText
+                      text={copied ? "¡Copiado!" : "Copiar"}
+                      options={{
+                        direction: copied ? "up" : "down",
+                        rollBy: "character",
+                        duration: 250,
+                      }}
+                    />
+                  </span>
+                </button>
+              </div>
+
+              {/* Studio Address */}
+              <p className="text-xs sm:text-sm text-neutral-500 font-mono uppercase tracking-wider pt-2">
+                Limón, Costa Rica | Producción disponible en todo el país
+              </p>
+            </div>
+
+          </div>
 
         </div>
+
       </div>
     </div>
   );

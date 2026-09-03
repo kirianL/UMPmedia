@@ -374,19 +374,16 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                 </h1>
               </div>
 
-              {/* Featured Image with Silky Optical Settle & Zero Layout Shift */}
+              {/* Featured Image with Silky Optical Focus Transition & Zero Layout Shift */}
               <div className="relative mb-8 sm:mb-10 overflow-hidden rounded-2xl border border-neutral-200/80 bg-neutral-100 shadow-[0_8px_30px_rgba(0,0,0,0.03)]">
                 <motion.div
-                  initial={shouldReduceMotion ? false : { scale: 1.04, opacity: 0.85 }}
-                  animate={{ scale: 1, opacity: 1 }}
+                  initial={shouldReduceMotion ? false : { scale: 1.02, filter: "blur(2px)", opacity: 0.95 }}
+                  animate={{ scale: 1, filter: "blur(0px)", opacity: 1 }}
                   transition={{
-                    duration: 0.7,
-                    ease: [0.23, 1, 0.32, 1],
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1],
                   }}
-                  style={{
-                    filter: "url(#scroll-motion-blur)",
-                  }}
-                  className="relative w-full aspect-[16/10] sm:aspect-[16/9] will-change-transform"
+                  className="relative w-full aspect-[16/10] sm:aspect-[16/9] will-change-[transform,filter]"
                 >
                   <Image
                     src={article.image}

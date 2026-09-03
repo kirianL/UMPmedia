@@ -98,4 +98,30 @@ export const newsArticles: NewsItem[] = [
       <p class="mb-6 text-base md:text-lg text-ump-secondary leading-relaxed">Representar a nuestra provincia es una gran responsabilidad y orgullo. Seguiremos trabajando para proyectar la identidad de Limón hacia escenarios artísticos y culturales nacionales e internacionales.</p>
     `,
   },
+  {
+    title: "Flujo de Color ACES y Postproducción Cinematográfica",
+    date: "May 18, 2024",
+    excerpt:
+      "Cómo estandarizamos la gestión de color con DaVinci Resolve y espacios cromáticos amplios para producciones comerciales y documentales.",
+    slug: "flujo-color-aces-davinci",
+    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=800&auto=format&fit=crop",
+    category: "Producción",
+    content: `
+      <p class="mb-6 text-lg md:text-xl text-neutral-700 leading-relaxed font-light">En Ultimate Media Productions elevamos el estándar de postproducción integrando flujos de trabajo basados en ACES (Academy Color Encoding System) para todas nuestras entregas cinematográficas y comerciales.</p>
+      <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">Esta metodología nos permite conservar todo el rango dinámico capturado por nuestros sensores, garantizando fidelidad de color y consistencia visual entre diferentes cámaras y condiciones de iluminación del Caribe.</p>
+    `,
+  },
+  {
+    title: "Inauguración de nuestro nuevo Set de Podcast y Streaming",
+    date: "Abr 10, 2024",
+    excerpt:
+      "Un espacio acústicamente acondicionado con cámaras 4K y consolas broadcast para que marcas y creadores conecten con sus audiencias.",
+    slug: "nuevo-set-podcast-streaming",
+    image: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=800&auto=format&fit=crop",
+    category: "Institucional",
+    content: `
+      <p class="mb-6 text-lg md:text-xl text-neutral-700 leading-relaxed font-light">Abrimos las puertas a nuestro nuevo estudio dedicado a la grabación y transmisión en directo de podcasts, entrevistas y conferencias en Limón.</p>
+      <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">Equipado con microfonía Shure de referencia, conmutación multicanal en tiempo real e iluminación suave de alta precisión cromática, el set ofrece a empresas e instituciones la infraestructura ideal para producir contenido de primer nivel.</p>
+    `,
+  },
 ];
