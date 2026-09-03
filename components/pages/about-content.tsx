@@ -31,7 +31,7 @@ export function AboutContent() {
     <div className="min-h-screen bg-[#f6f6f3] text-neutral-900 selection:bg-neutral-950 selection:text-white">
       
       {/* 1. Header Section matching Fabrica Studio reference */}
-      <section className="pt-36 sm:pt-44 md:pt-48 pb-12 sm:pb-16 border-b border-neutral-200/60">
+      <section className="pt-36 sm:pt-44 md:pt-48 pb-12 sm:pb-16">
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
           
           {/* Main Giant Display Headline with Masked Text Motion Reveal */}
@@ -129,7 +129,7 @@ export function AboutContent() {
       </section>
 
       {/* 3. Deep Narrative & Team Section */}
-      <section className="py-16 sm:py-24 border-b border-neutral-200/60">
+      <section className="py-16 sm:py-24">
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
@@ -223,7 +223,7 @@ export function AboutContent() {
       </section>
 
       {/* 4. Metric Stats Row with Scroll Text Motion */}
-      <section className="py-14 sm:py-20 border-b border-neutral-200/60">
+      <section className="py-14 sm:py-20">
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
@@ -366,7 +366,7 @@ export function AboutContent() {
       </section>
 
       {/* 6. Our Clients (2016–25©) Section matching Fabrica Studio reference */}
-      <section className="py-16 sm:py-24 border-b border-neutral-200/60">
+      <section className="py-16 sm:py-24">
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
@@ -433,7 +433,7 @@ export function AboutContent() {
       </section>
 
       {/* 5. Caribbean Roots & Technical Principles with Scroll Motion */}
-      <section className="pb-16 sm:pb-24">
+      <section className="py-16 sm:py-24">
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
           
           <motion.div
