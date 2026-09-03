@@ -322,8 +322,11 @@ export function AboutContent() {
               {/* Left Column (Desktop): Statement, Subtext & Desktop CTA */}
               <div className="lg:col-span-7 space-y-6 sm:space-y-7">
                 
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
-                  Hechos en Limón. Creados para el mundo.
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-[1.15]">
+                  Hechos en Limón,{" "}
+                  <span className="text-emerald-300 font-normal italic block sm:inline">
+                    creados para el mundo
+                  </span>
                 </h2>
 
                 <TextMotion
