@@ -135,7 +135,7 @@ export function AboutContent() {
               className="md:col-span-4 lg:col-span-4 md:pt-1"
             >
               <p className="text-xs sm:text-sm text-neutral-400 font-normal leading-relaxed">
-                De Limón para el mundo. Proyectos auténticos construidos con visión, técnica cinematográfica y propósito estratégico.
+                Proyectos auténticos construidos con visión, técnica cinematográfica y propósito estratégico.
               </p>
             </motion.div>
 
@@ -238,22 +238,23 @@ export function AboutContent() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-neutral-200/70 shadow-xs hover:border-neutral-300 transition-colors"
+                    className="flex items-center gap-4 p-3.5 sm:p-4 rounded-2xl bg-white border border-neutral-200/80 shadow-xs hover:border-neutral-300 transition-all hover:scale-[1.01]"
                   >
-                    <div className="relative w-12 h-12 rounded-full overflow-hidden border border-neutral-200 shrink-0 bg-neutral-100">
+                    {/* Rounded Square Frame (No circle cropping) */}
+                    <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-neutral-200/80 shrink-0 bg-neutral-100 shadow-2xs">
                       <Image
                         src={member.image}
                         alt={member.name}
                         fill
-                        sizes="48px"
-                        className="object-cover"
+                        sizes="(max-width: 640px) 64px, 80px"
+                        className="object-cover object-top"
                       />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-neutral-950 leading-tight">
+                      <h4 className="text-base sm:text-lg font-bold text-neutral-950 leading-tight">
                         {member.name}
                       </h4>
-                      <p className="text-xs font-mono text-neutral-500 mt-0.5">
+                      <p className="text-xs sm:text-sm font-mono text-neutral-500 mt-1">
                         {member.role}
                       </p>
                     </div>
@@ -320,10 +321,6 @@ export function AboutContent() {
               {/* Left Column: Statement, Subtext & CTA Pill with TextMotion */}
               <div className="lg:col-span-7 space-y-6">
                 
-                <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold block">
-                  De Limón para el mundo.
-                </span>
-
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
                   Hechos en Limón. Creados para el mundo.
                 </h2>
@@ -403,6 +400,73 @@ export function AboutContent() {
                 </motion.div>
               </motion.div>
 
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* 6. Our Clients (2016–25©) Section matching Fabrica Studio reference */}
+      <section className="py-16 sm:py-24 border-b border-neutral-200/60">
+        <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+            
+            {/* Left Column: Heading & Year tag */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-4 flex items-baseline gap-3"
+            >
+              <span className="text-xs font-mono uppercase tracking-wider text-neutral-500 font-semibold select-none">
+                Our clients
+              </span>
+              <span className="text-xs font-mono text-neutral-400">
+                (2016–25©)
+              </span>
+            </motion.div>
+
+            {/* Right Column: 3x2 Grid of White Rounded Cards */}
+            <div className="lg:col-span-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+                {[
+                  { name: "DN Express", src: "/assets/LogosHero/DnExpress.png" },
+                  { name: "Grupo Caribeños", src: "/assets/LogosHero/Caribenos.png", invertDark: true },
+                  { name: "Bufete Morgan JM", src: "/assets/LogosHero/JM.png" },
+                  { name: "Sazón Colombiano", src: "/assets/LogosHero/SazonColombiano.png" },
+                  { name: "Dra. Jeinnel Newball", src: "/assets/LogosHero/Newball.png" },
+                  { name: "Soda El Patty", src: "/assets/LogosHero/SodaElpatty.png" },
+                ].map((client, i) => (
+                  <motion.div
+                    key={client.name}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{
+                      duration: 0.6,
+                      delay: i * 0.08,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="bg-white rounded-3xl p-6 sm:p-8 border border-neutral-200/80 shadow-xs flex items-center justify-center min-h-[180px] sm:min-h-[220px]"
+                  >
+                    {/* Logo in Full Original Color, perfectly centered, no hover animation */}
+                    <div className="w-full h-24 sm:h-28 flex items-center justify-center">
+                      <Image
+                        src={client.src}
+                        alt={client.name}
+                        width={260}
+                        height={96}
+                        className={`max-h-20 sm:max-h-24 max-w-[190px] sm:max-w-[230px] w-auto h-auto object-contain ${
+                          client.invertDark ? "brightness-0" : ""
+                        }`}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
 
           </div>

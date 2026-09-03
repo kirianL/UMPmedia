@@ -15,7 +15,7 @@ export const newsArticles: NewsItem[] = [
     excerpt:
       "La Ministra de Economía, Industria y Comercio (MEIC) visitó las instalaciones de Ultimate Media Productions en Limón para respaldar el modelo de negocio, la innovación audiovisual y el crecimiento de las PYMES creativas en la región.",
     slug: "visita-ministerial-desarrollo-ump",
-    image: "/assets/images/Ministra.png",
+    image: "/assets/Ministra.jpeg",
     category: "Institucional",
     content: `
       <p class="mb-6 text-lg md:text-xl text-neutral-700 leading-relaxed font-light">La visita de la Ministra de Economía, Industria y Comercio (MEIC) a las instalaciones de Ultimate Media Productions (UMP) en Limón representó un respaldo institucional decisivo para el florecimiento del emprendimiento joven y la economía creativa en la provincia caribeña.</p>
