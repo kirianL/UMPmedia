@@ -73,9 +73,6 @@ export function WhyUMP() {
         
         {/* Header without black background or badges */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-600 font-semibold block mb-3">
-            Propuesta de Valor
-          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.1]">
             ¿Por qué <span className="text-emerald-600 font-normal italic">elegir UMP?</span>
           </h2>

@@ -48,11 +48,8 @@ export function AboutTeaser() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-15px" }}
               transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-              className="space-y-3"
+              className="space-y-2"
             >
-              <span className="text-xs font-mono uppercase tracking-widest text-emerald-600 font-semibold block">
-                Identidad y Visión
-              </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.08]">
                 Cultura caribeña,{" "}
                 <span className="text-emerald-600 font-normal italic block sm:inline">

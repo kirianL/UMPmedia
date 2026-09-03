@@ -97,10 +97,7 @@ export function ClientsStats() {
         
         {/* Header without black background or badges */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
-          <div className="space-y-3 max-w-2xl">
-            <span className="text-xs font-mono uppercase tracking-widest text-emerald-600 font-semibold block">
-              Comunidad y Audiencia
-            </span>
+          <div className="max-w-2xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.1]">
               Nuestro <span className="text-emerald-600 font-normal italic">alcance</span>
             </h2>

@@ -36,9 +36,6 @@ export function TeamTeaser() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold mb-3 block">
-            Talento Local, Impacto Global
-          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
             El <span className="text-emerald-400 font-normal italic">equipo</span>
           </h2>

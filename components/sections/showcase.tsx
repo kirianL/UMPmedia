@@ -47,10 +47,7 @@ export function Showcase() {
         
         {/* Editorial Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-14 sm:mb-20">
-          <div className="max-w-2xl space-y-3">
-            <span className="text-xs font-mono uppercase tracking-widest text-emerald-600 font-semibold block">
-              Proyectos Destacados
-            </span>
+          <div className="max-w-2xl space-y-2">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.1]">
               Producciones que{" "}
               <span className="text-emerald-600 font-normal italic">dejan huella</span>
