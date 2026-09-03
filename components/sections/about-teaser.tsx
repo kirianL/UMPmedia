@@ -31,9 +31,9 @@ export function AboutTeaser() {
     offset: ["start end", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [-20, 20]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [-12, 12]);
 
   return (
     <section
@@ -48,9 +48,9 @@ export function AboutTeaser() {
           {/* Text Content - Left 5 Cols */}
           <div className="lg:col-span-5 space-y-8 md:space-y-12 order-2 lg:order-1">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-15px" }}
               transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
             >
               <div className="mb-4">
@@ -69,10 +69,10 @@ export function AboutTeaser() {
 
             <motion.div
               className="space-y-6"
-              initial={{ opacity: 0, transform: "translate3d(-16px, 0, 0)" }}
-              whileInView={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-15px" }}
+              transition={{ duration: 0.35, delay: 0.08, ease: [0.23, 1, 0.32, 1] }}
             >
               <p className="text-lg md:text-xl lg:text-2xl text-white font-medium leading-tight">
                 Ultimate Media Productions no es solo una productora; es un{" "}

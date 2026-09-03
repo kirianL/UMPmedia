@@ -245,10 +245,10 @@ export function LaFamily() {
 
       {/* Galería de imágenes (Todas horizontales aspect-video) */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, margin: "-15px" }}
+        transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
         className="mt-24 pt-16 border-t border-white/5"
       >
         <div className="mb-12">
@@ -264,10 +264,10 @@ export function LaFamily() {
           {galleryImages.map((image, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+              viewport={{ once: true, margin: "-15px" }}
+              transition={{ duration: 0.35, delay: i * 0.04, ease: [0.23, 1, 0.32, 1] }}
               className="aspect-[3/4] rounded-xl overflow-hidden relative bg-neutral-900 border border-white/5 shadow-md"
             >
               <Image

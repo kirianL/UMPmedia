@@ -15,14 +15,14 @@ import { EquipmentShowcase } from "@/components/sections/equipment-showcase";
 import { TextMotion } from "@/components/ui/text-motion";
 
 const fadeUpVariants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 14 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.75,
-      delay: i * 0.12,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.45,
+      delay: i * 0.05,
+      ease: [0.23, 1, 0.32, 1] as const,
     },
   }),
 };
@@ -38,11 +38,11 @@ export function AboutContent() {
           {/* Main Giant Display Headline with Masked Text Motion Reveal */}
           <div className="overflow-hidden mb-12 sm:mb-16">
             <motion.h1
-              initial={{ y: "105%", opacity: 0 }}
+              initial={{ y: 16, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
-                duration: 0.85,
-                ease: [0.16, 1, 0.3, 1],
+                duration: 0.5,
+                ease: [0.23, 1, 0.32, 1],
               }}
               className="text-6xl sm:text-7xl md:text-8xl lg:text-[7.2rem] font-bold tracking-tight text-neutral-950 block"
             >
@@ -55,9 +55,9 @@ export function AboutContent() {
             
             {/* Left Col: Category label */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.35, delay: 0.05, ease: [0.23, 1, 0.32, 1] }}
               className="md:col-span-2 flex items-center"
             >
               <span className="text-xs font-mono uppercase tracking-wider text-neutral-500 font-semibold select-none">
@@ -67,9 +67,9 @@ export function AboutContent() {
 
             {/* Center Col: Two-tone bold statement + Vision Copy */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.4, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
               className="md:col-span-6 lg:col-span-6 space-y-4"
             >
               <p className="text-xl sm:text-2xl md:text-[1.65rem] font-normal leading-snug tracking-tight text-neutral-500">
@@ -129,9 +129,9 @@ export function AboutContent() {
 
             {/* Right Col: Light context description */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.35, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
               className="md:col-span-4 lg:col-span-4 md:pt-1"
             >
               <p className="text-xs sm:text-sm text-neutral-400 font-normal leading-relaxed">
@@ -143,12 +143,12 @@ export function AboutContent() {
 
           {/* 2. Large Hero Banner Photo */}
           <motion.div
-            initial={{ opacity: 0, y: 28, scale: 0.98 }}
+            initial={{ opacity: 0, y: 14, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
-              duration: 0.8,
-              delay: 0.35,
-              ease: [0.16, 1, 0.3, 1],
+              duration: 0.45,
+              delay: 0.2,
+              ease: [0.23, 1, 0.32, 1],
             }}
             className="w-full aspect-[16/9] sm:aspect-[21/9] md:aspect-[2.3/1] rounded-3xl md:rounded-[2.5rem] overflow-hidden relative shadow-xs bg-neutral-900 border border-neutral-200/80"
           >
@@ -183,10 +183,10 @@ export function AboutContent() {
             
             {/* Story Column */}
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "-15px" }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
               className="lg:col-span-7 space-y-6"
             >
               <span className="text-xs font-mono uppercase tracking-widest text-neutral-400 font-semibold block">
@@ -204,10 +204,10 @@ export function AboutContent() {
 
             {/* Team Column: Fabián Forbes, Kirian, Eymar */}
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "-15px" }}
+              transition={{ duration: 0.4, delay: 0.08, ease: [0.23, 1, 0.32, 1] }}
               className="lg:col-span-5 space-y-4"
             >
               <span className="text-xs font-mono uppercase tracking-widest text-neutral-400 font-semibold block mb-2">
@@ -234,11 +234,11 @@ export function AboutContent() {
                 ].map((member, i) => (
                   <motion.div
                     key={member.name}
-                    initial={{ opacity: 0, x: 16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex items-center gap-4 p-3.5 sm:p-4 rounded-2xl bg-white border border-neutral-200/80 shadow-xs hover:border-neutral-300 transition-all hover:scale-[1.01]"
+                    transition={{ duration: 0.35, delay: i * 0.06, ease: [0.23, 1, 0.32, 1] }}
+                    className="flex items-center gap-4 p-3.5 sm:p-4 rounded-2xl bg-white border border-neutral-200/80 shadow-xs hover:border-neutral-300 transition-[border-color,box-shadow] duration-200"
                   >
                     {/* Rounded Square Frame (No circle cropping) */}
                     <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-neutral-200/80 shrink-0 bg-neutral-100 shadow-2xs">
@@ -283,13 +283,13 @@ export function AboutContent() {
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
+                viewport={{ once: true, margin: "-15px" }}
                 transition={{
-                  duration: 0.65,
-                  delay: i * 0.1,
-                  ease: [0.16, 1, 0.3, 1],
+                  duration: 0.38,
+                  delay: i * 0.05,
+                  ease: [0.23, 1, 0.32, 1],
                 }}
                 className="space-y-2"
               >
@@ -331,27 +331,27 @@ export function AboutContent() {
                   highlightClass="font-bold text-white"
                   normalClass="text-emerald-200/80"
                   className="text-lg sm:text-xl md:text-2xl font-normal leading-relaxed tracking-tight"
-                  stagger={0.024}
-                  delay={0.1}
+                  stagger={0.015}
+                  delay={0.05}
                 />
 
                 <motion.div
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.6, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                  viewport={{ once: true, margin: "-15px" }}
+                  transition={{ duration: 0.35, delay: 0.25, ease: [0.23, 1, 0.32, 1] }}
                   className="pt-2"
                 >
                   <Link
                     href="/portfolio"
-                    className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-white text-neutral-950 text-xs font-mono uppercase tracking-wider font-bold hover:bg-emerald-50 transition-all duration-300 shadow-xs hover:shadow-[0_10px_30px_rgba(255,255,255,0.2)] hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
+                    className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-white text-neutral-950 text-xs font-mono uppercase tracking-wider font-bold hover:bg-emerald-50 transition-all duration-200 shadow-xs hover:scale-[1.02] active:scale-[0.97] cursor-pointer"
                   >
                     {/* Dual Text Roll on Hover */}
                     <span className="relative overflow-hidden inline-flex h-[18px] leading-none">
-                      <span className="inline-block transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                      <span className="inline-block transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:-translate-y-full">
                         Ver Portafolio
                       </span>
-                      <span className="absolute inset-0 translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 text-emerald-950">
+                      <span className="absolute inset-0 translate-y-full transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0 text-emerald-950">
                         Ver Portafolio
                       </span>
                     </span>
@@ -360,11 +360,11 @@ export function AboutContent() {
                     <span className="relative inline-flex w-3.5 h-3.5 overflow-hidden shrink-0">
                       <PiArrowRightBold
                         size={13}
-                        className="absolute inset-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-3.5"
+                        className="absolute inset-0 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-3.5"
                       />
                       <PiArrowRightBold
                         size={13}
-                        className="absolute inset-0 -translate-x-3.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0 text-emerald-950"
+                        className="absolute inset-0 -translate-x-3.5 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0 text-emerald-950"
                       />
                     </span>
                   </Link>
@@ -373,23 +373,13 @@ export function AboutContent() {
 
               {/* Right Column: Costa Rica Map with Limón highlighted */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.94 }}
+                initial={{ opacity: 0, scale: 0.96 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true, margin: "-15px" }}
+                transition={{ duration: 0.45, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
                 className="lg:col-span-5 flex items-center justify-center"
               >
-                <motion.div
-                  animate={{
-                    y: [0, -10, 0],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="relative w-full max-w-[420px] aspect-[4/3] select-none"
-                >
+                <div className="relative w-full max-w-[420px] aspect-[4/3] select-none">
                   <Image
                     src="/assets/images/CostaRica-map.PNG"
                     alt="Mapa de Costa Rica con Limón destacado en verde"
@@ -397,7 +387,7 @@ export function AboutContent() {
                     sizes="(max-width: 1024px) 100vw, 420px"
                     className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
                   />
-                </motion.div>
+                </div>
               </motion.div>
 
             </div>
@@ -415,10 +405,10 @@ export function AboutContent() {
             
             {/* Left Column: Heading & Year tag */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "-15px" }}
+              transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
               className="lg:col-span-4 flex items-baseline gap-3"
             >
               <span className="text-xs font-mono uppercase tracking-wider text-neutral-500 font-semibold select-none">
@@ -442,13 +432,13 @@ export function AboutContent() {
                 ].map((client, i) => (
                   <motion.div
                     key={client.name}
-                    initial={{ opacity: 0, y: 24 }}
+                    initial={{ opacity: 0, y: 12 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-40px" }}
+                    viewport={{ once: true, margin: "-15px" }}
                     transition={{
-                      duration: 0.6,
-                      delay: i * 0.08,
-                      ease: [0.16, 1, 0.3, 1],
+                      duration: 0.35,
+                      delay: i * 0.04,
+                      ease: [0.23, 1, 0.32, 1],
                     }}
                     className="bg-white rounded-3xl p-6 sm:p-8 border border-neutral-200/80 shadow-xs flex items-center justify-center min-h-[180px] sm:min-h-[220px]"
                   >
@@ -479,10 +469,10 @@ export function AboutContent() {
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
           
           <motion.div
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-15px" }}
+            transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
             className="mb-10 sm:mb-12"
           >
             <span className="text-xs font-mono uppercase tracking-widest text-neutral-400 font-semibold block mb-2">
@@ -516,13 +506,13 @@ export function AboutContent() {
               return (
                 <motion.div
                   key={principle.title}
-                  initial={{ opacity: 0, y: 32 }}
+                  initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
+                  viewport={{ once: true, margin: "-15px" }}
                   transition={{
-                    duration: 0.7,
-                    delay: i * 0.12,
-                    ease: [0.16, 1, 0.3, 1],
+                    duration: 0.35,
+                    delay: i * 0.05,
+                    ease: [0.23, 1, 0.32, 1],
                   }}
                   className="p-8 sm:p-10 rounded-3xl bg-white border border-neutral-200/80 shadow-xs flex flex-col justify-between space-y-6"
                 >

@@ -29,14 +29,14 @@ export function SmoothScrollProvider({
     if (prefersReducedMotion) return;
 
     const lenis = new Lenis({
-      duration: 1.0,
+      duration: 1.05,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.2,
-      autoRaf: true, // Use Lenis internal RAF to prevent dropped frames
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.0,
+      autoRaf: true,
     });
 
     lenisRef.current = lenis;
@@ -48,13 +48,24 @@ export function SmoothScrollProvider({
     };
   }, []);
 
-  // On page navigation: smoothly reset scroll to top immediately without freezing
+  // On page navigation: seamlessly reset scroll to top immediately without freezing or jumping
   useEffect(() => {
     if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate: true });
-      lenisRef.current.resize();
+      lenisRef.current.scrollTo(0, { immediate: true, force: true });
     }
     window.scrollTo(0, 0);
+
+    const rafId = requestAnimationFrame(() => {
+      lenisRef.current?.resize();
+    });
+    const timer = setTimeout(() => {
+      lenisRef.current?.resize();
+    }, 120);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      clearTimeout(timer);
+    };
   }, [pathname]);
 
   return (

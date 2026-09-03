@@ -41,20 +41,20 @@ export function Showcase() {
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12 mb-20 md:mb-28">
           <div className="max-w-2xl space-y-4">
             <motion.h2
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "-15px" }}
+              transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
               className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight"
             >
               Producciones que <br className="hidden sm:block" />
               <span className="text-ump-accent italic font-normal">dejan huella.</span>
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "-15px" }}
+              transition={{ duration: 0.35, delay: 0.06, ease: [0.23, 1, 0.32, 1] }}
               className="text-ump-secondary text-sm md:text-base leading-relaxed max-w-lg font-light"
             >
               Cada proyecto es una oportunidad para contar una historia, conectar con una audiencia y generar resultados reales.
@@ -63,10 +63,10 @@ export function Showcase() {
 
           {/* Action CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-15px" }}
+            transition={{ duration: 0.35, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
             className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto md:self-end"
           >
             <SlotButton
@@ -92,10 +92,10 @@ export function Showcase() {
           {PROJECTS.map((project, i) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "-15px" }}
+              transition={{ duration: 0.35, delay: i * 0.06, ease: [0.23, 1, 0.32, 1] }}
             >
               <ShowcaseVideoCard project={project} />
             </motion.div>

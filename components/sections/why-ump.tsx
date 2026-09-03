@@ -15,10 +15,10 @@ interface DifferentiatorCardProps {
 function DifferentiatorCard({ icon, title, description, illustration, index }: DifferentiatorCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.97, y: 16 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.35, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }}
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-15px" }}
+      transition={{ duration: 0.35, delay: index * 0.04, ease: [0.23, 1, 0.32, 1] }}
       className="group grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 p-6 md:p-10 lg:p-12 bg-ump-alt/60 rounded-2xl md:rounded-[2rem] border border-white/5 hover:border-ump-accent/20 transition-[border-color,background-color] duration-300 items-center overflow-hidden relative cursor-default active:scale-[0.99]"
     >
       {/* Decorative background glow */}

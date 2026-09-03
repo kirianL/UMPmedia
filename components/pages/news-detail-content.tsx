@@ -51,30 +51,6 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [mobileTocOpen, setMobileTocOpen] = useState(false);
 
-  // Velocity-based dynamic motion blur on scroll
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 40,
-    stiffness: 300,
-    mass: 0.4,
-  });
-
-  // Calculate subtle vertical blur amount (0px to 5px) based on velocity
-  const blurAmount = useTransform(
-    smoothVelocity,
-    [-2200, -200, 0, 200, 2200],
-    [5, 0, 0, 0, 5]
-  );
-
-  const blurRef = useRef<SVGFEGaussianBlurElement | null>(null);
-
-  useMotionValueEvent(blurAmount, "change", (latest) => {
-    if (blurRef.current) {
-      blurRef.current.setAttribute("stdDeviation", `0 ${latest.toFixed(1)}`);
-    }
-  });
-
   // Calculate standardized dynamic reading time based on word count
   const readingTime = useMemo(() => {
     const text = (article.content + " " + (article.excerpt || ""))
@@ -213,24 +189,24 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
 
   return (
     <div className="relative min-h-screen bg-[#f6f6f3] text-[#111111] selection:bg-emerald-600 selection:text-white overflow-x-clip">
-      {/* SVG filter for GPU-accelerated vertical motion blur */}
+      {/* SVG filter */}
       <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
         <defs>
           <filter id="scroll-motion-blur" x="0%" y="-10%" width="100%" height="120%">
-            <feGaussianBlur ref={blurRef} stdDeviation="0 0" />
+            <feGaussianBlur stdDeviation="0 0" />
           </filter>
         </defs>
       </svg>
 
-      {/* Main Container with Silky-Smooth Optical Reveal */}
+      {/* Main Container with Smooth Optical Reveal */}
       <motion.div
-        initial={shouldReduceMotion ? false : { opacity: 0, y: 24, filter: "blur(6px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
-          duration: 0.85,
-          ease: [0.16, 1, 0.3, 1],
+          duration: 0.45,
+          ease: [0.23, 1, 0.32, 1] as const,
         }}
-        className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-20 will-change-[transform,opacity,filter]"
+        className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-20 will-change-[transform,opacity]"
       >
         
         {/* Mobile Header Bar (Navigation) */}

@@ -12,7 +12,7 @@ export function Manifesto() {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.1 * i },
+      transition: { staggerChildren: 0.03, delayChildren: 0.04 * i },
     }),
   };
 
@@ -21,14 +21,13 @@ export function Manifesto() {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
+        duration: 0.35,
+        ease: [0.23, 1, 0.32, 1],
       },
     },
     hidden: {
       opacity: 0,
-      y: 20,
+      y: 10,
     },
   };
 
@@ -49,7 +48,7 @@ export function Manifesto() {
           variants={container}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-20px" }}
           className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] md:leading-[1] tracking-tighter uppercase flex flex-wrap justify-center gap-x-[0.25em] md:gap-x-[0.2em] gap-y-[0.1em]"
         >
           {words.map((word, index) => {
@@ -79,8 +78,8 @@ export function Manifesto() {
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="h-1 w-24 md:w-48 bg-[#059669] mx-auto mt-16 md:mt-24"
+          transition={{ duration: 0.5, delay: 0.35, ease: [0.23, 1, 0.32, 1] }}
+          className="h-1 w-24 md:w-48 bg-[#059669] mx-auto mt-16 md:mt-24 origin-center"
         />
       </div>
 

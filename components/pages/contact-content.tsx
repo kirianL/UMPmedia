@@ -7,14 +7,14 @@ import { PiArrowRightBold, PiCheckBold, PiCopyBold } from "react-icons/pi";
 import { SlotText } from "slot-text/react";
 
 const fadeUpVariants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 14 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.75,
-      delay: i * 0.12,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.45,
+      delay: i * 0.05,
+      ease: [0.23, 1, 0.32, 1] as const,
     },
   }),
 };
@@ -139,13 +139,13 @@ export function ContactContent() {
                   >
                     {/* Pop-in Checkmark badge */}
                     <motion.div
-                      initial={{ scale: 0, rotate: -25 }}
-                      animate={{ scale: 1, rotate: 0 }}
+                      initial={{ scale: 0.95, opacity: 0, rotate: -10 }}
+                      animate={{ scale: 1, opacity: 1, rotate: 0 }}
                       transition={{
                         type: "spring",
                         stiffness: 380,
-                        damping: 20,
-                        delay: 0.1,
+                        damping: 24,
+                        delay: 0.05,
                       }}
                       className="w-14 h-14 rounded-full bg-neutral-950 text-white flex items-center justify-center mb-6 shadow-xs"
                     >

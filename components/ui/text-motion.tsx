@@ -43,16 +43,16 @@ export function TextMotion({
   const wordVariants = {
     hidden: {
       opacity: 0,
-      y: shouldReduceMotion ? 0 : 8,
-      filter: shouldReduceMotion ? "none" : "blur(4px)",
+      y: shouldReduceMotion ? 0 : 4,
+      filter: shouldReduceMotion ? "none" : "blur(2px)",
     },
     visible: {
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
       transition: {
-        duration: 0.45,
-        ease: [0.16, 1, 0.3, 1],
+        duration: 0.32,
+        ease: [0.23, 1, 0.32, 1] as const,
       },
     },
   };
@@ -62,7 +62,7 @@ export function TextMotion({
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-15px" }}
       className={`inline-block ${className}`}
     >
       {words.map((word, index) => {

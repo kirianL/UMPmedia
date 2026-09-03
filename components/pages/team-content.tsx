@@ -98,15 +98,15 @@ export function TeamContent() {
             {team.map((member, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0.35, delay: i * 0.05, ease: [0.23, 1, 0.32, 1] }}
                 className="group flex flex-col"
               >
                 {/* Photo */}
                 <button
                   onClick={() => setSelected(member)}
-                  className="relative aspect-[3/4] bg-neutral-800 mb-4 rounded-sm overflow-hidden grayscale hover:grayscale-0 [transition:filter_0.9s_cubic-bezier(0.25,0.46,0.45,0.94)] cursor-pointer w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                  className="relative aspect-[3/4] bg-neutral-800 mb-4 rounded-sm overflow-hidden grayscale hover:grayscale-0 [transition:filter_0.5s_cubic-bezier(0.23,1,0.32,1)] cursor-pointer w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                   aria-label={`Ver bio de ${member.name}`}
                 >
                   {member.image && (
@@ -114,13 +114,13 @@ export function TeamContent() {
                       src={member.image}
                       alt={member.name}
                       fill
-                      className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   )}
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out flex items-end p-4 md:p-6">
-                    <span className="text-white font-bold flex items-center gap-2 text-sm md:text-base translate-y-2 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out flex items-end p-4 md:p-6">
+                    <span className="text-white font-bold flex items-center gap-2 text-sm md:text-base translate-y-2 group-hover:translate-y-0 transition-transform duration-300 ease-out">
                       Ver Bio <ArrowUpRight size={16} />
                     </span>
                   </div>
@@ -150,7 +150,7 @@ export function TeamContent() {
         </div>
       </div>
 
-      {/* Modern, Horizontal & Fluid Bio Modal — Mobile-First Bottom Sheet */}
+      {/* Modern Slide-Up Detailed Bio Modal */}
       <AnimatePresence>
         {selected && (
           <div className="fixed inset-0 z-[100] flex items-end justify-center pointer-events-none">
@@ -159,20 +159,21 @@ export function TeamContent() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
               onClick={closeModal}
               className="absolute inset-0 bg-black/90 backdrop-blur-xl cursor-pointer pointer-events-auto"
             />
 
-            {/* Modal Content — Optimized for all devices (Mobile, Laptop, Desktop) */}
+            {/* Modal Content — Optimized for all devices */}
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               exit={{ y: "100%" }}
               transition={{
                 type: "spring",
-                damping: 40,
-                stiffness: 450,
-                mass: 1,
+                damping: 32,
+                stiffness: 350,
+                mass: 0.8,
               }}
               className="relative w-full h-[88dvh] md:h-[75dvh] bg-neutral-950 border-t border-white/10 rounded-t-[3.5rem] md:rounded-t-[4rem] overflow-hidden z-[101] shadow-[0_-30px_100px_-20px_rgba(0,0,0,0.9)] pointer-events-auto"
             >

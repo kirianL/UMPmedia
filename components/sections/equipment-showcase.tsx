@@ -101,7 +101,13 @@ function EquipmentCard({
   index: number;
 }) {
   return (
-    <div className="rounded-2xl overflow-hidden bg-neutral-900 border border-white/10">
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-15px" }}
+      transition={{ duration: 0.35, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }}
+      className="rounded-2xl overflow-hidden bg-neutral-900 border border-white/10"
+    >
       {/* Images Row - Top */}
       <div className="grid grid-cols-2">
         <div className="relative aspect-video bg-neutral-800">
@@ -128,54 +134,30 @@ function EquipmentCard({
         <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
           {/* Left: Title & Category */}
           <div className="md:w-1/4">
-            <motion.span
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.25 }}
-              className="text-ump-accent text-[10px] font-bold uppercase tracking-widest"
-            >
+            <span className="text-ump-accent text-[10px] font-bold uppercase tracking-widest block">
               {equipment.category}
-            </motion.span>
-            <motion.h3
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.25, delay: 0.05 }}
-              className="text-lg md:text-xl font-bold text-white"
-            >
+            </span>
+            <h3 className="text-lg md:text-xl font-bold text-white">
               {equipment.name}
-            </motion.h3>
+            </h3>
           </div>
 
           {/* Center: Description & Usage */}
           <div className="md:flex-1">
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.25, delay: 0.1 }}
-              className="text-ump-secondary text-sm leading-relaxed"
-            >
+            <p className="text-ump-secondary text-sm leading-relaxed">
               {equipment.description}{" "}
               <span className="text-white/60">{equipment.usage}</span>
-            </motion.p>
+            </p>
           </div>
 
           {/* Right: Specs */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.25, delay: 0.15 }}
-            className="md:w-1/4 text-right hidden md:block"
-          >
+          <div className="md:w-1/4 text-right hidden md:block">
             <span className="text-white/40 text-xs">
               {equipment.specs.join(" · ")}
             </span>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

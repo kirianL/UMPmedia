@@ -9,14 +9,14 @@ import { CTAFinal } from "@/components/sections/cta-final";
 import { newsArticles } from "@/lib/news-data";
 
 const fadeUpVariants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 14 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.75,
-      delay: i * 0.12,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.45,
+      delay: i * 0.05,
+      ease: [0.23, 1, 0.32, 1] as const,
     },
   }),
 };
@@ -87,43 +87,22 @@ export function NewsContent() {
             
             {/* 1. Large Hero Card (Spans 2 cols on Desktop, Synchronized Motion Zoom + Blur) */}
             {featuredArticle && (
-              <motion.div 
-                initial="rest"
-                whileHover="hover"
-                animate="rest"
-                className="lg:col-span-2 md:col-span-2"
-              >
+              <div className="lg:col-span-2 md:col-span-2">
                 <Link
                   href={`/news/${featuredArticle.slug}`}
-                  className="relative flex flex-col justify-between h-full min-h-[460px] sm:min-h-[500px] rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-200/60 p-7 sm:p-9 shadow-xs"
+                  className="group relative flex flex-col justify-between h-full min-h-[460px] sm:min-h-[500px] rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-200/60 p-7 sm:p-9 shadow-xs"
                 >
-                  {/* Full-bleed Photo with Synchronized Parallax Zoom + Blur */}
-                  <motion.div
-                    variants={{
-                      rest: {
-                        scale: 1,
-                        filter: "blur(0px)",
-                      },
-                      hover: {
-                        scale: 1.06,
-                        filter: "blur(5px)",
-                      },
-                    }}
-                    transition={{
-                      duration: 0.8,
-                      ease: [0.4, 0, 0.2, 1],
-                    }}
-                    className="absolute inset-0 w-full h-full will-change-[transform,filter]"
-                  >
+                  {/* Full-bleed Photo with Smooth Scale */}
+                  <div className="absolute inset-0 w-full h-full overflow-hidden">
                     <Image
                       src={featuredArticle.image}
                       alt={featuredArticle.title}
                       fill
                       priority
                       sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover"
+                      className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
                     />
-                  </motion.div>
+                  </div>
 
                   {/* High-End Dark Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/10 z-10 pointer-events-none" />
@@ -143,37 +122,34 @@ export function NewsContent() {
                     </p>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             )}
 
-            {/* 2. Standard Cards (Expanding Image Banner on Hover + Top-Right Plus Icon) */}
+            {/* 2. Standard Cards */}
             {standardArticles.map((article) => (
-              <motion.div
+              <div
                 key={article.slug}
-                initial="rest"
-                whileHover="hover"
-                animate="rest"
                 className="lg:col-span-1 md:col-span-1 flex flex-col"
               >
                 <Link
                   href={`/news/${article.slug}`}
-                  className="group relative flex flex-col justify-between h-full min-h-[440px] sm:min-h-[480px] rounded-3xl bg-white border border-neutral-200/80 p-6 sm:p-7 shadow-xs hover:border-neutral-300 transition-colors duration-200 overflow-hidden"
+                  className="group relative flex flex-col justify-between h-full min-h-[440px] sm:min-h-[480px] rounded-3xl bg-white border border-neutral-200/80 p-6 sm:p-7 shadow-xs hover:border-neutral-300 transition-[border-color,box-shadow] duration-200 overflow-hidden"
                 >
                   {/* Top-Right Plus Icon (stays fixed in the corner) */}
                   <div className="absolute top-6 sm:top-7 right-6 sm:right-7 z-10">
-                    <div className="w-6 h-6 rounded-full bg-neutral-950 text-white flex items-center justify-center shadow-xs group-hover:bg-neutral-800 group-hover:scale-105 transition-all duration-300">
+                    <div className="w-6 h-6 rounded-full bg-neutral-950 text-white flex items-center justify-center shadow-xs group-hover:bg-neutral-800 group-hover:scale-105 transition-transform duration-200">
                       <PiPlusBold size={11} />
                     </div>
                   </div>
 
-                  {/* Expanding Thumbnail Container - Soft, calm and slower entrance/exit */}
-                  <div className="relative w-16 h-16 group-hover:w-[calc(100%-2.25rem)] group-hover:h-40 rounded-2xl overflow-hidden bg-neutral-100 border border-neutral-200/60 shrink-0 mb-6 transition-[width,height] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] will-change-[width,height]">
+                  {/* Thumbnail Container */}
+                  <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-neutral-100 border border-neutral-200/60 shrink-0 mb-6">
                     <Image
                       src={article.image}
                       alt={article.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 320px"
-                      className="object-cover"
+                      className="object-cover transition-transform duration-350 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
                     />
                   </div>
 
@@ -192,7 +168,7 @@ export function NewsContent() {
                     </p>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
 
           </div>
