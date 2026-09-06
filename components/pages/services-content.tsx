@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { SlotButton } from "@/components/ui/slot-button";
 import {
@@ -167,15 +166,8 @@ export function ServicesContent() {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
             {SERVICES.map((service) => (
-              <motion.div
+              <div
                 key={service.id}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, margin: "100px" }}
-                transition={{
-                  duration: 0.3,
-                  ease: "easeOut",
-                }}
                 className="group relative flex flex-col justify-between rounded-[2.2rem] sm:rounded-[2.8rem] bg-white border border-neutral-200/80 shadow-xs hover:border-neutral-300 hover:shadow-md transition-[border-color,box-shadow] duration-300 overflow-hidden"
               >
                 {/* Modern Architectural Corner Notch Accent */}
@@ -273,7 +265,7 @@ export function ServicesContent() {
 
                 </div>
 
-              </motion.div>
+              </div>
             ))}
           </div>
 

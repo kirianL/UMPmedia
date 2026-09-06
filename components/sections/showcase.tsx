@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { PiArrowUpRightBold, PiArrowRightBold } from "react-icons/pi";
 import { SlotButton } from "@/components/ui/slot-button";
@@ -46,13 +45,7 @@ export function Showcase() {
       <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Editorial Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.05, margin: "0px 0px -40px 0px" }}
-          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-          className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-14 sm:mb-20"
-        >
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-14 sm:mb-20">
           <div className="max-w-2xl space-y-2">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.1]">
               Producciones que{" "}
@@ -75,20 +68,14 @@ export function Showcase() {
               Ver portafolio completo
             </SlotButton>
           </div>
-        </motion.div>
+        </div>
 
         {/* 2x2 Clean Video Grid without text plastered on top */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
           {PROJECTS.map((project) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "100px" }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
+            <div key={project.title}>
               <ShowcaseVideoCard project={project} />
-            </motion.div>
+            </div>
           ))}
         </div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { SiTiktok, SiInstagram } from "react-icons/si";
 import { PiTrendUpBold } from "react-icons/pi";
 
@@ -65,13 +65,7 @@ function StatCounter({
   return (
     <div
       ref={ref}
-      className={`group relative p-6 sm:p-8 rounded-3xl bg-white border border-neutral-200/80 hover:border-emerald-500/50 shadow-xs hover:shadow-sm transition-[border-color,box-shadow] duration-300 select-none active:scale-[0.98] overflow-hidden ${
-        visible ? "opacity-100" : "opacity-0"
-      }`}
-      style={{
-        transition:
-          "opacity 0.3s ease-out, border-color 0.25s ease, box-shadow 0.25s ease",
-      }}
+      className="group relative p-6 sm:p-8 rounded-3xl bg-white border border-neutral-200/80 hover:border-emerald-500/50 shadow-xs hover:shadow-sm transition-[border-color,box-shadow] duration-300 select-none active:scale-[0.98] overflow-hidden"
     >
       {/* Modern SVG corner architectural notch accent */}
       <svg
@@ -121,14 +115,8 @@ export function ClientsStats() {
     <section className="py-20 sm:py-28 bg-[#f6f6f3] text-neutral-900 relative z-20 overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
-        {/* Header with smooth scroll entrance */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.05, margin: "0px 0px -40px 0px" }}
-          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16"
-        >
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="max-w-2xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.1]">
               Nuestro <span className="text-emerald-600 font-normal italic">alcance</span>
@@ -138,7 +126,7 @@ export function ClientsStats() {
           <p className="text-neutral-600 text-sm sm:text-base max-w-md font-normal leading-relaxed">
             Impacto real en las plataformas que mueven la conversación digital. Métricas de visualización y crecimiento orgánico mensual.
           </p>
-        </motion.div>
+        </div>
 
         {/* Stats Grid with Real Statistics from Instagram & TikTok */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">

@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { motion } from "framer-motion";
 import { PiArrowRightBold } from "react-icons/pi";
 import { SlotButton } from "@/components/ui/slot-button";
 
@@ -35,28 +34,16 @@ export function AboutTeaser() {
           
           {/* Text Content Column */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "100px" }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="space-y-2"
-            >
+            <div className="space-y-2">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.08]">
                 Cultura caribeña,{" "}
                 <span className="text-emerald-600 font-normal italic block sm:inline">
                   estándar global
                 </span>
               </h2>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="space-y-5"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "100px" }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-            >
+            <div className="space-y-5">
               <p className="text-lg sm:text-xl md:text-2xl text-neutral-950 font-medium leading-snug">
                 Ultimate Media Productions es un estudio creativo nacido en Limón para transformar la forma en que las marcas conectan hoy.
               </p>
@@ -76,17 +63,11 @@ export function AboutTeaser() {
                   Conoce nuestra historia
                 </SlotButton>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Clean Architectural Video Showcase Column */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "100px" }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="lg:col-span-6"
-          >
+          <div className="lg:col-span-6">
             <div className="relative aspect-[16/10] sm:aspect-[16/9] rounded-3xl bg-neutral-950 border border-neutral-200/80 shadow-xs overflow-hidden group">
               
               {/* Autoplaying Loop Video */}
@@ -125,7 +106,7 @@ export function AboutTeaser() {
               <span>Rodaje en locación</span>
               <span className="text-emerald-700 font-semibold">Limón, Costa Rica</span>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>

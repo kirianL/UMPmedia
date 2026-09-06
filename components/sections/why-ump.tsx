@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { PiArrowUpRightBold } from "react-icons/pi";
 
@@ -57,34 +56,21 @@ export function WhyUMP() {
     <section className="py-20 sm:py-28 md:py-36 bg-[#f6f6f3] text-neutral-900 relative z-20 overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
-        {/* Header Section with smooth entrance */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "100px" }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
-          className="text-center max-w-3xl mx-auto mb-16 sm:mb-24"
-        >
+        {/* Header Section */}
+        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.1]">
             ¿Por qué <span className="text-emerald-600 font-normal italic">elegir UMP?</span>
           </h2>
           <p className="text-neutral-600 text-sm sm:text-base md:text-lg max-w-xl mx-auto leading-relaxed mt-3 font-normal">
             Combinamos producción audiovisual, contenido digital y tecnología bajo un mismo estándar de calidad y visión estratégica.
           </p>
-        </motion.div>
+        </div>
 
         {/* 3-Column Modern Architectural Illustration Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {CAPABILITIES.map((cap) => (
-            <motion.div
+            <div
               key={cap.title}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "100px" }}
-              transition={{
-                duration: 0.3,
-                ease: "easeOut",
-              }}
               className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-3xl bg-white border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-neutral-300 transition-[border-color,box-shadow] duration-300 select-none overflow-hidden"
             >
               {/* Corner Architectural SVG Accent */}
@@ -142,7 +128,7 @@ export function WhyUMP() {
                 </Link>
               </div>
 
-            </motion.div>
+            </div>
           ))}
         </div>
 
