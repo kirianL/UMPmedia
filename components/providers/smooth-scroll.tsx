@@ -28,28 +28,26 @@ export function SmoothScrollProvider({
 
     if (prefersReducedMotion) return;
 
-    // Detect mobile touch devices & in-app webviews (Instagram, Facebook, TikTok, iOS/Android WebViews)
-    // Touch devices already have 120Hz hardware-accelerated native momentum physics.
-    // Hijacking touch scroll inside in-app webviews clashes with browser URL bar collapsing and causes violent layout jumps.
-    const isTouchOrMobile =
-      "ontouchstart" in window ||
-      navigator.maxTouchPoints > 0 ||
-      window.matchMedia("(pointer: coarse)").matches ||
+    // Detect true mobile touch devices & in-app webviews (Instagram, Facebook, TikTok, iOS/Android WebViews)
+    // Avoid navigator.maxTouchPoints > 0 check alone as it falsely flags Windows laptops with touchscreens.
+    const isMobileDevice =
+      (window.matchMedia("(pointer: coarse) and (hover: none)").matches &&
+        navigator.maxTouchPoints > 0) ||
       /Android|iPhone|iPad|iPod|Instagram|FBAN|FBAV|Twitter|TikTok/i.test(
         navigator.userAgent
       );
 
-    if (isTouchOrMobile) {
+    if (isMobileDevice) {
       return;
     }
 
     const lenis = new Lenis({
-      duration: 1.05,
+      duration: 0.85,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 1.0,
       syncTouch: false,
       autoRaf: true,
     });

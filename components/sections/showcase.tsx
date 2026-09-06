@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { PiArrowUpRightBold, PiArrowRightBold } from "react-icons/pi";
@@ -47,10 +47,10 @@ export function Showcase() {
         
         {/* Editorial Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px -40px 0px" }}
+          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
           className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-14 sm:mb-20"
         >
           <div className="max-w-2xl space-y-2">
@@ -79,13 +79,13 @@ export function Showcase() {
 
         {/* 2x2 Clean Video Grid without text plastered on top */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
-          {PROJECTS.map((project, i) => (
+          {PROJECTS.map((project) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.12, margin: "0px 0px -20px 0px" }}
-              transition={{ duration: 0.65, delay: (i % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "100px" }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <ShowcaseVideoCard project={project} />
             </motion.div>
@@ -103,54 +103,41 @@ export function Showcase() {
 function ShowcaseVideoCard({ project }: { project: ProjectItem }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect();
+          videoRef.current?.play().catch(() => {});
+        } else {
+          videoRef.current?.pause();
         }
       },
-      { rootMargin: "250px" }
+      { rootMargin: "150px" }
     );
     observer.observe(containerRef.current);
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (isInView && videoRef.current) {
-      videoRef.current.play().catch((err) => {
-        console.warn("Autoplay bypassed:", err);
-      });
-    }
-  }, [isInView]);
-
   return (
     <div
       ref={containerRef}
-      className="group relative flex flex-col rounded-3xl bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-xs hover:shadow-sm transition-all duration-300 overflow-hidden"
+      className="group relative flex flex-col rounded-3xl bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-xs hover:shadow-sm transition-[border-color,box-shadow] duration-300 overflow-hidden"
     >
       {/* Clean, Unobstructed Video Container */}
       <div className="relative w-full aspect-video overflow-hidden bg-neutral-900">
         
-        {/* Autoplaying Loop Muted Widescreen Video - 100% clean without words */}
-        {isInView ? (
-          <video
-            ref={videoRef}
-            src={project.video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-          />
-        ) : (
-          <div className="w-full h-full bg-neutral-900" />
-        )}
+        {/* Autoplaying Loop Muted Widescreen Video - Preloaded metadata and played when intersecting */}
+        <video
+          ref={videoRef}
+          src={project.video}
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+        />
 
         {/* Top-Right Architectural Corner SVG Bracket */}
         <svg

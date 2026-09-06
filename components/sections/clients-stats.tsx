@@ -27,7 +27,7 @@ function StatCounter({
   decimals = 0,
 }: StatItemProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "0px 0px -20px 0px", amount: 0.15 });
+  const inView = useInView(ref, { once: true, margin: "0px 0px -40px 0px", amount: 0.05 });
   const [displayValue, setDisplayValue] = useState<string>(decimals > 0 ? "0.0" : "0");
   const [visible, setVisible] = useState(false);
 
@@ -41,7 +41,7 @@ function StatCounter({
     if (!visible) return;
 
     const end = value;
-    const duration = 1000;
+    const duration = 900;
     let startTimestamp: number | null = null;
 
     const step = (timestamp: number) => {
@@ -65,12 +65,12 @@ function StatCounter({
   return (
     <div
       ref={ref}
-      className={`group relative p-6 sm:p-8 rounded-3xl bg-white border border-neutral-200/80 hover:border-emerald-500/50 shadow-xs hover:shadow-sm transition-all duration-500 select-none active:scale-[0.98] overflow-hidden will-change-transform ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      className={`group relative p-6 sm:p-8 rounded-3xl bg-white border border-neutral-200/80 hover:border-emerald-500/50 shadow-xs hover:shadow-sm transition-[border-color,box-shadow] duration-300 select-none active:scale-[0.98] overflow-hidden ${
+        visible ? "opacity-100" : "opacity-0"
       }`}
       style={{
         transition:
-          "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease",
+          "opacity 0.3s ease-out, border-color 0.25s ease, box-shadow 0.25s ease",
       }}
     >
       {/* Modern SVG corner architectural notch accent */}
@@ -123,10 +123,10 @@ export function ClientsStats() {
         
         {/* Header with smooth scroll entrance */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px -40px 0px" }}
+          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16"
         >
           <div className="max-w-2xl">

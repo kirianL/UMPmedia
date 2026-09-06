@@ -166,18 +166,17 @@ export function ServicesContent() {
         <div className="max-w-[1360px] mx-auto">
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
-            {SERVICES.map((service, index) => (
+            {SERVICES.map((service) => (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-20px" }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: "100px" }}
                 transition={{
-                  duration: 0.4,
-                  delay: index * 0.08,
-                  ease: [0.23, 1, 0.32, 1],
+                  duration: 0.3,
+                  ease: "easeOut",
                 }}
-                className="group relative flex flex-col justify-between rounded-[2.2rem] sm:rounded-[2.8rem] bg-white border border-neutral-200/80 shadow-xs hover:border-neutral-300 hover:shadow-md transition-all duration-300 overflow-hidden"
+                className="group relative flex flex-col justify-between rounded-[2.2rem] sm:rounded-[2.8rem] bg-white border border-neutral-200/80 shadow-xs hover:border-neutral-300 hover:shadow-md transition-[border-color,box-shadow] duration-300 overflow-hidden"
               >
                 {/* Modern Architectural Corner Notch Accent */}
                 <svg

@@ -59,10 +59,10 @@ export function WhyUMP() {
         
         {/* Header Section with smooth entrance */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "100px" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="text-center max-w-3xl mx-auto mb-16 sm:mb-24"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.1]">
@@ -78,15 +78,14 @@ export function WhyUMP() {
           {CAPABILITIES.map((cap) => (
             <motion.div
               key={cap.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15, margin: "0px 0px -20px 0px" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "100px" }}
               transition={{
-                duration: 0.6,
-                delay: cap.index * 0.08,
-                ease: [0.16, 1, 0.3, 1],
+                duration: 0.3,
+                ease: "easeOut",
               }}
-              className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-3xl bg-white border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-neutral-300 transition-all duration-300 select-none overflow-hidden will-change-transform"
+              className="group relative flex flex-col justify-between p-7 sm:p-8 rounded-3xl bg-white border border-neutral-200/80 shadow-xs hover:shadow-md hover:border-neutral-300 transition-[border-color,box-shadow] duration-300 select-none overflow-hidden"
             >
               {/* Corner Architectural SVG Accent */}
               <svg

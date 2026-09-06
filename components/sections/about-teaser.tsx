@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { PiArrowRightBold } from "react-icons/pi";
 import { SlotButton } from "@/components/ui/slot-button";
@@ -8,30 +8,22 @@ import { SlotButton } from "@/components/ui/slot-button";
 export function AboutTeaser() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoInView, setVideoInView] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVideoInView(true);
-          observer.disconnect();
+          videoRef.current?.play().catch(() => {});
+        } else {
+          videoRef.current?.pause();
         }
       },
-      { rootMargin: "200px" }
+      { rootMargin: "150px" }
     );
     observer.observe(containerRef.current);
     return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-    if (videoInView && videoRef.current) {
-      videoRef.current.play().catch((err) => {
-        console.warn("Autoplay bypassed:", err);
-      });
-    }
-  }, [videoInView]);
 
   return (
     <section
@@ -44,10 +36,10 @@ export function AboutTeaser() {
           {/* Text Content Column */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8">
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "100px" }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
               className="space-y-2"
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 leading-[1.08]">
@@ -60,10 +52,10 @@ export function AboutTeaser() {
 
             <motion.div
               className="space-y-5"
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "100px" }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
             >
               <p className="text-lg sm:text-xl md:text-2xl text-neutral-950 font-medium leading-snug">
                 Ultimate Media Productions es un estudio creativo nacido en Limón para transformar la forma en que las marcas conectan hoy.
@@ -89,29 +81,24 @@ export function AboutTeaser() {
 
           {/* Clean Architectural Video Showcase Column */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 will-change-transform"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "100px" }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="lg:col-span-6"
           >
             <div className="relative aspect-[16/10] sm:aspect-[16/9] rounded-3xl bg-neutral-950 border border-neutral-200/80 shadow-xs overflow-hidden group">
               
-              {/* Autoplaying Loop Video 100% clean without words */}
-              {videoInView ? (
-                <video
-                  ref={videoRef}
-                  src="/assets/videos/Home-detrasdecamaras.webm"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                />
-              ) : (
-                <div className="w-full h-full bg-neutral-950" />
-              )}
+              {/* Autoplaying Loop Video */}
+              <video
+                ref={videoRef}
+                src="/assets/videos/Home-detrasdecamaras.webm"
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              />
 
               {/* Modern SVG corner architectural notch */}
               <svg

@@ -37,10 +37,10 @@ export function TeamTeaser() {
         
         {/* Header with smooth entrance */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "100px" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="text-center max-w-2xl mx-auto mb-16 sm:mb-20"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
