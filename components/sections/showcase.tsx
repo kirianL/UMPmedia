@@ -14,27 +14,27 @@ interface ProjectItem {
 
 const PROJECTS: ProjectItem[] = [
   {
-    title: "Buscando al dealer",
-    category: "Producción Audiovisual",
-    description: "Narrativa visual, dirección de arte y montaje dinámico con estándar internacional.",
+    title: "Review • Panasonic HC-X Series",
+    category: "Presentación de Producto",
+    description: "Demostración técnica de equipo profesional, tomas de detalle y producción audiovisual con estándar broadcast.",
     video: "/assets/videos/Presentacion1.webm",
   },
   {
-    title: "Estudio UMP",
-    category: "Podcast & Contenido Digital",
-    description: "Espacios de diálogo, entrevistas y piezas serializadas diseñadas para redes.",
+    title: "The Power of Music • Podcast",
+    category: "Podcast & Talk Shows",
+    description: "Grabación multicámara en set acústico, captura de audio profesional y contenido serializado para streaming.",
     video: "/assets/videos/Podcast .webm",
   },
   {
-    title: "Campañas de Marca",
-    category: "Publicidad & Comercial",
-    description: "Estrategia audiovisual orientada a posicionar marcas y acelerar conversión.",
+    title: "Comercial Inmobiliario & Dron",
+    category: "Publicidad Inmobiliaria",
+    description: "Tomas aéreas cinematográficas en 4K, recorrido de locaciones y piezas comerciales orientadas a conversión.",
     video: "/assets/videos/publicidad1.webm",
   },
   {
-    title: "Eventos y Experiencias",
-    category: "Cobertura & Documentación",
-    description: "Captura en vivo con ritmo ágil, iluminación cuidada y máxima fidelidad de audio.",
+    title: "Contenido para Redes Sociales",
+    category: "Estrategia para Redes",
+    description: "Cápsulas dinámicas con presentador en estudio y gráficos en pantalla diseñados para maximizar retención digital.",
     video: "/assets/videos/Presentacion2.webm",
   },
 ];

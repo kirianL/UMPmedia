@@ -10,19 +10,19 @@ const teamMembers = [
     name: "Fabián Acuña",
     role: "Director General & Fundador",
     photo: "/assets/images/Team/Fabian_T.png",
-    bioLink: "/team",
+    bioLink: "/about",
   },
   {
     name: "Eymar Ortiz",
     role: "Productor Audiovisual",
     photo: "/assets/images/Team/Eymar_T.png",
-    bioLink: "/team",
+    bioLink: "/about",
   },
   {
     name: "Kirian Luna",
     role: "Ingeniero en Sistemas & Desarrollador Web",
     photo: "/assets/images/Team/Kirian_T.png",
-    bioLink: "/team",
+    bioLink: "/about",
   },
 ];
 
@@ -96,13 +96,13 @@ export function TeamTeaser() {
         {/* Center Bottom CTA */}
         <div className="mt-16 sm:mt-20 text-center">
           <SlotButton
-            href="/team"
+            href="/about"
             variant="secondary"
             className="rounded-full bg-white text-neutral-950 hover:bg-neutral-100 font-medium text-xs sm:text-sm px-6 py-3 normal-case tracking-tight shadow-xs"
             icon={<PiArrowRightBold size={13} />}
             iconPosition="right"
           >
-            Conoce a todo el equipo
+            Conoce más sobre nosotros
           </SlotButton>
         </div>
 

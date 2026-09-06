@@ -26,7 +26,6 @@ const MOBILE_LINKS = [
   { href: "/services", label: "Servicios" },
   { href: "/about", label: "Nosotros" },
   { href: "/news", label: "Noticias" },
-  { href: "/team", label: "Equipo" },
   { href: "/contact", label: "Contacto" },
 ];
 

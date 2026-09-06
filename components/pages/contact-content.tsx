@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { PiArrowRightBold, PiCheckBold, PiCopyBold } from "react-icons/pi";
-import { SlotText } from "slot-text/react";
+import { SlotButton } from "@/components/ui/slot-button";
 
 const fadeUpVariants = {
   hidden: { opacity: 0, y: 14 },
@@ -90,23 +90,23 @@ export function ContactContent() {
               </p>
             </div>
 
-            {/* Team Lead Card (matching Fabrica reference) */}
+            {/* Team Lead Card */}
             <div className="flex items-center gap-4 pt-2">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border border-neutral-300/80 shadow-xs shrink-0 bg-neutral-200">
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border border-neutral-300/80 shadow-xs shrink-0 bg-neutral-100">
                 <Image
                   src="/assets/images/Team/Fabian.jpg"
                   alt="Fabián Acuña"
                   fill
-                  sizes="48px"
-                  className="object-cover"
+                  sizes="64px"
+                  className="object-cover object-[center_15%]"
                 />
               </div>
               <div>
                 <p className="text-sm sm:text-base font-bold text-neutral-950 leading-tight">
                   Fabián Acuña
                 </p>
-                <p className="text-xs text-neutral-500 font-mono tracking-tight mt-0.5">
-                  Director Creativo & Fundador
+                <p className="text-xs text-neutral-500 font-mono tracking-tight mt-1">
+                  Director de Proyectos & Fundador
                 </p>
               </div>
             </div>
@@ -240,37 +240,17 @@ export function ContactContent() {
 
                     {/* Submit Button & Disclaimer */}
                     <div className="pt-2 space-y-4">
-                      <button
+                      <SlotButton
                         type="submit"
                         disabled={status === "submitting"}
-                        className="group relative inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-neutral-950 text-white text-xs font-mono uppercase tracking-wider font-bold hover:bg-neutral-800 transition-all duration-300 cursor-pointer shadow-xs hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
+                        variant="primary"
+                        className="rounded-full bg-neutral-950 text-white hover:bg-neutral-800 font-medium text-xs sm:text-sm px-8 py-3.5 normal-case tracking-tight shadow-xs cursor-pointer disabled:opacity-50"
+                        icon={<PiArrowRightBold size={13} />}
+                        iconPosition="right"
+                        hoverText={status === "submitting" ? "Enviando..." : "Enviar mensaje"}
                       >
-                        {/* Dual Text Roll */}
-                        <span className="relative overflow-hidden inline-flex h-[18px] leading-none">
-                          <span className="inline-block transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
-                            {status === "submitting"
-                              ? "Enviando..."
-                              : "Enviar mensaje"}
-                          </span>
-                          <span className="absolute inset-0 translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 text-emerald-400">
-                            {status === "submitting"
-                              ? "Enviando..."
-                              : "Enviar mensaje"}
-                          </span>
-                        </span>
-
-                        {/* Kinetic Arrow Slide-Through */}
-                        <span className="relative inline-flex w-3.5 h-3.5 overflow-hidden shrink-0">
-                          <PiArrowRightBold
-                            size={13}
-                            className="absolute inset-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-3.5"
-                          />
-                          <PiArrowRightBold
-                            size={13}
-                            className="absolute inset-0 -translate-x-3.5 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0 text-emerald-400"
-                          />
-                        </span>
-                      </button>
+                        {status === "submitting" ? "Enviando..." : "Enviar mensaje"}
+                      </SlotButton>
 
                       <p className="text-[11px] sm:text-xs text-neutral-400 leading-relaxed font-mono">
                         Al enviar este formulario, aceptas nuestros términos y

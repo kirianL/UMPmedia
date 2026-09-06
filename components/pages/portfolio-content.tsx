@@ -3,10 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { PiArrowUpRightBold } from "react-icons/pi";
 import { CTAFinal } from "@/components/sections/cta-final";
-import { RevealText } from "@/components/ui/reveal-text";
 
 const categories = [
   "Todo",
@@ -65,27 +63,20 @@ export function PortfolioContent() {
       {/* Editorial Header Section */}
       <section className="pt-40 md:pt-48 pb-12 px-6 sm:px-8 lg:px-12 max-w-[1360px] mx-auto w-full relative z-10">
         <div className="max-w-4xl space-y-4">
-          <RevealText
-            text="Nuestro Portafolio"
-            tag="h1"
-            className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight text-neutral-950 leading-[1.05] text-left block justify-start"
-            stagger={0.04}
-          />
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-            className="text-neutral-600 text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl font-normal pt-2"
-          >
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight text-neutral-950 leading-[1.05]">
+            Nuestro{" "}
+            <span className="text-emerald-600 font-normal italic">Portafolio</span>
+          </h1>
+          <p className="text-neutral-600 text-base md:text-lg lg:text-xl leading-relaxed max-w-2xl font-normal pt-2">
             Una selección curada de nuestros proyectos más recientes. Narrativas visuales con identidad caribeña y alcance global.
-          </motion.p>
+          </p>
         </div>
       </section>
 
       {/* Main Content Area */}
       <section className="pb-24 px-6 sm:px-8 lg:px-12 max-w-[1360px] mx-auto w-full relative z-20 flex-1">
         
-        {/* Editorial Clean Category Filters (Zero Generic Badges) */}
+        {/* Editorial Clean Category Filters (Cero saltos: altura estable y transition-colors) */}
         <div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-12 sm:mb-16 border-b border-neutral-200/80 pb-2">
           {categories.map((cat) => {
             const isSelected = filter === cat;
@@ -93,10 +84,10 @@ export function PortfolioContent() {
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-4 py-2.5 text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                className={`px-4 py-2.5 text-xs font-mono uppercase tracking-wider transition-colors duration-150 cursor-pointer border-b-2 ${
                   isSelected
-                    ? "text-neutral-950 font-bold border-b-2 border-emerald-600 bg-neutral-100/80"
-                    : "text-neutral-500 hover:text-neutral-900 font-medium hover:bg-neutral-100/40"
+                    ? "text-neutral-950 font-bold border-emerald-600 bg-neutral-100/80"
+                    : "text-neutral-500 hover:text-neutral-900 font-medium border-transparent hover:bg-neutral-100/40"
                 }`}
               >
                 {cat}
@@ -126,23 +117,23 @@ export function PortfolioContent() {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// PORTFOLIO CARD COMPONENT (Clean Image + External Metadata)
+// PORTFOLIO CARD COMPONENT (Clean Horizontal Video/Image + External Metadata)
 // ═════════════════════════════════════════════════════════════════════════════
 function PortfolioProjectCard({ project }: { project: ProjectItem }) {
   return (
     <Link
       href={`/portfolio/${project.slug}`}
-      className="group flex flex-col rounded-3xl bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-xs hover:shadow-sm transition-[border-color,box-shadow,transform] duration-300 overflow-hidden active:scale-[0.98]"
+      className="group flex flex-col rounded-3xl bg-white border border-neutral-200/80 hover:border-neutral-300 shadow-xs hover:shadow-sm transition-[border-color,box-shadow] duration-200 overflow-hidden"
     >
-      {/* Image Container with Architectural Corners */}
-      <div className="relative w-full aspect-[4/3] sm:aspect-video md:aspect-[4/3] overflow-hidden bg-neutral-100">
+      {/* 100% Horizontal Widescreen Image Container (Sin recortes en los lados) */}
+      <div className="relative w-full aspect-video overflow-hidden bg-neutral-100">
         
-        {/* Static Image with Hover Scale */}
+        {/* Horizontal Poster with Subtle Hover Zoom */}
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority={false}
         />
