@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import {
   motion,
   AnimatePresence,
@@ -35,7 +35,15 @@ export function Header() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
 
-  const themeColor = "#0a0a0a";
+  // Dynamic page theme color for iOS notch / status bar
+  const pageThemeColor = useMemo(() => {
+    if (pathname.startsWith("/admin") || pathname.startsWith("/login")) {
+      return "#18181b";
+    }
+    return "#f6f6f3"; // All public landing pages (Home, About, Services, Portfolio, News, Contact)
+  }, [pathname]);
+
+  const activeThemeColor = isOpen ? "#0c0c0c" : pageThemeColor;
 
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollYRef = useRef(0);
@@ -65,8 +73,8 @@ export function Header() {
       meta.setAttribute("name", "theme-color");
       document.head.appendChild(meta);
     }
-    meta.setAttribute("content", themeColor);
-  }, [themeColor]);
+    meta.setAttribute("content", activeThemeColor);
+  }, [activeThemeColor]);
 
   const textColor = isOpen ? "#ffffff" : "#0f0f0f";
   const logoColor = isOpen ? "#ffffff" : "#0f0f0f";
@@ -190,8 +198,8 @@ export function Header() {
         </button>
       </motion.header>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence mode="wait">
+      {/* Mobile Menu Overlay - Smooth real curtain dropdown & retraction */}
+      <AnimatePresence>
         {isOpen && <MobileMenu onClose={() => setIsOpen(false)} />}
       </AnimatePresence>
     </>
@@ -211,18 +219,17 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
     onClose();
   };
 
-  const menuVariants = {
+  // Real drop-down curtain: smoothly slides down and cleanly retracts up into the ceiling
+  const curtainVariants = {
     closed: {
-      opacity: 0,
-      y: -16,
+      y: "-100%",
       transition: {
-        duration: 0.3,
-        ease: [0.16, 1, 0.3, 1] as const,
+        duration: 0.28,
+        ease: [0.32, 0.72, 0, 1] as const,
       },
     },
     open: {
-      opacity: 1,
-      y: 0,
+      y: "0%",
       transition: {
         duration: 0.36,
         ease: [0.16, 1, 0.3, 1] as const,
@@ -234,15 +241,14 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
     closed: {
       opacity: 0,
       transition: {
-        staggerChildren: 0.02,
-        staggerDirection: -1,
+        duration: 0.15,
       },
     },
     open: {
       opacity: 1,
       transition: {
+        delayChildren: 0.08,
         staggerChildren: 0.035,
-        delayChildren: 0.06,
       },
     },
   };
@@ -250,10 +256,9 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
   const linkVariants = {
     closed: {
       opacity: 0,
-      y: -8,
+      y: -12,
       transition: {
-        duration: 0.2,
-        ease: [0.16, 1, 0.3, 1] as const,
+        duration: 0.15,
       },
     },
     open: {
@@ -268,11 +273,17 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
 
   return (
     <motion.div
-      variants={menuVariants}
+      variants={curtainVariants}
       initial="closed"
       animate="open"
       exit="closed"
-      className="fixed inset-0 z-[99998] flex flex-col justify-between bg-[#0c0c0c] h-[100dvh] w-screen md:hidden pt-[calc(70px+env(safe-area-inset-top))] pb-8 select-none"
+      className="fixed inset-0 top-0 left-0 right-0 z-[99998] flex flex-col justify-between bg-[#0c0c0c] h-[100dvh] w-screen md:hidden pt-[calc(70px+env(safe-area-inset-top))] pb-[calc(20px+env(safe-area-inset-bottom))] select-none overflow-hidden"
+      style={{
+        WebkitBackfaceVisibility: "hidden",
+        backfaceVisibility: "hidden",
+        transform: "translate3d(0, 0, 0)",
+        willChange: "transform",
+      }}
     >
       <motion.nav
         variants={navVariants}
