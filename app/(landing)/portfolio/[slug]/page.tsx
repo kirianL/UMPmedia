@@ -45,7 +45,7 @@ const PROJECTS_DATABASE: Record<string, ProjectData> = {
     category: "Producción Audiovisual",
     year: "2026",
     client: "Ultimate Media Productions",
-    deliverables: "Serie Web / Dirección / Montaje / Color",
+    deliverables: "Serie Web • Dirección • Montaje • Color",
     heroImage: "/portfolio/productions/BuscandoAlDealer/BusquedaDealer_TL.jpg",
     videoYoutubeId: "XvPBfqjhKP0",
     leadParagraph:
@@ -60,7 +60,7 @@ const PROJECTS_DATABASE: Record<string, ProjectData> = {
       { role: "Dirección de Fotografía", name: "Cámara & Drones UMP" },
       { role: "Edición & Color", name: "Post-Producción UMP" },
       { role: "Diseño Sonoro", name: "UMP Audio Lab" },
-      { role: "Formato", name: "4K DCI / 24fps" },
+      { role: "Formato", name: "4K DCI a 24fps" },
     ],
     gallery: [
       { src: "/portfolio/productions/BuscandoAlDealer/Galeria/BIGGI%20LOVE1.jpg.jpeg", alt: "Biggi Love 1" },
@@ -84,7 +84,7 @@ const PROJECTS_DATABASE: Record<string, ProjectData> = {
     category: "Producción Audiovisual",
     year: "2026",
     client: "Ultimate Media Productions",
-    deliverables: "Cortometraje / Dirección / Guión / Post-Producción",
+    deliverables: "Cortometraje • Dirección • Guión • Post-Producción",
     heroImage: "/portfolio/productions/LaFamily/LaFamily.jpg",
     videoYoutubeId: "ozg6sR1Qr9Y",
     leadParagraph:
@@ -115,7 +115,7 @@ const PROJECTS_DATABASE: Record<string, ProjectData> = {
     category: "Branding & Identidad",
     year: "2026",
     client: "Sazón Colombiano Restaurante",
-    deliverables: "Estrategia de Marca / Sistema Gráfico / Fotografía de Producto",
+    deliverables: "Estrategia de Marca • Sistema Gráfico • Fotografía de Producto",
     heroImage: "/portfolio/Branding/SazonColombiano/SazonColombiano.jpeg",
     leadParagraph:
       "Diseño integral de marca y posicionamiento de identidad para Sazón Colombiano, reflejando su riqueza cultural, tradición culinaria y calidez a través de una estética contemporánea.",
@@ -154,7 +154,7 @@ function getFallbackProject(slug: string): ProjectData {
     category: "Producción",
     year: "2026",
     client: "Ultimate Media Productions",
-    deliverables: "Producción Audiovisual / Dirección / Estrategia",
+    deliverables: "Producción Audiovisual • Dirección • Estrategia",
     heroImage: "/portfolio/productions/BuscandoAlDealer/BusquedaDealer_TL.jpg",
     leadParagraph:
       "Exploración audiovisual y conceptual desarrollada por Ultimate Media Productions para conectar narrativas auténticas con audiencias globales.",
@@ -193,11 +193,10 @@ export default function ProjectDetail({
 
   return (
     <div className="min-h-screen bg-[#f6f6f3] text-neutral-900 selection:bg-emerald-100 selection:text-emerald-900 flex flex-col">
-      
       {/* Editorial Header Section */}
       <section className="pt-36 sm:pt-44 pb-12 px-6 sm:px-8 lg:px-12 max-w-[1360px] mx-auto w-full relative z-10">
         
-        {/* Back Link & Category Badge */}
+        {/* Back Link & Category Meta (Pure typographic styling, zero generic badges) */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8 sm:mb-10 pb-6 border-b border-neutral-200/80">
           <Link
             href="/portfolio"
@@ -210,11 +209,10 @@ export default function ProjectDetail({
             <span>Volver al portafolio</span>
           </Link>
 
-          <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3 py-1 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            <span>{project.category}</span>
-            <span className="text-emerald-400">•</span>
-            <span>{project.year}</span>
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-neutral-500">
+            <span className="text-emerald-600 font-bold">{project.category}</span>
+            <span className="text-neutral-300">—</span>
+            <span className="text-neutral-950 font-bold">{project.year}</span>
           </div>
         </div>
 
@@ -273,7 +271,7 @@ export default function ProjectDetail({
 
           <div>
             <span className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-emerald-600 font-semibold block mb-1">
-              Servicios / Formato
+              Servicios & Formato
             </span>
             <p className="text-xs sm:text-sm font-medium text-neutral-700 leading-snug">
               {project.deliverables}

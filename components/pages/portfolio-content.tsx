@@ -85,18 +85,18 @@ export function PortfolioContent() {
       {/* Main Content Area */}
       <section className="pb-24 px-6 sm:px-8 lg:px-12 max-w-[1360px] mx-auto w-full relative z-20 flex-1">
         
-        {/* Static Clean Filters */}
-        <div className="flex flex-wrap gap-2 mb-12 sm:mb-16">
+        {/* Editorial Clean Category Filters (Zero Generic Badges) */}
+        <div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-12 sm:mb-16 border-b border-neutral-200/80 pb-2">
           {categories.map((cat) => {
             const isSelected = filter === cat;
             return (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 ${
+                className={`px-4 py-2.5 text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                   isSelected
-                    ? "bg-neutral-950 text-white shadow-sm"
-                    : "bg-white text-neutral-600 border border-neutral-200/80 hover:border-neutral-300 hover:text-neutral-900"
+                    ? "text-neutral-950 font-bold border-b-2 border-emerald-600 bg-neutral-100/80"
+                    : "text-neutral-500 hover:text-neutral-900 font-medium hover:bg-neutral-100/40"
                 }`}
               >
                 {cat}
