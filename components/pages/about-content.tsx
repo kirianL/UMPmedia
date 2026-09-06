@@ -365,11 +365,11 @@ export function AboutContent() {
         </div>
       </section>
 
-      {/* 6. Our Clients (2016–25©) Section matching Fabrica Studio reference */}
+      {/* 6. Nuestros Clientes (2016–25©) Section matching Fabrica Studio reference */}
       <section className="py-16 sm:py-24">
         <div className="max-w-[1360px] mx-auto px-6 sm:px-8 lg:px-12">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-start">
             
             {/* Left Column: Heading & Year tag */}
             <motion.div
@@ -379,9 +379,9 @@ export function AboutContent() {
               transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
               className="lg:col-span-4 flex items-baseline gap-3"
             >
-              <span className="text-xs font-mono uppercase tracking-wider text-neutral-500 font-semibold select-none">
-                Our clients
-              </span>
+              <h2 className="text-xs sm:text-sm font-mono uppercase tracking-wider text-neutral-500 font-semibold select-none">
+                Nuestros clientes
+              </h2>
               <span className="text-xs font-mono text-neutral-400">
                 (2016–25©)
               </span>
@@ -391,12 +391,38 @@ export function AboutContent() {
             <div className="lg:col-span-8">
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
                 {[
-                  { name: "DN Express", src: "/assets/LogosHero/DnExpress.png" },
-                  { name: "Grupo Caribeños", src: "/assets/LogosHero/Caribenos.png", invertDark: true },
-                  { name: "Bufete Morgan JM", src: "/assets/LogosHero/JM.png" },
-                  { name: "Sazón Colombiano", src: "/assets/LogosHero/SazonColombiano.png" },
-                  { name: "Dra. Jeinnel Newball", src: "/assets/LogosHero/Newball.png" },
-                  { name: "Soda El Patty", src: "/assets/LogosHero/SodaElpatty.png" },
+                  { 
+                    name: "DN Express", 
+                    src: "/assets/LogosHero/DnExpress.png",
+                    imgClass: "max-h-16 sm:max-h-24 max-w-[130px] sm:max-w-[220px]"
+                  },
+                  { 
+                    name: "Grupo Caribeños", 
+                    src: "/assets/LogosHero/Caribenos.png", 
+                    invertDark: true,
+                    // Optical sizing: wide landscape text needs controlled width so it doesn't touch borders on mobile
+                    imgClass: "max-h-10 xs:max-h-12 sm:max-h-16 md:max-h-20 max-w-[105px] xs:max-w-[120px] sm:max-w-[180px] md:max-w-[210px] px-1"
+                  },
+                  { 
+                    name: "Bufete Morgan JM", 
+                    src: "/assets/LogosHero/JM.png",
+                    imgClass: "max-h-16 sm:max-h-24 max-w-[120px] sm:max-w-[200px]"
+                  },
+                  { 
+                    name: "Sazón Colombiano", 
+                    src: "/assets/LogosHero/SazonColombiano.png",
+                    imgClass: "max-h-16 sm:max-h-24 max-w-[120px] sm:max-w-[200px]"
+                  },
+                  { 
+                    name: "Dra. Jeinnel Newball", 
+                    src: "/assets/LogosHero/Newball.png",
+                    imgClass: "max-h-16 sm:max-h-24 max-w-[120px] sm:max-w-[200px]"
+                  },
+                  { 
+                    name: "Soda El Patty", 
+                    src: "/assets/LogosHero/SodaElpatty.png",
+                    imgClass: "max-h-16 sm:max-h-24 max-w-[130px] sm:max-w-[210px]"
+                  },
                 ].map((client, i) => (
                   <motion.div
                     key={client.name}
@@ -408,17 +434,17 @@ export function AboutContent() {
                       delay: i * 0.04,
                       ease: [0.23, 1, 0.32, 1],
                     }}
-                    className="bg-white rounded-3xl p-6 sm:p-8 border border-neutral-200/80 shadow-xs flex items-center justify-center min-h-[180px] sm:min-h-[220px]"
+                    className="bg-white rounded-3xl p-5 sm:p-8 border border-neutral-200/80 shadow-xs flex items-center justify-center min-h-[160px] sm:min-h-[220px]"
                   >
-                    {/* Logo in Full Original Color, perfectly centered, no hover animation */}
-                    <div className="w-full h-24 sm:h-28 flex items-center justify-center">
+                    {/* Logo in Full Original Color, perfectly centered */}
+                    <div className="w-full h-20 sm:h-28 flex items-center justify-center">
                       <Image
                         src={client.src}
                         alt={client.name}
                         width={260}
                         height={96}
-                        className={`max-h-20 sm:max-h-24 max-w-[190px] sm:max-w-[230px] w-auto h-auto object-contain ${
-                          client.invertDark ? "brightness-0" : ""
+                        className={`w-auto h-auto object-contain ${client.imgClass} ${
+                          client.invertDark ? "brightness-0 opacity-90" : ""
                         }`}
                       />
                     </div>

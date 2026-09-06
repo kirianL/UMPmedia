@@ -168,30 +168,30 @@ export function Header() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden z-[100000] p-2 relative w-10 h-10 flex flex-col items-center justify-center gap-[6px] focus:outline-none cursor-pointer"
-          style={{ color: textColor, transition: "color 0.3s ease-out" }}
-          aria-label="Toggle Menu"
+          className="md:hidden z-[100000] p-2 relative w-10 h-10 flex flex-col items-center justify-center gap-[6px] focus:outline-none cursor-pointer active:scale-[0.93] transition-transform duration-150"
+          style={{ color: textColor, transition: "color 0.28s ease-out" }}
+          aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
         >
           <motion.span
             animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
-            className="w-6 h-[2px] bg-current rounded-full"
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            className="w-6 h-[2px] bg-current rounded-full origin-center"
           />
           <motion.span
-            animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.15 }}
-            className="w-6 h-[2px] bg-current rounded-full"
+            animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            className="w-6 h-[2px] bg-current rounded-full origin-center"
           />
           <motion.span
             animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
-            className="w-6 h-[2px] bg-current rounded-full"
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            className="w-6 h-[2px] bg-current rounded-full origin-center"
           />
         </button>
       </motion.header>
 
       {/* Mobile Menu Overlay */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isOpen && <MobileMenu onClose={() => setIsOpen(false)} />}
       </AnimatePresence>
     </>
@@ -200,39 +200,46 @@ export function Header() {
 
 function MobileMenu({ onClose }: { onClose: () => void }) {
   useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = originalOverflow;
     };
   }, []);
 
   const handleLinkClick = () => {
-    document.body.style.overflow = "unset";
     onClose();
   };
 
   const menuVariants = {
     closed: {
       opacity: 0,
-      y: "-100%",
+      y: -16,
       transition: {
-        duration: 0.22,
-        ease: [0.32, 0.72, 0, 1] as const,
+        duration: 0.3,
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
     open: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.3,
-        ease: [0.23, 1, 0.32, 1] as const,
+        duration: 0.36,
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
 
   const navVariants = {
-    closed: {},
+    closed: {
+      opacity: 0,
+      transition: {
+        staggerChildren: 0.02,
+        staggerDirection: -1,
+      },
+    },
     open: {
+      opacity: 1,
       transition: {
         staggerChildren: 0.035,
         delayChildren: 0.06,
@@ -241,11 +248,21 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
   };
 
   const linkVariants = {
-    closed: { opacity: 0, transform: "translateY(12px) scale(0.96)" },
+    closed: {
+      opacity: 0,
+      y: -8,
+      transition: {
+        duration: 0.2,
+        ease: [0.16, 1, 0.3, 1] as const,
+      },
+    },
     open: {
       opacity: 1,
-      transform: "translateY(0px) scale(1)",
-      transition: { duration: 0.22, ease: [0.23, 1, 0.32, 1] as const },
+      y: 0,
+      transition: {
+        duration: 0.3,
+        ease: [0.16, 1, 0.3, 1] as const,
+      },
     },
   };
 
@@ -255,7 +272,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       initial="closed"
       animate="open"
       exit="closed"
-      className="fixed inset-0 z-[99998] flex flex-col justify-between bg-[#0c0c0c] h-[100dvh] w-screen md:hidden pt-[calc(70px+env(safe-area-inset-top))] pb-8"
+      className="fixed inset-0 z-[99998] flex flex-col justify-between bg-[#0c0c0c] h-[100dvh] w-screen md:hidden pt-[calc(70px+env(safe-area-inset-top))] pb-8 select-none"
     >
       <motion.nav
         variants={navVariants}

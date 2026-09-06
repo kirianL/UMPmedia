@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { newsArticles } from "@/lib/news-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://umpmedia.vercel.app";
+  const baseUrl = "https://studios.ultimatemediaproductions.com";
 
   const staticUrls: MetadataRoute.Sitemap = [
     {

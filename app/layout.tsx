@@ -16,6 +16,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://studios.ultimatemediaproductions.com"
+  ),
   title: {
     default: "Ultimate Media Productions | Estudio Audiovisual - Limón, Costa Rica",
     template: "%s | Ultimate Media Productions",
@@ -31,14 +34,14 @@ export const metadata: Metadata = {
     "Ultimate Media Productions",
     "video corporativo",
   ],
-  authors: [{ name: "Ultimate Media Productions Team", url: "https://umpmedia.vercel.app" }],
+  authors: [{ name: "Ultimate Media Productions Team", url: "https://studios.ultimatemediaproductions.com" }],
   creator: "Ultimate Media Productions",
   publisher: "Ultimate Media Productions",
   openGraph: {
     title: "Ultimate Media Productions | Estudio Audiovisual - Limón, Costa Rica",
     description:
       "Desde Limón para el mundo. Estudio audiovisual especializado en producción de video, fotografía profesional y estrategias de contenido digital.",
-    url: "https://umpmedia.vercel.app",
+    url: "https://studios.ultimatemediaproductions.com",
     siteName: "Ultimate Media Productions",
     images: [
       {
@@ -64,7 +67,6 @@ export const metadata: Metadata = {
     title: "Ultimate Media Productions",
     statusBarStyle: "black-translucent",
   },
-  metadataBase: new URL("https://umpmedia.vercel.app"),
   icons: {
     icon: [
       { url: "/assets/ICO-UMP/favicon-16x16.png", sizes: "16x16", type: "image/png" },
