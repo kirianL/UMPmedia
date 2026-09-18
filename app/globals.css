@@ -263,6 +263,36 @@
   }
 }
 
+/* Mobile hamburger: curtain reveals from the header, same path on close.
+   CSS transitions so open/close can reverse mid-flight instead of popping. */
+.mobile-nav-overlay {
+  clip-path: inset(0 0 100% 0);
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    clip-path 400ms var(--ease-drawer),
+    visibility 0s linear 400ms;
+}
+
+.mobile-nav-overlay[data-open="true"] {
+  clip-path: inset(0 0 0 0);
+  pointer-events: auto;
+  visibility: visible;
+  transition:
+    clip-path 400ms var(--ease-drawer),
+    visibility 0s linear 0s;
+}
+
+.mobile-nav-overlay__content {
+  opacity: 0;
+  transition: opacity 220ms var(--ease-out);
+}
+
+.mobile-nav-overlay[data-open="true"] .mobile-nav-overlay__content {
+  opacity: 1;
+  transition-delay: 90ms;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -272,5 +302,18 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .mobile-nav-overlay {
+    clip-path: none;
+    opacity: 0;
+  }
+
+  .mobile-nav-overlay[data-open="true"] {
+    opacity: 1;
+  }
+
+  .mobile-nav-overlay__content {
+    opacity: 1;
   }
 }

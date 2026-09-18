@@ -2,12 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect, useRef, useMemo } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useMotionValueEvent,
-} from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { AnimatedLogo } from "@/components/ui/animated-logo";
 import { SlotButton } from "@/components/ui/slot-button";
@@ -87,7 +82,7 @@ export function Header() {
           y: isOpen || isVisible ? 0 : -120,
           opacity: isOpen || isVisible ? 1 : 0,
           backgroundColor: isOpen
-            ? "transparent"
+            ? "#0c0c0c"
             : isScrolled
             ? "#f6f6f3"
             : "transparent",
@@ -101,7 +96,7 @@ export function Header() {
         transition={{
           y: { duration: 0.3, ease: [0.23, 1, 0.32, 1] },
           opacity: { duration: 0.2 },
-          backgroundColor: { duration: 0.3, ease: [0.23, 1, 0.32, 1] },
+          backgroundColor: { duration: 0.4, ease: [0.32, 0.72, 0, 1] },
           borderColor: { duration: 0.3, ease: [0.23, 1, 0.32, 1] },
           backdropFilter: { duration: 0.3, ease: [0.23, 1, 0.32, 1] },
         }}
@@ -175,148 +170,104 @@ export function Header() {
 
         {/* Mobile hamburger */}
         <button
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden z-[100000] p-2 relative w-10 h-10 flex flex-col items-center justify-center gap-[6px] focus:outline-none cursor-pointer active:scale-[0.93] transition-transform duration-150"
-          style={{ color: textColor, transition: "color 0.28s ease-out" }}
+          className="md:hidden z-[100000] p-2 relative w-10 h-10 flex flex-col items-center justify-center gap-[6px] focus:outline-none cursor-pointer"
+          style={{
+            color: textColor,
+            transition:
+              "color 200ms var(--ease-out), transform 160ms var(--ease-out)",
+          }}
           aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
         >
           <motion.span
-            animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            animate={{
+              transform: isOpen
+                ? "translateY(8px) rotate(45deg)"
+                : "translateY(0px) rotate(0deg)",
+            }}
+            transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="w-6 h-[2px] bg-current rounded-full origin-center"
           />
           <motion.span
-            animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            animate={{
+              opacity: isOpen ? 0 : 1,
+              transform: isOpen ? "scaleX(0)" : "scaleX(1)",
+            }}
+            transition={{ duration: 0.16, ease: [0.23, 1, 0.32, 1] }}
             className="w-6 h-[2px] bg-current rounded-full origin-center"
           />
           <motion.span
-            animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            animate={{
+              transform: isOpen
+                ? "translateY(-8px) rotate(-45deg)"
+                : "translateY(0px) rotate(0deg)",
+            }}
+            transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
             className="w-6 h-[2px] bg-current rounded-full origin-center"
           />
         </button>
       </motion.header>
 
-      {/* Mobile Menu Overlay - Smooth real curtain dropdown & retraction */}
-      <AnimatePresence>
-        {isOpen && <MobileMenu onClose={() => setIsOpen(false)} />}
-      </AnimatePresence>
+      <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
 }
 
-function MobileMenu({ onClose }: { onClose: () => void }) {
+function MobileMenu({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   useEffect(() => {
+    if (!isOpen) return;
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = originalOverflow;
     };
-  }, []);
-
-  const handleLinkClick = () => {
-    onClose();
-  };
-
-  // Real drop-down curtain: smoothly slides down and cleanly retracts up into the ceiling
-  const curtainVariants = {
-    closed: {
-      y: "-100%",
-      transition: {
-        duration: 0.28,
-        ease: [0.32, 0.72, 0, 1] as const,
-      },
-    },
-    open: {
-      y: "0%",
-      transition: {
-        duration: 0.36,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
-    },
-  };
-
-  const navVariants = {
-    closed: {
-      opacity: 0,
-      transition: {
-        duration: 0.15,
-      },
-    },
-    open: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.08,
-        staggerChildren: 0.035,
-      },
-    },
-  };
-
-  const linkVariants = {
-    closed: {
-      opacity: 0,
-      y: -12,
-      transition: {
-        duration: 0.15,
-      },
-    },
-    open: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.3,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
-    },
-  };
+  }, [isOpen]);
 
   return (
-    <motion.div
-      variants={curtainVariants}
-      initial="closed"
-      animate="open"
-      exit="closed"
-      className="fixed inset-0 top-0 left-0 right-0 z-[99998] flex flex-col justify-between bg-[#0c0c0c] h-[100dvh] w-screen md:hidden pt-[calc(70px+env(safe-area-inset-top))] pb-[calc(20px+env(safe-area-inset-bottom))] select-none overflow-hidden"
-      style={{
-        WebkitBackfaceVisibility: "hidden",
-        backfaceVisibility: "hidden",
-        transform: "translate3d(0, 0, 0)",
-        willChange: "transform",
-      }}
+    <div
+      id="mobile-menu"
+      data-open={isOpen ? "true" : undefined}
+      aria-hidden={!isOpen}
+      {...(!isOpen ? { inert: true } : {})}
+      className="mobile-nav-overlay fixed inset-0 z-[99998] flex flex-col justify-between bg-[#0c0c0c] h-[100dvh] w-screen md:hidden pt-[calc(70px+env(safe-area-inset-top))] pb-[calc(20px+env(safe-area-inset-bottom))] select-none overflow-hidden"
     >
-      <motion.nav
-        variants={navVariants}
-        className="flex-1 flex flex-col items-center justify-center gap-4 px-6"
-      >
-        {MOBILE_LINKS.map((link) => (
-          <motion.div key={link.href} variants={linkVariants}>
+      <div className="mobile-nav-overlay__content flex flex-1 flex-col justify-between">
+        <nav className="flex-1 flex flex-col items-center justify-center gap-4 px-6">
+          {MOBILE_LINKS.map((link) => (
             <Link
+              key={link.href}
               href={link.href}
-              onClick={handleLinkClick}
-              className="block text-center font-bold text-white tracking-tight text-2xl sm:text-3xl transition-colors duration-200 active:scale-[0.97] hover:text-emerald-400"
+              onClick={onClose}
+              tabIndex={isOpen ? 0 : -1}
+              className="block text-center font-bold text-white tracking-tight text-2xl sm:text-3xl transition-colors duration-200 hover:text-emerald-400"
             >
               {link.label}
             </Link>
-          </motion.div>
-        ))}
-      </motion.nav>
+          ))}
+        </nav>
 
-      <motion.div
-        variants={linkVariants}
-        className="flex flex-col items-center gap-3 px-6"
-      >
-        <SlotButton
-          href="/contact"
-          onClick={handleLinkClick}
-          variant="secondary"
-          size="md"
-          className="w-full max-w-xs justify-center"
-        >
-          Cotizar proyecto
-        </SlotButton>
-      </motion.div>
-    </motion.div>
+        <div className="flex flex-col items-center gap-3 px-6">
+          <SlotButton
+            href="/contact"
+            onClick={onClose}
+            variant="secondary"
+            size="md"
+            className="w-full max-w-xs justify-center"
+          >
+            Cotizar proyecto
+          </SlotButton>
+        </div>
+      </div>
+    </div>
   );
 }
 
