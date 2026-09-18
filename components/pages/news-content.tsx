@@ -90,36 +90,33 @@ export function NewsContent() {
               <div className="lg:col-span-2 md:col-span-2">
                 <Link
                   href={`/news/${featuredArticle.slug}`}
-                  className="group relative flex flex-col justify-between h-full min-h-[460px] sm:min-h-[500px] rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-200/60 p-7 sm:p-9 shadow-xs"
+                  className="group relative flex flex-col h-full rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-200/60 shadow-xs md:min-h-[500px]"
                 >
-                  {/* Full-bleed Photo with Smooth Scale */}
-                  <div className="absolute inset-0 w-full h-full overflow-hidden">
+                  {/* Landscape photo on mobile; full-bleed overlay from md up */}
+                  <div className="relative w-full aspect-[16/9] overflow-hidden md:absolute md:inset-0 md:aspect-auto md:h-full">
                     <Image
                       src={featuredArticle.image}
                       alt={featuredArticle.title}
                       fill
                       priority
                       sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
+                      className="object-cover object-center transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
                     />
+                    <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/10 pointer-events-none" />
                   </div>
 
-                  {/* High-End Dark Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/10 z-10 pointer-events-none" />
-
-                  {/* Top Date */}
-                  <div className="relative z-20 text-xs sm:text-sm text-white/70 font-normal">
-                    {featuredArticle.date}
-                  </div>
-
-                  {/* Bottom Content Row */}
-                  <div className="relative z-20 space-y-2.5 pt-32">
-                    <h2 className="text-2xl sm:text-3xl lg:text-[2.1rem] font-bold text-white leading-tight tracking-tight">
-                      {featuredArticle.title}
-                    </h2>
-                    <p className="text-xs sm:text-sm text-white/80 font-normal leading-relaxed line-clamp-2">
-                      {featuredArticle.excerpt}
-                    </p>
+                  <div className="relative z-20 flex flex-col gap-3 p-6 sm:p-7 md:flex-1 md:justify-between md:p-9">
+                    <div className="text-xs sm:text-sm text-white/70 font-normal">
+                      {featuredArticle.date}
+                    </div>
+                    <div className="space-y-2.5">
+                      <h2 className="text-2xl sm:text-3xl lg:text-[2.1rem] font-bold text-white leading-tight tracking-tight">
+                        {featuredArticle.title}
+                      </h2>
+                      <p className="text-xs sm:text-sm text-white/80 font-normal leading-relaxed line-clamp-2">
+                        {featuredArticle.excerpt}
+                      </p>
+                    </div>
                   </div>
                 </Link>
               </div>
