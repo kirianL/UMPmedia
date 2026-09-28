@@ -50,6 +50,10 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
   const [activeSection, setActiveSection] = useState<string>("");
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [mobileTocOpen, setMobileTocOpen] = useState(false);
+  const authorNames = article.authors?.length
+    ? article.authors.map((author) => author.name).join(", ")
+    : "Fabián Acuña, Eymar Ortiz, Kirian Luna";
+  const teamLabel = article.teamLabel || "Equipo Creativo UMP Media";
 
   // Calculate standardized dynamic reading time based on word count
   const readingTime = useMemo(() => {
@@ -469,10 +473,10 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                     </div>
                     <div className="text-xs">
                       <p className="font-bold text-neutral-900">
-                        Fabián Acuña, Eymar Ortiz, Kirian Luna
+                        {authorNames}
                       </p>
                       <p className="text-neutral-500 text-[11px]">
-                        Equipo Creativo UMP Media
+                        {teamLabel}
                       </p>
                     </div>
                   </div>
@@ -613,10 +617,10 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                   </div>
                   <div className="text-xs">
                     <p className="font-bold text-neutral-950 leading-tight">
-                      Fabián Acuña, Eymar Ortiz, Kirian Luna
+                      {authorNames}
                     </p>
                     <p className="text-neutral-500 text-[11px] mt-0.5">
-                      Equipo Creativo UMP
+                      {teamLabel}
                     </p>
                   </div>
                 </div>

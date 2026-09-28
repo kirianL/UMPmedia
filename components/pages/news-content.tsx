@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { PiPlusBold } from "react-icons/pi";
 import { CTAFinal } from "@/components/sections/cta-final";
-import { newsArticles } from "@/lib/news-data";
+import type { NewsItem } from "@/lib/news-data";
 
 const fadeUpVariants = {
   hidden: { opacity: 0, y: 14 },
@@ -21,9 +20,9 @@ const fadeUpVariants = {
   }),
 };
 
-export function NewsContent() {
-  const featuredArticle = newsArticles[0];
-  const standardArticles = newsArticles.slice(1);
+export function NewsContent({ articles }: { articles: NewsItem[] }) {
+  const featuredArticle = articles[0];
+  const standardArticles = articles.slice(1);
 
   return (
     <div className="min-h-screen bg-[#f6f6f3] text-neutral-900 selection:bg-neutral-950 selection:text-white">
@@ -85,6 +84,12 @@ export function NewsContent() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             
+            {!featuredArticle && (
+              <p className="col-span-full text-sm text-neutral-500">
+                Pronto publicaremos nuevas noticias.
+              </p>
+            )}
+
             {/* 1. Large Hero Card (Spans 2 cols on Desktop, Synchronized Motion Zoom + Blur) */}
             {featuredArticle && (
               <div className="lg:col-span-2 md:col-span-2">

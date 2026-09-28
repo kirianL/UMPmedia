@@ -1,8 +1,11 @@
 import { MetadataRoute } from "next";
-import { newsArticles } from "@/lib/news-data";
+import { getNewsArticles } from "@/lib/convex-news";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 60;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://studios.ultimatemediaproductions.com";
+  const articles = await getNewsArticles();
 
   const staticUrls: MetadataRoute.Sitemap = [
     {
@@ -43,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const newsUrls: MetadataRoute.Sitemap = newsArticles.map((article) => ({
+  const newsUrls: MetadataRoute.Sitemap = articles.map((article) => ({
     url: `${baseUrl}/news/${article.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",

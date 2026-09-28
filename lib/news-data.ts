@@ -1,3 +1,7 @@
+export interface NewsAuthor {
+  name: string;
+}
+
 export interface NewsItem {
   title: string;
   date: string;
@@ -6,6 +10,9 @@ export interface NewsItem {
   image: string;
   category: string;
   content: string;
+  authors?: NewsAuthor[];
+  teamLabel?: string;
+  publishedAt?: string;
 }
 
 export const newsArticles: NewsItem[] = [
