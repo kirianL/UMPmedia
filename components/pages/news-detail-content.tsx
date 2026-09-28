@@ -1,18 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useVelocity,
-  useSpring,
-  useTransform,
-  useMotionValueEvent,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   ArrowLeft,
   Calendar,
@@ -33,6 +24,7 @@ import {
 } from "react-icons/pi";
 import { CTAFinal } from "@/components/sections/cta-final";
 import { NewsItem } from "@/lib/news-data";
+import { resolveNewsAuthors } from "@/lib/news-authors";
 import { Tooltip } from "@/components/motion/tooltip";
 
 interface NewsDetailContentProps {
@@ -44,15 +36,62 @@ interface TocItem {
   title: string;
 }
 
+function AuthorFaces({
+  authors,
+  teamLabel,
+  card,
+}: {
+  authors: { id: string; name: string; photo: string }[];
+  teamLabel: string;
+  card?: boolean;
+}) {
+  const names = authors.map((author) => author.name).join(", ");
+
+  return (
+    <div
+      className={
+        card
+          ? "flex items-center gap-3 bg-white border border-neutral-200/80 rounded-xl p-3.5 shadow-xs"
+          : "flex items-center gap-3"
+      }
+    >
+      {authors.length > 0 && (
+        <div className="flex -space-x-2 shrink-0">
+          {authors.map((author) =>
+            author.photo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={author.id}
+                src={author.photo}
+                alt={author.name}
+                className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
+              />
+            ) : (
+              <span
+                key={author.id}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full ring-2 ring-white bg-neutral-200 text-[10px] font-bold text-neutral-700"
+              >
+                {author.name.slice(0, 1)}
+              </span>
+            ),
+          )}
+        </div>
+      )}
+      <div className="text-xs min-w-0">
+        <p className="font-bold text-neutral-950 leading-tight">{names}</p>
+        <p className="text-neutral-500 text-[11px] mt-0.5">{teamLabel}</p>
+      </div>
+    </div>
+  );
+}
+
 export function NewsDetailContent({ article }: NewsDetailContentProps) {
   const shouldReduceMotion = useReducedMotion();
   const [copied, setCopied] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [mobileTocOpen, setMobileTocOpen] = useState(false);
-  const authorNames = article.authors?.length
-    ? article.authors.map((author) => author.name).join(", ")
-    : "Fabián Acuña, Eymar Ortiz, Kirian Luna";
+  const resolvedAuthors = resolveNewsAuthors(article.authors);
   const teamLabel = article.teamLabel || "Equipo Creativo UMP Media";
 
   // Calculate standardized dynamic reading time based on word count
@@ -125,12 +164,15 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
         }
       }
 
-      if (currentActive) {
-        setActiveSection(currentActive);
-      } else if (tocItems.length > 0) {
-        setActiveSection(tocItems[0].id);
-      }
-      setCompletedSections(completed);
+      const nextActive =
+        currentActive || (tocItems.length > 0 ? tocItems[0].id : "");
+      setActiveSection((prev) => (prev === nextActive ? prev : nextActive));
+      setCompletedSections((prev) => {
+        if (prev.size === completed.size && [...completed].every((id) => prev.has(id))) {
+          return prev;
+        }
+        return completed;
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -193,15 +235,6 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
 
   return (
     <div className="relative min-h-screen bg-[#f6f6f3] text-[#111111] selection:bg-emerald-600 selection:text-white overflow-x-clip">
-      {/* SVG filter */}
-      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-        <defs>
-          <filter id="scroll-motion-blur" x="0%" y="-10%" width="100%" height="120%">
-            <feGaussianBlur stdDeviation="0 0" />
-          </filter>
-        </defs>
-      </svg>
-
       {/* Main Container with Smooth Optical Reveal */}
       <motion.div
         initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
@@ -210,7 +243,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
           duration: 0.45,
           ease: [0.23, 1, 0.32, 1] as const,
         }}
-        className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-20 will-change-[transform,opacity]"
+        className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-20"
       >
         
         {/* Mobile Header Bar (Navigation) */}
@@ -340,7 +373,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                 delay: 0.08,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="bg-white border border-neutral-200/80 rounded-2xl p-6 sm:p-10 md:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.03)] will-change-[transform,opacity]"
+              className="bg-white border border-neutral-200/80 rounded-2xl p-6 sm:p-10 md:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.03)]"
             >
               
               {/* Desktop Breadcrumb Navigation */}
@@ -385,7 +418,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                     duration: 0.8,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="relative w-full aspect-[16/10] sm:aspect-[16/9] will-change-[transform,filter]"
+                  className="relative w-full aspect-[16/10] sm:aspect-[16/9]"
                 >
                   <Image
                     src={article.image}
@@ -453,33 +486,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                   <p className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 font-bold mb-3">
                     AUTORES
                   </p>
-                  <div className="flex items-center gap-3">
-                    <div className="flex -space-x-2 overflow-hidden">
-                      <img
-                        src="/assets/images/Team/Kirian.jpg"
-                        alt="Kirian Luna"
-                        className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                      />
-                      <img
-                        src="/assets/images/Team/Eymar.jpg"
-                        alt="Eymar"
-                        className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                      />
-                      <img
-                        src="/assets/images/Team/Fabian.jpg"
-                        alt="Fabian"
-                        className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                      />
-                    </div>
-                    <div className="text-xs">
-                      <p className="font-bold text-neutral-900">
-                        {authorNames}
-                      </p>
-                      <p className="text-neutral-500 text-[11px]">
-                        {teamLabel}
-                      </p>
-                    </div>
-                  </div>
+                  <AuthorFaces authors={resolvedAuthors} teamLabel={teamLabel} />
                 </div>
 
                 <div>
@@ -597,33 +604,7 @@ export function NewsDetailContent({ article }: NewsDetailContentProps) {
                   AUTORES
                 </p>
 
-                <div className="flex items-center gap-3 bg-white border border-neutral-200/80 rounded-xl p-3.5 shadow-xs">
-                  <div className="flex -space-x-2 shrink-0">
-                    <img
-                      src="/assets/images/Team/Kirian.jpg"
-                      alt="Kirian Luna"
-                      className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                    />
-                    <img
-                      src="/assets/images/Team/Eymar.jpg"
-                      alt="Eymar"
-                      className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                    />
-                    <img
-                      src="/assets/images/Team/Fabian.jpg"
-                      alt="Fabian"
-                      className="inline-block h-9 w-9 rounded-full ring-2 ring-white object-cover"
-                    />
-                  </div>
-                  <div className="text-xs">
-                    <p className="font-bold text-neutral-950 leading-tight">
-                      {authorNames}
-                    </p>
-                    <p className="text-neutral-500 text-[11px] mt-0.5">
-                      {teamLabel}
-                    </p>
-                  </div>
-                </div>
+                <AuthorFaces authors={resolvedAuthors} teamLabel={teamLabel} card />
               </div>
 
               {/* Share Section (NO slash!) */}

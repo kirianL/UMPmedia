@@ -52,10 +52,25 @@ export function SmoothScrollProvider({
       autoRaf: true,
     });
 
+    const html = document.documentElement;
+    let scrollIdleTimer = 0;
+    const onScroll = () => {
+      html.classList.add("is-scrolling");
+      window.clearTimeout(scrollIdleTimer);
+      scrollIdleTimer = window.setTimeout(() => {
+        html.classList.remove("is-scrolling");
+      }, 90);
+    };
+
+    lenis.on("scroll", onScroll);
+
     lenisRef.current = lenis;
     (window as any).__lenis = lenis;
 
     return () => {
+      window.clearTimeout(scrollIdleTimer);
+      html.classList.remove("is-scrolling");
+      lenis.off("scroll", onScroll);
       lenis.destroy();
       lenisRef.current = null;
     };

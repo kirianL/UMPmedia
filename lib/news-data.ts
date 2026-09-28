@@ -1,5 +1,7 @@
 export interface NewsAuthor {
+  id?: string;
   name: string;
+  photo?: string;
 }
 
 export interface NewsItem {
@@ -44,6 +46,12 @@ export const newsArticles: NewsItem[] = [
       <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">Al término del encuentro, la Ministra del MEIC felicitó al equipo de UMP por su perseverancia, visión empresarial y estándar de excelencia, reiterando el compromiso del ministerio de seguir articulando sinergias que promuevan el crecimiento del ecosistema emprendedor en la provincia.</p>
       <p class="mb-6 text-base md:text-lg text-neutral-700 leading-relaxed">Para Ultimate Media Productions, esta visita consolida su rol como referente de la producción audiovisual y la innovación digital en el Caribe, reafirmando que con trabajo constante y rigor profesional es posible liderar la industria desde Limón para todo Costa Rica.</p>
     `,
+    authors: [
+      { id: "fabian", name: "Fabián Acuña", photo: "/assets/images/Team/Fabian.jpg" },
+      { id: "eymar", name: "Eymar Ortiz", photo: "/assets/images/Team/Eymar.jpg" },
+      { id: "kirian", name: "Kirian Luna", photo: "/assets/images/Team/Kirian.jpg" },
+    ],
+    teamLabel: "Equipo Creativo UMP Media",
   },
   {
     title: "Nueva producción documental en Puerto Viejo",

@@ -12,8 +12,12 @@ type ConvexNewsCard = {
 
 type ConvexNewsArticle = ConvexNewsCard & {
   intro: string[];
-  sections: { title: string; paragraphs: string[] }[];
-  authors: { name: string }[];
+  sections: {
+    title: string;
+    paragraphs: string[];
+    imageUrl?: string | null;
+  }[];
+  authors: { id?: string; name: string; photo?: string }[];
   teamLabel: string;
   topics: string[];
 };
@@ -56,10 +60,19 @@ function articleToHtml(article: ConvexNewsArticle) {
   const intro = paragraphsToHtml(article.intro, true);
   const sections = article.sections
     .map((section) => {
-      const title = `<h3 class="text-2xl md:text-3xl font-black text-neutral-950 mt-10 mb-4 tracking-tight">${escapeHtml(
-        section.title,
-      )}</h3>`;
-      return `${title}\n${paragraphsToHtml(section.paragraphs)}`;
+      const title = section.title
+        ? `<h3 class="text-2xl md:text-3xl font-black text-neutral-950 mt-10 mb-4 tracking-tight">${escapeHtml(
+            section.title,
+          )}</h3>`
+        : "";
+      const image = section.imageUrl
+        ? `<figure class="my-6 overflow-hidden rounded-2xl border border-neutral-200/80 bg-neutral-100"><img src="${escapeHtml(
+            section.imageUrl,
+          )}" alt="${escapeHtml(
+            section.title || "Foto de la sección",
+          )}" class="w-full h-auto object-cover" /></figure>`
+        : "";
+      return `${title}\n${image}\n${paragraphsToHtml(section.paragraphs)}`;
     })
     .join("\n");
   return [intro, sections].filter(Boolean).join("\n");
