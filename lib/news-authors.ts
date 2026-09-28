@@ -28,35 +28,32 @@ export function resolveNewsAuthors(
   if (!authors?.length) return [];
 
   const resolved: NewsAuthorPerson[] = [];
+  const seen = new Set<string>();
   for (const author of authors) {
     const id = author.id?.trim().toLowerCase();
     const byId = id
       ? NEWS_AUTHORS.find((person) => person.id === id)
       : undefined;
-    if (byId) {
-      resolved.push(byId);
-      continue;
-    }
-
     const name = author.name.trim().toLowerCase();
-    const byName = NEWS_AUTHORS.find((person) => {
-      const full = person.name.toLowerCase();
-      return (
-        full === name ||
-        full.includes(name) ||
-        name.includes(person.id) ||
-        name.includes(full.split(" ")[0])
-      );
-    });
-
-    if (byName) {
-      resolved.push(byName);
+    const byName = name
+      ? NEWS_AUTHORS.find((person) => {
+          const full = person.name.toLowerCase();
+          return full === name || full.startsWith(name) || name.startsWith(full);
+        })
+      : undefined;
+    const person = byId || byName;
+    if (person) {
+      if (seen.has(person.id)) continue;
+      seen.add(person.id);
+      resolved.push(person);
       continue;
     }
 
-    if (author.name.trim()) {
+    const fallbackId = author.id || author.name.trim();
+    if (author.name.trim() && !seen.has(fallbackId)) {
+      seen.add(fallbackId);
       resolved.push({
-        id: author.id || author.name,
+        id: fallbackId,
         name: author.name.trim(),
         photo: author.photo || "",
       });
