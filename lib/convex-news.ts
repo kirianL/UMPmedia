@@ -16,6 +16,8 @@ type ConvexNewsArticle = ConvexNewsCard & {
     title: string;
     paragraphs: string[];
     imageUrl?: string | null;
+    linkUrl?: string | null;
+    linkLabel?: string | null;
   }[];
   authors: { id?: string; name: string; photo?: string }[];
   teamLabel: string;
@@ -72,7 +74,15 @@ function articleToHtml(article: ConvexNewsArticle) {
             section.title || "Foto de la sección",
           )}" class="w-full h-auto object-cover" /></figure>`
         : "";
-      return `${title}\n${image}\n${paragraphsToHtml(section.paragraphs)}`;
+      const link =
+        section.linkUrl && /^https?:\/\//i.test(section.linkUrl)
+          ? `<p class="mb-6"><a href="${escapeHtml(
+              section.linkUrl,
+            )}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 underline decoration-emerald-700/30 underline-offset-4 hover:decoration-emerald-700">${escapeHtml(
+              section.linkLabel || section.linkUrl,
+            )}</a></p>`
+          : "";
+      return `${title}\n${image}\n${paragraphsToHtml(section.paragraphs)}\n${link}`;
     })
     .join("\n");
   return [intro, sections].filter(Boolean).join("\n");

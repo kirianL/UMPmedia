@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { PortfolioContent } from "@/components/pages/portfolio-content";
+import { getPortfolioProjects } from "@/lib/convex-portfolio";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Portafolio | Ultimate Media Productions - Producción Audiovisual",
   description:
-    "Explora nuestros proyectos de producción de video, fotografía profesional y campañas digitales en Costa Rica. Narrativas visuales con identidad caribeña y alcance global.",
+    "Proyectos de producción, fotografía y marca de Ultimate Media Productions en Costa Rica.",
 };
 
-export default function PortfolioPage() {
-  return <PortfolioContent />;
+export default async function PortfolioPage() {
+  const projects = await getPortfolioProjects();
+  return <PortfolioContent projects={projects} />;
 }

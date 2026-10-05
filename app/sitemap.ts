@@ -1,11 +1,15 @@
 import { MetadataRoute } from "next";
 import { getNewsArticles } from "@/lib/convex-news";
+import { getPortfolioProjects } from "@/lib/convex-portfolio";
 
 export const revalidate = 60;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://studios.ultimatemediaproductions.com";
-  const articles = await getNewsArticles();
+  const [articles, projects] = await Promise.all([
+    getNewsArticles(),
+    getPortfolioProjects(),
+  ]);
 
   const staticUrls: MetadataRoute.Sitemap = [
     {
@@ -53,5 +57,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticUrls, ...newsUrls];
+  const portfolioUrls: MetadataRoute.Sitemap = projects.map((project) => ({
+    url: `${baseUrl}/portfolio/${project.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticUrls, ...newsUrls, ...portfolioUrls];
 }

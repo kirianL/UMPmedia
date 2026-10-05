@@ -121,7 +121,10 @@ export function Header() {
         {/* Desktop centre links (perfectly centered to the viewport) */}
         <nav className="hidden md:flex items-center gap-1 p-1 h-9 rounded-full bg-neutral-100/90 border border-neutral-200/60 backdrop-blur-md md:absolute md:left-1/2 md:-translate-x-1/2">
           {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive =
+              link.href === "/"
+                ? pathname === "/"
+                : pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
