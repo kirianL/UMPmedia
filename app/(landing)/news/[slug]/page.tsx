@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     .trim()
     .slice(0, 160);
 
-  const siteUrl = "https://studios.ultimatemediaproductions.com";
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://ultimatemediaproductions.com";
 
   let ogImageUrl = article.image;
   if (article.slug === "visita-ministerial-desarrollo-ump" || ogImageUrl.includes("Ministra")) {
@@ -43,8 +44,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const articleUrl = `${siteUrl}/news/${article.slug}`;
 
+  const imageType = absoluteImageUrl.toLowerCase().endsWith(".png")
+    ? "image/png"
+    : absoluteImageUrl.toLowerCase().endsWith(".webp")
+    ? "image/webp"
+    : "image/jpeg";
+
   return {
-    title: `${article.title} | Ultimate Media Productions`,
+    title: article.title,
     description: cleanDesc,
     alternates: {
       canonical: articleUrl,
@@ -63,7 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           width: 1200,
           height: 630,
           alt: article.title,
-          type: "image/jpeg",
+          type: imageType,
         },
       ],
     },

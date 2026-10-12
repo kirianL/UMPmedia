@@ -30,18 +30,25 @@ export async function generateMetadata({
     .trim()
     .slice(0, 160);
 
-  const siteUrl = "https://studios.ultimatemediaproductions.com";
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://ultimatemediaproductions.com";
   const imageUrl = project.coverImage.startsWith("http")
     ? project.coverImage
     : `${siteUrl}${project.coverImage.startsWith("/") ? "" : "/"}${project.coverImage}`;
 
+  const projectUrl = `${siteUrl}/portfolio/${project.slug}`;
+
   return {
-    title: `${project.title} | Ultimate Media Productions`,
+    title: project.title,
     description,
+    alternates: {
+      canonical: projectUrl,
+    },
     openGraph: {
       title: project.title,
       description,
       type: "article",
+      url: projectUrl,
       images: [{ url: imageUrl, alt: project.title }],
     },
   };

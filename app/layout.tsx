@@ -17,7 +17,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://studios.ultimatemediaproductions.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://ultimatemediaproductions.com"
   ),
   title: {
     default: "Ultimate Media Productions | Estudio Audiovisual - Limón, Costa Rica",
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
     "Ultimate Media Productions",
     "video corporativo",
   ],
-  authors: [{ name: "Ultimate Media Productions Team", url: "https://studios.ultimatemediaproductions.com" }],
+  authors: [{ name: "Ultimate Media Productions Team", url: "https://ultimatemediaproductions.com" }],
   creator: "Ultimate Media Productions",
   publisher: "Ultimate Media Productions",
   openGraph: {
     title: "Ultimate Media Productions | Estudio Audiovisual - Limón, Costa Rica",
     description:
       "Desde Limón para el mundo. Estudio audiovisual especializado en producción de video, fotografía profesional y estrategias de contenido digital.",
-    url: "https://studios.ultimatemediaproductions.com",
+    url: "https://ultimatemediaproductions.com",
     siteName: "Ultimate Media Productions",
     images: [
       {
@@ -92,9 +92,9 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Ultimate Media Productions",
-    image: "https://umpmedia.vercel.app/assets/OpenGraph/og-social.jpg",
+    image: "https://ultimatemediaproductions.com/assets/OpenGraph/og-social.jpg",
     description: "Estudio audiovisual independiente desde Limón, Costa Rica.",
-    url: "https://umpmedia.vercel.app",
+    url: "https://ultimatemediaproductions.com",
     telephone: "+50600000000",
     address: {
       "@type": "PostalAddress",

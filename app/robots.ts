@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin/", "/login/"],
     },
-    sitemap: "https://umpmedia.vercel.app/sitemap.xml",
+    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || "https://ultimatemediaproductions.com"}/sitemap.xml`,
   };
 }

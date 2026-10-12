@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect, useRef, useMemo } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useState, useEffect, useLayoutEffect, useRef, useMemo } from "react";
+import { motion, useReducedMotion, useScroll, useMotionValueEvent } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { AnimatedLogo } from "@/components/ui/animated-logo";
 import { SlotButton } from "@/components/ui/slot-button";
@@ -119,39 +119,7 @@ export function Header() {
         </Link>
 
         {/* Desktop centre links (perfectly centered to the viewport) */}
-        <nav className="hidden md:flex items-center gap-1 p-1 h-9 rounded-full bg-neutral-100/90 border border-neutral-200/60 backdrop-blur-md md:absolute md:left-1/2 md:-translate-x-1/2">
-          {NAV_LINKS.map((link) => {
-            const isActive =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname === link.href || pathname.startsWith(`${link.href}/`);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="relative flex items-center justify-center px-3.5 h-full text-xs font-medium tracking-tight transition-colors duration-150 select-none rounded-full"
-                style={{
-                  color: isActive ? "#0a0a0a" : "#666666",
-                }}
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="header-active-pill"
-                    layout="position"
-                    className="absolute inset-0 rounded-full bg-white shadow-xs border border-neutral-200/50"
-                    transition={{
-                      type: "spring",
-                      stiffness: 450,
-                      damping: 35,
-                      mass: 0.6,
-                    }}
-                  />
-                )}
-                <span className="relative z-10">{link.label}</span>
-              </Link>
-            );
-          })}
-        </nav>
+        <DesktopNav pathname={pathname} />
 
         {/* Right: Contact link + CTA button */}
         <div className="hidden md:flex items-center gap-4 z-50">
@@ -216,6 +184,81 @@ export function Header() {
 
       <MobileMenu isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
+  );
+}
+
+function DesktopNav({ pathname }: { pathname: string }) {
+  const navRef = useRef<HTMLElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const [pill, setPill] = useState({ x: 0, width: 0, ready: false });
+
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+
+    const measure = () => {
+      const active = nav.querySelector<HTMLElement>("[data-active='true']");
+      if (!active) {
+        setPill((current) => ({ ...current, ready: false }));
+        return;
+      }
+      setPill({
+        x: active.offsetLeft,
+        width: active.offsetWidth,
+        ready: true,
+      });
+    };
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(nav);
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  return (
+    <nav
+      ref={navRef}
+      className="relative hidden h-9 overflow-hidden rounded-full border border-neutral-200/60 bg-neutral-100/90 p-1 backdrop-blur-md md:absolute md:left-1/2 md:flex md:-translate-x-1/2 md:items-center md:gap-1"
+    >
+      <motion.div
+        aria-hidden
+        initial={false}
+        animate={{
+          x: pill.x,
+          width: pill.width,
+          opacity: pill.ready ? 1 : 0,
+        }}
+        transition={
+          shouldReduceMotion
+            ? { duration: 0 }
+            : {
+                x: { type: "spring", stiffness: 450, damping: 35, mass: 0.6 },
+                width: { type: "spring", stiffness: 450, damping: 35, mass: 0.6 },
+                opacity: { duration: 0.15, ease: [0.23, 1, 0.32, 1] },
+              }
+        }
+        className="pointer-events-none absolute top-1 left-0 z-0 h-[calc(100%-8px)] rounded-full border border-neutral-200/50 bg-white shadow-xs"
+      />
+      {NAV_LINKS.map((link) => {
+        const isActive =
+          link.href === "/"
+            ? pathname === "/"
+            : pathname === link.href || pathname.startsWith(`${link.href}/`);
+        return (
+          <Link
+            key={link.href}
+            href={link.href}
+            data-active={isActive ? "true" : undefined}
+            className="relative z-10 flex h-full items-center justify-center rounded-full px-3.5 text-xs font-medium tracking-tight transition-colors duration-150 select-none"
+            style={{
+              color: isActive ? "#0a0a0a" : "#666666",
+            }}
+          >
+            {link.label}
+          </Link>
+        );
+      })}
+    </nav>
   );
 }
 
