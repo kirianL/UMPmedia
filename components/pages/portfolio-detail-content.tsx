@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
@@ -16,6 +16,9 @@ import {
   PiUserBold,
   PiBriefcaseBold,
   PiListBold,
+  PiXBold,
+  PiCaretLeftBold,
+  PiCaretRightBold,
 } from "react-icons/pi";
 import { CTAFinal } from "@/components/sections/cta-final";
 import type { PortfolioProject } from "@/lib/portfolio-data";
@@ -54,7 +57,62 @@ export function PortfolioDetailContent({
 }) {
   const shouldReduceMotion = useReducedMotion();
   const [playing, setPlaying] = useState(false);
-  const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const activeImage =
+    lightboxIndex !== null ? project.gallery[lightboxIndex] : null;
+  const hasNext =
+    lightboxIndex !== null && lightboxIndex < project.gallery.length - 1;
+  const hasPrev = lightboxIndex !== null && lightboxIndex > 0;
+
+  // Lock background scroll when lightbox is open
+  useEffect(() => {
+    if (lightboxIndex !== null) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [lightboxIndex]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setLightboxIndex(null);
+        return;
+      }
+      if (e.key === "ArrowRight") {
+        setLightboxIndex((curr) =>
+          curr !== null && curr < project.gallery.length - 1 ? curr + 1 : curr,
+        );
+      }
+      if (e.key === "ArrowLeft") {
+        setLightboxIndex((curr) => (curr !== null && curr > 0 ? curr - 1 : curr));
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxIndex, project.gallery.length]);
+
+  function handleTouchStart(e: React.TouchEvent) {
+    setTouchStartX(e.touches[0].clientX);
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartX === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    const threshold = 45;
+    if (deltaX < -threshold && hasNext) {
+      setLightboxIndex((prev) => (prev !== null ? prev + 1 : null));
+    } else if (deltaX > threshold && hasPrev) {
+      setLightboxIndex((prev) => (prev !== null ? prev - 1 : null));
+    }
+    setTouchStartX(null);
+  }
 
   const facts = [
     project.client && { label: "Cliente", value: project.client, icon: <PiUserBold size={13} /> },
@@ -66,26 +124,98 @@ export function PortfolioDetailContent({
   return (
     <div className="relative min-h-screen bg-[#f6f6f3] text-neutral-900 selection:bg-emerald-600 selection:text-white overflow-x-clip">
 
-      {/* Lightbox */}
+      {/* Lightbox Modal */}
       <AnimatePresence>
-        {lightboxImg && (
+        {activeImage && (
           <motion.div
+            key="lightbox-overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm cursor-pointer p-4"
-            onClick={() => setLightboxImg(null)}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-3 sm:p-6 md:p-10 select-none touch-none"
+            onClick={() => setLightboxIndex(null)}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
-            <motion.img
-              initial={{ scale: 0.92, opacity: 0 }}
+            {/* Top controls: counter & close button */}
+            <div className="absolute top-4 inset-x-4 sm:top-6 sm:inset-x-8 flex items-center justify-between z-20 pointer-events-none">
+              {project.gallery.length > 1 ? (
+                <span className="pointer-events-auto rounded-full bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 text-xs font-mono font-medium text-white/90 shadow-sm">
+                  {lightboxIndex! + 1} / {project.gallery.length}
+                </span>
+              ) : (
+                <div />
+              )}
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIndex(null);
+                }}
+                className="pointer-events-auto flex size-10 sm:size-11 items-center justify-center rounded-full bg-white/15 hover:bg-white/25 active:scale-95 text-white backdrop-blur-md border border-white/20 transition-[transform,background-color] duration-200 cursor-pointer shadow-xl"
+                aria-label="Cerrar imagen"
+              >
+                <PiXBold size={18} />
+              </button>
+            </div>
+
+            {/* Navigation buttons */}
+            {hasPrev && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIndex((prev) => (prev !== null ? prev - 1 : null));
+                }}
+                className="hidden sm:flex absolute left-4 sm:left-6 z-20 size-11 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white backdrop-blur-md border border-white/15 transition-[transform,background-color] duration-200 cursor-pointer shadow-lg"
+                aria-label="Imagen anterior"
+              >
+                <PiCaretLeftBold size={20} />
+              </button>
+            )}
+
+            {hasNext && (
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIndex((prev) => (prev !== null ? prev + 1 : null));
+                }}
+                className="hidden sm:flex absolute right-4 sm:right-6 z-20 size-11 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white backdrop-blur-md border border-white/15 transition-[transform,background-color] duration-200 cursor-pointer shadow-lg"
+                aria-label="Siguiente imagen"
+              >
+                <PiCaretRightBold size={20} />
+              </button>
+            )}
+
+            {/* Enlarged image */}
+            <motion.div
+              key={activeImage.src}
+              initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.92, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-              src={lightboxImg}
-              alt="Ampliación"
-              className="max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
-            />
+              exit={{ scale: 0.94, opacity: 0 }}
+              transition={{
+                duration: 0.28,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-h-[85vh] sm:max-h-[88vh] max-w-[94vw] sm:max-w-[88vw] flex flex-col items-center justify-center"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={activeImage.src}
+                alt={activeImage.alt || project.title}
+                className="max-h-[80vh] sm:max-h-[84vh] max-w-full w-auto h-auto object-contain rounded-xl sm:rounded-2xl shadow-2xl ring-1 ring-white/10"
+              />
+
+              {activeImage.alt && (
+                <p className="mt-3 text-center text-xs text-white/75 max-w-lg truncate px-3 font-medium">
+                  {activeImage.alt}
+                </p>
+              )}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -337,8 +467,8 @@ export function PortfolioDetailContent({
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-20px" }}
                         transition={{ duration: 0.45, delay: Math.min(i, 4) * 0.06, ease: [0.23, 1, 0.32, 1] as const }}
-                        className="mb-3 break-inside-avoid overflow-hidden rounded-xl border border-neutral-200/60 bg-neutral-100 cursor-pointer group"
-                        onClick={() => setLightboxImg(image.src)}
+                        className="mb-3 break-inside-avoid overflow-hidden rounded-xl border border-neutral-200/60 bg-neutral-100 cursor-pointer group touch-manipulation"
+                        onClick={() => setLightboxIndex(i)}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
