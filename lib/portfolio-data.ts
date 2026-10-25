@@ -19,6 +19,7 @@ export type PortfolioProject = {
   excerpt: string;
   coverImage: string;
   videoYoutubeId?: string;
+  videoUrl?: string;
   lead: string;
   story: string[];
   credits: PortfolioCredit[];

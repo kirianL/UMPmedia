@@ -36,6 +36,15 @@ function getCategoryIcon(category: string) {
   }
 }
 
+function isFacebookUrl(url?: string): boolean {
+  if (!url) return false;
+  return /(?:facebook\.com|fb\.watch)/i.test(url);
+}
+
+function getFacebookEmbedUrl(url: string): string {
+  return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=0&autoplay=1`;
+}
+
 export function PortfolioDetailContent({
   project,
   nextProject,
@@ -205,15 +214,25 @@ export function PortfolioDetailContent({
 
               {/* Featured Image / Video */}
               <div className="relative mb-8 sm:mb-10 overflow-hidden rounded-2xl border border-neutral-200/80 bg-neutral-950 shadow-[0_8px_30px_rgba(0,0,0,0.05)]">
-                {project.videoYoutubeId && playing ? (
-                  <div className="relative w-full aspect-video">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${project.videoYoutubeId}?autoplay=1&rel=0`}
-                      title={project.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      className="absolute inset-0 h-full w-full border-0"
-                    />
+                {playing && (project.videoYoutubeId || (project.videoUrl && isFacebookUrl(project.videoUrl))) ? (
+                  <div className="relative w-full aspect-video bg-black flex items-center justify-center">
+                    {project.videoYoutubeId ? (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${project.videoYoutubeId}?autoplay=1&rel=0`}
+                        title={project.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="absolute inset-0 h-full w-full border-0"
+                      />
+                    ) : project.videoUrl && isFacebookUrl(project.videoUrl) ? (
+                      <iframe
+                        src={getFacebookEmbedUrl(project.videoUrl)}
+                        title={project.title}
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="absolute inset-0 h-full w-full border-0"
+                      />
+                    ) : null}
                   </div>
                 ) : (
                   <motion.div
@@ -234,7 +253,7 @@ export function PortfolioDetailContent({
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 700px"
                       className="object-cover"
                     />
-                    {project.videoYoutubeId && (
+                    {(project.videoYoutubeId || (project.videoUrl && isFacebookUrl(project.videoUrl))) && (
                       <button
                         type="button"
                         onClick={() => setPlaying(true)}

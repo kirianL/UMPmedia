@@ -18,6 +18,7 @@ type ConvexPortfolioProject = ConvexPortfolioCard & {
   client: string;
   deliverables: string;
   videoYoutubeId?: string;
+  videoUrl?: string;
   lead: string;
   story: string[];
   credits: { role: string; name: string }[];
@@ -52,6 +53,7 @@ function detailToProject(project: ConvexPortfolioProject): PortfolioProject {
     client: project.client,
     deliverables: project.deliverables,
     videoYoutubeId: project.videoYoutubeId,
+    videoUrl: project.videoUrl,
     lead: project.lead,
     story: project.story,
     credits: project.credits,
