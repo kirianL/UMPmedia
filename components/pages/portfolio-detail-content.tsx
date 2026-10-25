@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
@@ -64,9 +65,14 @@ export function PortfolioDetailContent({
   nextProject: PortfolioProject | null;
 }) {
   const shouldReduceMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const activeImage =
     lightboxIndex !== null ? project.gallery[lightboxIndex] : null;
@@ -132,101 +138,110 @@ export function PortfolioDetailContent({
   return (
     <div className="relative min-h-screen bg-[#f6f6f3] text-neutral-900 selection:bg-emerald-600 selection:text-white overflow-x-clip">
 
-      {/* Lightbox Modal */}
-      <AnimatePresence>
-        {activeImage && (
-          <motion.div
-            key="lightbox-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-3 sm:p-6 md:p-10 select-none touch-none"
-            onClick={() => setLightboxIndex(null)}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          >
-            {/* Top controls: counter & close button */}
-            <div className="absolute top-4 inset-x-4 sm:top-6 sm:inset-x-8 flex items-center justify-between z-20 pointer-events-none">
-              {project.gallery.length > 1 ? (
-                <span className="pointer-events-auto rounded-full bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 text-xs font-mono font-medium text-white/90 shadow-sm">
-                  {lightboxIndex! + 1} / {project.gallery.length}
-                </span>
-              ) : (
-                <div />
-              )}
-
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex(null);
-                }}
-                className="pointer-events-auto flex size-10 sm:size-11 items-center justify-center rounded-full bg-white/15 hover:bg-white/25 active:scale-95 text-white backdrop-blur-md border border-white/20 transition-[transform,background-color] duration-200 cursor-pointer shadow-xl"
-                aria-label="Cerrar imagen"
-              >
-                <PiXBold size={18} />
-              </button>
-            </div>
-
-            {/* Navigation buttons */}
-            {hasPrev && (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex((prev) => (prev !== null ? prev - 1 : null));
-                }}
-                className="hidden sm:flex absolute left-4 sm:left-6 z-20 size-11 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white backdrop-blur-md border border-white/15 transition-[transform,background-color] duration-200 cursor-pointer shadow-lg"
-                aria-label="Imagen anterior"
-              >
-                <PiCaretLeftBold size={20} />
-              </button>
-            )}
-
-            {hasNext && (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex((prev) => (prev !== null ? prev + 1 : null));
-                }}
-                className="hidden sm:flex absolute right-4 sm:right-6 z-20 size-11 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white backdrop-blur-md border border-white/15 transition-[transform,background-color] duration-200 cursor-pointer shadow-lg"
-                aria-label="Siguiente imagen"
-              >
-                <PiCaretRightBold size={20} />
-              </button>
-            )}
-
-            {/* Enlarged image */}
+      {/* Lightbox Modal rendered via Portal covering entire viewport */}
+      {mounted && typeof document !== "undefined" && createPortal(
+        <AnimatePresence>
+          {activeImage && (
             <motion.div
-              key={activeImage.src}
-              initial={{ scale: 0.94, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.94, opacity: 0 }}
-              transition={{
-                duration: 0.28,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-h-[85vh] sm:max-h-[88vh] max-w-[94vw] sm:max-w-[88vw] flex flex-col items-center justify-center"
+              key="lightbox-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/95 backdrop-blur-xl p-3 sm:p-6 md:p-8 select-none touch-none"
+              onClick={() => setLightboxIndex(null)}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={activeImage.src}
-                alt={activeImage.alt || project.title}
-                className="max-h-[80vh] sm:max-h-[84vh] max-w-full w-auto h-auto object-contain rounded-xl sm:rounded-2xl shadow-2xl ring-1 ring-white/10"
-              />
+              {/* Top controls: counter & close button */}
+              <div className="absolute top-4 inset-x-4 sm:top-6 sm:inset-x-8 flex items-center justify-between z-40 pointer-events-none">
+                {project.gallery.length > 1 ? (
+                  <span className="pointer-events-auto rounded-full bg-white/10 backdrop-blur-md border border-white/15 px-3.5 py-1 text-xs font-mono font-medium text-white shadow-lg">
+                    {lightboxIndex! + 1} / {project.gallery.length}
+                  </span>
+                ) : (
+                  <div />
+                )}
 
-              {activeImage.alt && (
-                <p className="mt-3 text-center text-xs text-white/75 max-w-lg truncate px-3 font-medium">
-                  {activeImage.alt}
-                </p>
-              )}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIndex(null);
+                  }}
+                  className="pointer-events-auto flex size-11 items-center justify-center rounded-full bg-white/15 hover:bg-white/25 active:scale-95 text-white backdrop-blur-md border border-white/20 transition-all duration-200 cursor-pointer shadow-2xl"
+                  aria-label="Cerrar imagen"
+                >
+                  <PiXBold size={19} />
+                </button>
+              </div>
+
+              {/* Centered frame wrapping the image and navigation buttons close together */}
+              <div
+                className="relative w-full max-w-5xl max-h-[88vh] flex items-center justify-center px-2 sm:px-14 md:px-16"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Prev button - right next to the image */}
+                {hasPrev && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setLightboxIndex((prev) => (prev !== null ? prev - 1 : null));
+                    }}
+                    className="hidden sm:flex absolute left-0 sm:left-2 z-30 size-11 sm:size-12 items-center justify-center rounded-full bg-neutral-900/80 hover:bg-neutral-900 active:scale-95 text-white backdrop-blur-md border border-white/20 transition-all duration-200 cursor-pointer shadow-2xl hover:scale-105"
+                    aria-label="Imagen anterior"
+                  >
+                    <PiCaretLeftBold size={22} />
+                  </button>
+                )}
+
+                {/* Enlarged image */}
+                <motion.div
+                  key={activeImage.src}
+                  initial={{ scale: 0.94, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.94, opacity: 0 }}
+                  transition={{
+                    duration: 0.28,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="relative max-h-[85vh] sm:max-h-[86vh] max-w-full flex flex-col items-center justify-center"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={activeImage.src}
+                    alt={activeImage.alt || project.title}
+                    className="max-h-[80vh] sm:max-h-[82vh] max-w-full w-auto h-auto object-contain rounded-xl sm:rounded-2xl shadow-2xl ring-1 ring-white/15"
+                  />
+
+                  {activeImage.alt && (
+                    <p className="mt-3 text-center text-xs text-white/80 max-w-lg truncate px-3 font-medium">
+                      {activeImage.alt}
+                    </p>
+                  )}
+                </motion.div>
+
+                {/* Next button - right next to the image */}
+                {hasNext && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setLightboxIndex((prev) => (prev !== null ? prev + 1 : null));
+                    }}
+                    className="hidden sm:flex absolute right-0 sm:right-2 z-30 size-11 sm:size-12 items-center justify-center rounded-full bg-neutral-900/80 hover:bg-neutral-900 active:scale-95 text-white backdrop-blur-md border border-white/20 transition-all duration-200 cursor-pointer shadow-2xl hover:scale-105"
+                    aria-label="Siguiente imagen"
+                  >
+                    <PiCaretRightBold size={22} />
+                  </button>
+                )}
+              </div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
       <motion.div
         initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
@@ -549,7 +564,7 @@ export function PortfolioDetailContent({
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-20px" }}
                         transition={{ duration: 0.45, delay: Math.min(i, 4) * 0.06, ease: [0.23, 1, 0.32, 1] as const }}
-                        className="mb-3 break-inside-avoid overflow-hidden rounded-xl border border-neutral-200/60 bg-neutral-100 cursor-pointer group touch-manipulation"
+                        className="relative mb-3 break-inside-avoid overflow-hidden rounded-xl border border-neutral-200/60 bg-neutral-100 cursor-pointer group touch-manipulation"
                         onClick={() => setLightboxIndex(i)}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
