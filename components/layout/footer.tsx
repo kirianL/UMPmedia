@@ -6,7 +6,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-transparent text-neutral-900 border-t border-neutral-200/60 pt-10 sm:pt-14 md:pt-16 overflow-hidden select-none">
+    <footer className="w-full bg-[#f6f6f3] text-neutral-900 border-t border-neutral-200/60 pt-10 sm:pt-14 md:pt-16 overflow-hidden select-none">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Minimal Navigation & Copyright Bar matching Reference */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 pb-6 sm:pb-8 md:pb-10 text-xs font-mono uppercase tracking-wider">
@@ -59,7 +59,7 @@ export function Footer() {
 
       {/* Caribbean Landscape Panorama (Footer.jpeg) */}
       <div
-        className="relative w-full h-80 sm:h-96 md:h-[420px] lg:h-[480px] bg-[#20453b] overflow-hidden"
+        className="relative w-full h-[380px] sm:h-[420px] md:h-[460px] lg:h-[500px] overflow-hidden"
         style={{
           maskImage: "linear-gradient(to bottom, transparent 0%, black 14%, black 100%)",
           WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 14%, black 100%)",
@@ -79,16 +79,6 @@ export function Footer() {
           className="object-cover object-bottom select-none pointer-events-none"
         />
       </div>
-
-      {/* iOS Safe Area & Bottom Edge Extension - Mobile floating toolbar fill */}
-      <div
-        className="w-full bg-[#20453b] -mt-px block md:hidden"
-        style={{ height: "calc(env(safe-area-inset-bottom, 24px) + 70px)" }}
-      />
-      <div
-        className="w-full bg-[#20453b] -mt-px hidden md:block"
-        style={{ height: "env(safe-area-inset-bottom, 0px)" }}
-      />
     </footer>
   );
 }
