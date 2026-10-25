@@ -6,7 +6,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-gradient-to-b from-[#f6f6f3] via-[#f6f6f3] to-[#20453b] text-neutral-900 border-t border-neutral-200/60 pt-10 sm:pt-14 md:pt-16 overflow-hidden select-none">
+    <footer className="w-full bg-transparent text-neutral-900 border-t border-neutral-200/60 pt-10 sm:pt-14 md:pt-16 overflow-hidden select-none">
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Minimal Navigation & Copyright Bar matching Reference */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 pb-6 sm:pb-8 md:pb-10 text-xs font-mono uppercase tracking-wider">
@@ -80,8 +80,15 @@ export function Footer() {
         />
       </div>
 
-      {/* iOS Safe Area & Bottom Edge Extension - Seamless with Caribbean water tone */}
-      <div className="w-full h-[env(safe-area-inset-bottom,0px)] bg-[#20453b] -mt-px" />
+      {/* iOS Safe Area & Bottom Edge Extension - Mobile floating toolbar fill */}
+      <div
+        className="w-full bg-[#20453b] -mt-px block md:hidden"
+        style={{ height: "calc(env(safe-area-inset-bottom, 24px) + 70px)" }}
+      />
+      <div
+        className="w-full bg-[#20453b] -mt-px hidden md:block"
+        style={{ height: "env(safe-area-inset-bottom, 0px)" }}
+      />
     </footer>
   );
 }

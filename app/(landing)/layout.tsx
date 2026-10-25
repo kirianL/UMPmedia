@@ -9,7 +9,7 @@ export default function LandingLayout({
 }) {
   return (
     <SmoothScrollProvider>
-      <div className="flex min-h-screen flex-col bg-[#f6f6f3] text-neutral-900 selection:bg-neutral-950 selection:text-white">
+      <div className="flex min-h-screen flex-col bg-transparent text-neutral-900 selection:bg-neutral-950 selection:text-white">
         <Header />
         <main className="flex-1 w-full flex flex-col">{children}</main>
         <Footer />

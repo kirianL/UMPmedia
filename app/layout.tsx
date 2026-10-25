@@ -137,12 +137,17 @@ export default function RootLayout({
       className="bg-[#20453b]"
       style={{
         backgroundColor: "#20453b",
-        backgroundImage:
-          "linear-gradient(to bottom, #f6f6f3 0%, #f6f6f3 calc(100% - 400px), #20453b 100%)",
-        backgroundRepeat: "no-repeat",
       }}
     >
-      <body className={`${inter.variable} antialiased bg-[#f6f6f3] text-neutral-900`}>
+      <body
+        className={`${inter.variable} antialiased text-neutral-900`}
+        style={{
+          backgroundColor: "#20453b",
+          backgroundImage:
+            "linear-gradient(to bottom, #f6f6f3 0%, #f6f6f3 calc(100% - 600px), #20453b 100%)",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

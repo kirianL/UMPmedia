@@ -8,7 +8,7 @@ import { CTAFinal } from "@/components/sections/cta-final";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen bg-[#f6f6f3]">
+    <main className="flex flex-col min-h-screen bg-transparent">
       <Hero />
       <ClientsStats />
       <Showcase />
