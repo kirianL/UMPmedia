@@ -48,6 +48,14 @@ function getFacebookEmbedUrl(url: string): string {
   return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=0&autoplay=1`;
 }
 
+function splitCleanTags(value: string): string[] {
+  if (!value) return [];
+  return value
+    .split(/\s*[-–—·•,]\s*/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
 export function PortfolioDetailContent({
   project,
   nextProject,
@@ -265,9 +273,22 @@ export function PortfolioDetailContent({
                           <dt className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">
                             {fact.label}
                           </dt>
-                          <dd className="text-sm font-medium text-neutral-950 leading-snug mt-0.5">
-                            {fact.value}
-                          </dd>
+                          {fact.label === "Servicios" ? (
+                            <div className="flex flex-wrap gap-1.5 mt-1.5">
+                              {splitCleanTags(fact.value).map((item) => (
+                                <span
+                                  key={item}
+                                  className="inline-flex items-center px-2 py-0.5 rounded-md bg-neutral-100 text-neutral-800 text-xs font-medium border border-neutral-200/60"
+                                >
+                                  {item}
+                                </span>
+                              ))}
+                            </div>
+                          ) : (
+                            <dd className="text-sm font-medium text-neutral-950 leading-snug mt-0.5">
+                              {fact.value}
+                            </dd>
+                          )}
                         </div>
                       </div>
                     ))}
@@ -401,16 +422,77 @@ export function PortfolioDetailContent({
 
               {/* Mobile facts */}
               {facts.length > 0 && (
-                <div className="lg:hidden mb-8 grid grid-cols-2 gap-3 p-4 bg-neutral-50 rounded-xl border border-neutral-200/60">
-                  {facts.map((fact) => (
-                    <div key={fact.label} className="flex items-start gap-2">
-                      <span className="text-neutral-400 mt-0.5 shrink-0">{fact.icon}</span>
-                      <div>
-                        <dt className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">{fact.label}</dt>
-                        <dd className="text-xs font-semibold text-neutral-950 mt-0.5">{fact.value}</dd>
+                <div className="lg:hidden mb-8 rounded-2xl border border-neutral-200/80 bg-neutral-50/80 p-4 sm:p-5 space-y-3.5 shadow-2xs">
+                  <div className="grid grid-cols-2 gap-3 pb-3 border-b border-neutral-200/60">
+                    {project.client && (
+                      <div className="flex items-start gap-2">
+                        <span className="text-neutral-400 mt-0.5 shrink-0">
+                          <PiUserBold size={13} />
+                        </span>
+                        <div>
+                          <dt className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">
+                            Cliente
+                          </dt>
+                          <dd className="text-xs font-semibold text-neutral-950 mt-0.5">
+                            {project.client}
+                          </dd>
+                        </div>
+                      </div>
+                    )}
+                    {project.year && (
+                      <div className="flex items-start gap-2">
+                        <span className="text-neutral-400 mt-0.5 shrink-0">
+                          <PiCalendarBold size={13} />
+                        </span>
+                        <div>
+                          <dt className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">
+                            Año
+                          </dt>
+                          <dd className="text-xs font-semibold text-neutral-950 mt-0.5">
+                            {project.year}
+                          </dd>
+                        </div>
+                      </div>
+                    )}
+                    {project.category && (
+                      <div className="flex items-start gap-2 col-span-2">
+                        <span className="text-neutral-400 mt-0.5 shrink-0">
+                          {getCategoryIcon(project.category)}
+                        </span>
+                        <div>
+                          <dt className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">
+                            Categoría
+                          </dt>
+                          <dd className="text-xs font-semibold text-neutral-950 mt-0.5">
+                            {project.category}
+                          </dd>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {project.deliverables && (
+                    <div className="flex items-start gap-2 pt-0.5">
+                      <span className="text-neutral-400 mt-1 shrink-0">
+                        <PiBriefcaseBold size={13} />
+                      </span>
+                      <div className="w-full">
+                        <dt className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5">
+                          Servicios
+                        </dt>
+                        <dd className="flex flex-wrap gap-1.5">
+                          {splitCleanTags(project.deliverables).map((item) => (
+                            <span
+                              key={item}
+                              className="inline-flex items-center px-2.5 py-1 rounded-lg bg-white text-neutral-900 text-[11px] font-medium border border-neutral-200/90 shadow-2xs"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </dd>
                       </div>
                     </div>
-                  ))}
+                  )}
                 </div>
               )}
 
